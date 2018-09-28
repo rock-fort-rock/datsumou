@@ -1,0 +1,25 @@
+$breakpoint: 780px;
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700);
+// @import url(https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css);
+@import "reset";
+@import "common";
+// @import "icon";
+
+@media screen and (min-width: $breakpoint+1){
+  @import "pcBase";
+}
+@media screen and (max-width: $breakpoint){
+  @import "spBase";
+}
+
+@import "home";
+// @import "about";
+// @import "oemodm";
+// @import "pattern";
+// @import "others";
+
+@media print{
+	@import "pcBase";
+	@import "print";
+}

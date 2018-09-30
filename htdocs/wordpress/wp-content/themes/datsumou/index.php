@@ -5,12 +5,9 @@ $status = [
 ];
 ?>
 <?php get_header(); ?>
-aaa
-<?php get_footer(); ?>
-<?php exit(); ?>
 
 
-<?php
+<?php /*
 $topArg = array(
 	'post_type' => 'top',
 	'posts_per_page'   => 1,
@@ -53,98 +50,20 @@ foreach($newsPosts as $value){
 
 	array_push($newsArray, $newsTemp);
 }
+*/
 ?>
 
-		<div class="contents">
-			<?php if($video): ?>
-			<div class="video">
-				<video playsinline loop muted class="visible-pc">
-					<source src="/images/home/video.mp4">
-				</video>
-				<video autoplay playsinline loop muted class="visible-sp">
-					<source src="/images/home/video_mobile.mp4?0">
-				</video>
-				<div class="video__scroll en">SCROLL<span class="icon-arrowT"></span></div>
-				<div class="video__overlay"></div>
-			</div>
-			<?php endif; ?>
-
-
-			<div class="homeContainer">
-
-			<?php if($heroArray): ?>
-			<div class="heroPanel swiper-container">
-				<div class="heroPanel__wrapper swiper-wrapper">
-					<?php foreach($heroArray as $value): ?>
-					<div class="heroPanel__slide swiper-slide">
-						<?php if($value['link']): ?><a href="<?php echo $value['link']; ?>"><?php endif; ?>
-							<picture>
-							<source media="(max-width: <?php echo $breakpoint; ?>)" srcset="<?php echo $value['imgSp']; ?>">
-							<img src="<?php echo $value['imgPc']; ?>">
-							</picture>
-							<div class="heroPanel__textBlock heroPanel__textBlock--<?php echo $value['copylayout']; ?>">
-							<h2 class="heroPanel__catch"><?php echo $value['copy']; ?></h2>
-							<span class="textButton textButton--borderless visible-sp"><?php echo $value['btnText']; ?></span>
-							</div>
-						<?php if($value['link']): ?></a><?php endif; ?>
-					</div>
-					<?php endforeach; ?>
-				</div>
-				<div class="swiper-pagination"></div>
-			</div>
-		<?php endif; ?>
-
-			<div class="induction">
-				<div class="oem-odmBlock contentBlock">
-					<div class="contentInner contentInner--wide">
-						<div class="induction__textBlock">
-							<h2 class="subTitle">OEM・ODM事業</h2>
-							<p>半世紀にわたり培ってきた経験とノウハウを生かし、布帛・ニット・カットソー全般において、ご満足いただける商品を作ります。<br>
-							ご要望によって、フォーマルからカジュアルまで幅広いテイストの商品に対応し、企画から生産、納品までトータルでサポートさせて頂きます。</p>
-							<a href="/oem-odm/" class="textButton">詳しくみる</a>
-						</div>
-						<div class="induction__photoBlock">
-							<h2 class="en">OEM/ODM</h2>
-							<a href="/oem-odm/"><img src="/images/home/oemodm.jpg" alt="OEM・ODM事業"></a>
-						</div>
-					</div>
-				</div>
-
-				<div class="patternBlock contentBlock">
-					<div class="contentInner contentInner--wide">
-						<div class="induction__textBlock">
-							<h2 class="subTitle">パターン作成事業</h2>
-							<p>ルックグループで培った技術をもとに、他OEM先のパターンを作成しています。 <br>各年代に合わせた着心地の良いパターン、素材に合わせた縫いやすいパターンを作成いたします。</p>
-							<a href="/pattern/" class="textButton">詳しくみる</a>
-						</div>
-						<div class="induction__photoBlock">
-							<h2 class="en">PATTERN</h2>
-							<a href="/pattern/"><img src="/images/home/pattern.jpg" alt="パターン作成事業"></a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<?php if($newsArray): ?>
-			<div class="news">
-				<div class="contentInner contentInner--wide">
-					<div class="news__title"><h2 class="subTitle">ニュース</h2></div>
-					<dl class="news__list">
-						<?php foreach($newsArray as $value): ?>
-						<dt<?php if($value['new'])echo ' class="new"'; ?>><?php echo $value['date']; ?></dt>
-						<dd><a href="<?php echo $value['link']; ?>"><?php echo $value['title']; ?></a></dd>
-						<?php endforeach; ?>
-						<!-- <dt>2018年01月01日</dt>
-						<dd><a href="#">株式会社ルックは、フランスのライフスタイルブランド『BENSIMON』の独占輸入販売をスタートいたします。</a></dd>
-						<dt>2018年01月01日</dt>
-						<dd><a href="#">【新ブランド】株式会社ルックは、2017年春夏からナショナルブランド「filage」を⽴ち上げます</a></dd> -->
-					</dl>
-				</div>
-			</div>
-			<?php endif; ?>
-
-			</div>
-
+<div class="mainContents">
+	<section class="contentBlock">
+		<header class="salonHeader">
+			<img src="/assets/images/icon_ranking1.png" alt="人気サロン第1位" class="rankIcon best3">
+			<h2 class="salonName">コロリー</h2>
+		</header>
+		<div class="contentInner">
+			aaaa
 		</div>
+	</section>
+
+</div>
 
 <?php get_footer(); ?>

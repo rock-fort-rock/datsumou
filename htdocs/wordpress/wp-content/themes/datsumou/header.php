@@ -26,8 +26,8 @@ if($status['description']){
 </head>
 
 <body id="<?php echo $status['id']; ?>">
-		<header class="gHeader">
-			<?php $ele = (is_home())?'h1':'div'; ?><<?php echo $ele; ?> class="gHeader__logo"><a href="/"><img src="/images/logo.svg" alt="株式会社ルックモード LOOK MODE"></a></<?php echo $ele; ?>>
+	<header class="gHeader">
+			<?php $ele = (is_home())?'h1':'div'; ?><<?php echo $ele; ?> class="gHeader__logo"><a href="/"><img src="/assets/images/logo.png" alt="ツルツル全身脱毛診断メーカー"></a></<?php echo $ele; ?>>
 			<div class="gHeader__subNavi">
 				<ul class="visible-pc">
 					<?php if($newsPost->publish >= 1): ?><li><a href="/news/">ニュース</a></li><?php endif; ?>
@@ -77,4 +77,6 @@ if($status['description']){
 					</ul>
 				</div>
 			</nav>
-		</header>
+	</header>
+	<div class="contents">
+		<div class="gNavi">Global Navi</div>

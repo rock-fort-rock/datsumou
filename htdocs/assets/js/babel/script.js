@@ -6,7 +6,7 @@ const bodyWidth = document.body.clientWidth;
 const ua = window.navigator.userAgent.toLowerCase();
 
 const test = () => {
-	console.log("test"+$('.gHeader').width());
+	console.log("test:"+$('.gHeader').width());
 }
 
 test();

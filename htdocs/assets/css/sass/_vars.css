@@ -1,0 +1,17 @@
+$lookred: #dd1b4a;
+$lightGray: #f3f3f3;
+
+$pc_headerHight: 90px;
+$pc_footerHight: 110px;
+$sp_headerHight: 50px;
+$sp_footerHight: 130px;
+
+$contentMaxWidth: 1100px;
+$contentMaxWidthWide: 1300px;/*TOPなどの例外*/
+
+$contentNarrowWidth: 840px;
+
+$lovalNaviWidth: 220px;
+$twoColumnPadding: 40px;
+
+$shadow: 0 0 2px rgba(0,0,0,0.2);

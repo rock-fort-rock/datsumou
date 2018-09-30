@@ -91,9 +91,13 @@ module.exports = [
           test: /\.js$/, 
           exclude: /node_modules/, 
           loader: "babel-loader", 
-          query:{
-            presets: ['react', 'es2015']
-          }
+          //package.jsonに記載 watch中でも反映される
+          // query:{
+          //   presets: ['react', 'env']
+          // }
+          // query:{
+          //   presets: ['react', 'es2015']
+          // }
         }
       ]
     }

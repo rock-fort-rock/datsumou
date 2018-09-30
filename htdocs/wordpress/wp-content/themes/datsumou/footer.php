@@ -1,3 +1,4 @@
+		</div><!--/contents-->
 		<footer class="gFooter">
 			<a href="#" class="pageTop"><span class="icon-arrowT"></span></a>
 			<ul class="gFooter__navi">

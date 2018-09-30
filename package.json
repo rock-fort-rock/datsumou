@@ -8,14 +8,21 @@
     "dev": "./node_modules/.bin/webpack --mode development --watch",
     "build": "./node_modules/.bin/webpack --mode production"
   },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^8.6.3",
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
     "csscomb": "^4.2.0",
     "csscomb-loader": "0.0.2",
@@ -29,6 +36,6 @@
     "uglifyjs-webpack-plugin": "^1.2.4",
     "url-loader": "^1.0.1",
     "webpack": "^4.1.1",
-    "webpack-cli": "^2.0.12"
+    "webpack-cli": "^3.1.1"
   }
 }

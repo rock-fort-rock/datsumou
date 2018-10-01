@@ -59,8 +59,87 @@ foreach($newsPosts as $value){
 			<img src="/assets/images/icon_ranking1.png" alt="人気サロン第1位" class="rankIcon best3">
 			<h2 class="salonName">コロリー</h2>
 		</header>
-		<div class="contentInner">
-			aaaa
+		<div class="salonBody">
+			<div class="salonInfo">
+				<div class="leftBlock">
+					<div class="salonInfoAssess">
+						<canvas class="radarChart" data-total="5" data-price="4" data-service="5" data-reserve="5" data-care="3"></canvas>
+					</div>
+					<div class="paragraph exceptSmall">
+						<h3 class="salonInfoTitle">料金</h3>
+						<div class="contentInner">テキストが入ります。テキストが入ります。テキストが入ります。</div>
+					</div>
+					<div class="paragraph exceptSmall">
+						<h3 class="salonInfoTitle">キャンペーン</h3>
+						<div class="contentInner">テキストが入ります。テキストが入ります。テキストが入ります。</div>
+					</div>
+				</div>
+				<div class="rightBlock">
+					<div class="salonInfoPoint">
+						<div class="pointFrame">
+							<ul>
+								<li>ポイント1</li>
+								<li>医療脱毛だからツルツルに♪</li>
+								<li>あいうえおかきくけこさしす</li>
+							</ul>
+							
+						</div>
+					</div>
+					<div class="paragraph onlySmall">
+						<h3 class="salonInfoTitle">料金</h3>
+						<div class="contentInner">テキストが入ります。テキストが入ります。テキストが入ります。</div>
+					</div>
+					<div class="paragraph onlySmall">
+						<h3 class="salonInfoTitle">キャンペーン</h3>
+						<div class="contentInner">テキストが入ります。テキストが入ります。テキストが入ります。</div>
+					</div>
+					<div class="paragraph salonInfoOverview">
+						<div class="salonInfoTitle">サロン情報</div>
+						<div class="contentInner">
+							<table>
+								<tr>
+									<th>クチコミ</th><th>回数</th><th>部位数</th><th>学割</th>
+								</tr>
+								<tr>
+									<td class="rating"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></td><td>5回</td><td>25箇所</td><td>〇</td>
+								</tr>
+								<tr>
+									<th>未成年</th><th>乗り換え割</th><th>医療・美容</th><th></th>
+								</tr>
+								<tr>
+									<td class="review">〇</td><td>なし</td><td>美容</td><td></td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="paragraph salonReview">
+				<div class="salonInfoTitle">みんなのクチコミ</div>
+				<div class="contentInner">
+					<ul class="review">
+						<li>
+							<div class="avatar"><img src="/assets/images/avatar01.png"></div>
+							<div class="comment">ああああああ</div>
+						</li>
+						<li>
+							<div class="avatar"><img src="/assets/images/avatar02.png"></div>
+							<div class="comment">あ<br>あ<br>あ<br>あ<br>あ</div>
+						</li>
+						<li>
+							<div class="avatar"><img src="/assets/images/avatar03.png"></div>
+							<div class="comment">ああああああ</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="paragraph">
+				<div class="contentInner">
+					<div class="numberOfPeople">当サイトから<span class="num"><strong>123</strong>名</span>がキレイになりました！</div>
+				</div>
+			</div>
 		</div>
 	</section>
 

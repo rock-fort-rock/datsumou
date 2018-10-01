@@ -1,16 +1,124 @@
 // import SmoothScroll from './smooth-scroll.polyfills.min';
 // import Swiper from './swiper.min';
 import $ from 'jquery';
+import Chart from 'chart.js';
 const breakpoint = 780;
 const bodyWidth = document.body.clientWidth;
 const ua = window.navigator.userAgent.toLowerCase();
 
 const test = () => {
-	console.log("test:"+$('.gHeader').width());
+	var ctx = document.getElementById("myChart");
+	var myChart = new Chart(ctx, {
+	    type: 'bar',
+	    data: {
+	        labels: ["赤", "青", "黄", "緑", "紫", "橙"],
+	        datasets: [{
+	            label: '得票数',
+	            data: [12, 19, 3, 5, 2, 3],
+	            backgroundColor: [
+	                'rgba(255, 99, 132, 0.2)',
+	                'rgba(54, 162, 235, 0.2)',
+	                'rgba(255, 206, 86, 0.2)',
+	                'rgba(75, 192, 192, 0.2)',
+	                'rgba(153, 102, 255, 0.2)',
+	                'rgba(255, 159, 64, 0.2)'
+	            ],
+	            borderColor: [
+	                'rgba(255,99,132,1)',
+	                'rgba(54, 162, 235, 1)',
+	                'rgba(255, 206, 86, 1)',
+	                'rgba(75, 192, 192, 1)',
+	                'rgba(153, 102, 255, 1)',
+	                'rgba(255, 159, 64, 1)'
+	            ],
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {
+	        scales: {
+	            yAxes: [{
+	                ticks: {
+	                    beginAtZero:true
+	                }
+	            }]
+	        }
+	    }
+	});
 }
+// test();
 
-test();
 
+//サロン情報
+$(function(){
+	const ele = $('.salonInfo');
+	if(ele.length < 1)return;
+
+	ele.each(function(index, element){
+		const ctx = $(element).find('.radarChart');
+		const total = ctx.data('total');
+		const price = ctx.data('price');
+		const service = ctx.data('service');
+		const reserve = ctx.data('reserve');
+		const care = ctx.data('care');
+		
+		var myChart = new Chart(ctx, {
+			type: 'radar',
+			data: {
+			    labels: ['', '価格', '接客・雰囲気', '予約のしやすさ', 'アフターケア'],
+			    datasets: [{
+			    	backgroundColor: 'rgba(255, 102, 153, 0.4)',
+			    	borderWidth: 1,
+			    	borderColor: 'rgba(255, 102, 153, 0.8)',
+			    	pointBorderColor: "rgba(255, 102, 153, 1)",
+			    	pointBorderWidth: 2,
+			    	pointBackgroundColor: "rgba(255, 102, 153, 1)",
+			        data: [total, price, service, reserve, care]
+			    }]
+			},
+			options: {
+				animation:false,
+				showTooltips: false,
+				legend: { 
+					display: false,
+				},
+				title: {
+					display: true,
+					fontSize:16,
+					fontColor:'#0fb0f8',
+					padding: -10,
+					lineHeight: 1,
+					text: ['', '総合評価']
+				},
+
+				scale: {
+					display: true,
+					pointLabels: {
+						fontSize: 12,
+						// fontStyle: "bold",
+						fontColor: '#0fb0f8',
+					},
+					ticks: {
+						display: false,
+						// fontSize: 12,
+						stepSize: 1,
+						min: 0,
+						max: 5,
+						beginAtZero: true
+					},
+					gridLines: {
+						display: true,
+					}
+				}
+			}
+			// options: {
+			//     scale: {
+			//     	display: false
+			//     }
+			// }
+		})
+
+	})
+});
 
 //スマホのみ適用
 // export default class onlySp{

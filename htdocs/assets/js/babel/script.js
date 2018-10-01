@@ -83,7 +83,7 @@ $(function(){
 				},
 				title: {
 					display: true,
-					fontSize:16,
+					fontSize:15,
 					fontColor:'#0fb0f8',
 					padding: -10,
 					lineHeight: 1,
@@ -93,7 +93,7 @@ $(function(){
 				scale: {
 					display: true,
 					pointLabels: {
-						fontSize: 12,
+						fontSize: 11,
 						// fontStyle: "bold",
 						fontColor: '#0fb0f8',
 					},

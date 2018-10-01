@@ -4,7 +4,7 @@ html{
 	background-color: #fff;
 	font-size: 13px;
 	@media screen and (min-width: $breakpoint + 1){
-		font-size: 14px;
+		font-size: 13px;
 	}
 }
 body{
@@ -13,7 +13,7 @@ body{
 	position: relative;
 	font-family: 'Noto Sans Japanese', "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
 	line-height: 1.4;
-	color: #333;
+	color: #3f3f3f;
 	height: 100%;
 	width: 100%;
 	word-wrap: break-word;
@@ -345,9 +345,15 @@ ELEMENT
 }
 .contentInner{
 	padding: 0 15px;
+	@media screen and (min-width: $breakpoint + 1){
+		padding: 0 25px;
+	}
 }
 .paragraph{
 	margin-bottom: 20px;
+	@media screen and (min-width: $breakpoint + 1){
+		margin-bottom: 30px;
+	}
 }
 
 /*---------------------------------
@@ -391,17 +397,17 @@ ELEMENT
 }
 
 .salonBody{
-	.salonInfo{
+	.salonInfoAssess{
+		margin-bottom: 30px;
 		.radarChart{
-			overflow: visible;
 			margin-top: 30px;
 			max-width: 600px;
 		}
 	}
-	.salonInfoTitle{
+	.salonContentTitle{
 		height: 30px;
 		border-top: 1px solid #55d6fb;
-		background: url('/assets/images/salonInfo_headline_bg.gif') top right/auto 100% no-repeat #04b1f0;
+		background: url('/assets/images/salonContentTitle_bg.gif') top right/auto 100% no-repeat #04b1f0;
 		box-shadow: 0 2px 2px rgba(0,0,0,0.2);
 		margin-bottom: 10px;
 		color: #fff;
@@ -413,10 +419,13 @@ ELEMENT
 	.salonInfoPoint{
 		padding: 15px 15px;
 		background-color: #fffce9;
+		position: relative;
+		max-height: calc(460px * 0.44);
+		margin-bottom: 20px;
 		.pointFrame{
 			position: relative;
 			width: 100%;
-			max-width: 420px;
+			max-width: 400px;
 			margin: 0 auto;
 			padding-top: 44%;
 			background: url('/assets/images/point_bg.png') top left/100% auto no-repeat;
@@ -488,68 +497,154 @@ ELEMENT
 			}
 		}
 	}
-	.numberOfPeople{
-		position: relative;
-		border: 1px solid #8fc320;
-		background-color: #eefdca;
-		border-radius: 5px;
-		padding: 5px 15px 10px 15px;
-		color: #8fc320;
+	.ctaBlock{
+		margin: 0 auto;
+		max-width: 345px;
+		.numberOfPeople{
+			position: relative;
+			border: 1px solid #8fc320;
+			background-color: #eefdca;
+			border-radius: 5px;
+			padding: 5px 15px 10px 15px;
+			color: #8fc320;
+			font-weight: bold;
+			text-align: center;
+			&::before{
+			  content: "";
+			  position: absolute;
+			  bottom: -16px;
+			  left: 25%;
+			  margin-left: 2px;
+			  border: 8px solid transparent;
+			  border-top: 8px solid #eefdca;
+			  z-index: 2;
+			}
 
-		&::before{
-		  content: "";
-		  position: absolute;
-		  bottom: -22px;
-		  left: 25%;
-		  margin-left: 2px;
-		  border: 11px solid transparent;
-		  border-top: 11px solid #eefdca;
-		  z-index: 2;
+			&::after{
+			  content: "";
+			  position: absolute;
+			  bottom: -20px;
+			  left: 25%;
+			  border: 10px solid transparent;
+			  border-top: 10px solid #8fc320;
+			  z-index: 1;
+			}
+
+			.num{
+				color: #f98b07;
+				margin: 0 3px;
+				strong{
+					font-size: 1.4rem;
+					
+				}
+			}
 		}
-
-		&::after{
-		  content: "";
-		  position: absolute;
-		  bottom: -26px;
-		  left: 25%;
-		  border: 13px solid transparent;
-		  border-top: 13px solid #8fc320;
-		  z-index: 1;
-		}
-
-		.num{
-			color: #f98b07;
-			margin: 0 3px;
-			strong{
-				font-size: 1.4rem;
-				font-weight: bold;
+		ul{
+			margin-top: 15px;
+			display: flex;
+			justify-content: space-between;
+			li{
+				&:nth-child(odd){
+					padding-right: 5px;
+				}
+				&:nth-child(even){
+					padding-left: 5px;
+				}
 			}
 		}
 	}
+	
 	@media screen and (min-width: $breakpoint + 1){
 		.salonInfo{
 			display: flex;
-			border: 1px solid #F00;
 			.leftBlock{
-				width: 50%;
+				width: 40%;
 			}
 			.rightBlock{
-				width: 50%;
+				width: 60%;
+				padding-left: 30px;
 			}
+		}
+		.salonContentTitle{
+			color: #ff1369;
+			height: auto;
+			min-height: 22px;
+			border-top: none;
+			box-shadow: none;
+			background: url('/assets/images/salonContentTitle_icon.png') top left/auto 22px no-repeat transparent;
+			padding-left: 25px;
+			padding-top: 7px;
+			margin-bottom: 15px;
+			line-height: 1;
 		}
 		.salonInfoPoint{
 			padding: 15px 0;
+			max-height: none;
 			background-color: transparent;
+			margin-bottom: 0;
 			.pointFrame{
+				max-width: 600px;
 				ul{
+					top: 38%;
+					left: 14%;
 					li{
 						font-size: 14px;
 						background: url('/assets/images/point_check.png') center left/20px auto no-repeat;
 						padding-left: 25px;
+						&:not(:last-child){
+							margin-bottom: 10px;
+						}
 					}
 					
 				}
 				
+			}
+		}
+		.salonReview{
+			.review{
+				max-width: 90%;
+				li{
+					border-radius: 10px;
+					padding: 8px;
+					&:not(:last-child){
+						margin-bottom: 20px;
+					}
+
+					.avatar{
+						width: 80px;
+						height: 80px;
+					}
+					.comment{
+						padding-left: 15px;
+					}
+				}
+			}
+		}
+		.ctaBlock{
+			margin: 0 0 0 10%;
+			max-width: 70%;
+			.numberOfPeople{
+				padding: 0 15px 5px 15px;
+				font-size: 1.3rem;
+				.num{
+					margin: 0 3px;
+					strong{
+						font-size: 30px;
+					}
+				}
+			}
+			ul{
+				li{
+					&:nth-child(odd){
+						padding-right: 15px;
+					}
+					&:nth-child(even){
+						padding-left: 15px;
+					}
+					a{
+						@include hover;
+					}
+				}
 			}
 		}
 	}
@@ -557,20 +652,15 @@ ELEMENT
 
 
 .rating{
-	span{
-		display: inline-block;
-		font-size: 0;
-		width: 12px;
-		height: 12px;
-		background: url('/assets/images/rating.png') center center/100% auto no-repeat;
-		vertical-align: bottom;
-		
-	}
+	display: inline-block;
+	font-size: 0;
+	width: 12px;
+	height: 12px;
+	background: url('/assets/images/rating.png') center center/100% auto no-repeat;
+	vertical-align: bottom;
 	@media screen and (min-width: $breakpoint + 1){
-		span{
-			width: 15px;
-			height: 15px;
-		}	
+		width: 15px;
+		height: 15px;
 	}
 }
 

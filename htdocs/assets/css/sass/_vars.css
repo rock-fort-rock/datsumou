@@ -16,3 +16,10 @@ $lovalNaviWidth: 220px;
 $twoColumnPadding: 40px;
 
 $shadow: 0 0 2px rgba(0,0,0,0.2);
+
+@mixin hover {
+	transition: opacity .3s;
+	&:hover{
+		opacity: 0.7;
+	}
+}

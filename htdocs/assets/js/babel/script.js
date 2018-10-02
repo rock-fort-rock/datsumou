@@ -6,47 +6,21 @@ const breakpoint = 780;
 const bodyWidth = document.body.clientWidth;
 const ua = window.navigator.userAgent.toLowerCase();
 
-const test = () => {
-	var ctx = document.getElementById("myChart");
-	var myChart = new Chart(ctx, {
-	    type: 'bar',
-	    data: {
-	        labels: ["赤", "青", "黄", "緑", "紫", "橙"],
-	        datasets: [{
-	            label: '得票数',
-	            data: [12, 19, 3, 5, 2, 3],
-	            backgroundColor: [
-	                'rgba(255, 99, 132, 0.2)',
-	                'rgba(54, 162, 235, 0.2)',
-	                'rgba(255, 206, 86, 0.2)',
-	                'rgba(75, 192, 192, 0.2)',
-	                'rgba(153, 102, 255, 0.2)',
-	                'rgba(255, 159, 64, 0.2)'
-	            ],
-	            borderColor: [
-	                'rgba(255,99,132,1)',
-	                'rgba(54, 162, 235, 1)',
-	                'rgba(255, 206, 86, 1)',
-	                'rgba(75, 192, 192, 1)',
-	                'rgba(153, 102, 255, 1)',
-	                'rgba(255, 159, 64, 1)'
-	            ],
-	            borderWidth: 1
-	        }]
-	    },
-	    options: {
-	        scales: {
-	            yAxes: [{
-	                ticks: {
-	                    beginAtZero:true
-	                }
-	            }]
-	        }
-	    }
-	});
-}
-// test();
 
+//共通
+$(function(){
+	$('.hamburger').on({
+		'click': function(){
+			$('.gNavi').addClass('active');
+		}
+	})
+
+	$('.gNaviClose, .gNaviBg').on({
+		'click': function(){
+			$('.gNavi').removeClass('active');
+		}
+	})
+})
 
 //サロン情報
 $(function(){
@@ -173,19 +147,6 @@ const scroll = new SmoothScroll('a[href*="#"]', {
 	updateURL: false,
 });
 
-//edgeとieはスムーススクロールなし　fixedの画像がガタつく対応
-const noneSmooth = () => {
-	if(ua.indexOf("edge") != -1 || ua.indexOf("trident") != -1 || ua.indexOf("msie") != -1) {
-		console.log("edge or ie");
-		document.addEventListener("mousewheel", (event) => {
-			 event.preventDefault();
-			 const wd = event.wheelDelta;
-			 const csp = window.pageYOffset;
-			 window.scrollTo(0, csp - wd);
-		});
-	}
-}
-
 
 //電話番号にリンク
 if(ua.indexOf("iphone") != -1 || ua.indexOf("android") != -1){
@@ -196,30 +157,6 @@ if(ua.indexOf("iphone") != -1 || ua.indexOf("android") != -1){
 		$phonecall[i].outerHTML = '<a href="tel:'+number+'">'+ $phonecall[i].outerHTML +'</a>';
 	}
 }
-
-
-//グレーディング事例
-// const $gradesample = document.querySelectorAll('.gradeSample__image');
-// if($gradesample.length > 0){
-// 	for (let i = 0; i < $gradesample.length; i++){
-// 		console.log(i);
-// 		const $images = $gradesample[i].querySelectorAll('.gradeSample__imageMain li');
-// 		const $thumbs = $gradesample[i].querySelectorAll('.gradeSample__imageThumb li');
-// 		for (let n = 0; n < $thumbs.length; n++){
-// 			$thumbs[n].addEventListener( 'click', ( event ) => {
-// 				Array.prototype.forEach.call($images, ( $image ) => {
-// 					$image.classList.remove('active');
-// 				});
-// 				Array.prototype.forEach.call($thumbs, ( $thumb ) => {
-// 					$thumb.classList.remove('active');
-// 				});
-				
-// 				$images[n].classList.add('active');
-// 				event.currentTarget.classList.add('active');
-// 			});
-// 		}
-// 	}
-// }
 
 
 

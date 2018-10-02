@@ -7,11 +7,13 @@ html{
 		font-size: 13px;
 	}
 }
+
 body{
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	position: relative;
-	font-family: 'Noto Sans Japanese', "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+	// font-family: 'Noto Sans Japanese', "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+	font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
 	line-height: 1.4;
 	color: #3f3f3f;
 	height: 100%;
@@ -137,181 +139,38 @@ HEADER
 	width: 100%;
 	top: 0;
 	left: 0;
-	box-shadow: 0 0 10px rgba(0,0,0,0.1);
 	height: $sp_headerHight;
 	background-color: #fff;
 	z-index: 999;
-	.gHeader__logo{
+	// @media screen and (min-width: $breakpoint-m + 1){
+	// 	position: relative;
+	// 	margin-bottom: 50px;
+	// }
+	.gHeaderLogo{
 		position: absolute;
-		left: 10px;
-		bottom: 13px;
-		width: 180px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 150px;
 		img{
 			width: 100%;
 		}
 	}
-	.gHeader__gNavi__button{
-		text-align: center;
-		.icon{
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -18px);
-			font-size: 28px;
-		}
-		span{
-			position: absolute;
-			bottom: 3px;
-			width: 100%;
-			left: 0;
-			font-size: 10px;
-		}
-	}
-
-	.gHeader__subNavi{
+	.hamburger{
 		position: absolute;
-		top: 0;
-		right: $sp_headerHight;
-		display: flex;
-		align-items: center;
-	}
-	.gHeader__cvn{
-		width: $sp_headerHight;
-		height: $sp_headerHight;
-		a{
-			display: block;
-			background-color: $lookred;
-			color: #fff;
+		top: 50%;
+		right: 10px;
+		transform: translateY(-50%);
+		width: 30px;
+		img{
 			width: 100%;
-			height: 100%;
 		}
 	}
-	.gHeader__gNavi{
+	@media screen and (min-width: $breakpoint-m + 1){
 		position: relative;
-		.gHeader__gNavi__menu{
-			position: absolute;
-			top: 0;
-			right: 0;
-			width: $sp_headerHight;
-			height: $sp_headerHight;
-			// background-color: #2f2f2f;
-			background-color: #515151;
-			color: #fff;
-		}
-		.gHeader__gNavi__wrapper{
-			position: fixed;
-			top: -100%;
-			width: 100%;
-			height: calc(100% - #{$sp_headerHight});
-			background-color: hsla(60,0,10,0.85);
-			color: #fff;
-			opacity: 0;
-			transition: opacity .3s, top 0s .3s;
-		}
-		ul.gHeader__gNavi__inner{
-			// height: calc(100% - #{$sp_headerHight});
-			// border: 5px solid #f00;
-			position: relative;
-			max-height: 100%;
-			color: #fff;
-			overflow: scroll;
-			// -webkit-overflow-scrolling: touch;
-			> li{
-				background-color: #515151;
-				margin-bottom: 1px;
-				transform: translateY(-20px);
-				transition: transform .3s;
-			}
-			li{
-				a{
-					position: relative;
-					display: block;
-					padding: 15px 25px 15px 15px;
-					&::after{
-						content: "\e901";
-						font-family: 'icomoon' !important;
-						position: absolute;
-						right: 15px;
-						top: 50%;
-						transform: translateY(-50%) rotate(90deg);
-						font-size: 16px;
-					}
-					&.hasSubmenu{
-						&::before,
-						&::after{
-							content: "";
-							position: absolute;
-							right: 22px;
-							top: 50%;
-							height: 12px;
-							width: 2px;
-							background-color: #fff;
-							transform: translateY(-50%) rotate(0);
-							// content: "\e903";
-							// transform: translateY(-50%) rotate(45deg);
-							transition: height .3s;
-						}
-						&::before{
-							background-color: #fff;
-							transform: translateY(-50%) rotate(90deg);
-						}
-					}
-					.icon{
-						font-size: 18px;
-						margin-right: 5px;
-					}
-				}
-				&.active{
-					a{
-						&.hasSubmenu{
-							&::after{
-								height: 0;
-								// transform: translateY(-50%) rotate(180deg);
-							}
-						}
-					}
-					.gHeader__gNavi__submenu{
-						// display: block;
-						padding-bottom: 8px;
-						a{
-							padding: 8px 25px 8px 25px;
-							opacity: 1;
-						}
-					}
-				}
-				.gHeader__gNavi__submenu{
-					li{
-						a{
-							font-size: 0.9rem;
-							padding: 0 25px 0 25px;
-							line-height: 0;
-							opacity: 0;
-							// padding: 8px 25px 8px 25px;
-							transition: all .3s;
-							&::after{
-								content: '';
-								// font-size: 14px;
-								// right: 17px;
-							}
-						}
-					}
-				}
-			}
-		}
-
-		&.active{
-			.gHeader__gNavi__wrapper{
-				// display: block;
-				top: $sp_headerHight;
-				opacity: 1;
-				transition: opacity .3s, top 0s;
-				ul.gHeader__gNavi__inner > li{
-					transform: translateY(0);
-				}
-			}
-		}
 	}
 }
+
 
 /*---------------------------------
 ELEMENT
@@ -319,21 +178,112 @@ ELEMENT
 .contents{
 	padding-top: $sp_headerHight;
 	min-height: calc(100% - #{$sp_footerHight});
-	@media screen and (min-width: $breakpoint + 1){
+
+
+	@media screen and (min-width: $breakpoint-m + 1){
 		max-width: 1200px;
 		margin: 0 auto;
-		padding-top: $pc_headerHight;
+		// padding-top: $pc_headerHight;
+		padding: 0 15px;
 		display: flex;
 		flex-direction: row-reverse;
 	}
 }
 .gNavi{
-	@media screen and (min-width: $breakpoint + 1){
+	position: fixed;
+	// display: none;
+	opacity: 0;
+	top: 0;
+	left: 100%;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	transition: opacity .4s, left 0s .4s;
+	.gNaviClose{
+		position: absolute;
+		top: 0;
+		left: 90px;
+		transform: translateX(-100%);
+		color: #fff;
+		font-size: 34px;
+		line-height: 1;
+		z-index: 2;
+	}
+
+	.gNaviContainer{
+		position: relative;
+		margin-left: 100px;
+		width: calc(100% - 100px);
+		min-height: 100%;
+		height: 100%;
+		background-color: #fff;
+		-webkit-overflow-scrolling: touch;
+		overflow: auto;
+		transform: translateX(100%);
+		transition: transform .4s;
+		z-index: 1;
+		.gNaviHeadline{
+			background-color: #f85793;
+			color: #fff;
+			text-align: center;
+			padding: 8px 5px;
+			line-height: 1;
+		}
+		.gNaviMenu{
+			&.borderBottom{
+				border-bottom: 1px solid #ccc;
+			}
+			li{
+				&:not(:last-child){
+					border-bottom: 1px solid #ccc;
+				}
+				a{
+					display: block;
+					padding: 8px 5px;
+					line-height: 1;
+				}
+			}
+		}
+	}
+	.gNaviBg{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0,0,0,0.5);
+		z-index: 0;
+	}
+
+	&.active{
+		opacity: 1;
+		left: 0;
+		transition: opacity .4s;
+		.gNaviContainer{
+			transform: translateX(0);
+		}
+	}
+	
+	@media screen and (min-width: $breakpoint-m + 1){
+		position: relative;
+		display: block;
 		width: 300px;
+		background-color: transparent;
+		z-index: 1;
+		opacity: 1;
+		left: 0;
+		.gNaviContainer{
+			margin: 0;
+			width: 100%;
+			height: auto;
+			transform: translateX(0);
+		}
 	}
 }
+
+
 .mainContents{
-	@media screen and (min-width: $breakpoint + 1){
+	@media screen and (min-width: $breakpoint-m + 1){
 		flex: 1;
 		padding-right: 40px;
 	}
@@ -341,6 +291,11 @@ ELEMENT
 .contentBlock{
 	&:not(:last-child){
 		margin-bottom: 40px;
+	}
+	@media screen and (min-width: $breakpoint + 1){
+		&:not(:last-child){
+			margin-bottom: 100px;
+		}
 	}
 }
 .contentInner{
@@ -365,6 +320,7 @@ ELEMENT
 	height: 60px;
 	display: flex;
 	align-items: center;
+	margin-bottom: 15px;
 	.rankIcon{
 		position: absolute;
 		left: 0;
@@ -372,6 +328,11 @@ ELEMENT
 		transform: translateY(-50%);
 		&.best3{
 			height: 90px;
+		}
+		&.others{
+			height: 65px;
+			margin-left: 15px;
+			margin-top: -10px;
 		}
 	}
 	.salonName{
@@ -383,25 +344,34 @@ ELEMENT
 	}
 	@media screen and (min-width: $breakpoint + 1){
 		height: 80px;
+		margin-bottom: 35px;
 		.rankIcon{
 			&.best3{
 				height: 140px;
 			}
+			&.others{
+				height: 90px;
+				margin-left: 40px;
+				margin-top: -15px;
+			}
 		}
 		.salonName{
 			font-size: 34px;
-			padding-left: 180px;
+			padding-left: 170px;
 			text-shadow: 3px 3px 1px rgba(212, 53, 129, 0.9);
 		}
 	}
 }
 
 .salonBody{
+	.salonInfoBanner{
+		padding: 0 15px;
+	}
 	.salonInfoAssess{
-		margin-bottom: 30px;
+		// margin-bottom: 30px;
 		.radarChart{
-			margin-top: 30px;
-			max-width: 600px;
+			margin: 30px auto 0;
+			max-width: 500px;
 		}
 	}
 	.salonContentTitle{
@@ -433,7 +403,7 @@ ELEMENT
 				position: absolute;
 				top: 35%;
 				left: 12%;
-				width: 100%;
+				width: 88%;
 				li{
 					color: #fff;
 					font-size: 12px;
@@ -553,7 +523,6 @@ ELEMENT
 			}
 		}
 	}
-	
 	@media screen and (min-width: $breakpoint + 1){
 		.salonInfo{
 			display: flex;
@@ -563,6 +532,12 @@ ELEMENT
 			.rightBlock{
 				width: 60%;
 				padding-left: 30px;
+			}
+		}
+		.salonInfoAssess{
+			width: calc(100% + 80px);
+			.radarChart{
+				margin: 30px 0 0 -40px;
 			}
 		}
 		.salonContentTitle{
@@ -578,19 +553,20 @@ ELEMENT
 			line-height: 1;
 		}
 		.salonInfoPoint{
-			padding: 15px 0;
+			padding: 0;
 			max-height: none;
 			background-color: transparent;
-			margin-bottom: 0;
+			// margin-bottom: 0;
 			.pointFrame{
 				max-width: 600px;
 				ul{
 					top: 38%;
 					left: 14%;
+					width: 86%;
 					li{
-						font-size: 14px;
+						font-size: 15px;
 						background: url('/assets/images/point_check.png') center left/20px auto no-repeat;
-						padding-left: 25px;
+						padding-left: 28px;
 						&:not(:last-child){
 							margin-bottom: 10px;
 						}

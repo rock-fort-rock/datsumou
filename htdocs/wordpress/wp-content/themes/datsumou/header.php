@@ -44,30 +44,36 @@ if($status['description']){
 					</ul>
 				</div>
 				<div class="gNaviSect">
-					<div class="gNaviHeadline">目的別検索</div>
+					<div class="gNaviHeadline">脱毛サロン一覧</div>
 					<ul class="gNaviMenu">
-						<li><a href="#">とにかく安いサロンを探す</a></li>
-						<li><a href="#">予約がとりやすいサロンを探す</a></li>
-						<li><a href="#">学生おすすめサロンを探す</a></li>
-						<li><a href="#">早く結果がでるサロンを探す</a></li>
+						<li><a href="#">コロリー</a></li>
+						<li><a href="#">ミュゼプラチナム</a></li>
+						<li><a href="#">銀座カラー</a></li>
+						<li><a href="#">キレイモ</a></li>
+						<li><a href="#">脱毛ラボ</a></li>
 					</ul>
 				</div>
 				<div class="gNaviSect">
-					<div class="gNaviHeadline">目的別検索</div>
-					<ul class="gNaviMenu">
-						<li><a href="#">とにかく安いサロンを探す</a></li>
-						<li><a href="#">予約がとりやすいサロンを探す</a></li>
-						<li><a href="#">学生おすすめサロンを探す</a></li>
-						<li><a href="#">早く結果がでるサロンを探す</a></li>
-					</ul>
+					<div class="gNaviHeadline">脱毛サロンお役立ち情報</div>
+					aaa
 				</div>
 				<div class="gNaviSect">
-					<div class="gNaviHeadline">目的別検索</div>
-					<ul class="gNaviMenu">
-						<li><a href="#">とにかく安いサロンを探す</a></li>
-						<li><a href="#">予約がとりやすいサロンを探す</a></li>
-						<li><a href="#">学生おすすめサロンを探す</a></li>
-						<li><a href="#">早く結果がでるサロンを探す</a></li>
+					<div class="gNaviHeadline">脱毛診断メーカー最新の記事</div>
+					<ul class="gNaviMenu noneArrow">
+						<li><a href="#">コロリーコロリーコロリーコロリーコロリーコロリーコロリーコロリーコロリーコロリー</a></li>
+						<li><a href="#">ミュゼプラチナムミュゼプラチナムミュゼプラチミュゼプラチナム</a></li>
+						<li><a href="#">銀座カラー銀座カラー銀座カラー</a></li>
+						<li><a href="#">キレイモ</a></li>
+						<li><a href="#">脱毛ラボ</a></li>
+					</ul>
+					<div class="readMore"><a href="#">もっと記事を読む</a></div>
+				</div>
+				<div class="gNaviSect">
+					<div class="gNaviHeadline">当サイトについて</div>
+					<ul class="gNaviMenu borderBottom">
+						<li><a href="#">運営会社</a></li>
+						<li><a href="#">調査概要</a></li>
+						<li><a href="#">プライバシーポリシー</a></li>
 					</ul>
 				</div>
 			</div>

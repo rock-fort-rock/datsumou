@@ -63,7 +63,7 @@ foreach($newsPosts as $value){
 			<div class="salonInfo">
 				<div class="leftBlock">
 					<div class="paragraph salonInfoBanner">
-						<a href="#"><img src="/assets/images/sample_banner.jpg"></a>
+						<a href="#"><img src="/assets/images/banner_coloree.jpg"></a>
 					</div>
 					<div class="paragraph salonInfoAssess">
 						<canvas class="radarChart" data-total="5" data-price="4" data-service="5" data-reserve="5" data-care="3"></canvas>
@@ -176,7 +176,7 @@ foreach($newsPosts as $value){
 			<div class="salonInfo">
 				<div class="leftBlock">
 					<div class="paragraph salonInfoBanner">
-						<a href="#"><img src="/assets/images/sample_banner.jpg"></a>
+						<a href="#"><img src="/assets/images/banner_coloree.jpg"></a>
 					</div>
 					<div class="paragraph salonInfoAssess">
 						<canvas class="radarChart" data-total="5" data-price="4" data-service="5" data-reserve="5" data-care="3"></canvas>

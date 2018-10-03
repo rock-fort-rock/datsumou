@@ -28,7 +28,15 @@ if($status['description']){
 <body id="<?php echo $status['id']; ?>">
 	<header class="gHeader">
 		<?php $ele = (is_home())?'h1':'div'; ?><<?php echo $ele; ?> class="gHeaderLogo"><a href="/"><img src="/assets/images/logo.png" alt="ツルツル全身脱毛診断メーカー"></a></<?php echo $ele; ?>>
+
+		<div class="gHeaderBanner"><a href="#"><img src="/assets/images/banner_coloree_wide.jpg"></a></div>
 		<div class="hamburger"><img src="/assets/images/hamburger.svg"></div>
+		<ul class="snsLink">
+			<li><a href="#"><img src="/assets/images/icon_line.png" alt="LINE"></a></li>
+			<li><a href="#"><img src="/assets/images/icon_facebook.png" alt="facebook"></a></li>
+			<li><a href="#"><img src="/assets/images/icon_twitter.png" alt="Twitter"></a></li>
+			<li><a href="#"><img src="/assets/images/icon_instagram.png" alt="Instagram"></a></li>
+		</ul>
 	</header>
 	<div class="contents">
 		<div class="gNavi">

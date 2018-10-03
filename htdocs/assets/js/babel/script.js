@@ -8,26 +8,53 @@ const ua = window.navigator.userAgent.toLowerCase();
 
 
 //共通
-$(function(){
+$(() => {
 	$('.hamburger').on({
-		'click': function(){
+		'click': () => {
 			$('.gNavi').addClass('active');
 		}
 	})
 
 	$('.gNaviClose, .gNaviBg').on({
-		'click': function(){
+		'click': () => {
 			$('.gNavi').removeClass('active');
+		}
+	})
+
+	//page top
+	const pageTopHeight = $('.pageTop').height();
+	const pageTopBottom = 150;
+	$(window).scroll(() => {
+		const gNaviHeight = $('.gNavi').height();
+		if($(window).scrollTop() > gNaviHeight - $(window).height() + pageTopHeight + pageTopBottom && !$('.pageTopContainer').hasClass('active')){
+			$('.pageTopContainer').addClass('active');
+		}
+		if($(window).scrollTop() <= gNaviHeight - $(window).height() + pageTopHeight + pageTopBottom && $('.pageTopContainer').hasClass('active')){
+			$('.pageTopContainer').removeClass('active');
+		}
+	})
+
+	//smooth scroll
+	$('a.scroll').on({
+		"click":(e) => {
+			const target = ($($(e.currentTarget).attr("href")).length > 0)?$($(e.currentTarget).attr("href")).offset().top:0;
+			const headerPos = $('.gHeader').css('position');
+			let margin = 0;
+			if(headerPos == 'fixed'){
+				margin = $('.gHeader').height();
+			}
+			$('html, body').animate({ scrollTop: target - margin}, 800);
+			return false;
 		}
 	})
 })
 
 //サロン情報
-$(function(){
+$(() => {
 	const ele = $('.salonInfo');
 	if(ele.length < 1)return;
 
-	ele.each(function(index, element){
+	ele.each((index, element) => {
 		const ctx = $(element).find('.radarChart');
 		const total = ctx.data('total');
 		const price = ctx.data('price');
@@ -35,7 +62,7 @@ $(function(){
 		const reserve = ctx.data('reserve');
 		const care = ctx.data('care');
 		
-		var myChart = new Chart(ctx, {
+		const myChart = new Chart(ctx, {
 			type: 'radar',
 			data: {
 			    labels: ['', '価格', '接客・雰囲気', '予約のしやすさ', 'アフターケア'],

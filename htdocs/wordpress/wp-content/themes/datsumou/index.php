@@ -55,6 +55,9 @@ foreach($newsPosts as $value){
 
 <div class="mainContents">
 	<section class="contentBlock">
+		<div style="background-color: #ededed; height: 0; padding-top: 60%"></div>
+	</section>
+	<section class="contentBlock">
 		<header class="salonHeader">
 			<img src="/assets/images/icon_ranking1.png" alt="人気サロン第1位" class="rankIcon best3">
 			<h2 class="salonName">コロリー</h2>

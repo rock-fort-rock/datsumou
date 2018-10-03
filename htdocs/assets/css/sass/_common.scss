@@ -142,10 +142,6 @@ HEADER
 	height: $sp_headerHight;
 	background-color: #fff;
 	z-index: 999;
-	// @media screen and (min-width: $breakpoint-m + 1){
-	// 	position: relative;
-	// 	margin-bottom: 50px;
-	// }
 	.gHeaderLogo{
 		position: absolute;
 		top: 50%;
@@ -166,11 +162,43 @@ HEADER
 			width: 100%;
 		}
 	}
-
+	@media screen and (max-width: $breakpoint-m ){
+		.snsLink,
+		.gHeaderBanner{
+			display: none;
+		}
+	}
+	
 	@media screen and (min-width: $breakpoint-m + 1){
 		position: relative;
+		height: $pc_headerHight;
+		max-width: $contentMaxWidth;
+		margin: 0 auto;
+		.gHeaderLogo{
+			position: absolute;
+			top: 50%;
+			left: 15px;
+			transform: translateY(-50%);
+			width: 240px;
+		}
+		.gHeaderBanner{
+			margin-right: $naviWidth + 40px + 15px;
+			height: 100%;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			img{
+				height: 52px;
+			}
+		}
 		.hamburger{
 			display: none;
+		}
+		.snsLink{
+			position: absolute;
+			top: 50%;
+			right: 15px;
+			transform: translateY(-50%);
 		}
 	}
 }
@@ -185,9 +213,8 @@ ELEMENT
 
 
 	@media screen and (min-width: $breakpoint-m + 1){
-		max-width: 1200px;
+		max-width: $contentMaxWidth;
 		margin: 0 auto;
-		// padding-top: $pc_headerHight;
 		padding: 0 15px;
 		display: flex;
 		flex-direction: row-reverse;
@@ -319,7 +346,7 @@ ELEMENT
 	@media screen and (min-width: $breakpoint-m + 1){
 		position: relative;
 		display: block;
-		width: 300px;
+		width: $naviWidth;
 		background-color: transparent;
 		z-index: 1;
 		opacity: 1;
@@ -384,6 +411,18 @@ ELEMENT
 		margin-bottom: 30px;
 	}
 }
+
+.snsLink{
+	display: flex;
+	li{
+		width: 30px;
+		margin: 0 3px;
+		a{
+			@include hover;
+		}
+	}
+}
+
 
 /*---------------------------------
 サロン情報
@@ -723,36 +762,91 @@ FOOTER
 ---------------------------------*/
 .gFooter{
 	position: relative;
-	background-color: #515151;
-	color: #fff;
-	height: $sp_footerHight;
-	padding: 15px;
-	.gFooter__navi{
-		font-size: 0.85rem;
-		margin: 20px 0 10px;
-		li{
-			display: inline-block;
-			margin-right: 15px;
-			margin-bottom: 10px;
+	border-top: 1px solid #ccc;
+	padding: 15px 15px;
+	.gFooterinner{
+		margin: 0 auto;
+		max-width: $contentMaxWidth;
+		.gFooterNavi{
+			font-size: 0.85rem;
+			display: flex;
+			justify-content: center;
+			margin: 0 auto 10px;
+			li{
+				&:not(:last-child){
+					margin-right: 10px;
+					padding-right: 10px;
+					border-right: 1px solid #ccc;
+				}
+				
+			}
+		}
+		.snsLink{
+			justify-content: center;
+		}
+		.copyright{
+			margin-top: 10px;
+			font-size: 9px;
+			text-align: center;
+		}
+		.pageTopContainer{
+			display: none;
 		}
 	}
-	.gFooter__logo{
-		display: flex;
-		align-items: center;
-		img{
-			width: 150px;
-			display: block;
-			margin-right: 10px;
+	@media screen and (min-width: $breakpoint + 1){
+		.gFooterinner{
+			position: relative;
+			display: flex;
+			align-items: center;
+			.gFooterNavi{
+				margin: 0 20px 0 0;
+			}
+			.copyright{
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				margin-top: 0;
+				font-size: 11px;
+				text-align: center;
+			}
 		}
-		p{
-			opacity: 0.6;
-			font-size: 10px;
+		@media screen and (max-width: $breakpoint-m ){
+			.gFooterinner{
+				.copyright{
+					left: auto;
+					right: 15px;
+					transform: translateX(0);
+				}
+			}
 		}
 	}
-	.pageTop{
-		right: 15px;
-		top: 0;
-		transform: translateY(-50%);
+	@media screen and (min-width: $breakpoint-m + 1){
+		.gFooterinner{
+			.pageTopContainer{
+				display: block;
+				position: absolute;
+				right: 30px;
+				width: 180px;
+				visibility: hidden;
+				opacity: 0;
+				transition: all .4s;
+				&.active{
+					opacity: 1;
+					visibility: visible;
+					.pageTop{
+						transform: translateY(0);
+					}
+				}
+				.pageTop{
+					position: fixed;
+					bottom: 70px;
+					width: 180px;
+					transform: translateY(30px);
+					transition: all .4s;
+					// right: 30px;
+				}
+			}
+		}
 	}
 }
 

@@ -1,19 +1,22 @@
 		</div><!--/contents-->
 		<footer class="gFooter">
-			<a href="#" class="pageTop"><span class="icon-arrowT"></span></a>
-			<ul class="gFooter__navi">
-				<li><a href="/company/">会社概要</a></li>
-				<li><a href="/access/">アクセス</a></li>
-				<li><a href="/contact/">お問い合わせ</a></li>
-				<li><a href="/privacy/">プライバシーポリシー</a></li>
-				<li><a href="/terms/">ご利用条件</a></li>
-				<li><a href="/sitemap/">サイトマップ</a></li>
-			</ul>
-			<div class="gFooter__logo">
-				<img src="/images/logo_jpn.svg" alt="株式会社ルックモード">
-				<p>&copy; LOOK MODE INC.</p>
+			<div class="gFooterinner">
+				<div class="pageTopContainer">
+					<a href="#pagetop" class="scroll pageTop"><img src="/assets/images/pagetop.png" alt="top"></a>
+				</div>
+				<ul class="gFooterNavi">
+					<li><a href="/">TOP</a></li>
+					<li><a href="#">ランキング</a></li>
+					<li><a href="#">SNS</a></li>
+				</ul>
+				<ul class="snsLink">
+					<li><a href="#"><img src="/assets/images/icon_line.png" alt="LINE"></a></li>
+					<li><a href="#"><img src="/assets/images/icon_facebook.png" alt="facebook"></a></li>
+					<li><a href="#"><img src="/assets/images/icon_twitter.png" alt="Twitter"></a></li>
+					<li><a href="#"><img src="/assets/images/icon_instagram.png" alt="Instagram"></a></li>
+				</ul>
+				<div class="copyright">&copy;ツルツル全身脱毛診断メーカー</div>
 			</div>
-
 		</footer>
 		<?php wp_footer(); ?>
 	</body>

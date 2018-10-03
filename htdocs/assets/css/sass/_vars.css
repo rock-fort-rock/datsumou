@@ -3,13 +3,15 @@ $breakpoint-m: 1080px;
 $lookred: #dd1b4a;
 $lightGray: #f3f3f3;
 
-$pc_headerHight: 90px;
+$pc_headerHight: 80px;
 $pc_footerHight: 110px;
 $sp_headerHight: 50px;
 $sp_footerHight: 130px;
 
-$contentMaxWidth: 1100px;
+$contentMaxWidth: 1200px;
 $contentMaxWidthWide: 1300px;/*TOPなどの例外*/
+
+$naviWidth: 300px;
 
 $contentNarrowWidth: 840px;
 

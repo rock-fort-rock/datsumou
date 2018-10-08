@@ -29,7 +29,14 @@ if($status['description']){
 	<header class="gHeader">
 		<?php $ele = (is_home())?'h1':'div'; ?><<?php echo $ele; ?> class="gHeaderLogo"><a href="/"><img src="/assets/images/logo.png" alt="ツルツル全身脱毛診断メーカー"></a></<?php echo $ele; ?>>
 
-		<div class="gHeaderBanner"><a href="#"><img src="/assets/images/banner_coloree_wide.jpg"></a></div>
+		<?php 
+		$imgObj = get_field('option_headerBanner', 'option');
+		$headerBanner = $imgObj[sizes][medium_large];
+		$headerBannerLink = get_field('option_headerBannerLink', 'option');
+		if($headerBanner):
+		?>
+		<div class="gHeaderBanner"><a href="<?php echo $headerBannerLink; ?>" target="_blank"><img src="<?php echo $headerBanner; ?>"></a></div>
+		<?php endif; ?>
 		<div class="hamburger"><img src="/assets/images/hamburger.svg"></div>
 		<ul class="snsLink">
 			<li><a href="#"><img src="/assets/images/icon_line.png" alt="LINE"></a></li>

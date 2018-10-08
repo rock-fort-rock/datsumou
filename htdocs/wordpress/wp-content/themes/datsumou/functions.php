@@ -241,6 +241,36 @@ function cpt_news_init()
 }
 
 
+if( function_exists('acf_add_options_page') ) {
+  acf_add_options_page(array(
+    'page_title'  => 'オプション設定',
+    'menu_title'  => 'オプション設定',
+    'menu_slug'   => 'theme-options',
+    'capability'  => 'edit_posts',
+    'parent_slug' => '',
+    'position'  => false,
+    'redirect'  => false,
+  ));
+
+  acf_add_options_page(array(
+    'page_title'  => 'サロンランキング',
+    'menu_title'  => 'サロンランキング',
+    'menu_slug'   => 'theme-options-ranking',
+    'capability'  => 'edit_posts',
+    'parent_slug' => '',
+    'position'  => false,
+    'redirect'  => false,
+  ));
+  acf_add_options_sub_page(array( //サブページ
+    'page_title'  => '安いサロン',
+    'menu_title'  => '安いサロン',
+    'menu_slug'   => 'theme-options-priceRank',
+    'capability'  => 'edit_posts',
+    'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
+    'position'  => false,
+  ));
+}
+
 
 
 // 表示件数set
@@ -350,10 +380,10 @@ function getSize($path){
 }
 
 //マニュアルページ作成
-function original_page() {
-add_menu_page('マニュアル', 'マニュアル', 1, 'original_page', 'original_menu');
-}
-add_action('admin_menu', 'original_page');
+// function original_page() {
+// add_menu_page('マニュアル', 'マニュアル', 1, 'original_page', 'original_menu');
+// }
+// add_action('admin_menu', 'original_page');
 
-function original_menu() {include 'manual.php';}
+// function original_menu() {include 'manual.php';}
 ?>

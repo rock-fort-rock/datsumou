@@ -172,22 +172,22 @@ function imagesizeSet() {
 
 /**
 custom post type
-TOP設定
+サロン情報
 **/
-add_action('init', 'cpt_top_init');
-function cpt_top_init()
+add_action('init', 'cpt_salon_init');
+function cpt_salon_init()
 {
   $labels = array(
-    'name' => _x('TOP設定', 'post type general name'),
-    'singular_name' => _x('TOP設定', 'post type singular name'),
-    'add_new' => _x('新規追加', 'top'),
-    'add_new_item' => __('TOP設定を追加'),
-    'edit_item' => __('TOP設定を編集'),
-    'new_item' => __('新しいTOP設定'),
-    'view_item' => __('TOP設定を見る'),
-    'search_items' => __('TOP設定を探す'),
-    'not_found' =>  __('TOP設定はありません'),
-    'not_found_in_trash' => __('ゴミ箱にTOP設定はありません'),
+    'name' => _x('サロン情報', 'post type general name'),
+    'singular_name' => _x('サロン情報', 'post type singular name'),
+    'add_new' => _x('新規追加', 'salon'),
+    'add_new_item' => __('サロン情報を追加'),
+    'edit_item' => __('サロン情報を編集'),
+    'new_item' => __('新しいサロン情報'),
+    'view_item' => __('サロン情報を見る'),
+    'search_items' => __('サロン情報を探す'),
+    'not_found' =>  __('サロン情報はありません'),
+    'not_found_in_trash' => __('ゴミ箱にサロン情報はありません'),
     'parent_item_colon' => ''
   );
   $args = array(
@@ -197,48 +197,14 @@ function cpt_top_init()
     'query_var' => true,
     'capability_type' => 'post',
     'has_archive' => true,
-    'rewrite' => array('slug' => 'top', 'with_front' => false, 'pages' => true, 'feeds' => false),
+    'rewrite' => array('slug' => 'salon', 'with_front' => false, 'pages' => true, 'feeds' => false),
     'hierarchical' => false,
     'menu_position' => 5,
     'supports' => array('title','editor','thumbnail')
   );
-  register_post_type('top', $args);
+  register_post_type('salon', $args);
 }
 
-/**
-custom post type
-ニュース
-**/
-add_action('init', 'cpt_news_init');
-function cpt_news_init()
-{
-  $labels = array(
-    'name' => _x('ニュース', 'post type general name'),
-    'singular_name' => _x('ニュース', 'post type singular name'),
-    'add_new' => _x('新規追加', 'news'),
-    'add_new_item' => __('ニュースを追加'),
-    'edit_item' => __('ニュースを編集'),
-    'new_item' => __('新しいニュース'),
-    'view_item' => __('ニュースを見る'),
-    'search_items' => __('ニュースを探す'),
-    'not_found' =>  __('ニュースはありません'),
-    'not_found_in_trash' => __('ゴミ箱にニュースはありません'),
-    'parent_item_colon' => ''
-  );
-  $args = array(
-    'labels' => $labels,
-    'public' => true,
-    'show_ui' => true,
-    'query_var' => true,
-    'capability_type' => 'post',
-    'has_archive' => true,
-    'rewrite' => array('slug' => 'news', 'with_front' => false, 'pages' => true, 'feeds' => false),
-    'hierarchical' => false,
-    'menu_position' => 5,
-    'supports' => array('title','editor','thumbnail')
-  );
-  register_post_type('news', $args);
-}
 
 
 if( function_exists('acf_add_options_page') ) {
@@ -248,7 +214,7 @@ if( function_exists('acf_add_options_page') ) {
     'menu_slug'   => 'theme-options',
     'capability'  => 'edit_posts',
     'parent_slug' => '',
-    'position'  => false,
+    'position'  => 6,
     'redirect'  => false,
   ));
 
@@ -258,7 +224,7 @@ if( function_exists('acf_add_options_page') ) {
     'menu_slug'   => 'theme-options-ranking',
     'capability'  => 'edit_posts',
     'parent_slug' => '',
-    'position'  => false,
+    'position'  => 6,
     'redirect'  => false,
   ));
   acf_add_options_sub_page(array( //サブページ

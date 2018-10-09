@@ -214,27 +214,61 @@ if( function_exists('acf_add_options_page') ) {
     'menu_slug'   => 'theme-options',
     'capability'  => 'edit_posts',
     'parent_slug' => '',
-    'position'  => 6,
+    'position'  => 7,
     'redirect'  => false,
   ));
 
   acf_add_options_page(array(
-    'page_title'  => 'サロンランキング',
-    'menu_title'  => 'サロンランキング',
+    'page_title'  => 'サロンランキング（TOP用）',
+    'menu_title'  => 'サロンランキング（TOP用）',
     'menu_slug'   => 'theme-options-ranking',
     'capability'  => 'edit_posts',
     'parent_slug' => '',
     'position'  => 6,
     'redirect'  => false,
   ));
-  acf_add_options_sub_page(array( //サブページ
-    'page_title'  => '安いサロン',
-    'menu_title'  => '安いサロン',
-    'menu_slug'   => 'theme-options-priceRank',
-    'capability'  => 'edit_posts',
-    'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
-    'position'  => false,
-  ));
+  // acf_add_options_sub_page(array( //サブページ
+  //   'page_title'  => 'トップページ用',
+  //   'menu_title'  => 'トップページ用',
+  //   'menu_slug'   => 'theme-options-topRank',
+  //   'capability'  => 'edit_posts',
+  //   'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
+  //   'position'  => false,
+  // ));
+
+  /*固定ページ or オプション（使い回すなら）*/
+  // acf_add_options_sub_page(array( //サブページ
+  //   'page_title'  => 'とにかく安いサロン',
+  //   'menu_title'  => 'とにかく安いサロン',
+  //   'menu_slug'   => 'theme-options-priceRank',
+  //   'capability'  => 'edit_posts',
+  //   'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
+  //   'position'  => false,
+  // ));
+  // acf_add_options_sub_page(array( //サブページ
+  //   'page_title'  => '予約が取りやすいサロン',
+  //   'menu_title'  => '予約が取りやすいサロン',
+  //   'menu_slug'   => 'theme-options-reserveRank',
+  //   'capability'  => 'edit_posts',
+  //   'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
+  //   'position'  => false,
+  // ));
+  // acf_add_options_sub_page(array( //サブページ
+  //   'page_title'  => '学生おすすめサロン',
+  //   'menu_title'  => '学生おすすめサロン',
+  //   'menu_slug'   => 'theme-options-studentRank',
+  //   'capability'  => 'edit_posts',
+  //   'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
+  //   'position'  => false,
+  // ));
+  // acf_add_options_sub_page(array( //サブページ
+  //   'page_title'  => '早く結果が出るサロン',
+  //   'menu_title'  => '早く結果が出るサロン',
+  //   'menu_slug'   => 'theme-options-resultRank',
+  //   'capability'  => 'edit_posts',
+  //   'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
+  //   'position'  => false,
+  // ));
 }
 
 

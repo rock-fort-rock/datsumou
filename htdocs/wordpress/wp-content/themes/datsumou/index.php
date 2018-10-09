@@ -10,22 +10,27 @@ $status = [
 
 
 <?php
-$salonArg = array(
-	'post_type' => 'salon',
-	'posts_per_page'   => 3,
-);
-$salonPosts = get_posts($salonArg);
+// print_r(get_field('ranking', 'option'));
+
+// $salonArg = array(
+// 	'post_type' => 'salon',
+// 	'posts_per_page'   => -1,
+// );
+// $salonPosts = get_posts($salonArg);
+
+$salonPosts = get_field('ranking_top', 'option');
 $salonArray = [];
 foreach($salonPosts as $value){
 	$salonTemp = [];
-	$id = $value->ID;
-	$salonTemp['title'] = get_the_title($value->ID);
-	$banner = get_field('salon_banner', $value->ID);
+	$id = $value['salon']->ID;
+
+	$salonTemp['title'] = get_the_title($id);
+	$banner = get_field('salon_banner', $id);
 	$bannerObj = $banner['salon_banner_image'];
 	$salonTemp['bannerImage'] = $bannerObj['sizes']['medium_large'];
 	$salonTemp['bannerUrl'] = $banner['salon_banner_url'];
 
-	$assessment = get_field('salon_assessment', $value->ID);
+	$assessment = get_field('salon_assessment', $id);
 	$salonTemp['assessTotal'] = $assessment['salon_assessment_total'];
 	$salonTemp['assessPrice'] = $assessment['salon_assessment_price'];
 	$salonTemp['assessService'] = $assessment['salon_assessment_service'];
@@ -33,16 +38,16 @@ foreach($salonPosts as $value){
 	$salonTemp['assessCare'] = $assessment['salon_assessment_care'];
 
 	$point = [];
-	while(the_repeater_field('salon_point', $value->ID)){
+	while(the_repeater_field('salon_point', $id)){
 		$point[] = get_sub_field('salon_point_catch');
 	}
 	$salonTemp['point'] = $point;
 
-	$salonTemp['description'] = get_field('salon_description', $value->ID);
-	$salonTemp['price'] = get_field('salon_price', $value->ID);
-	$salonTemp['campaign'] = get_field('salon_campaign', $value->ID);
+	$salonTemp['description'] = get_field('salon_description', $id);
+	$salonTemp['price'] = get_field('salon_price', $id);
+	$salonTemp['campaign'] = get_field('salon_campaign', $id);
 
-	$info = get_field('salon_info', $value->ID);
+	$info = get_field('salon_info', $id);
 	$salonTemp['info'] = $info['salon_info_item'];
 
 	$infoReview['salon_info_item_name'] = 'クチコミ';
@@ -50,7 +55,7 @@ foreach($salonPosts as $value){
 	array_unshift($salonTemp['info'], $infoReview);
 
 	$review = [];
-	while(the_repeater_field('salon_review', $value->ID)){
+	while(the_repeater_field('salon_review', $id)){
 		$reviewObj = get_sub_field('salon_review_avatar');
 		$reviewTemp['avatar'] = $reviewObj['sizes']['thumbnail'];
 		$reviewTemp['comment'] = get_sub_field('salon_review_comment');
@@ -58,8 +63,8 @@ foreach($salonPosts as $value){
 	}
 	$salonTemp['review'] = $review;
 
-	$salonTemp['number'] = get_field('salon_number', $value->ID);
-	$salonTemp['officialsite'] = get_field('salon_officialsite', $value->ID);
+	$salonTemp['number'] = get_field('salon_number', $id);
+	$salonTemp['officialsite'] = get_field('salon_officialsite', $id);
 
 	array_push($salonArray, $salonTemp);
 }
@@ -71,10 +76,19 @@ foreach($salonPosts as $value){
 		<div style="background-color: #ededed; height: 0; padding-top: 60%"></div>
 	</section>
 
-	<?php foreach($salonArray as $value): ?>
+	<?php $salonNum = 1; foreach($salonArray as $value): ?>
 	<section class="contentBlock">
 		<header class="salonHeader">
+			<?php if($salonNum == 1): ?>
 			<img src="/assets/images/icon_ranking1.png" alt="人気サロン第1位" class="rankIcon best3">
+			<?php elseif($salonNum == 2): ?>
+			<img src="/assets/images/icon_ranking2.png" alt="人気サロン第2位" class="rankIcon best3">
+			<?php elseif($salonNum == 3): ?>
+			<img src="/assets/images/icon_ranking3.png" alt="人気サロン第3位" class="rankIcon best3">
+			<?php else: ?>
+			<img src="/assets/images/icon_ranking.png" class="rankIcon others">
+			<?php endif; ?>
+
 			<h2 class="salonName"><?php echo $value['title']; ?></h2>
 		</header>
 		<div class="salonBody">
@@ -194,9 +208,10 @@ foreach($salonPosts as $value){
 			</div>
 		</div>
 	</section>
+	<?php $salonNum++; ?>
 	<?php endforeach; ?>
 
-	<section class="contentBlock">
+	<!-- <section class="contentBlock">
 		<header class="salonHeader">
 			<img src="/assets/images/icon_ranking1.png" alt="人気サロン第1位" class="rankIcon best3">
 			<h2 class="salonName">コロリー</h2>
@@ -420,7 +435,7 @@ foreach($salonPosts as $value){
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 </div>
 
 <?php get_footer(); ?>

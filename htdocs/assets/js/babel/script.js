@@ -47,6 +47,11 @@ $(() => {
 			return false;
 		}
 	})
+
+	if($('.footerBanner').length > 0 && $('.footerBanner').css('display') != 'none' ){
+		const h = $('.footerBanner').height();
+		$('.gFooter').css('marginBottom', h);
+	}
 })
 
 //サロン情報

@@ -18,6 +18,15 @@
 				<div class="copyright">&copy;ツルツル全身脱毛診断メーカー</div>
 			</div>
 		</footer>
+
+		<?php
+		$footerImgObj = get_field('option_footerBanner', 'option');
+		$footerBanner = $footerImgObj[sizes][medium_large];
+		$footerBannerLink = get_field('option_footerBannerLink', 'option');
+		?>
+		<?php if($footerBanner): ?>
+		<div class="footerBanner onlySmall"><a href="<?php echo $footerBannerLink; ?>" target="_blank"><img src="<?php echo $footerBanner; ?>"></a></div>
+	<?php endif; ?>
 		<?php wp_footer(); ?>
 	</body>
 </html>

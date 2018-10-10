@@ -27,7 +27,7 @@ if($status['description']){
 
 <body id="<?php echo $status['id']; ?>">
 	<header class="gHeader">
-		<?php $ele = (is_home())?'h1':'div'; ?><<?php echo $ele; ?> class="gHeaderLogo"><a href="/"><img src="/assets/images/logo.png" alt="ツルツル全身脱毛診断メーカー"></a></<?php echo $ele; ?>>
+		<?php $ele = (is_home())?'h1':'div'; ?><<?php echo $ele; ?> class="gHeaderLogo"><a href="/"><img src="/assets/images/logo.png" alt="ツルツル！全身脱毛診断メーカー"></a></<?php echo $ele; ?>>
 
 		<?php 
 		$imgObj = get_field('option_headerBanner', 'option');
@@ -52,10 +52,10 @@ if($status['description']){
 				<div class="gNaviSect">
 					<div class="gNaviHeadline">目的別検索</div>
 					<ul class="gNaviMenu">
-						<li><a href="#">とにかく安いサロンを探す</a></li>
-						<li><a href="#">予約がとりやすいサロンを探す</a></li>
-						<li><a href="#">学生おすすめサロンを探す</a></li>
-						<li><a href="#">早く結果がでるサロンを探す</a></li>
+						<li><a href="/salon/price/">とにかく安いサロンを探す</a></li>
+						<li><a href="/salon/reserve/">予約がとりやすいサロンを探す</a></li>
+						<li><a href="/salon/student/">学生おすすめサロンを探す</a></li>
+						<li><a href="/salon/result/">早く結果がでるサロンを探す</a></li>
 					</ul>
 				</div>
 				<div class="gNaviSect">

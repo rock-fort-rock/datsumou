@@ -219,22 +219,22 @@ if( function_exists('acf_add_options_page') ) {
   ));
 
   acf_add_options_page(array(
-    'page_title'  => 'サロンランキング（TOP用）',
-    'menu_title'  => 'サロンランキング（TOP用）',
+    'page_title'  => 'サロンランキング',
+    'menu_title'  => 'サロンランキング',
     'menu_slug'   => 'theme-options-ranking',
     'capability'  => 'edit_posts',
     'parent_slug' => '',
     'position'  => 6,
     'redirect'  => false,
   ));
-  // acf_add_options_sub_page(array( //サブページ
-  //   'page_title'  => 'トップページ用',
-  //   'menu_title'  => 'トップページ用',
-  //   'menu_slug'   => 'theme-options-topRank',
-  //   'capability'  => 'edit_posts',
-  //   'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
-  //   'position'  => false,
-  // ));
+  acf_add_options_sub_page(array( //サブページ
+    'page_title'  => 'トップページ用',
+    'menu_title'  => 'トップページ用',
+    'menu_slug'   => 'theme-options-topRank',
+    'capability'  => 'edit_posts',
+    'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
+    'position'  => false,
+  ));
 
   /*固定ページ or オプション（使い回すなら）*/
   // acf_add_options_sub_page(array( //サブページ

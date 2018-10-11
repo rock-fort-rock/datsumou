@@ -1,7 +1,6 @@
 <?php
 $status = [
 	'id' => 'salonDetail',
-	'description' => '',
 ];
 ?>
 <?php get_header(); ?>

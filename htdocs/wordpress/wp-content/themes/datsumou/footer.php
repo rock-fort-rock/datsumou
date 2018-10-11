@@ -6,7 +6,7 @@
 				</div>
 				<ul class="gFooterNavi">
 					<li><a href="/">TOP</a></li>
-					<li><a href="/salon/">ランキング</a></li>
+					<li><a href="/ranking/">ランキング</a></li>
 					<li><a href="#">SNS</a></li>
 				</ul>
 				<ul class="snsLink">

@@ -4,7 +4,6 @@ Template Name: サロンランキング
 */
 $status = [
 	'id' => 'ranking',
-	'description' => '',
 ];
 ?>
 <?php get_header(); ?>

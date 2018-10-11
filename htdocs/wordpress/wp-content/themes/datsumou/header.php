@@ -22,6 +22,7 @@ while(the_repeater_field('option_naviBanner', 'option')){
 <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
 <?php /*<title><?php wp_title("|", true, "right");?><?php bloginfo('name'); ?></title>*/ ?>
 <?php wp_head(); ?>
+<?php /*
 <meta name="keywords" content="">
 <meta name="description" content="<?php
 if($status['description']){
@@ -33,8 +34,9 @@ if($status['description']){
 	echo get_bloginfo( 'description' );
 }
 ?>">
-<link rel="shortcut icon" href="/images/favicon.ico">
-<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png">
+*/ ?>
+<?php /*<link rel="shortcut icon" href="/images/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png">*/ ?>
 </head>
 
 <body id="<?php echo $status['id']; ?>">
@@ -59,10 +61,10 @@ if($status['description']){
 				<div class="gNaviSect">
 					<div class="gNaviHeadline">目的別検索</div>
 					<ul class="gNaviMenu">
-						<li><a href="/salon/price/">とにかく安いサロンを探す</a></li>
-						<li><a href="/salon/reserve/">予約がとりやすいサロンを探す</a></li>
-						<li><a href="/salon/student/">学生おすすめサロンを探す</a></li>
-						<li><a href="/salon/result/">早く結果がでるサロンを探す</a></li>
+						<li><a href="/ranking/price/">とにかく安いサロンを探す</a></li>
+						<li><a href="/ranking/reserve/">予約がとりやすいサロンを探す</a></li>
+						<li><a href="/ranking/student/">学生おすすめサロンを探す</a></li>
+						<li><a href="/ranking/result/">早く結果がでるサロンを探す</a></li>
 					</ul>
 				</div>
 				<div class="gNaviSect">

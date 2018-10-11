@@ -1,7 +1,6 @@
 <?php
 $status = [
 	'id' => 'home',
-	'description' => '',
 ];
 ?>
 <?php get_header(); ?>

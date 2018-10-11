@@ -82,10 +82,10 @@ function my_scripts() {
 
   wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '1.5', true );
 
-  if(is_page('contact')){
-    //mw wp formがjqueryを読み込み済み
-    wp_enqueue_script( 'ajaxzip3-script', 'https://ajaxzip3.github.io/ajaxzip3.js', array( 'jquery' ), null, true );
-  }
+  // if(is_page('contact')){
+  //   //mw wp formがjqueryを読み込み済み
+  //   wp_enqueue_script( 'ajaxzip3-script', 'https://ajaxzip3.github.io/ajaxzip3.js', array( 'jquery' ), null, true );
+  // }
 }
 add_action( 'wp_enqueue_scripts', 'my_scripts' );
 
@@ -116,7 +116,7 @@ if (!current_user_can('administrator')){
 		global $menu;
     // var_dump($menu);
     unset($menu[26]); // MW WP Form
-		$restricted = array(__('投稿'),__('コメント'),__('ツール'), __('設定'),  __('プロフィール'));
+		$restricted = array(__('固定ページ'),__('コメント'),__('ツール'), __('設定'),  __('プロフィール'));
 		end ($menu);
 		while (prev($menu)){
 			$value = explode(' ',$menu[key($menu)][0]);
@@ -235,40 +235,6 @@ if( function_exists('acf_add_options_page') ) {
     'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
     'position'  => false,
   ));
-
-  /*固定ページ or オプション（使い回すなら）*/
-  // acf_add_options_sub_page(array( //サブページ
-  //   'page_title'  => 'とにかく安いサロン',
-  //   'menu_title'  => 'とにかく安いサロン',
-  //   'menu_slug'   => 'theme-options-priceRank',
-  //   'capability'  => 'edit_posts',
-  //   'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
-  //   'position'  => false,
-  // ));
-  // acf_add_options_sub_page(array( //サブページ
-  //   'page_title'  => '予約が取りやすいサロン',
-  //   'menu_title'  => '予約が取りやすいサロン',
-  //   'menu_slug'   => 'theme-options-reserveRank',
-  //   'capability'  => 'edit_posts',
-  //   'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
-  //   'position'  => false,
-  // ));
-  // acf_add_options_sub_page(array( //サブページ
-  //   'page_title'  => '学生おすすめサロン',
-  //   'menu_title'  => '学生おすすめサロン',
-  //   'menu_slug'   => 'theme-options-studentRank',
-  //   'capability'  => 'edit_posts',
-  //   'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
-  //   'position'  => false,
-  // ));
-  // acf_add_options_sub_page(array( //サブページ
-  //   'page_title'  => '早く結果が出るサロン',
-  //   'menu_title'  => '早く結果が出るサロン',
-  //   'menu_slug'   => 'theme-options-resultRank',
-  //   'capability'  => 'edit_posts',
-  //   'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
-  //   'position'  => false,
-  // ));
 }
 
 
@@ -321,35 +287,6 @@ function tinymce_init( $init ) {
 
 
 
-//NEW アイコン
-function is_new_post($post_date) {
-  date_default_timezone_set('Asia/Tokyo');
-  $dt_now = strtotime(date('Y-m-d H:i:s'));
-  $dt_post = strtotime($post_date);
-
-  $days = 7;
-  // return date('Y-m-d H:i:s'). '：' . $post_date ."<br>\n";
-  return (($dt_now - $dt_post) <= 60*60*24*$days);
-}
-
-
-//ナビゲーション現在地
-function setCurrent($str){
-  global $status;
-  $pos = strpos($status['id'], $str);
-  if($pos !== false){
-    echo ' class="active"';
-  }
-}
-function setLocalCurrent($str){
-  global $status;
-  $pos = strpos($status['localPage'], $str);
-  if($pos !== false){
-    echo ' class="active"';
-  }
-}
-
-
 //ニュース本文へtextButton追加のショートコード
 function text_button($array) {
   extract($array);
@@ -364,20 +301,6 @@ function text_button($array) {
 }
 add_shortcode('button', 'text_button');
 
-
-function mwwp_scroll( $values ) {
-    return -180;
-}
-add_filter( 'mwform_scroll_offset_mw-wp-form-150', 'mwwp_scroll', 10, 3 );
-
-
-
-//PDFファイルサイズ取得
-function getSize($path){
-  $bite = filesize(".".$path);
-  $size = number_format(round($bite/1000));
-  return $size;
-}
 
 //マニュアルページ作成
 // function original_page() {

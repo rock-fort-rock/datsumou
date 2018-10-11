@@ -1,4 +1,17 @@
 <?php get_header(); ?>
+
+<div class="mainContents">
+	<section class="contentBlock">
+		<p>お探しのページは削除されたか、存在しない可能性があります。<br>
+		<a href="/">» TOPへ戻る</a></p>
+	</section>
+</div>
+
+<?php get_footer(); ?>
+
+<?php exit(); ?>
+
+<?php get_header(); ?>
 		<div class="contents">
 			<div class="breadcrumb">
 				<ul>

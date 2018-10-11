@@ -585,7 +585,9 @@ ELEMENT
 	}
 	.salonReview{
 		.review{
+			padding: 0 5px;
 			li{
+
 				border: 3px solid #fff;
 				border-radius: 5px;
 				display: flex;
@@ -614,6 +616,38 @@ ELEMENT
 					flex: 1;
 					padding-left: 10px;
 				}
+			}
+		}
+		.viewMore{
+			text-align: center;
+			padding: 0 5px;
+			margin: 15px auto;
+			span{
+				padding: 7px 5px;
+				position: relative;
+				display: block;
+				color: #fff;
+				background-color: #b8b7b7;
+				border-radius: 5px;
+				font-size: 0.9rem;
+				line-height: 1.2;
+				font-weight: bold;
+				&::before {
+				    content: "";
+				    display: inline-block;
+				    width: 10px;
+				    height: 10px;
+				    margin-right: 3px;
+				    margin-top: 3px;
+				    background: url("/assets/images/arrow_w.svg") 50%/100% auto no-repeat;
+
+				}
+			}
+		}
+		.reviewMore{
+			display: none;
+			li:first-child{
+				margin-top: 15px;
 			}
 		}
 	}
@@ -750,6 +784,19 @@ ELEMENT
 					}
 				}
 			}
+			.viewMore{
+				margin: 15px 0;
+				cursor: pointer;
+				max-width: 90%;
+				@include hover;
+			}
+			.reviewMore{
+				li:first-child{
+					margin-top: 20px;
+				}
+				
+			}
+			
 		}
 		.ctaBlock{
 			margin: 0 0 0 10%;

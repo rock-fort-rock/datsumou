@@ -124,6 +124,17 @@ $(() => {
 		})
 
 	})
+
+	$('.salonReview .review').each(function(){
+		if($(this).next('.viewMore').length > 0){
+			$(this).next('.viewMore').on({
+				'click': function(){
+					$(this).hide();
+					$(this).next('.reviewMore').slideToggle(500);
+				}
+			})
+		}
+	})
 });
 
 //スマホのみ適用

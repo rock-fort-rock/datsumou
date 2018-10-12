@@ -72,7 +72,7 @@ foreach($salonPosts as $value){
 			<div class="leftBlock">
 				<?php if($value['bannerUrl']): ?>
 				<div class="paragraph salonInfoBanner">
-					<a href="<?php echo $value['bannerUrl']; ?>"><img src="<?php echo $value['bannerImage']; ?>"></a>
+					<a href="<?php echo $value['bannerUrl']; ?>" target="_blank"><img src="<?php echo $value['bannerImage']; ?>"></a>
 				</div>
 				<?php endif; ?>
 				<div class="paragraph salonInfoAssess">
@@ -127,8 +127,7 @@ foreach($salonPosts as $value){
 							<?php
 							$col = 4;
 							$n = (count($value['info'])%$col != 0)?(floor(count($value['info'])/$col)+1)*$col:count($value['info']);
-							for($i=0; $i<$n; $i++): ?>
-							<?php endfor; ?>
+							?>
 
 							<?php for($i=0; $i<$n/$col; $i++): ?>
 							<tr>
@@ -174,7 +173,7 @@ foreach($salonPosts as $value){
 				</ul>
 				<?php if($count > $init): ?>
 				<div class="viewMore"><span>もっとみる</span></div>
-				<ul class="review reviewMore">
+				<ul class="review reviewMore even">
 					<?php for($i=$init; $i<$count; $i++): ?>
 					<li>
 						<div class="avatar"><img src="<?php echo $value['review'][$i]['avatar']; ?>"></div>
@@ -191,7 +190,7 @@ foreach($salonPosts as $value){
 				<div class="ctaBlock">
 					<div class="numberOfPeople">当サイトから<span class="num"><strong><?php echo $value['number']; ?></strong>名</span>がキレイになりました！</div>
 					<ul>
-						<li class="official"><a href="<?php echo $value['officialsite']; ?>"><img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る"></a></li>
+						<li class="official"><a href="<?php echo $value['officialsite']; ?>" target="_blank"><img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る"></a></li>
 						<li class="detail"><a href="<?php echo $value['permalink']; ?>"><img src="/assets/images/btn_detail.png" alt="詳細を見る"></a></li>
 					</ul>
 				</div>

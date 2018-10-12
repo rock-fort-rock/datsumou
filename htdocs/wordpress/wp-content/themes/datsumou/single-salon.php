@@ -4,114 +4,210 @@ $status = [
 ];
 ?>
 <?php get_header(); ?>
+<?php
+$banner = get_field('salon_banner');
+$bannerObj = $banner['salon_banner_image'];
+$bannerImage = $bannerObj['sizes']['medium_large'];
+$bannerUrl = $banner['salon_banner_url'];
 
+$assessment = get_field('salon_assessment');
+$assessTotal = $assessment['salon_assessment_total'];
+$assessPrice = $assessment['salon_assessment_price'];
+$assessService = $assessment['salon_assessment_service'];
+$assessReserve = $assessment['salon_assessment_reserve'];
+$assessCare = $assessment['salon_assessment_care'];
+
+$point = [];
+while(the_repeater_field('salon_point')){
+	$point[] = get_sub_field('salon_point_catch');
+}
+
+$description = get_field('salon_description');
+$price = get_field('salon_price');
+$campaign = get_field('salon_campaign');
+
+$infoGroup = get_field('salon_info');
+$info = $infoGroup['salon_info_item'];
+
+$infoReview['salon_info_item_name'] = 'クチコミ';
+$infoReview['salon_info_item_content'] = $infoGroup['salon_info_rating'];
+array_unshift($info, $infoReview);
+// print_r($info);
+
+$review = [];
+while(the_repeater_field('salon_review')){
+	$reviewObj = get_sub_field('salon_review_avatar');
+	$reviewTemp['avatar'] = $reviewObj['sizes']['thumbnail'];
+	$reviewTemp['comment'] = get_sub_field('salon_review_comment');
+	array_push($review, $reviewTemp);
+}
+
+$number = get_field('salon_number');
+$officialsite = get_field('salon_officialsite');
+// $salonTemp['permalink'] = get_the_permalink($id);
+
+?>
 <div class="mainContents">
 	<section class="contentBlock">
+		<div class="salonNavi">
+			<ul>
+				<li><a href="#point" class="scroll">ポイント</a></li>
+				<li><a href="#price" class="onlySmall scroll">料金</a>
+					<a href="#pricePc" class="exceptSmall scroll">料金</a></li>
+				<li><a href="#info" class="scroll">サロン情報</a></li>
+				<li><a href="#review" class="scroll">クチコミ</a></li>
+			</ul>
+		</div>
 		<header class="salonHeader">
-			<img src="/assets/images/icon_ranking1.png" alt="人気サロン第1位" class="rankIcon best3">
 			<h2 class="salonName"><?php the_title(); ?></h2>
 		</header>
 		<div class="salonBody">
 			<div class="salonInfo">
 				<div class="leftBlock">
+					<?php if($bannerUrl): ?>
 					<div class="paragraph salonInfoBanner">
-						<a href="#"><img src="/assets/images/banner_coloree.jpg"></a>
+						<a href="<?php echo $bannerUrl; ?>" target="_blank"><img src="<?php echo $bannerImage; ?>"></a>
 					</div>
+					<?php endif; ?>
+
+
 					<div class="paragraph salonInfoAssess">
-						<canvas class="radarChart" data-total="5" data-price="4" data-service="5" data-reserve="5" data-care="3"></canvas>
+						<canvas class="radarChart" data-total="<?php echo $assessTotal; ?>" data-price="<?php echo $assessPrice; ?>" data-service="<?php echo $assessService; ?>" data-reserve="<?php echo $assessReserve; ?>" data-care="<?php echo $assessCare; ?>"></canvas>
 					</div>
-					<div class="paragraph exceptSmall">
+					<div class="paragraph exceptSmall" id="pricePc">
 						<h3 class="salonContentTitle">料金</h3>
-						<div class="contentInner">テキストが入ります。テキストが入ります。テキストが入ります。</div>
+						<div class="contentInner"><?php echo $price; ?></div>
 					</div>
+					<?php if($campaign): ?>
 					<div class="paragraph exceptSmall">
 						<h3 class="salonContentTitle">キャンペーン</h3>
-						<div class="contentInner">テキストが入ります。テキストが入ります。テキストが入ります。</div>
+						<div class="contentInner"><?php echo $campaign; ?></div>
 					</div>
+					<?php endif; ?>
 				</div>
 				<div class="rightBlock">
-					<div class="salonInfoPoint">
+					<div class="salonInfoPoint" id="point">
 						<div class="pointFrame">
 							<ul>
-								<li>ポイント1</li>
-								<li>医療脱毛だからツルツルに♪</li>
-								<li>あいうえおかきくけこさしす</li>
+								<?php foreach($point as $value): ?>
+								<li><?php echo $value; ?></li>
+								<?php endforeach; ?>
 							</ul>
 							
 						</div>
 					</div>
 					<div class="paragraph">
 						<div class="contentInner">
-							<p>キレイな素肌で前向きになれたら、<br>毎日がもっとカラフルに輝きだす。</p>
-							<p>
-							▼美容脱毛サロン『coloree』の特徴<br>
-							１）全身美容脱毛46部位が月々6,500円（税別）<br>
-							２　VIO含め全身まるごと46部位脱毛<br>
-							３）さらに安心♪未消化分全額返金保証あり<br>
-							４）予約の取りやすさ業界トップクラス<br>
-							５）経験豊富なスタッフを中心にお手入れ<br>
-							６）プライバシーに配慮した女性専用の完全個室<br>
-							７）使用ローションは、保湿効果も期待できて肌に潤いをプラス<br>
-							８）もちろん、無理な勧誘は一切なし</p>
+							<?php echo $description; ?>
 						</div>
 					</div>
-					<div class="paragraph onlySmall">
-						<h3 class="salonContentTitle">料金</h3>
-						<div class="contentInner">テキストが入ります。テキストが入ります。テキストが入ります。</div>
+
+					<div class="salonNavi onlySmall">
+						<ul>
+							<li><a href="#point" class="scroll">ポイント</a></li>
+							<li><span>料金</span></li>
+							<li><a href="#info" class="scroll">サロン情報</a></li>
+							<li><a href="#review" class="scroll">クチコミ</a></li>
+						</ul>
 					</div>
+					<div class="paragraph onlySmall" id="price">
+						<h3 class="salonContentTitle">料金</h3>
+						<div class="contentInner"><?php echo $price; ?></div>
+					</div>
+					<?php if($campaign): ?>
 					<div class="paragraph onlySmall">
 						<h3 class="salonContentTitle">キャンペーン</h3>
-						<div class="contentInner">テキストが入ります。テキストが入ります。テキストが入ります。</div>
+						<div class="contentInner"><?php echo $campaign; ?></div>
 					</div>
-					<div class="paragraph salonInfoOverview">
+					<?php endif; ?>
+
+					<div class="salonNavi onlySmall">
+						<ul>
+							<li><a href="#point" class="scroll">ポイント</a></li>
+							<li><a href="#price" class="scroll">料金</a></li>
+							<li><span>サロン情報</span></li>
+							<li><a href="#review" class="scroll">クチコミ</a></li>
+						</ul>
+					</div>
+					<div class="paragraph salonInfoOverview" id="info">
 						<div class="salonContentTitle">サロン情報</div>
 						<div class="contentInner">
 							<table>
+								<?php
+								$col = 4;
+								$n = (count($info)%$col != 0)?(floor(count($info)/$col)+1)*$col:count($info);
+								?>
+
+								<?php for($i=0; $i<$n/$col; $i++): ?>
 								<tr>
-									<th>クチコミ</th><th>回数</th><th>部位数</th><th>学割</th>
+									<?php for($a=$i*$col; $a<($i+1)*$col; $a++): ?>
+									<th><?php echo $info[$a]['salon_info_item_name']; ?></th>
+									<?php endfor; ?>
 								</tr>
 								<tr>
-									<td><span class="rating">★</span><span class="rating">★</span><span class="rating">★</span><span class="rating">★</span><span class="rating">★</span></td><td>5回</td><td>25箇所</td><td>〇</td>
+									<?php for($a=$i*$col; $a<($i+1)*$col; $a++): ?>
+									<td>
+									<?php if($a == 0): ?>
+										<?php for($star=0; $star<$info[$a]['salon_info_item_content']; $star++): ?>
+										<span class="rating">★</span>
+										<?php endfor; ?>
+									<?php else: ?>
+										<?php echo $info[$a]['salon_info_item_content']; ?>
+									<?php endif; ?>	
+									</td>
+									<?php endfor; ?>
 								</tr>
-								<tr>
-									<th>未成年</th><th>乗り換え割</th><th>医療・美容</th><th></th>
-								</tr>
-								<tr>
-									<td class="review">〇</td><td>なし</td><td>美容</td><td></td>
-								</tr>
+								<?php endfor; ?>
 							</table>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="paragraph salonReview">
+			<div class="salonNavi onlySmall">
+				<ul>
+					<li><a href="#point" class="scroll">ポイント</a></li>
+					<li><a href="#price" class="scroll">料金</a></li>
+					<li><a href="#info" class="scroll">サロン情報</a></li>
+					<li><span>クチコミ</span></li>
+				</ul>
+			</div>
+			<div class="paragraph salonReview" id="review">
 				<div class="salonContentTitle">みんなのクチコミ</div>
 				<div class="contentInner">
 					<ul class="review">
+						<?php 
+						$count = count($review);
+						$init = 3;
+						?>
+						<?php for($i=0; $i<min($count, $init); $i++): ?>
 						<li>
-							<div class="avatar"><img src="/assets/images/avatar01.png"></div>
-							<div class="comment">ああああああ</div>
+							<div class="avatar"><img src="<?php echo $review[$i]['avatar']; ?>"></div>
+							<div class="comment"><?php echo $review[$i]['comment']; ?></div>
 						</li>
-						<li>
-							<div class="avatar"><img src="/assets/images/avatar02.png"></div>
-							<div class="comment">あ<br>あ<br>あ<br>あ<br>あ</div>
-						</li>
-						<li>
-							<div class="avatar"><img src="/assets/images/avatar03.png"></div>
-							<div class="comment">ああああああ</div>
-						</li>
+						<?php endfor; ?>
 					</ul>
+					<?php if($count > $init): ?>
+					<div class="viewMore"><span>もっとみる</span></div>
+					<ul class="review reviewMore even">
+						<?php for($i=$init; $i<$count; $i++): ?>
+						<li>
+							<div class="avatar"><img src="<?php echo $review[$i]['avatar']; ?>"></div>
+							<div class="comment"><?php echo $review[$i]['comment']; ?></div>
+						</li>
+						<?php endfor; ?>
+					</ul>
+					<?php endif; ?>
 				</div>
 			</div>
 
 			<div class="paragraph">
 				<div class="contentInner">
 					<div class="ctaBlock">
-						<div class="numberOfPeople">当サイトから<span class="num"><strong>123</strong>名</span>がキレイになりました！</div>
+						<div class="numberOfPeople">当サイトから<span class="num"><strong><?php echo $number; ?></strong>名</span>がキレイになりました！</div>
 						<ul>
-							<li class="official"><a href="#"><img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る"></a></li>
-							<li class="detail"><a href="#"><img src="/assets/images/btn_detail.png" alt="詳細を見る"></a></li>
+							<li class="official"><a href="<?php echo $officialsite; ?>" target="_blank"><img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る"></a></li>
+							<li class="detail"><a href="<?php the_permalink(); ?>"><img src="/assets/images/btn_detail.png" alt="詳細を見る"></a></li>
 						</ul>
 					</div>
 				</div>

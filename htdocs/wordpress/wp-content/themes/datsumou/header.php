@@ -102,7 +102,7 @@ if($status['description']){
 						<li><a href="#">キレイモ</a></li>
 						<li><a href="#">脱毛ラボ</a></li>
 					</ul>
-					<div class="readMore"><a href="#">もっと記事を読む</a></div>
+					<div class="readMore"><a href="/column/">もっと記事を読む</a></div>
 				</div>
 				<div class="gNaviSect">
 					<div class="gNaviHeadline">当サイトについて</div>

@@ -111,22 +111,24 @@ if (!current_user_can('administrator')) {
 }
 
 // 管理者以外不必要なメニューを非表示
-if (!current_user_can('administrator')){
-	function remove_menus(){
-		global $menu;
-    // var_dump($menu);
-    unset($menu[26]); // MW WP Form
-		$restricted = array(__('固定ページ'),__('コメント'),__('ツール'), __('設定'),  __('プロフィール'));
-		end ($menu);
-		while (prev($menu)){
-			$value = explode(' ',$menu[key($menu)][0]);
-			if (in_array($value[0] != NULL?$value[0]:"" , $restricted)){
-				unset($menu[key($menu)]);
-			}
-		}
-	}
-	add_action('admin_menu', 'remove_menus');
+function remove_menus(){
+  global $menu;
+  // unset($menu[26]); // MW WP Form
+  if (!current_user_can('administrator')){
+    $restricted = array(__('投稿'),__('固定ページ'),__('コメント'),__('ツール'), __('設定'),  __('プロフィール'));
+  }else{
+    $restricted = array();
+    // $restricted = array(__('投稿'),__('コメント'));
+  }
+  end ($menu);
+  while (prev($menu)){
+    $value = explode(' ',$menu[key($menu)][0]);
+    if (in_array($value[0] != NULL?$value[0]:"" , $restricted)){
+      unset($menu[key($menu)]);
+    }
+  }
 }
+add_action('admin_menu', 'remove_menus');
 
 
 // 管理者以外不必要なダッシュボードの内容を非表示
@@ -170,6 +172,84 @@ function imagesizeSet() {
 	update_option( 'large_size_h', 0 );
 }
 
+
+/**
+custom post type
+コラム
+**/
+add_action('init', 'cpt_column_init');
+function cpt_column_init()
+{
+  $labels = array(
+    'name' => _x('コラム', 'post type general name'),
+    'singular_name' => _x('コラム', 'post type singular name'),
+    'add_new' => _x('コラム追加', 'column'),
+    'add_new_item' => __('新規コラムを追加'),
+    'edit_item' => __('コラムを編集'),
+    'new_item' => __('新しいコラム'),
+    'view_item' => __('コラムを見る'),
+    'search_items' => __('コラムを探す'),
+    'not_found' =>  __('コラムはありません'),
+    'not_found_in_trash' => __('ゴミ箱にコラムはありません'),
+    'parent_item_colon' => ''
+  );
+  $args = array(
+    'labels' => $labels,
+    'public' => true,
+    'show_ui' => true,
+    'query_var' => true,
+    'capability_type' => 'post',
+    'has_archive' => true,
+    'rewrite' => array('slug' => 'column', 'with_front' => false, 'pages' => true, 'feeds' => false),
+    'hierarchical' => false,
+    'menu_position' => 4,
+    'supports' => array('title','editor','thumbnail')
+  );
+  register_post_type('column', $args);
+
+
+  // $args = array(
+  //   'labels' => array(
+  //     'name' => 'カテゴリ',
+  //     'singular_name' => 'cat',
+  //     'search_items' => 'カテゴリを検索',
+  //     'popular_items' => 'よく使われているカテゴリ',
+  //     'all_items' => 'すべてのカテゴリ',
+  //     'parent_item' => '親カテゴリ',
+  //     'edit_item' => 'カテゴリの編集',
+  //     'update_item' => '更新',
+  //     'add_new_item' => 'カテゴリを追加',
+  //     'new_item_name' => '新しいカテゴリ'
+  //   ),
+  //   'public' => true,
+  //   'show_ui' => true,
+  //   'hierarchical' => true,
+  //   'query_var' => true,
+  //   'rewrite' => array('slug' => 'column', 'with_front' => false)
+  // );
+  // register_taxonomy('cat', 'column', $args);
+
+  // $args = array(
+  //   'labels' => array(
+  //     'name' => 'カテゴリ',
+  //     'singular_name' => 'portcat',
+  //     'search_items' => 'カテゴリを検索',
+  //     'popular_items' => 'よく使われているカテゴリ',
+  //     'all_items' => 'すべてのカテゴリ',
+  //     'parent_item' => '親カテゴリ',
+  //     'edit_item' => 'カテゴリの編集',
+  //     'update_item' => '更新',
+  //     'add_new_item' => 'カテゴリを追加',
+  //     'new_item_name' => '新しいカテゴリ'
+  //   ),
+  //   'public' => true,
+  //   'show_ui' => true,
+  //   'hierarchical' => true,
+  //   'query_var' => true,
+  //   'rewrite' => array('slug' => 'portfolio', 'with_front' => false)
+  // );
+  // register_taxonomy('portcat', 'portfolio', $args);
+}
 /**
 custom post type
 サロン情報
@@ -224,7 +304,7 @@ if( function_exists('acf_add_options_page') ) {
     'menu_slug'   => 'theme-options-ranking',
     'capability'  => 'edit_posts',
     'parent_slug' => '',
-    'position'  => 6,
+    'position'  => 7,
     'redirect'  => false,
   ));
   acf_add_options_sub_page(array( //サブページ

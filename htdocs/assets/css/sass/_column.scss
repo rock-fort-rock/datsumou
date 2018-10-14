@@ -1,0 +1,138 @@
+.entryArchiveTitle{
+	border: 1px solid #4dcfff;
+	text-align: center;
+	color: #fff;
+	background: linear-gradient(#5ec8f2, #42a2d5);
+	font-size: 1.2rem;
+	font-weight: bold;
+	padding: 7px;
+	line-height: 1;
+	margin-bottom: 10px;
+}
+
+.categorySelectWrapper{
+	text-align: right;
+	margin-bottom: 10px;
+	.categorySelect{
+		position: relative;
+		display: inline-block;
+		border: 1px solid #e12d98;;
+		border-radius: 6px;
+		overflow: hidden;
+		margin-right: 10px;
+		&::after{
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 30px;
+			height: 100%;
+			border-left: 1px solid #e12d98;
+			background: linear-gradient(#f5f1f2, #e8608e);
+			pointer-events: none;
+		}
+		&::before{
+			content: '';
+			position: absolute;
+			top: 50%;
+			right: 15px;
+			width: 0;
+			height: 0;
+			border: 4px solid transparent;
+			border-top: 6px solid #fff;
+			transform: translate(5px, -2px);
+			z-index: 2;
+			pointer-events: none;
+		}
+		select{
+			min-width: 180px;
+			appearance: button;
+			border: none;
+			background-color: #fff;
+			padding: 5px 20px 5px 5px;
+			line-height: 1;
+			cursor: pointer;			
+		}
+	}
+	@media screen and (min-width: $breakpoint + 1){
+		.categorySelect{
+			margin-right: 0;
+		}
+	}
+}
+
+
+#column{
+	article.entry{
+		margin-bottom: 15px;
+		&:not(:last-child){
+			padding-bottom: 15px;
+			border-bottom: 1px solid #ccc;
+		}
+		a{
+			display: flex;
+			.imageBlock{
+				width: 120px;
+				img{
+					width: 100%;
+				}
+			}
+			.textBlock{
+				flex: 1;
+				padding-left: 10px;
+				.entryDateCat{
+					font-size: 10px;
+					color: #666;
+
+					.category{
+						display: inline-block;
+						&::after{
+								content: '｜';
+							}
+						li{
+							display: inline;
+							&::before{
+								content: '｜';
+							}
+						}
+					}
+				}
+				.entryAuthor{
+					font-size: 10px;
+					color: #666;
+				}
+				.entryTitle{
+					margin: 5px 0;
+					font-size: 1.1rem;
+					font-weight: bold;
+				}
+			}
+		}
+		@media screen and (min-width: $breakpoint + 1){
+			margin-bottom: 30px;
+			&:not(:last-child){
+				padding-bottom: 30px;
+			}
+			a{
+				@include hover;
+				.imageBlock{
+					width: 240px;
+				}
+				.textBlock{
+					padding-left: 20px;
+					.entryDateCat{
+						font-size: 12px;
+					}
+					.entryAuthor{
+						font-size: 12px;
+					}
+					.entryTitle{
+						margin: 10px 0;
+						font-size: 1.3rem;
+					}
+				}
+			}
+		}
+	}
+
+}

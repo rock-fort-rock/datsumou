@@ -1,6 +1,6 @@
 <?php
 $status = [
-	'id' => 'coloumDetail',
+	'id' => 'columnDetail',
 ];
 ?>
 <?php get_header(); ?>

@@ -104,6 +104,8 @@ add_action( 'wp_enqueue_scripts', 'my_scripts' );
 // add_filter( 'script_loader_tag', 'add_async_to_script', 10, 2 );
 
 
+//アイキャッチ有効化
+add_theme_support('post-thumbnails');
 
 // 管理者以外wordpress updateを非表示
 if (!current_user_can('administrator')) {
@@ -117,8 +119,8 @@ function remove_menus(){
   if (!current_user_can('administrator')){
     $restricted = array(__('投稿'),__('固定ページ'),__('コメント'),__('ツール'), __('設定'),  __('プロフィール'));
   }else{
-    $restricted = array();
-    // $restricted = array(__('投稿'),__('コメント'));
+    // $restricted = array();
+    $restricted = array(__('投稿'),__('コメント'));
   }
   end ($menu);
   while (prev($menu)){
@@ -207,49 +209,28 @@ function cpt_column_init()
   );
   register_post_type('column', $args);
 
-
-  // $args = array(
-  //   'labels' => array(
-  //     'name' => 'カテゴリ',
-  //     'singular_name' => 'cat',
-  //     'search_items' => 'カテゴリを検索',
-  //     'popular_items' => 'よく使われているカテゴリ',
-  //     'all_items' => 'すべてのカテゴリ',
-  //     'parent_item' => '親カテゴリ',
-  //     'edit_item' => 'カテゴリの編集',
-  //     'update_item' => '更新',
-  //     'add_new_item' => 'カテゴリを追加',
-  //     'new_item_name' => '新しいカテゴリ'
-  //   ),
-  //   'public' => true,
-  //   'show_ui' => true,
-  //   'hierarchical' => true,
-  //   'query_var' => true,
-  //   'rewrite' => array('slug' => 'column', 'with_front' => false)
-  // );
-  // register_taxonomy('cat', 'column', $args);
-
-  // $args = array(
-  //   'labels' => array(
-  //     'name' => 'カテゴリ',
-  //     'singular_name' => 'portcat',
-  //     'search_items' => 'カテゴリを検索',
-  //     'popular_items' => 'よく使われているカテゴリ',
-  //     'all_items' => 'すべてのカテゴリ',
-  //     'parent_item' => '親カテゴリ',
-  //     'edit_item' => 'カテゴリの編集',
-  //     'update_item' => '更新',
-  //     'add_new_item' => 'カテゴリを追加',
-  //     'new_item_name' => '新しいカテゴリ'
-  //   ),
-  //   'public' => true,
-  //   'show_ui' => true,
-  //   'hierarchical' => true,
-  //   'query_var' => true,
-  //   'rewrite' => array('slug' => 'portfolio', 'with_front' => false)
-  // );
-  // register_taxonomy('portcat', 'portfolio', $args);
+  $args = array(
+    'labels' => array(
+      'name' => 'カテゴリ',
+      'singular_name' => 'カテゴリ',
+      'search_items' => 'カテゴリを検索',
+      'popular_items' => 'よく使われているカテゴリ',
+      'all_items' => 'すべてのカテゴリ',
+      'parent_item' => '親カテゴリ',
+      'edit_item' => 'カテゴリの編集',
+      'update_item' => '更新',
+      'add_new_item' => 'カテゴリを追加',
+      'new_item_name' => '新しいカテゴリ'
+    ),
+    'public' => true,
+    'show_ui' => true,
+    'hierarchical' => true,
+    'query_var' => true,
+    'rewrite' => array('slug' => 'column/column_category', 'with_front' => false)
+  );
+  register_taxonomy('column_category', 'column', $args);
 }
+
 /**
 custom post type
 サロン情報
@@ -324,8 +305,8 @@ add_filter('pre_get_posts', 'custom_posts_query');
 function custom_posts_query() {
   global $wp_query;
   if(!is_admin()){
-    if(is_post_type_archive('news')){
-      $wp_query -> query_vars['posts_per_page'] = -1;
+    if(is_post_type_archive('column')){
+      $wp_query -> query_vars['posts_per_page'] = 1;
     }else{
       $wp_query -> query_vars['posts_per_page'] = -1;
     }

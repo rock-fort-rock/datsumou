@@ -1,6 +1,5 @@
 html{
 	width: 100%;
-	height: 100%;
 	background-color: #fff;
 	font-size: 13px;
 	@media screen and (min-width: $breakpoint + 1){
@@ -16,7 +15,6 @@ body{
 	font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
 	line-height: 1.4;
 	color: #3f3f3f;
-	height: 100%;
 	width: 100%;
 	word-wrap: break-word;
 }
@@ -379,6 +377,7 @@ ELEMENT
 			width: 100%;
 			height: auto;
 			transform: translateX(0);
+			margin-bottom: 50px;
 			.gNaviHeadline{
 				background-color: #f85793;
 				color: #fff;
@@ -406,6 +405,9 @@ ELEMENT
 					}
 				}
 			}
+		}
+		.gNaviBg{
+			display: none;
 		}
 		.readMore{
 			a{

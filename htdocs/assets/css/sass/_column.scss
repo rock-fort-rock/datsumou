@@ -1,4 +1,4 @@
-.entryArchiveTitle{
+.archiveTitle{
 	border: 1px solid #4dcfff;
 	text-align: center;
 	color: #fff;
@@ -61,6 +61,28 @@
 	}
 }
 
+.entryAttribute{
+	font-size: 10px;
+	color: #666;
+	.date{
+		display: inline-block;
+	}
+	.category{
+		display: inline-block;
+		&::after{
+				content: '｜';
+			}
+		li{
+			display: inline;
+			&::before{
+				content: '｜';
+			}
+		}
+	}
+	@media screen and (min-width: $breakpoint + 1){
+		font-size: 12px;
+	}
+}
 
 #column{
 	article.entry{
@@ -80,27 +102,6 @@
 			.textBlock{
 				flex: 1;
 				padding-left: 10px;
-				.entryDateCat{
-					font-size: 10px;
-					color: #666;
-
-					.category{
-						display: inline-block;
-						&::after{
-								content: '｜';
-							}
-						li{
-							display: inline;
-							&::before{
-								content: '｜';
-							}
-						}
-					}
-				}
-				.entryAuthor{
-					font-size: 10px;
-					color: #666;
-				}
 				.entryTitle{
 					margin: 5px 0;
 					font-size: 1.1rem;
@@ -120,12 +121,6 @@
 				}
 				.textBlock{
 					padding-left: 20px;
-					.entryDateCat{
-						font-size: 12px;
-					}
-					.entryAuthor{
-						font-size: 12px;
-					}
 					.entryTitle{
 						margin: 10px 0;
 						font-size: 1.3rem;
@@ -135,4 +130,137 @@
 		}
 	}
 
+	.paginationWrapper{
+		text-align: center;
+		margin-bottom: 30px;
+		.pagination{
+			display: inline-block;
+			text-align: left;
+			.screen-reader-text{
+				font-size: 0.85rem;
+				color: #666;
+			}
+			.nav-links{
+				margin-top: 5px;
+				.page-numbers{
+					display: inline-block;
+					width: 30px;
+					height: 30px;
+					border-radius: 5px;
+					font-size: 0.85rem;
+					color: #fff;
+					background-color: #bbb;
+					text-align: center;
+					line-height: 30px;
+					margin: 0 2px;
+					&.current{
+						background-color: #333;
+					}
+					&.dots{
+						background-color: transparent;
+						color: #333;
+					}
+				}
+			}
+		}
+		@media screen and (min-width: $breakpoint + 1){
+			.pagination{
+				.nav-links{
+					a{
+						@include hover;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+#columnDetail{
+	.categorySelectWrapper{
+		margin-top: 10px;
+		@media screen and (min-width: $breakpoint + 1){
+			margin-top: 0;
+		}
+	}
+	.entryHeader{
+		margin-bottom: 15px;
+		.entryTitle{
+			background-color: #f95793;
+			color: #fff;
+			padding: 8px 15px;
+			line-height: 1.2;
+			font-size: 16px;
+		}
+		.entryAttribute{
+			padding: 5px 15px;
+			.author{
+				display: inline-block;
+				margin-left: 15px;
+			}
+		}
+		@media screen and (min-width: $breakpoint + 1){
+			.entryTitle{
+				font-size: 22px;
+			}
+			.entryAttribute{
+				padding: 10px 15px;
+			}
+		}
+	}
+
+	.entryEyecatch{
+		margin-bottom: 20px;
+		img{
+			width: 100%;
+		}
+	}
+
+	.entryBody{
+		.entryBlock{
+			margin-bottom: 30px;
+			.cotentTitle{
+				color: #f95793;
+				font-size: 17px;
+				font-weight: bold;
+				line-height: 1.2;
+				padding: 15px 10px;
+				background-color: #fffff3;
+				border-top: 2px dotted #ccc;
+				border-bottom: 2px dotted #ccc;
+				margin-bottom: 10px;
+			}
+			h3{
+				font-size: 15px;
+				font-weight: bold;
+				line-height: 1.2;
+				padding: 10px 15px;
+				background-color: #ededed;
+				border-radius: 8px;
+				margin-bottom: 10px;
+			}
+
+			h4{
+				font-size: 14px;
+				font-weight: bold;
+				line-height: 1.2;
+				color: #4580ba;
+				margin-bottom: 5px;
+			}
+		}
+		@media screen and (min-width: $breakpoint + 1){
+			.entryBlock{
+				margin-bottom: 50px;
+				.cotentTitle{
+					font-size: 22px;
+				}
+				h3{
+					font-size: 18px;
+				}
+				h4{
+					font-size: 16px;
+				}
+			}
+		}
+	}
 }

@@ -47,7 +47,7 @@ $status = [
 			<div class="contentInner">
 				<a href="#">
 					<div class="imageBlock">
-						<img src="/assets/images/result_header.jpg">
+						<img src="/assets/images/eyecatch.jpg">
 					</div>
 					<div class="textBlock">
 						<div class="entryAttribute">
@@ -55,6 +55,7 @@ $status = [
 							<ul class="category"><li>カテゴリ１</li><li>カテゴリ２</li></ul>
 							<div class="author">ライターA</div>
 						</div>
+						<div class="entryAuthor">ライター</div>
 						<h2 class="entryTitle">美容脱毛サロン『coloree』美容脱毛サロン『coloree』</h2>
 						<div class="entryLede exceptSmall">
 							<p>▼美容脱毛サロン『coloree』の特徴<br>

@@ -1,14 +1,14 @@
 <?php
 global $status;
 $headerImgObj = get_field('option_headerBanner', 'option');
-$headerBanner = $headerImgObj[sizes][medium_large];
+$headerBanner = $headerImgObj['sizes']['medium_large'];
 $headerBannerLink = get_field('option_headerBannerLink', 'option');
 
 // $headerImgObj = get_field('option_naviBanner_image', 'option');
 $naviBanner = [];
 while(the_repeater_field('option_naviBanner', 'option')){
 	$naviImgObj = get_sub_field('option_naviBanner_image');
-	$tempNaviBanner['image'] = $naviImgObj[sizes][medium_large];
+	$tempNaviBanner['image'] = $naviImgObj['sizes']['medium_large'];
 	$tempNaviBanner['link'] = get_sub_field('option_naviBanner_link');
 	array_push($naviBanner, $tempNaviBanner);
 }

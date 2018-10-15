@@ -1,7 +1,5 @@
 $breakpoint: 780px;
 $breakpoint-m: 1080px;
-$lookred: #dd1b4a;
-$lightGray: #f3f3f3;
 
 $pc_headerHight: 80px;
 $pc_footerHight: 110px;
@@ -9,17 +7,11 @@ $sp_headerHight: 50px;
 $sp_footerHight: 130px;
 
 $contentMaxWidth: 1200px;
-$contentMaxWidthWide: 1300px;/*TOPなどの例外*/
 
 $naviWidth: 300px;
 
-$contentNarrowWidth: 840px;
-
-$lovalNaviWidth: 220px;
-$twoColumnPadding: 40px;
 
 $shadow: 0 0 2px rgba(0,0,0,0.2);
-
 @mixin hover {
 	transition: opacity .3s;
 	&:hover{

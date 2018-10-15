@@ -21,7 +21,7 @@
 
 		<?php
 		$footerImgObj = get_field('option_footerBanner', 'option');
-		$footerBanner = $footerImgObj[sizes][medium_large];
+		$footerBanner = $footerImgObj['sizes']['medium_large'];
 		$footerBannerLink = get_field('option_footerBannerLink', 'option');
 		?>
 		<?php if($footerBanner): ?>

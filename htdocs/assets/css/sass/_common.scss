@@ -30,15 +30,7 @@ a {
 	}
   }
   &.emph{
-  	color: $lookred;
-  	transition: opacity .3s;
-	&:hover{
-		opacity: 0.75;
-	}
-  }
-  .icon{
-  	font-size: 120%;
-  	vertical-align: middle;
+  	color: #f95793;
   }
 }
 img {
@@ -75,50 +67,15 @@ table{
 	}
 }
 
-.breadcrumb{
-	background-color: #e7e7e7;
-	padding: 0 15px;
-	ul{
-		height: 40px;
-		// display: flex;
-		// align-items: center;
-		font-size: 0.85rem;
-		color: #555;
-		li{
-			white-space: nowrap;
-			display: inline;
-			line-height: 40px;
-			&:not(:first-child){
-				&::before{
-					content: ">";
-					margin: 0 5px;
-				}
-			}
-		}
-	}
-	@media screen and (max-width: $breakpoint){
-		ul{
-			overflow-x: auto;
-			overflow-y: hidden;
-			height: 30px;
-			li{
-				line-height: 30px;
-			}
-		}
-	}
-}
-
-
 
 .basicTable{
 	border-collapse: collapse;
-
 	th,td{
 		padding: 5px 15px;
 		border: 1px solid #ccc;
 	}
 	th{
-		background-color: $lightGray;
+		background-color: #f3f3f3;
 		text-align: left;
 		color: #666;
 	}
@@ -584,76 +541,6 @@ FOOTER
 }
 
 
-/*---------------------------------
-swiper
----------------------------------*/
-.swiper-container{
-	padding-bottom: 22px;
-
-	.swiper-pagination-fraction{
-		font-size: 0.85rem;
-		line-height: 14px;
-		bottom: 0;
-		width: 50px;
-		left: 50%;
-		transform: translateX(-50%);
-	}
-	.swiper-button-prev{
-		top: auto;
-		bottom: 0;
-		background-image: none;
-		width: 14px;
-		height: 14px;
-		left: 50%;
-		right: auto;
-		margin-left: -30px;
-		transform: translateX(-100%);
-		border-radius: 50%;
-		background-color: #333;
-		&::after{
-			content: "\e901";
-			font-family: 'icomoon'!important;
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform: translate(-50%, -50%) rotate(-90deg);
-			font-size: 10px;
-			color: #fff;
-		}
-	}
-	.swiper-button-next{
-		top: auto;
-		bottom: 0;
-		background-image: none;
-		width: 14px;
-		height: 14px;
-		left: 50%;
-		right: auto;
-		margin-left: 30px;
-		border-radius: 50%;
-		background-color: #333;
-		&::after{
-			content: "\e901";
-			font-family: 'icomoon'!important;
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform: translate(-50%, -50%) rotate(90deg);
-			font-size: 10px;
-			color: #fff;
-		}
-	}
-}
-
-
-@mixin grayback {
-    content: "";
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background-color: $lightGray;
-	z-index: -1;
-}
 @keyframes fadeIn{
     from{
         opacity: 0;

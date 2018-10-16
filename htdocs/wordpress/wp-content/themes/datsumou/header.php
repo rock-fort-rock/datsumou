@@ -70,11 +70,11 @@ if($status['description']){
 				<div class="gNaviSect">
 					<div class="gNaviHeadline">脱毛サロン一覧</div>
 					<?php
-					$wsalonArg = array(
+					$salonArg = array(
 						'post_type' => 'salon',
 						'posts_per_page'   => -1,
 					);
-					$salonPosts = get_posts($wsalonArg);
+					$salonPosts = get_posts($salonArg);
 					// print_r($salonPosts);
 					?>
 					<ul class="gNaviMenu">

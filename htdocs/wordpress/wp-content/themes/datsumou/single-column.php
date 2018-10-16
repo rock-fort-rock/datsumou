@@ -5,6 +5,15 @@ $status = [
 ?>
 <?php get_header(); ?>
 
+<?php
+$block = [];
+while(the_repeater_field('column_block')){
+	$tempBlock['headline'] = get_sub_field('column_headline');
+	$tempBlock['contents'] = get_sub_field('column_paragraph');
+	array_push($block, $tempBlock);
+}
+// print_r($block);
+?>
 <div class="mainContents">
 	<section class="contentBlock">
 		<div class="categorySelectWrapper">
@@ -27,19 +36,41 @@ $status = [
 		</header>
 
 		<div class="contentInner">
-			<div class="entryEyecatch"><img src="/assets/images/eyecatch.jpg"></div>
+			<div class="entryEyecatch"><img src="<?php the_post_thumbnail_url('large'); ?>"></div>
 
 			<div class="entryBody">
 				<section class="entryBlock">
-					<h2 class="cotentTitle">大見出しが入ります。</h2>
-					<p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
-
-					<h3>中見出しが入ります。</h2>
-					<p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
-
-					<h4>小見出しが入ります。</h2>
-					<p>テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。</p>
+					<?php echo get_field('column_lede'); ?>
 				</section>
+				<section class="entryBlock">
+					目次
+					<?php for($i=0; $i<count($block); $i++): ?>
+					<div class="tableofcontents">
+						<div><a href="#<?php echo 'index'.($i+1); ?>" class="scroll"><?php echo $block[$i]['headline']; ?></a></div>
+						<?php for($n=0; $n<count($block[$i]['contents']); $n++): ?>
+							<?php if($block[$i]['contents'][$n]['column_headline2']): ?>
+								<div><a href="#<?php echo 'index'.($i+1).'-'.($n+1); ?>" class="scroll"><?php echo $block[$i]['contents'][$n]['column_headline2']; ?></a></div>
+							<?php endif; ?>
+						<?php endfor; ?>
+					</div>
+					<?php endfor; ?>
+				</section>
+
+				<?php for($i=0; $i<count($block); $i++): ?>
+				<section class="entryBlock">
+					<h2 class="cotentTitle" id="<?php echo 'index'.($i+1); ?>"><?php echo $block[$i]['headline']; ?></h2>
+
+					<?php for($n=0; $n<count($block[$i]['contents']); $n++): ?>
+					<div class="paragraph">
+						<?php if($block[$i]['contents'][$n]['column_headline2']): ?>
+							<h3 id="<?php echo 'index'.($i+1).'-'.($n+1); ?>"><?php echo $block[$i]['contents'][$n]['column_headline2']; ?></h3>
+						<?php endif; ?>
+						<?php echo $block[$i]['contents'][$n]['column_contents']; ?>
+					</div>
+					<?php endfor; ?>
+				</section>
+				<?php endfor; ?>
+
 			</div>
 		</div>
 

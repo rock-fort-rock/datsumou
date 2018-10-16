@@ -228,7 +228,7 @@
 				background-color: #fffff3;
 				border-top: 2px dotted #ccc;
 				border-bottom: 2px dotted #ccc;
-				margin-bottom: 10px;
+				margin-bottom: 20px;
 			}
 			h3{
 				font-size: 15px;
@@ -245,20 +245,42 @@
 				font-weight: bold;
 				line-height: 1.2;
 				color: #4580ba;
+				// margin-top: 10px;
 				margin-bottom: 5px;
+				// border-left: 3px solid #4580ba;
+				// border-bottom: 1px dotted #4580ba;
+				// padding: 5px 0;
+			}
+
+			h5{
+				font-size: 12px;
+				font-weight: bold;
+				line-height: 1.2;
+				// margin-top: 10px;
+				margin-bottom: 5px;
+			}
+			table{
+				border: 1px solid #ccc;
+				td,tr{
+					border: 1px solid #ccc;
+					padding: 5px;
+				}
 			}
 		}
 		@media screen and (min-width: $breakpoint + 1){
 			.entryBlock{
 				margin-bottom: 50px;
 				.cotentTitle{
-					font-size: 22px;
+					font-size: 24px;
 				}
 				h3{
-					font-size: 18px;
+					font-size: 20px;
 				}
 				h4{
-					font-size: 16px;
+					font-size: 17px;
+				}
+				h5{
+					font-size: 15px;
 				}
 			}
 		}

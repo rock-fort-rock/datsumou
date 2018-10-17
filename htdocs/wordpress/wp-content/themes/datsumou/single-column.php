@@ -6,6 +6,11 @@ $status = [
 <?php get_header(); ?>
 
 <?php
+$terms = get_terms('column_category');
+// print_r($terms);
+
+$the_terms = get_the_terms($post->ID, 'column_category' );
+
 $block = [];
 while(the_repeater_field('column_block')){
 	$tempBlock['headline'] = get_sub_field('column_headline');
@@ -18,20 +23,23 @@ while(the_repeater_field('column_block')){
 	<section class="contentBlock">
 		<div class="categorySelectWrapper">
 			<div class="categorySelect">
-				<select>
-					<option>カテゴリ</option>
-					<option>カテゴリ１</option>
-					<option>カテゴリ２</option>
+				<select onChange="location.href=value;">
+					<option selected>カテゴリ選択</option>
+					<?php foreach($terms as $value): ?>
+					<option value="/column/column_category/<?php echo $value->slug; ?>/"><?php echo $value->name; ?></option>
+					<?php endforeach; ?>
 				</select>
 			</div>
 		</div>
 
 		<header class="entryHeader">
-			<h1 class="entryTitle">記事のタイトルが入ります</h1>
+			<h1 class="entryTitle"><?php the_title(); ?></h1>
 			<div class="entryAttribute">
-				<div class="date">2018年10月1日</div>
-				<ul class="category"><li><a href="#">カテゴリ１</a></li><li><a href="#">カテゴリ２</a></li></ul>
-				<div class="author">ライターA</div>
+				<div class="date"><?php the_time('Y年m月d日'); ?></div>
+				<?php if($the_terms): ?>
+				<ul class="category"><?php foreach($the_terms as $value): ?><li><a href="/column/column_category/<?php echo $value->slug; ?>/"><?php echo $value->name; ?></a></li><?php endforeach; ?></ul>
+				<?php endif; ?>
+				<div class="author"><?php the_author(); ?></div>
 			</div>
 		</header>
 
@@ -73,8 +81,6 @@ while(the_repeater_field('column_block')){
 
 			</div>
 		</div>
-
-		<?php //the_post(); the_content(); ?>
 	</section>
 </div>
 

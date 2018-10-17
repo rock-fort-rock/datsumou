@@ -306,7 +306,9 @@ function custom_posts_query() {
   global $wp_query;
   if(!is_admin()){
     if(is_post_type_archive('column')){
-      $wp_query -> query_vars['posts_per_page'] = 1;
+      $wp_query -> query_vars['posts_per_page'] = 6;
+    }elseif(is_tax('column_category')){
+      $wp_query -> query_vars['posts_per_page'] = 6;
     }else{
       $wp_query -> query_vars['posts_per_page'] = -1;
     }

@@ -95,12 +95,18 @@ if($status['description']){
 				<?php endif; ?>
 				<div class="gNaviSect">
 					<div class="gNaviHeadline">脱毛診断メーカー最新の記事</div>
+					<?php
+					$columnArg = array(
+						'post_type' => 'column',
+						'posts_per_page'   => 5,
+					);
+					$columnPosts = get_posts($columnArg);
+					// print_r($columnPosts);
+					?>
 					<ul class="gNaviMenu noneArrow">
-						<li><a href="#">コロリーコロリーコロリーコロリーコロリーコロリーコロリーコロリーコロリーコロリー</a></li>
-						<li><a href="#">ミュゼプラチナムミュゼプラチナムミュゼプラチミュゼプラチナム</a></li>
-						<li><a href="#">銀座カラー銀座カラー銀座カラー</a></li>
-						<li><a href="#">キレイモ</a></li>
-						<li><a href="#">脱毛ラボ</a></li>
+						<?php foreach($columnPosts as $value): ?>
+						<li><a href="<?php echo get_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a></li>
+						<?php endforeach; ?>
 					</ul>
 					<div class="readMore"><a href="/column/">もっと記事を読む</a></div>
 				</div>

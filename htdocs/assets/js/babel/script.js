@@ -137,6 +137,27 @@ $(() => {
 	})
 });
 
+//コラム目次
+$(() => {
+	const ele = $('.tableofcontents');
+	if(ele.length < 1)return;
+
+	let hide = true;//テキスト非表示
+	$('.displayToggle').on({
+		'click': (e) => {
+			$(e.currentTarget).next('ul').slideToggle(400);
+			hide = !hide;
+			let str;
+			if(hide){
+				str = '[非表示]';
+			}else{
+				str = '[表示]';
+			}
+			$(e.currentTarget).text(str);
+		}
+	})
+})
+
 
 
 

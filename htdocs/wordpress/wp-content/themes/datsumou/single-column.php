@@ -50,19 +50,22 @@ while(the_repeater_field('column_block')){
 				<section class="entryBlock">
 					<?php echo get_field('column_lede'); ?>
 				</section>
-				<section class="entryBlock">
-					目次
-					<?php for($i=0; $i<count($block); $i++): ?>
-					<div class="tableofcontents">
-						<div><a href="#<?php echo 'index'.($i+1); ?>" class="scroll"><?php echo $block[$i]['headline']; ?></a></div>
-						<?php for($n=0; $n<count($block[$i]['contents']); $n++): ?>
-							<?php if($block[$i]['contents'][$n]['column_headline2']): ?>
-								<div><a href="#<?php echo 'index'.($i+1).'-'.($n+1); ?>" class="scroll"><?php echo $block[$i]['contents'][$n]['column_headline2']; ?></a></div>
-							<?php endif; ?>
-						<?php endfor; ?>
-					</div>
-					<?php endfor; ?>
-				</section>
+
+<section class="entryBlock">
+<div class="tableofcontents">
+<div class="title">目次</div><span class="displayToggle">[非表示]</span>
+<ul>
+<?php for($i=0; $i<count($block); $i++): ?>
+<li class="main"><a href="#<?php echo 'index'.($i+1); ?>" class="scroll"><?php echo $block[$i]['headline']; ?></a></li>
+<?php for($n=0; $n<count($block[$i]['contents']); $n++): ?>
+<?php if($block[$i]['contents'][$n]['column_headline2']): ?>
+<li class="sub"><a href="#<?php echo 'index'.($i+1).'-'.($n+1); ?>" class="scroll"><?php echo $block[$i]['contents'][$n]['column_headline2']; ?></a></li>
+<?php endif; ?>
+<?php endfor; ?>
+<?php endfor; ?>
+</ul>
+</div>
+</section>
 
 				<?php for($i=0; $i<count($block); $i++): ?>
 				<section class="entryBlock">

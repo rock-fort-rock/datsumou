@@ -18,6 +18,10 @@ while(the_repeater_field('column_block')){
 	array_push($block, $tempBlock);
 }
 // print_r($block);
+
+$tocGroup = get_field('column_toc');
+$tocHide = $tocGroup['column_toc_hide'];
+// print_r($tocHide);
 ?>
 <div class="mainContents">
 	<section class="contentBlock">
@@ -51,12 +55,15 @@ while(the_repeater_field('column_block')){
 					<?php echo get_field('column_lede'); ?>
 				</section>
 
+<?php if($tocHide != 1): ?>
 <section class="entryBlock">
 <div class="tableofcontents">
 <div class="title">目次</div><span class="displayToggle">[非表示]</span>
 <ul>
 <?php for($i=0; $i<count($block); $i++): ?>
+<?php if($block[$i]['headline']): ?>
 <li class="main"><a href="#<?php echo 'index'.($i+1); ?>" class="scroll"><?php echo $block[$i]['headline']; ?></a></li>
+<?php endif; ?>
 <?php for($n=0; $n<count($block[$i]['contents']); $n++): ?>
 <?php if($block[$i]['contents'][$n]['column_headline2']): ?>
 <li class="sub"><a href="#<?php echo 'index'.($i+1).'-'.($n+1); ?>" class="scroll"><?php echo $block[$i]['contents'][$n]['column_headline2']; ?></a></li>
@@ -66,10 +73,13 @@ while(the_repeater_field('column_block')){
 </ul>
 </div>
 </section>
+<?php endif; ?>
 
 				<?php for($i=0; $i<count($block); $i++): ?>
 				<section class="entryBlock">
+					<?php if($block[$i]['headline']): ?>
 					<h2 class="cotentTitle" id="<?php echo 'index'.($i+1); ?>"><?php echo $block[$i]['headline']; ?></h2>
+					<?php endif; ?>
 
 					<?php for($n=0; $n<count($block[$i]['contents']); $n++): ?>
 					<div class="paragraph">

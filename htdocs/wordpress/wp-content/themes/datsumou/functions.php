@@ -350,19 +350,18 @@ function tinymce_init( $init ) {
 
 
 
-//ニュース本文へtextButton追加のショートコード
-function text_button($array) {
-  extract($array);
-  $code = '<a href="'.$link.'" class="textButton">'.$text.'</a>';
-  return $code;
+//ショートコード
+function setStar($arg) {
+  extract ( shortcode_atts ( array (
+    'num' => 0,
+  ), $arg ) );
 
-  // $ebis = ' class="ebis_button_trigger" data-cid="n7KN2LH2" data-pid="'.$id.'" data-o1id="'.$id.'" data-o2id="" data-o3id="" data-o4id="" data-o5id="" data-m1id="" data-a1id=""';
-  // $code = '<a href="'. $url . '" target="_blank" onclick="ga(\'send\', \'event\', \'entry\', \'sportsentry\', \'entry-page\');"' . $ebis . '>';
-  // $code .= '<img src="/series/images/sportsentry.jpg">';
-  // $code .= '</a>';
+  for($i=0; $i<$num; $i++){
+    $code .= '★';
+  }
   return $code;
 }
-add_shortcode('button', 'text_button');
+add_shortcode('星マーク', 'setStar');
 
 
 //マニュアルページ作成

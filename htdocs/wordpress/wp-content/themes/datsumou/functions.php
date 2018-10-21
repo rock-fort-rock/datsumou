@@ -357,18 +357,54 @@ function setStar($arg) {
   ), $arg ) );
 
   for($i=0; $i<$num; $i++){
-    $code .= '★';
+    $code .= '<span class="rating">★</span>';
   }
   return $code;
 }
 add_shortcode('星マーク', 'setStar');
 
+function setList($arg) {
+  extract ( shortcode_atts ( array (
+    'title' => '',
+    'text' => '',
+  ), $arg ) );
+
+  $code .= '<div class="pointList">';
+  if($title){
+    $code .= '<div class="pointTitle">'.$title.'</div>';
+  }
+  $code .= '<ul>';
+  $arrayText = explode(",", $text);
+  foreach($arrayText as $value){
+    $code .= '<li>'.$value.'</li>';
+  }
+  $code .= '</ul>';
+  $code .= '</div>';
+  return $code;
+}
+add_shortcode('リスト', 'setList');
+
+function setRanking($arg) {
+  extract ( shortcode_atts ( array (
+    'rank' => '',
+    'title' => '',
+    'catch' => '',
+  ), $arg ) );
+
+  $code = '<div class="rankingDeco">';
+  $code .= '<div class="crown">'.$rank.'</div>';
+  $code .= '<div class="title">'.$title.'<span>'.$catch.'</span></div>';
+  $code .= '</div>';
+  return $code;
+}
+add_shortcode('ランキング装飾', 'setRanking');
+
 
 //マニュアルページ作成
-// function original_page() {
-// add_menu_page('マニュアル', 'マニュアル', 1, 'original_page', 'original_menu');
-// }
-// add_action('admin_menu', 'original_page');
+function original_page() {
+add_menu_page('マニュアル', 'マニュアル', 1, 'original_page', 'original_menu');
+}
+add_action('admin_menu', 'original_page');
 
-// function original_menu() {include 'manual.php';}
+function original_menu() {include 'manual.php';}
 ?>

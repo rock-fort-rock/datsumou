@@ -430,6 +430,197 @@ ELEMENT
 	}
 }
 
+.ctaButto{
+	position: relative;
+	display: inline-block;
+	color: #fff;
+	padding: 10px 20px;
+	font-size: 1.2rem;
+	font-weight: bold;
+	// text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+	overflow: hidden;
+	min-width: 280px;
+	text-align: center;
+	@media screen and (min-width: $breakpoint + 1){
+		font-size: 1.4rem;
+		padding: 15px 30px;
+		@include hover;
+	}
+	&.green{
+		background-color: #44dc09;
+	}
+	&.red{
+		background-color: #ff175e;
+	}
+	&.blue{
+		background-color: #137dff;
+	}
+	&.orange{
+		background-color: #ff7608;
+	}
+
+
+	&.expand{
+		border-radius: 10px;
+		box-shadow: inset 0 4px 0 rgba(255,255,255,0.2), inset 0 -4px 0 rgba(0, 0, 0, 0.05);
+		border: 3px solid rgba(0,0,0,0.1);
+		animation: expand .5s infinite alternate;
+		@media screen and (min-width: $breakpoint + 1){
+			border-radius: 20px;
+		}
+	}
+	@keyframes expand {
+		 0% {
+		    transform: scale(1);
+		 }
+		 100% {
+		    transform: scale(1.06);
+		 }
+	}
+
+	&.blink{
+		border-radius: 4px;
+		border-bottom: solid 3px #444;
+		@media screen and (min-width: $breakpoint + 1){
+			border-radius: 6px;
+		}
+		&::before {
+			content: "";
+		    display: block;
+		    position: absolute;
+		    // z-index: -1;
+		    // left: -30%;
+		    // top: -50%;
+
+		    top: 0;
+		    left: 0;
+		    width: 30px;
+		    height: 100%;
+		    // transform: translate(0, -50%);
+		    transform: scaleY(2) rotate(30deg);
+		    background-image: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5), 40%,rgba(255,255,255,0.5) 60%,rgba(255,255,255,0) 100%);
+		    animation: blink 3s infinite linear;
+		}
+	}
+	@keyframes blink {
+		0% {
+	        left: -30%;
+	    }
+	    20% {
+	        left: 120%;
+	    }
+	    100% {
+	        left: 120%;
+	    }
+	}
+}
+
+.pointList{
+	.pointTitle{
+		padding: 5px 15px;
+		color: #fff;
+		font-size: 1.1rem;
+		font-weight: bold;
+		display: inline-block;
+		background-color: #599FD3;
+		margin-bottom: 10px;
+		border-radius: 5px;
+		position: relative;
+		&::after{
+			content: '';
+			position: absolute;
+			bottom: -15px;
+			left: 15px;
+			width: 0;
+			height: 0;
+			border: 10px solid transparent;
+			border-top: 10px solid #599FD3;
+		}
+	}
+	ul{
+		background-color: #e7f5ff;
+		padding: 10px;
+		// border: px solid #599FD3;
+		li{
+			position: relative;
+			padding-left: 20px;
+			&:not(:last-child){
+				margin-bottom: 5px;
+			}
+			&::after{
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 14px;
+				height: 14px;
+				border-radius: 3px;
+				background: url('/assets/images/icon_check.svg') top right/80% auto no-repeat #008df4;
+			}
+		}
+	}
+	@media screen and (min-width: $breakpoint + 1){
+		ul{
+			padding: 15px;
+			li{
+				padding-left: 25px;
+				&:not(:last-child){
+					margin-bottom: 10px;
+				}
+				&::after{
+					width: 18px;
+					height: 18px;
+				}
+			}
+		}
+	}
+	
+}
+
+.rankingDeco{
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	.crown{
+		width: 70px;
+		height: 70px;
+		background: url('/assets/images/ranking_crown.png') center center/100% auto no-repeat;
+		display: flex;
+		padding-top: 10px;
+		// align-items: center;
+		justify-content: center;
+		font-family: 'Playfair Display SC', serif;
+		color: #e2c14a;
+		font-size: 38px;
+		line-height: 1;
+	}
+	.title{
+		width: calc(100% - 80px);
+		font-size: 1.3rem;
+		font-weight: bold;
+		color: #e2c14a;
+		span{
+			display: block;
+			font-size: 0.9rem;
+			color: #666;
+			margin-top: 3px;
+		}
+
+	}
+	@media screen and (min-width: $breakpoint + 1){
+		.crown{
+			width: 90px;
+			height: 90px;
+			font-size: 48px;
+			padding-top: 12px;
+		}
+		.title{
+			width: calc(100% - 100px);
+			font-size: 24px;
+		}
+	}
+}
 
 /*---------------------------------
 FOOTER

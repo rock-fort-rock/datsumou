@@ -30,6 +30,7 @@
 		}
 	}
 	.salonName{
+		font-family: "Midashi Go MB31", $baseFont;
 		font-size: 24px;
 		font-weight: bold;
 		padding-left: 110px;
@@ -100,6 +101,7 @@
 				width: 88%;
 				li{
 					color: #fff;
+					font-family: "Midashi Go MB31", $baseFont;
 					font-size: 12px;
 					background: url('/assets/images/point_check.png') center left/16px auto no-repeat;
 					padding-left: 20px;
@@ -425,6 +427,7 @@
 #salonDetail{
 	.salonHeader{
 		.salonName{
+			font-family: "Midashi Go MB31", $baseFont;
 			padding-left: 15px;
 		}
 		@media screen and (min-width: $breakpoint + 1){

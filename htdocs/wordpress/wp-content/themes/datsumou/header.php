@@ -22,19 +22,13 @@ while(the_repeater_field('option_naviBanner', 'option')){
 <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
 <?php /*<title><?php wp_title("|", true, "right");?><?php bloginfo('name'); ?></title>*/ ?>
 <?php wp_head(); ?>
-<?php /*
-<meta name="keywords" content="">
-<meta name="description" content="<?php
-if($status['description']){
-	echo $status['description'];
-}else{
-	if(!is_home()){
-		echo get_the_title().'｜';
-	}
-	echo get_bloginfo( 'description' );
-}
-?>">
-*/ ?>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KVVHX8W');</script>
+<!-- End Google Tag Manager -->
 <?php /*<link rel="shortcut icon" href="/images/favicon.ico">
 <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png">*/ ?>
 </head>

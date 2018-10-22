@@ -1,6 +1,8 @@
 $breakpoint: 780px;
 $breakpoint-m: 1080px;
 
+$baseFont: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+
 $pc_headerHight: 80px;
 $pc_footerHight: 110px;
 $sp_headerHight: 50px;

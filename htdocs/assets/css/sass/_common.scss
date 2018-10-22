@@ -11,8 +11,7 @@ body{
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	position: relative;
-	// font-family: 'Noto Sans Japanese', "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
-	font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
+	font-family: $baseFont;
 	line-height: 1.4;
 	color: #3f3f3f;
 	width: 100%;
@@ -215,6 +214,7 @@ ELEMENT
 		transition: transform .4s;
 		z-index: 1;
 		.gNaviHeadline{
+			font-family: "Midashi Go MB31", $baseFont;
 			background-color: #f85793;
 			color: #fff;
 			text-align: center;

@@ -456,7 +456,7 @@
 				</tr>
 
 				<?php
-					$this->options['border-width'] = (preg_replace('/[^0-9]/', '', $this->options['border-width']) - 0).'px';
+					$this->options['border-width'] = (preg_replace('/[^0-9]/', '', (int)$this->options['border-width']) - 0).'px';
 					$this->options['border-style'] = (isset($this->options['border-style']) ? $this->options['border-style'] : $this->defaults['border-style']);
 					$this->options['border-color'] = (isset($this->options['border-color']) ? $this->options['border-color'] : $this->defaults['border-color']);
 					$in_data = (isset($this->options['border']) ? $this->options['border'] : '');

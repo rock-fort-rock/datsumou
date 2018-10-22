@@ -1,0 +1,40 @@
+.diagnosisChart{
+	.questionsContainer{
+		ul.questions{
+			li{
+				&:not(.active){
+					display: none;
+				}
+				.headline{
+					font-size: 1.2rem;
+				}
+				.choices{
+					width: 620px;
+					margin: 0 auto;
+					display: flex;
+					justify-content: space-between;
+					.answer{
+						width: 300px;
+						background-color: #ccc;
+						padding: 10px;
+						text-align: center;
+						cursor: pointer;
+					}
+				}
+			}
+		}
+	}
+
+	.resultContainer{
+		display: none;
+		&.active{
+			display: block;
+		}
+		.result{
+			&:not(.active){
+				display: none;
+			}
+		}
+	}
+	
+}

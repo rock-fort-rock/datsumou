@@ -1,11 +1,13 @@
 // import SmoothScroll from './smooth-scroll.polyfills.min';
 // import Swiper from './swiper.min';
-import $ from 'jquery';
+
+// import $ from 'jquery';//webpack.configで読み込み
 import Chart from 'chart.js';
 const breakpoint = 780;
 const bodyWidth = document.body.clientWidth;
 const ua = window.navigator.userAgent.toLowerCase();
 
+import Diagnosis from './diagnosis';//診断チャートクラス
 
 //共通
 $(() => {
@@ -53,6 +55,16 @@ $(() => {
 		$('.gFooter').css('marginBottom', h);
 	}
 })
+
+//診断チャート
+$(() => {
+	const ele = $('.diagnosisChart');
+	if(ele.length < 1)return;
+	
+	const diagnosis = new Diagnosis();
+	diagnosis.init();
+})
+
 
 //サロン情報
 $(() => {

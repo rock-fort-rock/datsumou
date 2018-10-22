@@ -10,8 +10,8 @@
 	<div class="card">
 		<h2>テーブル</h2>
 		<p>デザイン別に基本コードを用意していますので、<br>Post Snipepets->「テーブル Type●」から呼び出して内容を編集してください。</p>
-		<p><img src="<?php echo get_template_directory_uri(); ?>/images/postsnippet_visual.jpg" style="width:100%; border:1px solid #ccc;"><br><span style="font-size:90%;">ビジュアルモード時</span></p>
-		<p><img src="<?php echo get_template_directory_uri(); ?>/images/postsnippet_text.jpg" style="width:100%; border:1px solid #ccc;"><br><span style="font-size:90%;">テキストモード時</span></p>
+		<p><img src="<?php echo get_template_directory_uri(); ?>/images/postsnippet_visual.jpg" style="width:100%; border:1px solid #ccc;"><br><span style="font-size:85%;">ビジュアルモード時</span></p>
+		<p><img src="<?php echo get_template_directory_uri(); ?>/images/postsnippet_text.jpg" style="width:100%; border:1px solid #ccc;"><br><span style="font-size:85%;">テキストモード時</span></p>
 		<p>表の基本操作法は<a href="https://bazubu.com/wordpress-table-23943.html" target="_blank">こちら</a>をご覧ください。</p>
 		<p>星マークを入れたい場合は、Post Snipepets->「星マーク」を選択後、numに表示数（半角数字）を入力してください。<br>
 		※表の中に限らず、どこでも使えます。</p>
@@ -33,5 +33,11 @@
 	<div class="card">
 		<h2>ランキング装飾</h2>
 		<p>Post Snipepets->「ランキング装飾」を選択後、「rank」に数字（半角数字）、「title」にタイトル、「catch」にタイトルの下に入るテキスト（任意）を入力してください。</p>
+	</div>
+	<div class="card">
+		<h2>リンクカード</h2>
+		<p>「リンクカード作成」を選択後、URLを入力してください。</p>
+		<p><img src="<?php echo get_template_directory_uri(); ?>/images/linkcard_visual.jpg" style="width:100%; border:1px solid #ccc;"><br><span style="font-size:85%;">ビジュアルモード時</span></p>
+		<p><img src="<?php echo get_template_directory_uri(); ?>/images/linkcard_text.jpg" style="width:100%; border:1px solid #ccc;"><br><span style="font-size:85%;">テキストモード時</span></p>
 	</div>
 </div>

@@ -77,13 +77,13 @@ module.exports = [
         })
       ]
     },
-    // plugins: [
-    //   new webpack.ProvidePlugin({
-    //     //jquery読み込み
-    //     $: 'jquery',
-    //     jQuery: 'jquery'
-    //   })
-    // ],
+    plugins: [
+      new webpack.ProvidePlugin({
+        //jquery読み込み
+        $: 'jquery',
+        jQuery: 'jquery'
+      })
+    ],
 
     module: {
       rules: [

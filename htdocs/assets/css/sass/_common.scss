@@ -214,7 +214,8 @@ ELEMENT
 		transition: transform .4s;
 		z-index: 1;
 		.gNaviHeadline{
-			font-family: "Midashi Go MB31", $baseFont;
+			// font-family: "Midashi Go MB31", $baseFont;
+			font-weight: bold;
 			background-color: #f85793;
 			color: #fff;
 			text-align: center;

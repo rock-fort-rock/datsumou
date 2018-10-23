@@ -1,5 +1,23 @@
 .diagnosisChart{
+	.diagnosisStartContainer{
+		display: none;
+		&.active{
+			display: block;
+		}
+		.diagnosisStart{
+			width: 300px;
+			background-color: #ccc;
+			padding: 10px;
+			text-align: center;
+			cursor: pointer;
+		}
+	}
+
 	.questionsContainer{
+		display: none;
+		&.active{
+			display: block;
+		}
 		ul.questions{
 			li{
 				&:not(.active){
@@ -22,6 +40,13 @@
 					}
 				}
 			}
+		}
+	}
+
+	.loadingContainer{
+		display: none;
+		&.active{
+			display: block;
 		}
 	}
 

@@ -186,7 +186,8 @@
 	.entryHeader{
 		margin-bottom: 15px;
 		.entryTitle{
-			font-family: "Midashi Go MB31", $baseFont;
+			// font-family: "Midashi Go MB31", $baseFont;
+			font-weight: bold;
 			background-color: #f95793;
 			color: #fff;
 			padding: 8px 15px;

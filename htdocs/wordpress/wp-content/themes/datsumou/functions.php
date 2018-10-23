@@ -79,7 +79,7 @@ function my_scripts() {
   // wp_deregister_script('jquery');
 
   // wp_deregister_script('window._se_plugin_version');
-  wp_enqueue_script('sakurawebfont', '//webfonts.sakura.ne.jp/js/sakura.js', array(), '', true );
+  // wp_enqueue_script('sakurawebfont', '//webfonts.sakura.ne.jp/js/sakura.js', array(), '', true );
   wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '1.5', true );
 
   // if(is_page('contact')){

@@ -20,7 +20,7 @@ while(the_repeater_field('option_naviBanner', 'option')){
 <meta charset="UTF-8">
 <meta name="format-detection" content="telephone=no">
 <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-<?php /*<title><?php wp_title("|", true, "right");?><?php bloginfo('name'); ?></title>*/ ?>
+<?php /*all in one seo packを2.9にアップデートするとトップページに反映されなくなるので注意*/ ?>
 <?php wp_head(); ?>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

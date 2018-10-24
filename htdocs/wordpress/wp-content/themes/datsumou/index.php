@@ -6,9 +6,9 @@ $status = [
 <?php get_header(); ?>
 <div class="mainContents">
 	<section class="contentBlock">
-		<div style="background-color: #ededed; height: 0; padding-top: 60%"></div>
+		<!-- <div style="background-color: #ededed; height: 0; padding-top: 60%"></div> -->
 
-		<!-- <div class="diagnosisChart">
+		<div class="diagnosisChart">
 
 			<div class="diagnosisStartContainer active">
 				<div class="diagnosisStart">脱毛診断スタート</div>
@@ -70,7 +70,7 @@ $status = [
 				<div class="result resultO">Oタイプ</div>
 				<div class="result resultP">Pタイプ</div>
 			</div>
-		</div> -->
+		</div>
 
 	</section>
 	<?php $salonPosts = get_field('ranking_top', 'option'); ?>

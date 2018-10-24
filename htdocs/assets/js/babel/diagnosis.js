@@ -18,6 +18,7 @@ export default class Diagnosis{
 				const current = $('.questions li').index(q);
 				$(q).removeClass('active');
 				this.answerArray.push($(e.currentTarget).data('answer'));
+				// console.log($(e.currentTarget).data('answer'));
 				if(current == totalQ-1){
 					this.loading();
 					$('.questionsContainer').removeClass('active');
@@ -33,7 +34,7 @@ export default class Diagnosis{
 		$('.loadingContainer').addClass('active');
 		for(let i=0; i<this.answerArray.length; i++){
 			const answer = $('.questions li').eq(i).find('[data-answer="'+this.answerArray[i]+'"]').text();
-			$('ul.checkedAnswer').append('<li>'+answer+'</li>');
+			$('.checkedAnswer ul').append('<li>'+answer+'</li>');
 		}
 		setTimeout(()=>{
 			this.result();

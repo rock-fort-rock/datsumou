@@ -7,8 +7,19 @@ $status = [
 <div class="mainContents">
 	<section class="contentBlock">
 		<!-- <div style="background-color: #ededed; height: 0; padding-top: 60%"></div> -->
-
 		<div class="diagnosisChart">
+			<div class="header statusStart">
+				<div class="headerStart">
+					<img src="/assets/images/home/logo_large.png" class="logo" alt="ツルツル！全身脱毛診断メーカー">
+					<img src="/assets/images/home/cat.png" class="cat">
+				</div>
+
+				<div class="headerResult">
+					<img src="/assets/images/home/title_result.png" class="title onlySmall" alt="あなたにぴったりの脱毛サロンは…">
+					<img src="/assets/images/home/title_result_pc.png" class="title exceptSmall" alt="あなたにぴったりの脱毛サロンは…">
+				</div>
+			</div>
+
 
 			<div class="diagnosisStartContainer diagnosisContainer active">
 				<div class="textTitle">
@@ -77,8 +88,25 @@ $status = [
 				</div>
 			</div>
 
-			<div class="resultContainer">
-				<div class="result resultA">Aタイプ</div>
+			<div class="resultContainer diagnosisContainer">
+				<div class="result resultA">
+					<div class="catch">自分に必要な脱毛を知っているあなたには</div>
+					<!-- <div class="salonInfo">
+						<div class="resultSalonHeader">
+							<div class="logo"><img src="/assets/images/sample_logo.gif"></div>
+							<div class="salonName"><span>ミュゼプラチナム</span>がおすすめ！</div>
+						</div>
+						<div class="comment">脱毛の老舗のミュゼプラチナムなら、店舗数も業界最大・高速マシンで短期間で脱毛が完了。あなたの望む箇所の脱毛が可能なので、無駄なお金を使う必要もありません！</div>
+						<div class="buttons">
+							<ul>
+								<li class="official"><a href="http://localhost:8013/link/coloree/" target="_blank"><img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る"></a></li>
+								<li class="detail"><a href="http://localhost:8013/salon/coloree/"><img src="/assets/images/btn_detail.png" alt="詳細を見る"></a></li>
+							</ul>
+							<div class="moreRanking"><a href="#"><span>ランキングをみる</span></a></div>
+						</div>
+					</div> -->
+					<?php echo result_SalonInfo('musee', 'a'); ?>
+				</div>
 				<div class="result resultB">Bタイプ</div>
 				<div class="result resultC">Cタイプ</div>
 				<div class="result resultD">Dタイプ</div>
@@ -96,12 +124,14 @@ $status = [
 				<div class="result resultP">Pタイプ</div>
 			</div>
 
-			<div class="title">
-				<img src="/assets/images/home/logo_large.png" class="logo" alt="ツルツル！全身脱毛診断メーカー">
-				<img src="/assets/images/home/cat.png" class="cat">
-			</div>
 			
-			<div class="moko"><img src="/assets/images/home/moko1.png" class="start"></div>
+			
+			<div class="moko statusStart">
+				<img src="/assets/images/home/moko1.png" class="startMoko">
+				<img src="/assets/images/home/moko2.png" class="resultMoko">
+			</div>
+
+			<div class="illustCopyright"><img src="/assets/images/home/copyright.png"></div>
 		</div>
 
 	</section>

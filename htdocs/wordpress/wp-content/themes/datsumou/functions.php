@@ -407,4 +407,37 @@ add_menu_page('マニュアル', 'マニュアル', 1, 'original_page', 'origina
 add_action('admin_menu', 'original_page');
 
 function original_menu() {include 'manual.php';}
+
+
+//診断結果のサロン情報部分
+function result_SalonInfo($slug, $type){
+  $arg = array('post_type'=>'salon','name'=>$slug);
+  $salon = get_posts($arg);
+  $id = $salon[0]->ID;
+  $title = $salon[0]->post_title;
+  $result = get_field('salon_chartResult', $id);
+  $logoObj = $result['salon_chartResult_logo'];
+  $logo = $logoObj['sizes']['medium'];
+  $comment = $result['salon_chartResult_comment'];
+  $officialsite = get_field('salon_officialsite', $id);
+  $detail = get_the_permalink($id);
+  $link = '/ranking/'.$type. '/';
+
+  $return = '<div class="salonInfo">';
+  $return .= '<div class="resultSalonHeader">';
+  $return .= '<div class="logo"><img src="'.$logo.'"></div>';
+  $return .= '<div class="salonName"><span>'.$title.'</span>がおすすめ！</div>';
+  $return .= '</div>';
+  $return .= '<div class="comment">'.$comment.'</div>';
+  $return .= '<div class="buttons">';
+  $return .= '<ul>';
+  $return .= '<li class="official"><a href="'.$officialsite.'" target="_blank"><img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る"></a></li>';
+  $return .= '<li class="detail"><a href="'.$detail.'"><img src="/assets/images/btn_detail.png" alt="詳細を見る"></a></li>';
+  $return .= '</ul>';
+  $return .= '<div class="moreRanking"><a href="'.$link.'"><span>ランキングをみる</span></a></div>';
+  $return .= '</div>';
+  $return .= '</div>';
+
+  return $return;
+}
 ?>

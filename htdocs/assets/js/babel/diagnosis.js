@@ -1,3 +1,5 @@
+import imagesLoaded from 'imagesloaded';
+
 export default class Diagnosis{
 	constructor(){
 		// console.log('Diagnosis');
@@ -5,6 +7,14 @@ export default class Diagnosis{
 	}
 	
 	init(){
+		imagesLoaded('.diagnosisChart', { background: true }, () => {
+			console.log('loaded');
+			this.start();
+		});
+	}
+
+	start(){
+		$('.diagnosisChart').addClass('start');
 		const totalQ = $('.questions li').length;
 		$('.diagnosisStart').on({
 			'click': (e) => {
@@ -38,9 +48,10 @@ export default class Diagnosis{
 		}
 		setTimeout(()=>{
 			this.result();
-		}, 6000)
+		}, 5000)
 	}
 	result(){
+		$('.diagnosisChart .header,.diagnosisChart .moko').removeClass('statusStart').addClass('statusResult');
 		$('.loadingContainer').removeClass('active');
 		$('.resultContainer').addClass('active');
 		const resultStr = this.answerArray.join(',');

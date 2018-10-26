@@ -270,8 +270,8 @@ function cpt_salon_init()
 
 if( function_exists('acf_add_options_page') ) {
   acf_add_options_page(array(
-    'page_title'  => 'オプション設定',
-    'menu_title'  => 'オプション設定',
+    'page_title'  => 'バナー設定',
+    'menu_title'  => 'バナー設定',
     'menu_slug'   => 'theme-options',
     'capability'  => 'edit_posts',
     'parent_slug' => '',

@@ -1,18 +1,26 @@
 .diagnosisChart{
 	visibility: hidden;
 	position: relative;
-	// height: 375px;
-	background: url('/assets/images/home/chart_bg.jpg') top center/100% auto;
+	min-height: 305px;
+	background: url('/assets/images/home/chart_bg.jpg') top center/auto 500px;/*.started heightと揃える*/
 	padding: 120px 0 20px;
 	opacity: 0;
+	overflow: hidden;
 	&.start{
 		opacity: 1;
 		transition: opacity .5s .5s;
 		visibility: visible;
 	}
+	@media screen and (max-width: $breakpoint){
+		&.started{
+			min-height: 500px;
+			transition: min-height .4s;
+		}
+	}
 	@media screen and (min-width: $breakpoint + 1){
-		min-height: 550px;
-		height: 100%;
+		background: url('/assets/images/home/chart_bg.jpg') top center/cover;
+		height: 560px;
+		min-height: auto;
 		padding: 160px 0 20px;
 	}
 	.header{
@@ -20,10 +28,9 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		// height: 150px;
+		height: 100%;
 		z-index: 1;
 		.headerStart{
-			display: none;
 			.logo{
 				position: absolute;
 				left: 50%;
@@ -40,7 +47,8 @@
 			}
 		}
 		.headerResult{
-			display: none;
+			opacity: 0;
+			transform: translateY(10px);
 			.title{
 				margin-top: 15px;
 				width: 210px;
@@ -49,15 +57,15 @@
 			}
 		}
 
-		&.statusStart{
-			.headerStart{
-				display: block;
-			}
-			
-		}
+
 		&.statusResult{
+			.headerStart{
+				display: none;
+			}
 			.headerResult{
-				display: block;
+				opacity: 1;
+				transform: translateY(0);
+				transition: all .4s .2s;
 			}
 		}
 		@media screen and (min-width: $breakpoint + 1){
@@ -80,7 +88,6 @@
 				}
 			}
 			.headerResult{
-				display: none;
 				.title{
 					position: absolute;
 					left: 35%;
@@ -95,12 +102,14 @@
 	}
 
 	.diagnosisContainer{
+		// position: relative;
+		position: absolute;
 		width: calc(100% - 30px);
-		margin: 0 auto;
+		left: 15px;
 		background: url('/assets/images/home/content_bg.png') top center/cover;
 		box-shadow:1px 1px 5px rgba(0,0,0,0.2);
-		position: relative;
 		z-index: 2;
+		display: none;
 		.textTitle{
 			text-align: center;
 			margin-bottom: 10px;
@@ -108,153 +117,199 @@
 				height: 16px;
 			}
 		}
+
+		&.active{
+			display: block;
+			animation: chartActive .8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s backwards;
+		}
+		@keyframes chartActive {
+			 0% {
+			 	opacity: 0;
+			 	// transform: scale(0.6);
+			    transform: translateX(50%);
+			 }
+			 100% {
+			 	opacity: 1;
+			    transform: translateX(0);
+			 }
+		}
+
+		&.deactive{
+			// position: absolute;
+			animation: chartDeactivate .8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0s both;
+		}
+		@keyframes chartDeactivate {
+			 0% {
+			 	opacity: 1;
+			 	// transform: scale(1);
+			    transform: translateX(0);
+			   
+			 }
+			 99.99% {
+			 	height: 1;
+			 }
+			 100% {
+			 	height: 0;
+			 	opacity: 0;
+			 	// transform: scale(0.6);
+			    transform: translateX(-50%);
+			 }
+		}
+
+
 		@media screen and (min-width: $breakpoint + 1){
 			width: calc(65% - 20px);
-			margin: 0 20px 0 auto;
+			// margin: 0 20px 0 auto;
+			left: auto;
+			right: 20px;
 			.textTitle{
 				margin-bottom: 15px;
 				img{
 					height: 22px;
 				}
 			}
+			// transform: translateY(60px);
 		}
 	}
 
 	.diagnosisStartContainer{
-		display: none;
 		padding: 30px 15px;
-		&.active{
-			display: block;
-		}
 		.diagnosisStart{
 			text-align: center;
-			cursor: pointer;
+			width: 240px;
+			margin: 0 auto;
 			img{
-				width: 240px;
+				
+				animation: startExpand .8s 1.5s infinite alternate;
+				@keyframes startExpand {
+					 0% {
+					    transform: scale(1);
+					 }
+					 50% {
+					    transform: scale(1);
+					 }
+					 100% {
+					    transform: scale(1.06);
+					 }
+				}
 			}
 		}
 		@media screen and (min-width: $breakpoint + 1){
 			.diagnosisStart{
-				text-align: center;
-				cursor: pointer;
-				// @include hover;
+				width: 340px;
 				img{
-					width: 340px;
+					cursor: pointer;
+					// transition: all .4s;
+					// &:hover{
+					// 	transform: scale(1.06);
+					// 	opacity: 0.7;
+					// }
 				}
 			}
 		}
 	}
 
 	.questionsContainer{
-		display: none;
-		padding: 15px 15px;
-		&.active{
-			display: block;
-		}
-		ul.questions{
-			li{
-				&:not(.active){
-					display: none;
+		.question{
+			padding: 15px 15px;
+			&:not(.active){
+				display: none;
+			}
+			.headline{
+				padding-left: 70px;
+				position: relative;
+				margin-bottom: 20px;
+				&::before{
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 60px;
+					height: 60px;
+					background: url('/assets/images/home/cat_avatar.png') center/100% auto no-repeat;
 				}
-				.headline{
-					padding-left: 70px;
+				span{
+					display: flex;
+					align-items: center;
+					// font-size: 1.2rem;
+					background-color: #fff;
+					padding: 5px 15px;
+					min-height: 60px;
 					position: relative;
-					margin-bottom: 20px;
-					&::before{
+					&::after{
 						content: '';
 						position: absolute;
-						top: 0;
+						width: 0;
+						height: 0;
+						top: 50%;
 						left: 0;
-						width: 60px;
-						height: 60px;
-						background: url('/assets/images/home/cat_avatar.png') center/100% auto no-repeat;
-					}
-					span{
-						display: flex;
-						align-items: center;
-						// font-size: 1.2rem;
-						background-color: #fff;
-						padding: 5px 15px;
-						min-height: 60px;
-						position: relative;
-						&::after{
-							content: '';
-							position: absolute;
-							width: 0;
-							height: 0;
-							top: 50%;
-							left: 0;
-							border: 8px solid transparent;
-							border-right: 8px solid #fff;
-							margin-top: -8px;
-							margin-left: -14px;
-						}
+						border: 8px solid transparent;
+						border-right: 8px solid #fff;
+						margin-top: -8px;
+						margin-left: -14px;
 					}
 				}
-				.choices{
-					.answer{
-						width: 280px;
-						height: 60px;
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						font-size: 16px;
-						font-weight: bold;
-						color: #fff;
-						margin: 0 auto 10px;
-						line-height: 1.3;
-						&:nth-child(odd){
-							background: url('/assets/images/home/button_a.png') center/100% auto no-repeat;
-						}
-						&:nth-child(even){
-							background: url('/assets/images/home/button_b.png') center/100% auto no-repeat;
-						}
-						&.small{
-							font-size: 14px;
-						}
+			}
+			.choices{
+				.answer{
+					width: 280px;
+					height: 60px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					font-size: 16px;
+					font-weight: bold;
+					color: #fff;
+					margin: 0 auto 10px;
+					line-height: 1.3;
+					&:nth-child(odd){
+						background: url('/assets/images/home/button_a.png') center/100% auto no-repeat;
+					}
+					&:nth-child(even){
+						background: url('/assets/images/home/button_b.png') center/100% auto no-repeat;
+					}
+					&.small{
+						font-size: 14px;
 					}
 				}
 			}
 		}
 		@media screen and (min-width: $breakpoint + 1){
-			ul.questions{
-				li{
-					.headline{
-						padding-left: 90px;
-						margin-bottom: 15px;
-						&::before{
-							width: 80px;
-							height: 80px;
-						}
-						span{
-							min-height: 80px;
-							font-size: 16px;
-						}
+			.question{
+				.headline{
+					padding-left: 90px;
+					margin-bottom: 15px;
+					&::before{
+						width: 80px;
+						height: 80px;
 					}
-					.choices{
-						.answer{
-							width: 340px;
-							height: 75px;
-							font-size: 20px;
-							margin: 0 auto 10px;
-							cursor: pointer;
-							&.small{
-								font-size: 17px;
-							}
+					span{
+						min-height: 80px;
+						font-size: 16px;
+					}
+				}
+				.choices{
+					.answer{
+						width: 340px;
+						height: 75px;
+						font-size: 20px;
+						margin: 0 auto 10px;
+						cursor: pointer;
+						transition: all .25s;
+						&:hover{
+							transform: scale(1.05);
+						}
+						&.small{
+							font-size: 17px;
 						}
 					}
 				}
 			}
-
 		}
 	}
 
 	.loadingContainer{
 		padding: 15px 15px 20px;
-		display: none;
-		&.active{
-			display: block;
-		}
 		.checkedAnswerContainer{
 			padding-left: 70px;
 			position: relative;
@@ -310,7 +365,20 @@
 						}
 					}
 				}
-				
+
+				.delay{
+					opacity: 0;
+					transform: translateY(5px);
+				}
+				&.show{
+					@for $cnt from 1 through 10{
+					    .delay#{$cnt}{
+					    	opacity: 1;
+					    	transform: translateY(0);
+					    	transition: all .3s #{$cnt * 0.5}s;
+					    }
+					}
+				}
 			}
 		}
 		@media screen and (min-width: $breakpoint + 1){
@@ -328,13 +396,25 @@
 	}
 
 	.resultContainer{
-		display: none;
 		padding: 15px 10px;
+
+		/*別アニメーション*/
 		&.active{
-			display: block;
+			animation: chartResultActive .7s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s backwards;
 		}
+		@keyframes chartResultActive {
+			 0% {
+			 	opacity: 0;
+			 	transform: scale(1.3);
+			 }
+			 100% {
+			 	opacity: 1;
+			    transform: scale(1);
+			 }
+		}
+
 		.catch{
-			font-size: 16px;
+			font-size: 14px;
 			line-height: 1.3;
 			font-weight: bold;
 			text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
@@ -370,6 +450,8 @@
 				min-height: 80px;
 			}
 			.buttons{
+				max-width: 300px;
+				margin: 0 auto;
 				ul{
 					margin-top: 15px;
 					display: flex;
@@ -421,7 +503,7 @@
 		@media screen and (min-width: $breakpoint + 1){
 			padding: 15px 15px;
 			.catch{
-				font-size: 20px;
+				font-size: 19px;
 			}
 			.salonInfo{
 				padding: 15px;
@@ -447,13 +529,15 @@
 					min-height: 80px;
 				}
 				.buttons{
+					max-width: 400px;
+					a{
+						@include hover;
+					}
 					ul{
-						width: 400px;
-						margin: 10px auto 0;
+						margin-top: 10px;
 					}
 					.moreRanking{
-						width: 400px;
-						margin: 10px auto 0;
+						margin-top: 10px;
 						span{
 							font-size: 11px;
 						}
@@ -473,27 +557,29 @@
 		height: 100%;
 		overflow: hidden;
 		.startMoko{
-			display: none;
 			position: absolute;
 			top: 5px;
 			left: 0;
 			width: 140px;
 		}
-		&.statusStart{
-			.startMoko{
-				display: block;
-			}
-		}
 		.resultMoko{
-			display: none;
+			opacity: 0;
 			position: absolute;
 			top: 5px;
 			left: -15px;
 			width: 170px;
+			transform: translateY(20px);
 		}
+
+
 		&.statusResult{
+			.startMoko{
+				display: none;
+			}
 			.resultMoko{
-				display: block;
+				opacity: 1;
+				transform: translateY(0);
+				transition: all .4s .1s;
 			}
 		}
 		@media screen and (min-width: $breakpoint + 1){

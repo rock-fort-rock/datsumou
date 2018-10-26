@@ -41,12 +41,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<div class="gHeaderBanner"><a href="<?php echo $headerBannerLink; ?>" target="_blank"><img src="<?php echo $headerBanner; ?>"></a></div>
 		<?php endif; ?>
 		<div class="hamburger"><img src="/assets/images/hamburger.svg"></div>
-		<ul class="snsLink">
+		<!-- <ul class="snsLink">
 			<li><a href="#"><img src="/assets/images/icon_line.png" alt="LINE"></a></li>
 			<li><a href="#"><img src="/assets/images/icon_facebook.png" alt="facebook"></a></li>
 			<li><a href="#"><img src="/assets/images/icon_twitter.png" alt="Twitter"></a></li>
 			<li><a href="#"><img src="/assets/images/icon_instagram.png" alt="Instagram"></a></li>
-		</ul>
+		</ul> -->
 	</header>
 	<div class="contents">
 		<div class="gNavi">
@@ -107,19 +107,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				<div class="gNaviSect">
 					<div class="gNaviHeadline">当サイトについて</div>
 					<ul class="gNaviMenu borderBottom">
-						<li><a href="#">運営会社</a></li>
-						<li><a href="#">調査概要</a></li>
-						<li><a href="#">プライバシーポリシー</a></li>
+						<li><a href="/company/">運営者情報</a></li>
+						<li><a href="/research/">調査概要</a></li>
+						<li><a href="/privacy/">プライバシーポリシー</a></li>
 					</ul>
 				</div>
 				<div class="gNaviSect">
 					<div class="gNaviFooter onlySmall">
-						<ul class="snsLink">
+						<!-- <ul class="snsLink">
 							<li><a href="#"><img src="/assets/images/icon_line.png" alt="LINE"></a></li>
 							<li><a href="#"><img src="/assets/images/icon_facebook.png" alt="facebook"></a></li>
 							<li><a href="#"><img src="/assets/images/icon_twitter.png" alt="Twitter"></a></li>
 							<li><a href="#"><img src="/assets/images/icon_instagram.png" alt="Instagram"></a></li>
-						</ul>
+						</ul> -->
 						<div class="copyright">©ツルツル全身脱毛診断メーカー</div>
 					</div>
 				</div>

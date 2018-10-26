@@ -18,24 +18,23 @@ export default class Diagnosis{
 		$('.diagnosisChart').addClass('start');
 		$('.diagnosisStartContainer').addClass('active');
 
-		const totalQ = $('.questionsContainer .question').length;
+		const totalQ = $('.questions li').length;
 		$('.diagnosisStart').on({
 			'click': (e) => {
-				// $('.diagnosisStartContainer').removeClass('active');
-				$('.diagnosisStartContainer').addClass('deactive');
-				$('.questionsContainer .question').eq(0).addClass('active');
-				$('.diagnosisChart').addClass('started');
+				$('.diagnosisStartContainer').removeClass('active');
+				$('.questionsContainer').addClass('active');
 			}
 		})
-		$('.question .answer').on({
+		$('.questions .answer').on({
 			'click': (e) => {
 				const q = $(e.currentTarget).closest('.question');
-				const current = $(q).data('question');
-				$(q).addClass('deactive');
+				const current = $('.questions li').index(q);
+				$(q).removeClass('active');
 				this.answerArray.push($(e.currentTarget).data('answer'));
-				console.log($(e.currentTarget).data('answer'));
-				if(current == totalQ){
+				// console.log($(e.currentTarget).data('answer'));
+				if(current == totalQ-1){
 					this.loading();
+					$('.questionsContainer').removeClass('active');
 				}else{
 					$(q).next().addClass('active');
 				}
@@ -46,25 +45,18 @@ export default class Diagnosis{
 
 	loading(){
 		$('.loadingContainer').addClass('active');
-		$('.loadingContainer .comment2').addClass('delay'+Number(this.answerArray.length+2));
 		for(let i=0; i<this.answerArray.length; i++){
-			const answer = $('.questionsContainer .question').eq(i).find('[data-answer="'+this.answerArray[i]+'"]').text();
-			$('.checkedAnswer ul').append('<li class="delay delay'+Number(i+2)+'">'+answer+'</li>');
+			const answer = $('.questions li').eq(i).find('[data-answer="'+this.answerArray[i]+'"]').text();
+			$('.checkedAnswer ul').append('<li>'+answer+'</li>');
 		}
 		setTimeout(()=>{
 			this.result();
-		}, this.answerArray.length*800 + 3000);
-
-		setTimeout(()=>{
-			$('.checkedAnswer').addClass('show');
-		},300);
+		}, 5000)
 	}
 	result(){
-		$('.loadingContainer').addClass('deactive');
-		setTimeout(()=>{
-			$('.diagnosisChart .header,.diagnosisChart .moko').addClass('statusResult');
-			$('.resultContainer').addClass('active');
-		}, 500)
+		$('.diagnosisChart .header,.diagnosisChart .moko').removeClass('statusStart').addClass('statusResult');
+		$('.loadingContainer').removeClass('active');
+		$('.resultContainer').addClass('active');
 		const resultStr = this.answerArray.join(',');
 		switch(resultStr){
 			//部分脱毛

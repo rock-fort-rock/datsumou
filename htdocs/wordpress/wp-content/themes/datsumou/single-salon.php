@@ -44,6 +44,7 @@ while(the_repeater_field('salon_review')){
 
 $number = get_field('salon_number');
 $officialsite = get_field('salon_officialsite');
+$experience = get_field('salon_experience');
 // $salonTemp['permalink'] = get_the_permalink($id);
 
 ?>
@@ -207,7 +208,9 @@ $officialsite = get_field('salon_officialsite');
 						<div class="numberOfPeople">当サイトから<span class="num"><strong><?php echo $number; ?></strong>名</span>がキレイになりました！</div>
 						<ul>
 							<li class="official"><a href="<?php echo $officialsite; ?>" target="_blank"><img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る"></a></li>
-							<li class="detail"><a href="<?php the_permalink(); ?>"><img src="/assets/images/btn_detail.png" alt="詳細を見る"></a></li>
+							<?php if($experience ): ?>
+								<li class="detail"><a href="<?php echo $experience; ?>"><img src="/assets/images/btn_experience.png" alt="体験談を見る"></a></li>
+							<?php endif; ?>
 						</ul>
 					</div>
 				</div>

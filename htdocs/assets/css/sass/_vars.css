@@ -3,15 +3,15 @@ $breakpoint-m: 1080px;
 
 $baseFont: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "ＭＳ Ｐゴシック", sans-serif;
 
+$linkColor: #4480c2;
 $pc_headerHight: 80px;
 $pc_footerHight: 110px;
-$sp_headerHight: 50px;
+$sp_headerHight: 60px;
 $sp_footerHight: 130px;
 
 $contentMaxWidth: 1200px;
 
 $naviWidth: 300px;
-
 
 $shadow: 0 0 2px rgba(0,0,0,0.2);
 @mixin hover {

@@ -225,7 +225,7 @@
 		padding: 15px 5px;
 		.title{
 			display: inline-block;
-			background-color: #33bad2;
+			background-color: $linkColor;
 			color: #fff;
 			padding: 5px 10px;
 			font-size: 1.1rem;
@@ -248,7 +248,6 @@
 			list-style-type: disc;
 			// list-style-position: inside;
 			padding-left: 20px;
-			color: #33bad2;
 			li{
 				&:first-child{
 					margin-top: 10px;
@@ -257,7 +256,8 @@
 					margin-bottom: 5px;
 				}
 				a{
-					color: #33bad2;
+					color: $linkColor;
+					text-decoration: none!important;
 				}
 				&.main{
 					font-size: 1.15rem;
@@ -365,6 +365,26 @@
 				td,tr{
 					border: 1px solid #ccc;
 					padding: 5px;
+				}
+			}
+
+			/* 画像配置 */
+			img.alignleft {
+			        text-align: left;
+			}
+			img.aligncenter {
+			        display: block;
+			        margin: 0 auto;
+			}
+			img.alignright {
+			        display: block;
+			        margin: 0 0 0 auto;
+			}
+			a{
+				color: $linkColor;
+				text-decoration: underline;
+				&:hover{
+					text-decoration: none;
 				}
 			}
 		}

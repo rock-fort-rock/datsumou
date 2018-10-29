@@ -102,7 +102,7 @@
 				li{
 					color: #fff;
 					// font-family: "Midashi Go MB31", $baseFont;
-					font-size: 12px;
+					// font-size: 12px;
 					font-weight: bold;
 					background: url('/assets/images/point_check.png') center left/16px auto no-repeat;
 					padding-left: 20px;
@@ -312,10 +312,10 @@
 				max-width: 600px;
 				ul{
 					top: 38%;
-					left: 14%;
+					left: 13%;
 					width: 86%;
 					li{
-						font-size: 15px;
+						// font-size: 15px;
 						background: url('/assets/images/point_check.png') center left/20px auto no-repeat;
 						padding-left: 28px;
 						&:not(:last-child){
@@ -409,7 +409,7 @@
 				display: block;
 				padding: 5px 5px;
 				text-align: center;
-				background-color: #f95793;
+				background-color: $keyColor;
 				color: #fff;
 				font-size: 0.9rem;
 				font-weight: bold;

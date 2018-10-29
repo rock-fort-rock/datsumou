@@ -1,28 +1,87 @@
 .diagnosisChart{
-	visibility: hidden;
 	position: relative;
-	min-height: 305px;
-	background: url('/assets/images/home/chart_bg.jpg') top center/auto 500px;/*.started heightと揃える*/
-	padding: 120px 0 20px;
-	opacity: 0;
-	overflow: hidden;
+	// background-color: #fff;
+
+	&::after{
+		content: '';
+		position: absolute;
+		color: #429FD8;
+		opacity: 0.5;
+		font-size: 10px;
+		top: 50%;
+		left: 50%;
+		width: 1em;
+		height: 1em;
+		border-radius: 50%;
+		text-indent: -9999em;
+		animation: load4 1.3s infinite linear;
+		transform: translateZ(0);
+		z-index: -100;
+	}
+	@keyframes load4 {
+		0%,
+		100% {
+			box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+		}
+		12.5% {
+			box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+		}
+		25% {
+			box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+		}
+		37.5% {
+			box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+		}
+		50% {
+			box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+		}
+		62.5% {
+			box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+		}
+		75% {
+			box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+		}
+		87.5% {
+			box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+		}
+	}
+
+
+	.diagnosisChartInner{
+		position: relative;
+		min-height: 305px;
+		background: url('/assets/images/home/chart_bg.jpg') top center/auto 500px;/*.started heightと揃える*/
+		padding: 120px 0 20px;
+		opacity: 0;
+		overflow: hidden;
+	}
 	&.start{
-		opacity: 1;
-		transition: opacity .5s .5s;
-		visibility: visible;
+		.diagnosisChartInner{
+			opacity: 1;
+			transition: opacity .5s .5s;
+			visibility: visible;
+		}
 	}
 	@media screen and (max-width: $breakpoint){
 		&.started{
-			min-height: 500px;
-			transition: min-height .4s;
+			.diagnosisChartInner{
+				min-height: 500px;
+				transition: min-height .4s;
+			}
 		}
 	}
+
 	@media screen and (min-width: $breakpoint + 1){
-		background: url('/assets/images/home/chart_bg.jpg') top center/cover;
-		height: 560px;
-		min-height: auto;
-		padding: 160px 0 20px;
+		.diagnosisChartInner{
+			background: url('/assets/images/home/chart_bg.jpg') top center/cover;
+			height: 560px;
+			min-height: auto;
+			padding: 160px 0 20px;
+		}
 	}
+
+
+
 	.header{
 		position: absolute;
 		top: 0;
@@ -146,7 +205,7 @@
 			   
 			 }
 			 99.99% {
-			 	height: 1;
+			 	height: auto;
 			 }
 			 100% {
 			 	height: 0;

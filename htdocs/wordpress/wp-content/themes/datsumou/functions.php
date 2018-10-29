@@ -402,11 +402,21 @@ add_shortcode('ランキング装飾', 'setRanking');
 
 //マニュアルページ作成
 function original_page() {
-add_menu_page('マニュアル', 'マニュアル', 1, 'original_page', 'original_menu');
+  add_menu_page('マニュアル', 'マニュアル', 1, 'manual_page', 'manual_menu');
 }
 add_action('admin_menu', 'original_page');
+function manual_menu() {include 'manual.php';}
 
-function original_menu() {include 'manual.php';}
+function add_sub_menu() {
+    add_submenu_page('manual_page', 'コラム', 'コラム', 1, 'manual_column', 'manual_submenu_column' );
+    add_submenu_page('manual_page', 'サロン', 'サロン', 1, 'manual_salon', 'manual_submenu_salon' );
+    add_submenu_page('manual_page', 'リダイレクト', 'リダイレクト', 1, 'manual_redirect', 'manual_submenu_redirect' );
+}
+add_action( 'admin_menu', 'add_sub_menu' );
+
+function manual_submenu_column() {include 'manual_column.php';}
+function manual_submenu_redirect() {include 'manual_redirect.php';}
+function manual_submenu_salon() {include 'manual_salon.php';}
 
 
 //診断結果のサロン情報部分
@@ -417,7 +427,7 @@ function result_SalonInfo($slug, $type){
   $title = $salon[0]->post_title;
   $result = get_field('salon_chartResult', $id);
   $logoObj = $result['salon_chartResult_logo'];
-  $logo = $logoObj['sizes']['medium'];
+  $logo = ($logoObj)?$logoObj['sizes']['medium']:'/assets/images/logo.png';
   $comment = $result['salon_chartResult_comment'];
   $officialsite = get_field('salon_officialsite', $id);
   $detail = get_the_permalink($id);

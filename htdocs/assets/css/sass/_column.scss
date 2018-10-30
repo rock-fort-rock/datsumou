@@ -257,7 +257,7 @@
 				}
 				a{
 					color: $linkColor;
-					text-decoration: none!important;
+					text-decoration: none;
 				}
 				&.main{
 					font-size: 1.15rem;
@@ -382,11 +382,16 @@
 			        display: block;
 			        margin: 0 0 0 auto;
 			}
-			a{
-				color: $linkColor;
-				text-decoration: underline;
-				&:hover{
-					text-decoration: none;
+			p{
+				a{
+					&:not(.ctaButto){
+						color: $linkColor;
+						text-decoration: underline;
+						&:hover{
+							text-decoration: none;
+						}
+					}
+					
 				}
 			}
 		}

@@ -53,8 +53,10 @@ $experience = get_field('salon_experience');
 		<div class="salonNavi">
 			<ul>
 				<li><a href="#point" class="scroll">ポイント</a></li>
-				<li><a href="#price" class="onlySmall scroll">料金</a>
-					<a href="#pricePc" class="exceptSmall scroll">料金</a></li>
+				<li>
+					<div class="onlySmall"><a href="#price" class="scroll">料金</a></div>
+					<div class="exceptSmall"><a href="#pricePc" class="scroll">料金</a></div>
+				</li>
 				<li><a href="#info" class="scroll">サロン情報</a></li>
 				<li><a href="#review" class="scroll">クチコミ</a></li>
 			</ul>

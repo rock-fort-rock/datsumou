@@ -54,15 +54,15 @@ table{
 
 
 .onlySmall{
-	display: none!important;
+	display: none;
 	@media ( max-width: $breakpoint ){
-		display: block!important;
+		display: block;
 	}
 }
 .exceptSmall{
-	display: none!important;
+	display: none;
 	@media ( min-width: $breakpoint + 1px ){
-		display: block!important;
+		display: block;
 	}
 }
 
@@ -466,12 +466,13 @@ ELEMENT
 .ctaButto{
 	position: relative;
 	display: inline-block;
-	color: #fff!important;
-	text-decoration: none!important;
+	// color: #fff!important;
+	// text-decoration: none!important;
+	color: #fff;
+	text-decoration: none;
 	padding: 10px 20px;
 	font-size: 1.2rem;
 	font-weight: bold;
-	// text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 	overflow: hidden;
 	min-width: 280px;
 	text-align: center;

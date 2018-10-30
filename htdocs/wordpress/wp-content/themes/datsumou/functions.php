@@ -450,4 +450,16 @@ function result_SalonInfo($slug, $type){
 
   return $return;
 }
+
+
+//AMP設定
+//カスタム投稿タイプ専用のテンプレート適用
+function custom_post_template( $file, $type, $post ) {
+  if ( $type === 'single' && $post->post_type === 'salon' ) {
+    $file = TEMPLATEPATH . '/amp/single-salon.php'; //読み込むテンプレートファイルの場所を指定
+  }
+  return $file;
+}
+add_filter( 'amp_post_template_file', 'custom_post_template', 10, 3 );
+
 ?>

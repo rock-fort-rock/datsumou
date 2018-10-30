@@ -8,10 +8,13 @@ module.exports = [
   //css
   {
     context: path.join(__dirname, '/htdocs'),
-    entry: __dirname + '/htdocs/assets/css/sass/style.scss',
+    entry: {
+      style: __dirname + '/htdocs/assets/css/sass/style.scss',
+      amp: __dirname + '/htdocs/assets/css/sass/amp.scss',
+    },
     output: {
         path: __dirname + '/htdocs/assets/css/',
-        filename: 'style.css'
+        filename: '[name].css'
     },
     module: {
         rules: [
@@ -50,7 +53,10 @@ module.exports = [
     },
     devtool: 'source-map',
     plugins: [
-        new ExtractTextPlugin('style.css')
+        new ExtractTextPlugin({
+          filename: "[name].css",
+          allChunks: false
+        })
     ]
   },
 

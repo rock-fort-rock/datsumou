@@ -11,7 +11,7 @@ $status = [
 			<div class="diagnosisChartInner">
 				<div class="header">
 					<div class="headerStart">
-						<img src="/assets/images/home/logo_large.png" class="logo" alt="ツルツル！全身脱毛診断メーカー">
+						<img src="/assets/images/home/logo_large.png" class="logo exceptSmall" alt="ツルツル！全身脱毛診断メーカー">
 						<img src="/assets/images/home/cat.png" class="cat">
 					</div>
 

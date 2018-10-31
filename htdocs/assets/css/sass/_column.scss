@@ -370,6 +370,11 @@
 				}
 			}
 
+			img,
+			amp-img{
+				height: auto;
+			}
+
 			/* 画像配置 */
 			img.alignleft,
 			amp-img.alignleft {

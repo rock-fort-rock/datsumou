@@ -18,16 +18,26 @@ if(!is_amp()){
 				<h2 class="pageHeadline1">調査内容について</h2>
 				<table class="basicTable">
 					<tr>
-						<th>サイト名</th><td>ツルツル！全身脱毛診断メーカー</td>
+						<th>調査概要</th><td>脱毛サロンに関する意識調査</td>
 					</tr>
 					<tr>
-						<th>URL</th><td>全身脱毛診断メーカー.com</td>
+						<th>調査運営</th><td>CROCO株式会社</td>
 					</tr>
 					<tr>
-						<th>所在地</th><td>〒170-0005 東京都豊島区南大塚1-31-8 1F</td>
+						<th>調査機関</th><td>shinobiアンケート</td>
 					</tr>
 					<tr>
-						<th>個人情報の保護</th><td><a href="/privacy/" class="textLink">プライバシーポリシー</a>のページをご覧下さい。</td>
+						<th>調査期間</th><td>2018年10月</td>
+					</tr>
+
+					<tr>
+						<th>対象地域</th><td>日本全国</td>
+					</tr>
+					<tr>
+						<th>対象者</th><td>脱毛サロン利用者</td>
+					</tr>
+					<tr>
+						<th>有効回答数</th><td>200人</td>
 					</tr>
 				</table>
 			</div>

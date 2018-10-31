@@ -37,7 +37,7 @@ if(mb_strlen($raw_lede) > $num){
 					<?php if($the_terms): ?>
 					<ul class="category"><?php foreach($the_terms as $value): ?><li><?php echo $value->name; ?></li><?php endforeach; ?></ul>
 					<?php endif; ?>
-					<div class="author"><?php the_author(); ?></div>
+					<!-- <div class="author"><?php the_author(); ?></div> -->
 				</div>
 				<h2 class="entryTitle"><?php the_title(); ?></h2>
 				<div class="entryLede exceptSmall">

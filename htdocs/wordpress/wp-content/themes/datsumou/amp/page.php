@@ -10,25 +10,30 @@
  *
  * @var AMP_Post_Template $this
  */
-
-$this->load_parts( array( 'html-start' ) );
+?>
+<?php
+$page = get_post( get_the_ID() );
+$slug = $page->post_name;
+$page_template = get_page_template_slug();
+//固定ページは管理画面から各ページでAMP有効にする必要あり
+if($slug == 'ranking' || $page_template == 'page-ranking.php'){
+	$status = [
+		'id' => 'ranking',
+	];
+}
 ?>
 
 <?php $this->load_parts( array( 'header' ) ); ?>
-
-<article class="amp-wp-article">
-	<header class="amp-wp-article-header">
-		<h1 class="amp-wp-title"><?php echo esc_html( $this->get( 'post_title' ) ); ?></h1>
-	</header>
-
-	<?php $this->load_parts( array( 'featured-image' ) ); ?>
-
-	<div class="amp-wp-article-content">
-		<?php echo $this->get( 'post_amp_content' ); // WPCS: XSS ok. Handled in AMP_Content::transform(). ?>
-	</div>
-</article>
+<?php
+if($slug == 'privacy'){
+	get_template_part('page-privacy');
+}elseif($slug == 'company'){
+	get_template_part('page-company');
+}elseif($slug == 'research'){
+	get_template_part('page-research');
+}elseif($slug == 'ranking' || $page_template == 'page-ranking.php'){
+	get_template_part('page-ranking');
+}
+?>
 
 <?php $this->load_parts( array( 'footer' ) ); ?>
-
-<?php
-$this->load_parts( array( 'html-end' ) );

@@ -3,7 +3,11 @@ $status = [
 	'id' => 'salonDetail',
 ];
 ?>
-<?php get_header(); ?>
+<?php
+if(!is_amp()){
+	get_header();
+}
+?>
 <?php
 $banner = get_field('salon_banner');
 $bannerObj = $banner['salon_banner_image'];
@@ -50,6 +54,7 @@ $experience = get_field('salon_experience');
 ?>
 <div class="mainContents">
 	<section class="contentBlock">
+		<?php if(!is_amp()): ?>
 		<div class="salonNavi">
 			<ul>
 				<li><a href="#point" class="scroll">ポイント</a></li>
@@ -61,6 +66,7 @@ $experience = get_field('salon_experience');
 				<li><a href="#review" class="scroll">クチコミ</a></li>
 			</ul>
 		</div>
+		<?php endif; ?>
 		<header class="salonHeader">
 			<h2 class="salonName"><?php the_title(); ?></h2>
 		</header>
@@ -69,13 +75,67 @@ $experience = get_field('salon_experience');
 				<div class="leftBlock">
 					<?php if($bannerUrl): ?>
 					<div class="paragraph salonInfoBanner">
-						<a href="<?php echo $bannerUrl; ?>" target="_blank"><img src="<?php echo $bannerImage; ?>"></a>
+						<a href="<?php echo $bannerUrl; ?>" target="_blank">
+							<?php if(is_amp()): ?>
+							<amp-img src="<?php echo $bannerImage; ?>" width="800" height="667" layout="responsive"></amp-img>
+							<?php else: ?>
+							<img src="<?php echo $bannerImage; ?>">
+							<?php endif; ?>
+						</a>
 					</div>
 					<?php endif; ?>
 
 
 					<div class="paragraph salonInfoAssess">
+						<?php if(is_amp()): ?>
+						<!-- <h3 class="salonContentTitle">評価</h3> -->
+						<div class="contentInner">
+							<table class="assessList">
+								<tr>
+									<th>総合評価</th>
+									<td>
+										<?php for($i=0; $i<$assessTotal; $i++): ?>
+										<span class="rating">★</span>
+										<?php endfor; ?>
+									</td>
+								</tr>
+								<tr>
+									<th>価格</th>
+									<td>
+										<?php for($i=0; $i<$assessPrice; $i++): ?>
+										<span class="rating">★</span>
+										<?php endfor; ?>
+									</td>
+								</tr>
+								<tr>
+									<th>接客・雰囲気</th>
+									<td>
+										<?php for($i=0; $i<$assessService; $i++): ?>
+										<span class="rating">★</span>
+										<?php endfor; ?>
+									</td>
+								</tr>
+								<tr>
+									<th>予約のしやすさ</th>
+									<td>
+										<?php for($i=0; $i<$assessReserve; $i++): ?>
+										<span class="rating">★</span>
+										<?php endfor; ?>
+									</td>
+								</tr>
+								<tr>
+									<th>アフターケア</th>
+									<td>
+										<?php for($i=0; $i<$assessCare; $i++): ?>
+										<span class="rating">★</span>
+										<?php endfor; ?>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<?php else: ?>
 						<canvas class="radarChart" data-total="<?php echo $assessTotal; ?>" data-price="<?php echo $assessPrice; ?>" data-service="<?php echo $assessService; ?>" data-reserve="<?php echo $assessReserve; ?>" data-care="<?php echo $assessCare; ?>"></canvas>
+						<?php endif; ?>
 					</div>
 					<div class="paragraph exceptSmall" id="pricePc">
 						<h3 class="salonContentTitle">料金</h3>
@@ -105,6 +165,7 @@ $experience = get_field('salon_experience');
 						</div>
 					</div>
 
+					<?php if(!is_amp()): ?>
 					<div class="salonNavi onlySmall">
 						<ul>
 							<li><a href="#point" class="scroll">ポイント</a></li>
@@ -113,6 +174,7 @@ $experience = get_field('salon_experience');
 							<li><a href="#review" class="scroll">クチコミ</a></li>
 						</ul>
 					</div>
+					<?php endif; ?>
 					<div class="paragraph onlySmall" id="price">
 						<h3 class="salonContentTitle">料金</h3>
 						<div class="contentInner"><?php echo $price; ?></div>
@@ -124,6 +186,7 @@ $experience = get_field('salon_experience');
 					</div>
 					<?php endif; ?>
 
+					<?php if(!is_amp()): ?>
 					<div class="salonNavi onlySmall">
 						<ul>
 							<li><a href="#point" class="scroll">ポイント</a></li>
@@ -132,6 +195,7 @@ $experience = get_field('salon_experience');
 							<li><a href="#review" class="scroll">クチコミ</a></li>
 						</ul>
 					</div>
+					<?php endif; ?>
 					<div class="paragraph salonInfoOverview" id="info">
 						<div class="salonContentTitle">サロン情報</div>
 						<div class="contentInner">
@@ -167,6 +231,7 @@ $experience = get_field('salon_experience');
 				</div>
 			</div>
 
+			<?php if(!is_amp()): ?>
 			<div class="salonNavi onlySmall">
 				<ul>
 					<li><a href="#point" class="scroll">ポイント</a></li>
@@ -175,9 +240,24 @@ $experience = get_field('salon_experience');
 					<li><span>クチコミ</span></li>
 				</ul>
 			</div>
+			<?php endif; ?>
+
 			<div class="paragraph salonReview" id="review">
 				<div class="salonContentTitle">みんなのクチコミ</div>
 				<div class="contentInner">
+				<?php if(is_amp()): ?>
+					<ul class="review">
+						<?php 
+						$count = count($review);
+						?>
+						<?php for($i=0; $i<$count; $i++): ?>
+						<li>
+							<div class="avatar"><amp-img src="<?php echo $review[$i]['avatar']; ?>" width="60" height="60"></amp-img></div>
+							<div class="comment"><?php echo $review[$i]['comment']; ?></div>
+						</li>
+						<?php endfor; ?>
+					</ul>
+				<?php else: ?>
 					<ul class="review">
 						<?php 
 						$count = count($review);
@@ -201,6 +281,7 @@ $experience = get_field('salon_experience');
 						<?php endfor; ?>
 					</ul>
 					<?php endif; ?>
+				<?php endif; ?>
 				</div>
 			</div>
 
@@ -209,9 +290,25 @@ $experience = get_field('salon_experience');
 					<div class="ctaBlock">
 						<div class="numberOfPeople">当サイトから<span class="num"><strong><?php echo $number; ?></strong>名</span>がキレイになりました！</div>
 						<ul>
-							<li class="official"><a href="<?php echo $officialsite; ?>" target="_blank"><img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る"></a></li>
+							<li class="official">
+								<a href="<?php echo $officialsite; ?>" target="_blank">
+									<?php if(is_amp()): ?>
+									<amp-img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る" width="204" height="45"></amp-img>
+									<?php else: ?>
+									<img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る">
+									<?php endif; ?>
+								</a>
+							</li>
 							<?php if($experience ): ?>
-								<li class="detail"><a href="<?php echo $experience; ?>"><img src="/assets/images/btn_experience.png" alt="体験談を見る"></a></li>
+								<li class="detail">
+									<a href="<?php echo $experience; ?>">
+										<?php if(is_amp()): ?>
+										<amp-img src="/assets/images/btn_experience.png" alt="体験談を見る" width="120" height="45"></amp-img>
+										<?php else: ?>
+										<img src="/assets/images/btn_experience.png" alt="体験談を見る">
+										<?php endif; ?>
+									</a>
+								</li>
 							<?php endif; ?>
 						</ul>
 					</div>
@@ -221,4 +318,8 @@ $experience = get_field('salon_experience');
 	</section>
 </div>
 
-<?php get_footer(); ?>
+<?php
+if(!is_amp()){
+	get_footer();
+}
+?>

@@ -371,14 +371,17 @@
 			}
 
 			/* 画像配置 */
-			img.alignleft {
+			img.alignleft,
+			amp-img.alignleft {
 			        text-align: left;
 			}
-			img.aligncenter {
+			img.aligncenter,
+			amp-img.aligncenter {
 			        display: block;
 			        margin: 0 auto;
 			}
-			img.alignright {
+			img.alignright,
+			amp-img.alignright {
 			        display: block;
 			        margin: 0 0 0 auto;
 			}
@@ -392,6 +395,16 @@
 						}
 					}
 					
+				}
+			}
+
+			/*ampリンクカード用*/
+			.linkcard{
+				.lkc-link{
+					&.no_icon{
+						color: #33bad2;
+						font-size: 1.2rem;
+					}
 				}
 			}
 		}

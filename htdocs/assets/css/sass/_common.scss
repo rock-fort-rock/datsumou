@@ -37,6 +37,11 @@ img {
   vertical-align: bottom;
   max-width: 100%;
 }
+img {
+  /*-ms-interpolation-mode: bicubic;*/
+  vertical-align: bottom;
+  max-width: 100%;
+}
 
 p{
 	&:not(:last-child){
@@ -244,6 +249,9 @@ ELEMENT
 			li{
 				&:not(:last-child){
 					margin-bottom: 10px;
+				}
+				a{
+					display: block;
 				}
 			}
 		}
@@ -774,6 +782,28 @@ FOOTER
 	}
 }
 
+/*AMP用フッター*/
+.amp-mode{
+	.gNavi{
+		position: relative;
+		opacity: 1;
+		left: 0;
+		z-index: 1;
+		padding: 0;
+		.gNaviContainer{
+			width: 100%;
+			margin-left: 0;
+			transform: none;
+			height: auto;
+			min-height: auto;
+		}
+	}
+	.gFooter{
+		border-top: none;
+		padding: 30px 0 70px;
+		// padding-bottom: 70px;
+	}
+}
 .footerBanner{
 	position: fixed;
 	// height: 50px;

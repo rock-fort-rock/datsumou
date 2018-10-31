@@ -4,7 +4,12 @@ Template Name: プライバシーポリシー
 */
 ?>
 
-<?php get_header(); ?>
+
+<?php
+if(!is_amp()){
+	get_header();
+}
+?>
 <div class="mainContents">
 	<section class="contentBlock">
 		<div class="contentInner">
@@ -25,4 +30,8 @@ Template Name: プライバシーポリシー
 	</section>
 </div>
 
-<?php get_footer(); ?>
+<?php
+if(!is_amp()){
+	get_footer();
+}
+?>

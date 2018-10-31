@@ -4,7 +4,11 @@ Template Name: 運営者情報
 */
 ?>
 
-<?php get_header(); ?>
+<?php
+if(!is_amp()){
+	get_header();
+}
+?>
 <div class="mainContents">
 	<section class="contentBlock">
 		<div class="contentInner">
@@ -31,4 +35,8 @@ Template Name: 運営者情報
 	</section>
 </div>
 
-<?php get_footer(); ?>
+<?php
+if(!is_amp()){
+	get_footer();
+}
+?>

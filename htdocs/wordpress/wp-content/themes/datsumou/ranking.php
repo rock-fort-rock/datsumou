@@ -56,13 +56,29 @@ foreach($salonPosts as $value){
 <section class="contentBlock">
 	<header class="salonHeader">
 		<?php if($salonNum == 1): ?>
-		<img src="/assets/images/icon_ranking1.png" alt="人気サロン第1位" class="rankIcon best3">
+			<?php if(is_amp()): ?>
+				<amp-img src="/assets/images/icon_ranking1.png" alt="人気サロン第1位" class="rankIcon best3" width="112" height="90"></amp-img>
+			<?php else: ?>
+				<img src="/assets/images/icon_ranking1.png" alt="人気サロン第1位" class="rankIcon best3">
+			<?php endif; ?>
 		<?php elseif($salonNum == 2): ?>
-		<img src="/assets/images/icon_ranking2.png" alt="人気サロン第2位" class="rankIcon best3">
+			<?php if(is_amp()): ?>
+				<amp-img src="/assets/images/icon_ranking2.png" alt="人気サロン第2位" class="rankIcon best3" width="92" height="90"></amp-img>
+			<?php else: ?>
+				<img src="/assets/images/icon_ranking2.png" alt="人気サロン第2位" class="rankIcon best3">
+			<?php endif; ?>
 		<?php elseif($salonNum == 3): ?>
-		<img src="/assets/images/icon_ranking3.png" alt="人気サロン第3位" class="rankIcon best3">
+			<?php if(is_amp()): ?>
+				<amp-img src="/assets/images/icon_ranking3.png" alt="人気サロン第3位" class="rankIcon best3" width="92" height="90"></amp-img>
+			<?php else: ?>
+				<img src="/assets/images/icon_ranking3.png" alt="人気サロン第3位" class="rankIcon best3">
+			<?php endif; ?>
 		<?php else: ?>
-		<img src="/assets/images/icon_ranking.png" class="rankIcon others">
+			<?php if(is_amp()): ?>
+				<amp-img src="/assets/images/icon_ranking.png" class="rankIcon others" width="62" height="65"></amp-img>
+			<?php else: ?>
+				<img src="/assets/images/icon_ranking.png" class="rankIcon others">
+			<?php endif; ?>
 		<?php endif; ?>
 
 		<h2 class="salonName"><?php echo $value['title']; ?></h2>
@@ -72,11 +88,65 @@ foreach($salonPosts as $value){
 			<div class="leftBlock">
 				<?php if($value['bannerUrl']): ?>
 				<div class="paragraph salonInfoBanner">
-					<a href="<?php echo $value['bannerUrl']; ?>" target="_blank"><img src="<?php echo $value['bannerImage']; ?>"></a>
+					<a href="<?php echo $value['bannerUrl']; ?>" target="_blank">
+						<?php if(is_amp()): ?>
+						<amp-img src="<?php echo $value['bannerImage']; ?>" width="800" height="667" layout="responsive"></amp-img>
+						<?php else: ?>
+						<img src="<?php echo $value['bannerImage']; ?>">
+						<?php endif; ?>
+					</a>
 				</div>
 				<?php endif; ?>
 				<div class="paragraph salonInfoAssess">
-					<canvas class="radarChart" data-total="<?php echo $value['assessTotal']; ?>" data-price="<?php echo $value['assessPrice']; ?>" data-service="<?php echo $value['assessService']; ?>" data-reserve="<?php echo $value['assessReserve']; ?>" data-care="<?php echo $value['assessCare']; ?>"></canvas>
+					<?php if(is_amp()): ?>
+						<!-- <h3 class="salonContentTitle">評価</h3> -->
+						<div class="contentInner">
+							<table class="assessList">
+								<tr>
+									<th>総合評価</th>
+									<td>
+										<?php for($i=0; $i<$value['assessTotal']; $i++): ?>
+										<span class="rating">★</span>
+										<?php endfor; ?>
+									</td>
+								</tr>
+								<tr>
+									<th>価格</th>
+									<td>
+										<?php for($i=0; $i<$value['assessPrice']; $i++): ?>
+										<span class="rating">★</span>
+										<?php endfor; ?>
+									</td>
+								</tr>
+								<tr>
+									<th>接客・雰囲気</th>
+									<td>
+										<?php for($i=0; $i<$value['assessService']; $i++): ?>
+										<span class="rating">★</span>
+										<?php endfor; ?>
+									</td>
+								</tr>
+								<tr>
+									<th>予約のしやすさ</th>
+									<td>
+										<?php for($i=0; $i<$value['assessReserve']; $i++): ?>
+										<span class="rating">★</span>
+										<?php endfor; ?>
+									</td>
+								</tr>
+								<tr>
+									<th>アフターケア</th>
+									<td>
+										<?php for($i=0; $i<$value['assessCare']; $i++): ?>
+										<span class="rating">★</span>
+										<?php endfor; ?>
+									</td>
+								</tr>
+							</table>
+						</div>
+					<?php else: ?>
+						<canvas class="radarChart" data-total="<?php echo $value['assessTotal']; ?>" data-price="<?php echo $value['assessPrice']; ?>" data-service="<?php echo $value['assessService']; ?>" data-reserve="<?php echo $value['assessReserve']; ?>" data-care="<?php echo $value['assessCare']; ?>"></canvas>
+					<?php endif; ?>
 				</div>
 				<?php if($value['price']): ?>
 				<div class="paragraph exceptSmall">
@@ -159,28 +229,42 @@ foreach($salonPosts as $value){
 		<div class="paragraph salonReview">
 			<div class="salonContentTitle">みんなのクチコミ</div>
 			<div class="contentInner">
-				<ul class="review">
-					<?php 
-					$count = count($value['review']);
-					$init = 3;
-					?>
-					<?php for($i=0; $i<min($count, $init); $i++): ?>
-					<li>
-						<div class="avatar"><img src="<?php echo $value['review'][$i]['avatar']; ?>"></div>
-						<div class="comment"><?php echo $value['review'][$i]['comment']; ?></div>
-					</li>
-					<?php endfor; ?>
-				</ul>
-				<?php if($count > $init): ?>
-				<div class="viewMore"><span>もっとみる</span></div>
-				<ul class="review reviewMore even">
-					<?php for($i=$init; $i<$count; $i++): ?>
-					<li>
-						<div class="avatar"><img src="<?php echo $value['review'][$i]['avatar']; ?>"></div>
-						<div class="comment"><?php echo $value['review'][$i]['comment']; ?></div>
-					</li>
-					<?php endfor; ?>
-				</ul>
+				<?php if(is_amp()): ?>
+					<ul class="review">
+						<?php 
+						$count = count($value['review']);
+						?>
+						<?php for($i=0; $i<$count; $i++): ?>
+						<li>
+							<div class="avatar"><amp-img src="<?php echo $value['review'][$i]['avatar']; ?>" width="60" height="60"></amp-img></div>
+							<div class="comment"><?php echo $value['review'][$i]['comment']; ?></div>
+						</li>
+						<?php endfor; ?>
+					</ul>
+				<?php else: ?>
+					<ul class="review">
+						<?php 
+						$count = count($value['review']);
+						$init = 3;
+						?>
+						<?php for($i=0; $i<min($count, $init); $i++): ?>
+						<li>
+							<div class="avatar"><img src="<?php echo $value['review'][$i]['avatar']; ?>"></div>
+							<div class="comment"><?php echo $value['review'][$i]['comment']; ?></div>
+						</li>
+						<?php endfor; ?>
+					</ul>
+					<?php if($count > $init): ?>
+					<div class="viewMore"><span>もっとみる</span></div>
+					<ul class="review reviewMore even">
+						<?php for($i=$init; $i<$count; $i++): ?>
+						<li>
+							<div class="avatar"><img src="<?php echo $value['review'][$i]['avatar']; ?>"></div>
+							<div class="comment"><?php echo $value['review'][$i]['comment']; ?></div>
+						</li>
+						<?php endfor; ?>
+					</ul>
+					<?php endif; ?>
 				<?php endif; ?>
 			</div>
 		</div>
@@ -190,8 +274,24 @@ foreach($salonPosts as $value){
 				<div class="ctaBlock">
 					<div class="numberOfPeople">当サイトから<span class="num"><strong><?php echo $value['number']; ?></strong>名</span>がキレイになりました！</div>
 					<ul>
-						<li class="official"><a href="<?php echo $value['officialsite']; ?>" target="_blank"><img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る"></a></li>
-						<li class="detail"><a href="<?php echo $value['permalink']; ?>"><img src="/assets/images/btn_detail.png" alt="詳細を見る"></a></li>
+						<li class="official">
+							<a href="<?php echo $value['officialsite']; ?>" target="_blank">
+								<?php if(is_amp()): ?>
+								<amp-img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る" width="214" height="47"></amp-img>
+								<?php else: ?>
+								<img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る">
+								<?php endif; ?>
+							</a>
+						</li>
+						<li class="detail">
+							<a href="<?php echo $value['permalink']; ?>">
+								<?php if(is_amp()): ?>
+								<amp-img src="/assets/images/btn_detail.png" alt="詳細を見る" width="114" height="47"></amp-img>
+								<?php else: ?>
+								<img src="/assets/images/btn_detail.png" alt="詳細を見る">
+								<?php endif; ?>
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>

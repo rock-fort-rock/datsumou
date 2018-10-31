@@ -3,7 +3,11 @@ $status = [
 	'id' => 'columnDetail',
 ];
 ?>
-<?php get_header(); ?>
+<?php
+if(!is_amp()){
+	get_header();
+}
+?>
 
 <?php
 $terms = get_terms('column_category');
@@ -25,6 +29,7 @@ $tocHide = $tocGroup['column_toc_hide'];
 ?>
 <div class="mainContents">
 	<section class="contentBlock">
+		<?php if(!is_amp()): ?>
 		<div class="categorySelectWrapper">
 			<div class="categorySelect">
 				<select onChange="location.href=value;">
@@ -35,6 +40,7 @@ $tocHide = $tocGroup['column_toc_hide'];
 				</select>
 			</div>
 		</div>
+		<?php endif; ?>
 
 		<header class="entryHeader">
 			<h1 class="entryTitle"><?php the_title(); ?></h1>
@@ -48,14 +54,20 @@ $tocHide = $tocGroup['column_toc_hide'];
 		</header>
 
 		<div class="contentInner">
-			<div class="entryEyecatch"><img src="<?php the_post_thumbnail_url('large'); ?>"></div>
+			<div class="entryEyecatch">
+				<?php if(is_amp()): ?>
+					<?php echo convertImgToAmpImg('<img src="'.get_the_post_thumbnail_url(get_the_ID(), 'large').'">'); ?>
+				<?php else: ?>
+					<img src="<?php the_post_thumbnail_url('large'); ?>">
+				<?php endif; ?>
+			</div>
 
 			<div class="entryBody">
 				<section class="entryBlock">
 					<?php echo get_field('column_lede'); ?>
 				</section>
 
-<?php if($tocHide != 1): ?>
+<?php if($tocHide != 1 && !is_amp()): ?>
 <section class="entryBlock">
 <div class="tableofcontents">
 <div class="title">目次</div><span class="displayToggle">[非表示]</span>
@@ -86,7 +98,11 @@ $tocHide = $tocGroup['column_toc_hide'];
 						<?php if($block[$i]['contents'][$n]['column_headline2']): ?>
 							<h3 id="<?php echo 'index'.($i+1).'-'.($n+1); ?>"><?php echo $block[$i]['contents'][$n]['column_headline2']; ?></h3>
 						<?php endif; ?>
-						<?php echo $block[$i]['contents'][$n]['column_contents']; ?>
+						<?php if(is_amp()): ?>
+							<?php echo convertImgToAmpImg($block[$i]['contents'][$n]['column_contents']); ?>
+						<?php else: ?>
+							<?php echo $block[$i]['contents'][$n]['column_contents']; ?>
+						<?php endif; ?>
 					</div>
 					<?php endfor; ?>
 				</section>
@@ -97,4 +113,8 @@ $tocHide = $tocGroup['column_toc_hide'];
 	</section>
 </div>
 
-<?php get_footer(); ?>
+<?php
+if(!is_amp()){
+	get_footer();
+}
+?>

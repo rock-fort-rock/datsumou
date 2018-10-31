@@ -452,14 +452,93 @@ function result_SalonInfo($slug, $type){
 }
 
 
-//AMP設定
+/*---------------------------------------------------------------------
+AMP設定
+-----------------------------------------------------------------------*/
+
 //カスタム投稿タイプ専用のテンプレート適用
-function custom_post_template( $file, $type, $post ) {
-  if ( $type === 'single' && $post->post_type === 'salon' ) {
-    $file = TEMPLATEPATH . '/amp/single-salon.php'; //読み込むテンプレートファイルの場所を指定
-  }
-  return $file;
+// function custom_post_template( $file, $type, $post ) {
+// 	if ( $type === 'single' && $post->post_type === 'salon' ) {// '/amp/'
+// 		$file = TEMPLATEPATH . '/amp/single-salon.php';
+// 	}elseif ( $type === 'page' ) {// '/?amp'
+
+// 	}
+// 	return $file;
+// }
+// add_filter( 'amp_post_template_file', 'custom_post_template', 10, 3 );
+
+
+
+//コンテンツのHTML文字列からimg要素をamp-img要素に変換
+function convertImgToAmpImg($the_content){
+    // PHPのパスを解決(相対パスだとライブラリを読み込めないため)
+    require_once(dirname(__FILE__) . "/libs/phpQuery-onefile.php");
+
+    // 仮想DOMを構築（phpQueryで走査するため）
+    $html = <<<HTML
+<html>
+<body>{$the_content}</body>
+</html>
+HTML;
+
+    // DOMを構築
+    $dom = phpQuery::newDocument($html);
+
+    // img要素を探し出して、繰り返す
+    foreach ($dom->find("img") as $img) {
+        // 参照を取る
+        $pqImg = pq($img);
+
+        // 属性値をコピーする
+        $obj["src"] = $pqImg->attr("src");
+        $obj["width"] = $pqImg->attr("width");
+        $obj["height"] = $pqImg->attr("height");
+        $obj["srcset"] = $pqImg->attr("srcset");
+        $obj["alt"] = $pqImg->attr("alt");
+        $obj["class"] = $pqImg->attr("class");
+        // sizes属性は表示崩れの可能性があるのでコピーしない
+
+        // src 属性がなければ変換しない
+        if (empty($obj["src"])) {
+            continue;
+        }
+
+        $imagesize = getimagesize($obj["src"]);
+        // width と height がなければオリジナルサイズを取得
+        if (empty($obj["width"]) || empty($obj["height"])){
+            $obj["width"] = $imagesize[0];
+            $obj["height"] = $imagesize[1];
+        }
+
+        // 属性をコピーする
+        $attrStr = [];
+        foreach ($obj as $key => $value) {
+            if (!empty($value)) {
+                $attrStr[] = "$key=\"$value\"";
+            }
+        }
+
+        // w:400pxより大きいものはlayout属性を追加する（レスポンシブに）
+        if($imagesize[0] > 400){
+        	$attrStr[] = 'layout="responsive"';
+        }
+
+        // img要素をamp-img要素に置き換える
+        // コピーした属性値をくっつける
+        $pqImg->replaceWith("<amp-img " . join(" ", $attrStr) . " />");
+    }
+
+    // contentの内容を返す
+    return $dom->find("body")->html();
 }
-add_filter( 'amp_post_template_file', 'custom_post_template', 10, 3 );
+
+function is_amp(){
+	$is_amp = false;
+    if(function_exists('is_amp_endpoint') && is_amp_endpoint()) {
+        $is_amp = true;
+    }
+    return $is_amp;
+}
+
 
 ?>

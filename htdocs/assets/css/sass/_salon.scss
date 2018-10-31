@@ -68,6 +68,21 @@
 			margin: 30px auto 0;
 			max-width: 500px;
 		}
+
+		/*AMP用*/
+		table.assessList{
+			width: 100%;
+			border-collapse: collapse;
+			th,td{
+				padding: 5px;
+				border: 1px solid #ccc;
+			}
+			th{
+				width: 120px;
+				text-align: left;
+				background-color: #fbeaf2;
+			}
+		}
 	}
 	.salonContentTitle{
 		height: 30px;

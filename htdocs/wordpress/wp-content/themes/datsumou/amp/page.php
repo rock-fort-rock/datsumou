@@ -15,7 +15,7 @@
 $page = get_post( get_the_ID() );
 $slug = $page->post_name;
 $page_template = get_page_template_slug();
-//固定ページは管理画面から各ページでAMP有効にする必要あり
+//管理画面から各ページでAMP有効にする必要あり
 if($slug == 'ranking' || $page_template == 'page-ranking.php'){
 	$status = [
 		'id' => 'ranking',
@@ -24,6 +24,7 @@ if($slug == 'ranking' || $page_template == 'page-ranking.php'){
 ?>
 
 <?php $this->load_parts( array( 'header' ) ); ?>
+
 <?php
 if($slug == 'privacy'){
 	get_template_part('page-privacy');

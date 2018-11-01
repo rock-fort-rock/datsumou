@@ -34,7 +34,6 @@ if($post_type == 'salon'){
 	get_template_part('single-salon');
 }elseif($post_type == 'column'){
 	get_template_part('single-column');
-	// $this->load_parts( array( 'featured-image' ) );
 }
 ?>
 

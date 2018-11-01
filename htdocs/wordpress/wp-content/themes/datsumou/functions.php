@@ -115,7 +115,15 @@ if (!current_user_can('administrator')) {
 // 管理者以外不必要なメニューを非表示
 function remove_menus(){
   global $menu;
-  // unset($menu[26]); // MW WP Form
+  // print_r($menu);
+
+  if (current_user_can('administrator') || current_user_can('editor')){
+    // echo '管理者・編集者のみ';
+    setOption();
+  }else{
+    unset($menu[7]);//サロン情報
+  }
+
   if (!current_user_can('administrator')){
     $restricted = array(__('投稿'),__('固定ページ'),__('コメント'),__('ツール'), __('設定'),  __('プロフィール'));
   }else{
@@ -267,35 +275,36 @@ function cpt_salon_init()
 }
 
 
+function setOption(){
+  if( function_exists('acf_add_options_page') ) {
+    acf_add_options_page(array(
+      'page_title'  => 'バナー設定',
+      'menu_title'  => 'バナー設定',
+      'menu_slug'   => 'theme-options',
+      'capability'  => 'edit_posts',
+      'parent_slug' => '',
+      'position'  => 7,
+      'redirect'  => false,
+    ));
 
-if( function_exists('acf_add_options_page') ) {
-  acf_add_options_page(array(
-    'page_title'  => 'バナー設定',
-    'menu_title'  => 'バナー設定',
-    'menu_slug'   => 'theme-options',
-    'capability'  => 'edit_posts',
-    'parent_slug' => '',
-    'position'  => 7,
-    'redirect'  => false,
-  ));
-
-  acf_add_options_page(array(
-    'page_title'  => 'サロンランキング',
-    'menu_title'  => 'サロンランキング',
-    'menu_slug'   => 'theme-options-ranking',
-    'capability'  => 'edit_posts',
-    'parent_slug' => '',
-    'position'  => 7,
-    'redirect'  => false,
-  ));
-  acf_add_options_sub_page(array( //サブページ
-    'page_title'  => 'トップページ用',
-    'menu_title'  => 'トップページ用',
-    'menu_slug'   => 'theme-options-topRank',
-    'capability'  => 'edit_posts',
-    'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
-    'position'  => false,
-  ));
+    acf_add_options_page(array(
+      'page_title'  => 'サロンランキング',
+      'menu_title'  => 'サロンランキング',
+      'menu_slug'   => 'theme-options-ranking',
+      'capability'  => 'edit_posts',
+      'parent_slug' => '',
+      'position'  => 7,
+      'redirect'  => false,
+    ));
+    acf_add_options_sub_page(array( //サブページ
+      'page_title'  => 'トップページ用',
+      'menu_title'  => 'トップページ用',
+      'menu_slug'   => 'theme-options-topRank',
+      'capability'  => 'edit_posts',
+      'parent_slug' => 'theme-options-ranking', //親ページのスラッグ
+      'position'  => false,
+    ));
+  }
 }
 
 
@@ -456,17 +465,25 @@ function result_SalonInfo($slug, $type){
 AMP設定
 -----------------------------------------------------------------------*/
 
-//カスタム投稿タイプ専用のテンプレート適用
+//カスタム投稿タイプ専用のテンプレート適用 ?ampでアクセス
 // function custom_post_template( $file, $type, $post ) {
-// 	if ( $type === 'single' && $post->post_type === 'salon' ) {// '/amp/'
+// 	if ( $type === 'single' && $post->post_type === 'salon' ) {
 // 		$file = TEMPLATEPATH . '/amp/single-salon.php';
-// 	}elseif ( $type === 'page' ) {// '/?amp'
+// 	}elseif ( $type === 'page' ) {
 
 // 	}
 // 	return $file;
 // }
 // add_filter( 'amp_post_template_file', 'custom_post_template', 10, 3 );
-
+ 
+// function custom_template_include( $template ) {
+//   if ( is_home() && is_amp_endpoint() ) {
+//     $template = TEMPLATEPATH . '/amp/index.php';
+//   }
+ 
+//   return $template;
+// }
+// add_filter( 'template_include', 'custom_template_include', 10 );
 
 
 //コンテンツのHTML文字列からimg要素をamp-img要素に変換
@@ -518,8 +535,8 @@ HTML;
             }
         }
 
-        // w:400pxより大きいものはlayout属性を追加する（レスポンシブに）
-        if($imagesize[0] > 400){
+        // w:375pxより大きいものはlayout属性を追加する（レスポンシブに）
+        if($imagesize[0] > 375){
         	$attrStr[] = 'layout="responsive"';
         }
 

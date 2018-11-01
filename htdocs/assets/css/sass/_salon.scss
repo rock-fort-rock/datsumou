@@ -20,14 +20,15 @@
 		left: 0;
 		top: 50%;
 		transform: translateY(-50%);
-		&.best3{
-			height: 90px;
-		}
-		&.others{
-			height: 65px;
-			margin-left: 15px;
-			margin-top: -10px;
-		}
+		height: 90px;
+		// &.best3{
+		// 	height: 90px;
+		// }
+		// &.others{
+		// 	height: 65px;
+		// 	margin-left: 15px;
+		// 	margin-top: -10px;
+		// }
 	}
 	.salonName{
 		// font-family: "Midashi Go MB31", $baseFont;
@@ -41,14 +42,15 @@
 		height: 80px;
 		margin-bottom: 35px;
 		.rankIcon{
-			&.best3{
-				height: 140px;
-			}
-			&.others{
-				height: 90px;
-				margin-left: 40px;
-				margin-top: -15px;
-			}
+			height: 140px;
+			// &.best3{
+			// 	height: 140px;
+			// }
+			// &.others{
+			// 	height: 90px;
+			// 	margin-left: 40px;
+			// 	margin-top: -15px;
+			// }
 		}
 		.salonName{
 			font-size: 34px;

@@ -55,32 +55,11 @@ foreach($salonPosts as $value){
 <?php $salonNum = 1; foreach($salonArray as $value): ?>
 <section class="contentBlock">
 	<header class="salonHeader">
-		<?php if($salonNum == 1): ?>
-			<?php if(is_amp()): ?>
-				<amp-img src="/assets/images/icon_ranking1.png" alt="人気サロン第1位" class="rankIcon best3" width="112" height="90"></amp-img>
-			<?php else: ?>
-				<img src="/assets/images/icon_ranking1.png" alt="人気サロン第1位" class="rankIcon best3">
-			<?php endif; ?>
-		<?php elseif($salonNum == 2): ?>
-			<?php if(is_amp()): ?>
-				<amp-img src="/assets/images/icon_ranking2.png" alt="人気サロン第2位" class="rankIcon best3" width="92" height="90"></amp-img>
-			<?php else: ?>
-				<img src="/assets/images/icon_ranking2.png" alt="人気サロン第2位" class="rankIcon best3">
-			<?php endif; ?>
-		<?php elseif($salonNum == 3): ?>
-			<?php if(is_amp()): ?>
-				<amp-img src="/assets/images/icon_ranking3.png" alt="人気サロン第3位" class="rankIcon best3" width="92" height="90"></amp-img>
-			<?php else: ?>
-				<img src="/assets/images/icon_ranking3.png" alt="人気サロン第3位" class="rankIcon best3">
-			<?php endif; ?>
+		<?php if(is_amp()): ?>
+			<amp-img src="/assets/images/icon_ranking<?php echo $salonNum; ?>.png" alt="人気サロン第<?php echo $salonNum; ?>位" class="rankIcon" width="112" height="90"></amp-img>
 		<?php else: ?>
-			<?php if(is_amp()): ?>
-				<amp-img src="/assets/images/icon_ranking.png" class="rankIcon others" width="62" height="65"></amp-img>
-			<?php else: ?>
-				<img src="/assets/images/icon_ranking.png" class="rankIcon others">
-			<?php endif; ?>
+			<img src="/assets/images/icon_ranking<?php echo $salonNum; ?>.png" alt="人気サロン第<?php echo $salonNum; ?>位" class="rankIcon">
 		<?php endif; ?>
-
 		<h2 class="salonName"><?php echo $value['title']; ?></h2>
 	</header>
 	<div class="salonBody">

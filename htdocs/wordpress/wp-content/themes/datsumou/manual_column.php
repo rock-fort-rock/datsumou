@@ -40,4 +40,10 @@
 		<p><img src="<?php echo get_template_directory_uri(); ?>/images/linkcard_visual.jpg" style="width:100%; border:1px solid #ccc;"><br><span style="font-size:85%;">ビジュアルモード時</span></p>
 		<p><img src="<?php echo get_template_directory_uri(); ?>/images/linkcard_text.jpg" style="width:100%; border:1px solid #ccc;"><br><span style="font-size:85%;">テキストモード時</span></p>
 	</div>
+
+	<div class="card">
+		<h2>画像拡大表示</h2>
+		<p>メディア挿入時にリンク先を「メディア」に設定すると、画像をクリックしたときに拡大表示されます。</p>
+		<p><img src="<?php echo get_template_directory_uri(); ?>/images/fancybox.jpg" style="width:100%; border:1px solid #ccc;"></p>
+	</div>
 </div>

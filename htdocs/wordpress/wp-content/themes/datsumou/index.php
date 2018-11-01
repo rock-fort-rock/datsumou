@@ -3,8 +3,16 @@ $status = [
 	'id' => 'home',
 ];
 ?>
-<?php get_header(); ?>
+<?php
+if(is_amp()){
+	// include 'amp/index.php';
+}else{
+	get_header();
+}
+?>
+<?php //get_header(); ?>
 <div class="mainContents">
+	<?php if(!is_amp()): ?>
 	<section class="contentBlock">
 		<!-- <div style="background-color: #ededed; height: 0; padding-top: 60%"></div> -->
 		<div class="diagnosisChart">
@@ -167,6 +175,8 @@ $status = [
 		</div>
 
 	</section>
+	<?php endif; ?>
+
 	<?php $salonPosts = get_field('ranking_top', 'option'); ?>
 	<?php get_template_part('ranking'); ?>
 </div>

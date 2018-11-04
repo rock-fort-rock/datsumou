@@ -3,8 +3,11 @@ $naviBanner = [];
 while(the_repeater_field('option_naviBanner', 'option')){
 	$naviImgObj = get_sub_field('option_naviBanner_image');
 	$tempNaviBanner['image'] = $naviImgObj['sizes']['medium_large'];
+	$tempNaviBanner['imageWidth'] = $naviImgObj['sizes']['medium_large-width'];
+	$tempNaviBanner['imageHeight'] = $naviImgObj['sizes']['medium_large-height'];
 	$tempNaviBanner['link'] = get_sub_field('option_naviBanner_link');
 	array_push($naviBanner, $tempNaviBanner);
+	// print_r($naviImgObj);
 }
 ?>
 		</div><!--/contents-->
@@ -42,7 +45,7 @@ while(the_repeater_field('option_naviBanner', 'option')){
 							<div class="gNaviHeadline">脱毛サロンお役立ち情報</div>
 							<ul class="gNaviBanner">
 								<?php foreach($naviBanner as $value): ?>
-								<li><a href="<?php echo $value['link']; ?>" target="_blank"><amp-img src="<?php echo $value['image']; ?>" width="580" height="195" layout="responsive"></amp-img></a></li>
+								<li><a href="<?php echo $value['link']; ?>" target="_blank"><amp-img src="<?php echo $value['image']; ?>" width="<?php echo $value['imageWidth']; ?>" height="<?php echo $value['imageHeight']; ?>" layout="responsive"></amp-img></a></li>
 								<?php endforeach; ?>
 							</ul>
 						</div>

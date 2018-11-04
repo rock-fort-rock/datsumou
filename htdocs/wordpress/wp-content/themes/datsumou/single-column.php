@@ -55,8 +55,16 @@ $tocHide = $tocGroup['column_toc_hide'];
 
 		<div class="contentInner">
 			<div class="entryEyecatch">
+				<?php
+					$eyecatchId = get_post_thumbnail_id($post->ID);
+					$eyecatch = wp_get_attachment_image_src( $eyecatchId, 'large' );
+					$eyecatchSrc = $eyecatch[0];
+					$eyecatchWidth = $eyecatch[1];
+					$eyecatchHeight = $eyecatch[2];
+					// print_r($eyecatch);
+				?>
 				<?php if(is_amp()): ?>
-					<?php echo convertImgToAmpImg('<img src="'.get_the_post_thumbnail_url(get_the_ID(), 'large').'">'); ?>
+					<amp-img src="<?php echo $eyecatchSrc; ?>" width="<?php echo $eyecatchWidth; ?>" height="<?php echo $eyecatchHeight; ?>" layout="responsive">
 				<?php else: ?>
 					<img src="<?php the_post_thumbnail_url('large'); ?>">
 				<?php endif; ?>

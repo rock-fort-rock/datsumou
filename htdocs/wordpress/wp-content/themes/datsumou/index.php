@@ -20,6 +20,7 @@ if(is_amp()){
 				<div class="header">
 					<div class="headerStart">
 						<img src="/assets/images/home/logo_large.png" class="logo exceptSmall" alt="ツルツル！全身脱毛診断メーカー">
+						<img src="/assets/images/home/chart_title.png" class="logo onlySmall" alt="相性バッチリの脱毛サロンを探そう">
 						<img src="/assets/images/home/cat.png" class="cat">
 					</div>
 

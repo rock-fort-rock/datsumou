@@ -73,7 +73,7 @@ add_filter( 'wp_resource_hints', 'remove_dns_prefetch', 10, 2 );
 // add_filter( 'emoji_svg_url', '__return_false' );//絵文字だけの
 
 function my_scripts() {
-  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '1.5');
+  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '1.7');
 
   //add_action( 'wp_enqueue_scripts', '' );した時点で同梱のjqueryが読み込まれるので削除　不要になった？
   // wp_deregister_script('jquery');
@@ -520,11 +520,18 @@ HTML;
             continue;
         }
 
+        ini_set('error_reporting', E_ALL);
         $imagesize = getimagesize($obj["src"]);
+        // print_r($imagesize);
         // width と height がなければオリジナルサイズを取得
         if (empty($obj["width"]) || empty($obj["height"])){
             $obj["width"] = $imagesize[0];
             $obj["height"] = $imagesize[1];
+            //imagesize取得できなければ強制
+            if(empty($imagesize)){
+              $obj["width"] = 640;
+              $obj["height"] = 480;
+            }
         }
 
         // 属性をコピーする
@@ -536,7 +543,7 @@ HTML;
         }
 
         // w:375pxより大きいものはlayout属性を追加する（レスポンシブに）
-        if($imagesize[0] > 375){
+        if($obj["width"] > 375){
         	$attrStr[] = 'layout="responsive"';
         }
 

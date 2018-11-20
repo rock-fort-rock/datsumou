@@ -556,6 +556,21 @@ HTML;
     return $dom->find("body")->html();
 }
 
+
+//「logo」フィールドの値は必須です。対応
+add_filter( 'amp_post_template_metadata', 'amp_set_site_logo', 10, 2);
+function amp_set_site_logo( $metadata, $post ) {
+    $metadata['publisher']['logo'] = array(
+        '@type' => 'ImageObject',
+        'url' => 'https://脱毛診断メーカー.com/assets/images/logo.png',
+        'height' => 60,
+        'width' => 222
+        );
+    return $metadata;
+}
+
+
+
 function is_amp(){
 	$is_amp = false;
     if(function_exists('is_amp_endpoint') && is_amp_endpoint()) {

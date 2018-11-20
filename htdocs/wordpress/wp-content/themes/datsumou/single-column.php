@@ -64,7 +64,7 @@ $tocHide = $tocGroup['column_toc_hide'];
 					// print_r($eyecatch);
 				?>
 				<?php if(is_amp()): ?>
-					<amp-img src="<?php echo $eyecatchSrc; ?>" width="<?php echo $eyecatchWidth; ?>" height="<?php echo $eyecatchHeight; ?>" layout="responsive">
+					<amp-img src="<?php echo $eyecatchSrc; ?>" width="<?php echo $eyecatchWidth; ?>" height="<?php echo $eyecatchHeight; ?>" layout="responsive"></amp-img>
 				<?php else: ?>
 					<img src="<?php the_post_thumbnail_url('large'); ?>">
 				<?php endif; ?>

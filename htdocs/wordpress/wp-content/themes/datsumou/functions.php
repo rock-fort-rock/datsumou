@@ -72,28 +72,51 @@ function remove_dns_prefetch( $hints, $relation_type ) {
 add_filter( 'wp_resource_hints', 'remove_dns_prefetch', 10, 2 );
 // add_filter( 'emoji_svg_url', '__return_false' );//絵文字だけの
 
+$pluginCss = [
+  'fancybox',
+  'pz-linkcard',
+  'sb-type-std',
+  'sb-type-fb',
+  'sb-type-fb-flat',
+  'sb-type-ln',
+  'sb-type-ln-flat',
+  'sb-type-pink',
+  'sb-type-rtail',
+  'sb-type-drop',
+  'sb-type-think',
+  'sb-no-br',
+];
+
 function my_scripts() {
   wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '1.7');
-
-  //add_action( 'wp_enqueue_scripts', '' );した時点で同梱のjqueryが読み込まれるので削除　不要になった？
-  // wp_deregister_script('jquery');
-
-  // wp_deregister_script('window._se_plugin_version');
-  // wp_enqueue_script('sakurawebfont', '//webfonts.sakura.ne.jp/js/sakura.js', array(), '', true );
   wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '1.5', true );
 
-  // if(is_page('contact')){
-  //   //mw wp formがjqueryを読み込み済み
-  //   wp_enqueue_script( 'ajaxzip3-script', 'https://ajaxzip3.github.io/ajaxzip3.js', array( 'jquery' ), null, true );
-  // }
+  //プラグインCSSをヘッダで読み込まない→逆に遅くなる？
+  global $pluginCss;
+  foreach($pluginCss as $value){
+    wp_dequeue_style($value);
+  }
+  
 }
-add_action( 'wp_enqueue_scripts', 'my_scripts' );
+add_action( 'wp_enqueue_scripts', 'my_scripts', 9999 );
+
+
+
+function my_enqueue_plugin_files(){
+  //プラグインCSSをフッタで読み込み→逆に遅くなる？
+  global $pluginCss;
+  foreach($pluginCss as $value){
+    wp_enqueue_style($value);
+  }
+}
+add_action('wp_footer', 'my_enqueue_plugin_files');
 
 
 //フッターでCSSを読み込む場合
 // function prefix_add_footer_styles() {
-//     wp_enqueue_style('googlefonts', 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700', array(), null);
-// };
+  // wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '1.7');
+    //wp_enqueue_style('googlefonts', 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700', array(), null);
+//};
 // add_action( 'get_footer', 'prefix_add_footer_styles' );
 
 

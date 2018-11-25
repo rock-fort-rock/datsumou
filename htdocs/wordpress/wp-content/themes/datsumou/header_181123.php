@@ -86,9 +86,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="gNaviHeadline">脱毛サロンお役立ち情報</div>
 					<ul class="gNaviBanner">
 						<?php foreach($naviBanner as $value): ?>
-						<li><a href="<?php echo $value['link']; ?>" target="_blank">
-							<img data-echo="<?php echo $value['image']; ?>" src="/assets/images/dummy.gif" class="lazy">
-						</a></li>
+						<li><a href="<?php echo $value['link']; ?>" target="_blank"><img src="<?php echo $value['image']; ?>"></a></li>
 						<?php endforeach; ?>
 					</ul>
 				</div>

@@ -36,11 +36,13 @@ img {
   /*-ms-interpolation-mode: bicubic;*/
   vertical-align: bottom;
   max-width: 100%;
-}
-img {
-  /*-ms-interpolation-mode: bicubic;*/
-  vertical-align: bottom;
-  max-width: 100%;
+  &.lazy{
+  	opacity: 0;
+  	&.loaded{
+  		opacity: 1;
+  		transition: opacity .2s;
+  	}
+  }
 }
 
 p{

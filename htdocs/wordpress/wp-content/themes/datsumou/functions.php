@@ -88,10 +88,11 @@ $pluginCss = [
 ];
 
 function my_scripts() {
-  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '1.7');
-  wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '1.5', true );
+  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '1.8');
+  wp_enqueue_script('echo', home_url().'/assets/lib/echo.min.js', array(), '', true );
+  wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '1.9', true );
 
-  //プラグインCSSをヘッダで読み込まない→逆に遅くなる？
+  //プラグインCSSをヘッダで読み込まない
   global $pluginCss;
   foreach($pluginCss as $value){
     wp_dequeue_style($value);
@@ -103,7 +104,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts', 9999 );
 
 
 function my_enqueue_plugin_files(){
-  //プラグインCSSをフッタで読み込み→逆に遅くなる？
+  //プラグインCSSをフッタで読み込み
   global $pluginCss;
   foreach($pluginCss as $value){
     wp_enqueue_style($value);

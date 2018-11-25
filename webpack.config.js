@@ -88,7 +88,10 @@ module.exports = [
         //jquery読み込み
         $: 'jquery',
         jQuery: 'jquery'
-      })
+      }),
+      // new webpack.ProvidePlugin({
+      //   echo: 'echo-js'
+      // }),
     ],
 
     module: {

@@ -3,6 +3,9 @@
 
 // import $ from 'jquery';//webpack.configで読み込み
 import Chart from 'chart.js';
+// import echo from 'echo-js';//NG
+// import echo from '../../lib/echo.min';
+
 const breakpoint = 780;
 const bodyWidth = document.body.clientWidth;
 const ua = window.navigator.userAgent.toLowerCase();
@@ -54,6 +57,14 @@ $(() => {
 		const h = $('.footerBanner').height();
 		$('.gFooter').css('marginBottom', h);
 	}
+
+	echo.init({
+		offset: 400,
+		debounce: false,
+		callback: function (element, op) {
+	      element.classList.add('loaded');
+	    }
+	});
 })
 
 //診断チャート

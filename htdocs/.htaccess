@@ -1,9 +1,9 @@
 #パスワード保護の名残で重複コンテンツとみなされる対策
-RewriteEngine on
-RewriteCond %{QUERY_STRING} (^|&)redirect_to=([^&]+)($|&)
-RewriteRule .* - [E=REDIRECT:%2]
-RewriteCond %{QUERY_STRING} !=""
-RewriteRule ^(.*) %{ENV:REDIRECT}$1? [L,R=301]
+#RewriteEngine on
+#RewriteCond %{QUERY_STRING} (^|&)redirect_to=([^&]+)($|&)
+#RewriteRule .* - [E=REDIRECT:%2]
+#RewriteCond %{QUERY_STRING} !=""
+#RewriteRule ^(.*) %{ENV:REDIRECT}$1? [L,R=301]
 
 
 # BEGIN WordPress

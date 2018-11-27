@@ -545,6 +545,9 @@ HTML;
         }
 
         ini_set('error_reporting', E_ALL);
+        //日本語ドメインNG
+        $obj["src"] = str_replace('https://脱毛診断メーカー.com', 'https://xn--lckwf7cb5558dg0hnt1bzdp.com', $obj["src"]);
+        // print_r($obj["src"]);
         $imagesize = getimagesize($obj["src"]);
         // print_r($imagesize);
         // width と height がなければオリジナルサイズを取得

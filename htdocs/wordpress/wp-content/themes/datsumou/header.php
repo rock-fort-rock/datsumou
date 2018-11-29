@@ -29,8 +29,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KVVHX8W');</script>
 <!-- End Google Tag Manager -->
-<?php /*<link rel="shortcut icon" href="/images/favicon.ico">
-<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon.png">*/ ?>
+<!-- Global site tag (gtag.js) - Google Ads: 780014460 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-780014460"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-780014460');
+</script>
+<?php if(is_singular('salon')): ?>
+<script>
+  gtag('event', 'page_view', {
+    'send_to': 'AW-780014460',
+    'user_id': 'replace with value'
+  });
+</script>
+<?php endif; ?>
 </head>
 
 <body id="<?php echo $status['id']; ?>">

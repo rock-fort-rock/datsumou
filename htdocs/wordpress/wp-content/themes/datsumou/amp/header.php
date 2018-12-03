@@ -9,6 +9,7 @@
 		<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/css/amp.css'; ?>
 	</style>
 	<!-- AMP Analytics --><script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+	<script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>
 </head>
 
 <body class="amp-mode <?php echo esc_attr( $this->get( 'body_class' ) ); ?>" id="<?php echo $status['id']; ?>">

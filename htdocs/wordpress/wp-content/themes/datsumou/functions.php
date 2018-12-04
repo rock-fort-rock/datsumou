@@ -584,6 +584,23 @@ HTML;
 }
 
 
+//twitterカードのAMP対応
+function embed_amp( $content, $url ) {
+  preg_match( '/twitter.com/', $content, $matche );
+  $urlArray = explode('/', $url);
+  $tweetid = end($urlArray); 
+  if( $matche ) {
+    if( is_amp() ) {
+        return '<amp-twitter width=486 height=657 layout="responsive" data-tweetid="' . $tweetid . '" data-cards="hidden"></amp-twitter>';
+    }else{
+      return $content;
+    }
+  }
+}
+add_filter( 'embed_oembed_html', 'embed_amp', 10, 2 );
+
+
+
 //「logo」フィールドの値は必須です。対応
 add_filter( 'amp_post_template_metadata', 'amp_set_site_logo', 10, 2);
 function amp_set_site_logo( $metadata, $post ) {

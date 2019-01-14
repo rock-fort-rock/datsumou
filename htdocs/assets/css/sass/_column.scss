@@ -51,7 +51,7 @@
 			background-color: #fff;
 			padding: 5px 20px 5px 5px;
 			line-height: 1;
-			cursor: pointer;			
+			cursor: pointer;
 		}
 	}
 	@media screen and (min-width: $breakpoint + 1){
@@ -267,7 +267,7 @@
 					a{
 						font-weight: bold;
 					}
-					
+
 				}
 				&.sub{
 					// padding-left: 15px;
@@ -275,7 +275,7 @@
 					margin-left: 10px;
 				}
 			}
-			
+
 		}
 		@media screen and (min-width: $breakpoint + 1){
 			padding: 25px 10px;
@@ -312,7 +312,7 @@
 						font-size: 1.1rem;
 					}
 				}
-				
+
 			}
 		}
 	}
@@ -375,6 +375,11 @@
 				height: auto;
 			}
 
+			iframe,
+			amp-iframe{
+				max-width: 100%;
+			}
+
 			/* 画像配置 */
 			img.alignleft,
 			amp-img.alignleft {
@@ -399,7 +404,7 @@
 							text-decoration: none;
 						}
 					}
-					
+
 				}
 			}
 
@@ -411,6 +416,12 @@
 						font-size: 1.2rem;
 					}
 				}
+			}
+		}
+		@media screen and (max-width: $breakpoint){
+			iframe,
+			amp-iframe{
+				max-height: 240px;
 			}
 		}
 		@media screen and (min-width: $breakpoint + 1){

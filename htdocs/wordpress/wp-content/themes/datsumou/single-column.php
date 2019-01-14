@@ -107,7 +107,11 @@ $tocHide = $tocGroup['column_toc_hide'];
 							<h3 id="<?php echo 'index'.($i+1).'-'.($n+1); ?>"><?php echo $block[$i]['contents'][$n]['column_headline2']; ?></h3>
 						<?php endif; ?>
 						<?php if(is_amp()): ?>
-							<?php echo convertImgToAmpImg($block[$i]['contents'][$n]['column_contents']); ?>
+							<?php
+							$content = convert_content_to_amp_sample($block[$i]['contents'][$n]['column_contents']);
+							// echo convertImgToAmpImg($block[$i]['contents'][$n]['column_contents']);
+							echo convertImgToAmpImg($content);
+							?>
 						<?php else: ?>
 							<?php echo $block[$i]['contents'][$n]['column_contents']; ?>
 						<?php endif; ?>

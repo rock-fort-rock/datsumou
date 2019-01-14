@@ -37,7 +37,7 @@ function my_pre_get_document_title( $title ) {
   if($parent_id != 0){
     $parent_title = get_post($parent_id)->post_title;
     $title = $current_title.' | '.$parent_title.' | '.get_bloginfo('name');
-  }  
+  }
   if(is_single()){
     $post_type = get_post_type($post->ID);
     $label = get_post_type_object($post_type)->label;
@@ -88,7 +88,7 @@ $pluginCss = [
 ];
 
 function my_scripts() {
-  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '1.8');
+  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '1.9');
   wp_enqueue_script('echo', home_url().'/assets/lib/echo.min.js', array(), '', true );
   wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '1.9', true );
 
@@ -97,7 +97,7 @@ function my_scripts() {
   foreach($pluginCss as $value){
     wp_dequeue_style($value);
   }
-  
+
 }
 add_action( 'wp_enqueue_scripts', 'my_scripts', 9999 );
 
@@ -192,7 +192,7 @@ if (!current_user_can('administrator')){
 add_action( 'after_setup_theme', 'imagesizeSet' );
 function imagesizeSet() {
   // add_image_size( 'visual', 500, 648, true );
-  
+
 	update_option( 'thumbnail_size_w', 120 );
 	update_option( 'thumbnail_size_h', 0 );
 
@@ -499,12 +499,12 @@ AMP設定
 // 	return $file;
 // }
 // add_filter( 'amp_post_template_file', 'custom_post_template', 10, 3 );
- 
+
 // function custom_template_include( $template ) {
 //   if ( is_home() && is_amp_endpoint() ) {
 //     $template = TEMPLATEPATH . '/amp/index.php';
 //   }
- 
+
 //   return $template;
 // }
 // add_filter( 'template_include', 'custom_template_include', 10 );
@@ -588,7 +588,7 @@ HTML;
 function embed_amp( $content, $url ) {
   preg_match( '/twitter.com/', $content, $matche );
   $urlArray = explode('/', $url);
-  $tweetid = end($urlArray); 
+  $tweetid = end($urlArray);
   if( $matche ) {
     if( is_amp() ) {
         return '<amp-twitter width=486 height=657 layout="responsive" data-tweetid="' . $tweetid . '" data-cards="hidden"></amp-twitter>';
@@ -598,6 +598,25 @@ function embed_amp( $content, $url ) {
   }
 }
 add_filter( 'embed_oembed_html', 'embed_amp', 10, 2 );
+
+//AMP用にコンテンツを変換する
+function convert_content_to_amp_sample($the_content){
+  if( is_amp() ) {
+    $pattern = '/<iframe/i';
+    $append = '<amp-iframe layout="responsive" sandbox="allow-scripts allow-same-origin"';
+    $the_content = preg_replace($pattern, $append, $the_content);
+
+    $pattern = 'type="text/html"';
+    $the_content = str_ireplace($pattern, '', $the_content);
+
+    $pattern = '/<\/iframe>/i';
+    $append = '</amp-iframe>';
+    $the_content = preg_replace($pattern, $append, $the_content);
+    return $the_content;
+  }else{
+    return $content;
+  }
+}
 
 
 

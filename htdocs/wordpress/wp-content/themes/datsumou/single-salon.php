@@ -77,7 +77,7 @@ $experience = get_field('salon_experience');
 					<div class="paragraph salonInfoBanner">
 						<a href="<?php echo $bannerUrl; ?>" target="_blank">
 							<?php if(is_amp()): ?>
-							<amp-img src="<?php echo $bannerImage; ?>" width="800" height="667" layout="responsive"></amp-img>
+							<amp-img src="<?php echo $bannerImage; ?>" width="800" height="680" layout="responsive"></amp-img>
 							<?php else: ?>
 							<img src="<?php echo $bannerImage; ?>">
 							<?php endif; ?>
@@ -156,7 +156,7 @@ $experience = get_field('salon_experience');
 								<li><?php echo $value; ?></li>
 								<?php endforeach; ?>
 							</ul>
-							
+
 						</div>
 					</div>
 					<div class="paragraph">
@@ -220,7 +220,7 @@ $experience = get_field('salon_experience');
 										<?php endfor; ?>
 									<?php else: ?>
 										<?php echo $info[$a]['salon_info_item_content']; ?>
-									<?php endif; ?>	
+									<?php endif; ?>
 									</td>
 									<?php endfor; ?>
 								</tr>
@@ -247,7 +247,7 @@ $experience = get_field('salon_experience');
 				<div class="contentInner">
 				<?php if(is_amp()): ?>
 					<ul class="review">
-						<?php 
+						<?php
 						$count = count($review);
 						?>
 						<?php for($i=0; $i<$count; $i++): ?>
@@ -259,7 +259,7 @@ $experience = get_field('salon_experience');
 					</ul>
 				<?php else: ?>
 					<ul class="review">
-						<?php 
+						<?php
 						$count = count($review);
 						$init = 3;
 						?>

@@ -201,7 +201,7 @@
 			 	opacity: 1;
 			 	// transform: scale(1);
 			    transform: translateX(0);
-			   
+
 			 }
 			 99.99% {
 			 	height: auto;
@@ -237,7 +237,7 @@
 			width: 240px;
 			margin: 0 auto;
 			img{
-				
+
 				animation: startExpand .8s 1.5s infinite alternate;
 				@keyframes startExpand {
 					 0% {
@@ -488,6 +488,9 @@
 				margin-bottom: 10px;
 				.logo{
 					width: 100px;
+					img{
+						max-height: 90px;
+					}
 				}
 				.salonName{
 					flex: 1;
@@ -599,7 +602,7 @@
 						span{
 							font-size: 11px;
 						}
-						
+
 					}
 				}
 			}
@@ -666,5 +669,5 @@
 			width: 80px;
 		}
 	}
-	
+
 }

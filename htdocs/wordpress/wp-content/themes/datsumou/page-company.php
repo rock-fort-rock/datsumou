@@ -15,7 +15,7 @@ if(!is_amp()){
 			<h1 class="pageTitle">運営者情報</h1>
 
 			<h2 class="pageHeadline1">当サイトについて</h2>
-			
+
 			<table class="basicTable">
 				<tr>
 					<th>サイト名</th><td>ツルツル！全身脱毛診断メーカー</td>
@@ -30,7 +30,7 @@ if(!is_amp()){
 					<th>電話</th><td>03-6869-0653</td>
 				</tr>
 				<tr>
-					<th>所在地</th><td>〒170-0005 東京都豊島区南大塚1-31-8 1F</td>
+					<th>所在地</th><td>〒173-0004　板橋区板橋1－48－9　建材ビル6F</td>
 				</tr>
 				<tr>
 					<th>個人情報の保護</th><td><a href="/privacy/" class="textLink">プライバシーポリシー</a>のページをご覧下さい。</td>

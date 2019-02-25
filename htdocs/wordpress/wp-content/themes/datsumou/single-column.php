@@ -72,7 +72,11 @@ $tocHide = $tocGroup['column_toc_hide'];
 
 			<div class="entryBody">
 				<section class="entryBlock">
-					<?php echo get_field('column_lede'); ?>
+					<?php if(is_amp()): ?>
+						<?php echo convertImgToAmpImg(get_field('column_lede')); ?>
+					<?php else: ?>
+						<?php echo get_field('column_lede'); ?>
+					<?php endif; ?>
 				</section>
 
 <?php if($tocHide != 1 && !is_amp()): ?>

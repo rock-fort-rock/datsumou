@@ -37,6 +37,8 @@
 		padding-left: 110px;
 		color: #fff;
 		text-shadow: 3px 3px 1px rgba(212, 53, 129, 0.9);
+		line-height: 1.1;
+
 	}
 	@media screen and (min-width: $breakpoint + 1){
 		height: 80px;
@@ -127,9 +129,9 @@
 						margin-bottom: 7px;
 					}
 				}
-				
+
 			}
-			
+
 		}
 	}
 	.salonInfoOverview{
@@ -223,7 +225,7 @@
 				&:nth-child(odd){
 					background-color: #f8d8e7;
 				}
-			}			
+			}
 		}
 	}
 	.ctaBlock{
@@ -264,7 +266,7 @@
 				margin: 0 3px;
 				strong{
 					font-size: 1.4rem;
-					
+
 				}
 			}
 		}
@@ -339,9 +341,9 @@
 							margin-bottom: 7px;
 						}
 					}
-					
+
 				}
-				
+
 			}
 		}
 		.salonReview{
@@ -373,9 +375,9 @@
 				li:first-child{
 					margin-top: 20px;
 				}
-				
+
 			}
-			
+
 		}
 		.ctaBlock{
 			margin: 0 0 0 10%;
@@ -438,7 +440,7 @@
 		}
 	}
 	@media screen and (min-width: $breakpoint + 1){
-		padding: 0;	
+		padding: 0;
 		margin: 0 0 15px 0;
 		ul{
 			li{
@@ -455,6 +457,7 @@
 		.salonName{
 			// font-family: "Midashi Go MB31", $baseFont;
 			padding-left: 15px;
+			line-height: 1.1;
 		}
 		@media screen and (min-width: $breakpoint + 1){
 			.salonName{

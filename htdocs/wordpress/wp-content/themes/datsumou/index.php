@@ -132,11 +132,11 @@ if(is_amp()){
 
 					<div class="result resultI">
 						<div class="catch">お得で人気なのに予約が取れちゃう<br>最強サロンを探すあなたに</div>
-						<?php echo result_SalonInfo('kireimo', 'i'); ?>
+						<?php echo result_SalonInfo('musee', 'i'); ?>
 					</div>
 					<div class="result resultJ">
 						<div class="catch">お得サロンに定期的に通いたいあなたに</div>
-						<?php echo result_SalonInfo('kireimo', 'j'); ?>
+						<?php echo result_SalonInfo('ginza-calla', 'j'); ?>
 					</div>
 					<div class="result resultK">
 						<div class="catch">できるだけお得にじっくり<br>人気サロンに通いたいこだわり女子に</div>
@@ -144,19 +144,19 @@ if(is_amp()){
 					</div>
 					<div class="result resultL">
 						<div class="catch">お得なのに確実なガッツリ脱毛を目指すあなたに</div>
-						<?php echo result_SalonInfo('kireimo', 'l'); ?>
+						<?php echo result_SalonInfo('sasala', 'l'); ?>
 					</div>
 					<div class="result resultM">
 						<div class="catch">みんなのクチコミに定評のある<br>有名サロンを望むあなたに</div>
-						<?php echo result_SalonInfo('stlassh', 'm'); ?>
+						<?php echo result_SalonInfo('ginza-calla', 'm'); ?>
 					</div>
 					<div class="result resultN">
 						<div class="catch">イベントや女子会、デートの日までに<br>間に合わせたいあなたに</div>
-						<?php echo result_SalonInfo('kireimo', 'n'); ?>
+						<?php echo result_SalonInfo('ginza-calla', 'n'); ?>
 					</div>
 					<div class="result resultO">
 						<div class="catch">みんな得して納得したサロンが気になるあなたに</div>
-						<?php echo result_SalonInfo('kireimo', 'o'); ?>
+						<?php echo result_SalonInfo('ginza-calla', 'o'); ?>
 					</div>
 					<div class="result resultP">
 						<div class="catch">他の子より毛の太さ、量が気になる<br>モフモフ女子のあなたに</div>

@@ -73,11 +73,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<div class="gNaviContainer">
 				<div class="gNaviSect">
 					<div class="gNaviHeadline">目的別検索</div>
+					<?php
+					$get_page_id = get_page_by_path("ranking");
+					$ranking_id = $get_page_id->ID;
+					$arg = array(
+						'post_type' => 'page',
+						'posts_per_page' => '-1',
+						'post_parent' => $ranking_id,
+						'orderby' => 'menu_order',
+						'order' => 'ASC'
+					);
+					$rankingPage = get_posts($arg);
+					?>
 					<ul class="gNaviMenu">
-						<li><a href="/ranking/price/">とにかく安いサロンを探す</a></li>
-						<li><a href="/ranking/reserve/">予約がとりやすいサロンを探す</a></li>
-						<li><a href="/ranking/student/">学生おすすめサロンを探す</a></li>
-						<li><a href="/ranking/result/">早く結果がでるサロンを探す</a></li>
+						<?php foreach($rankingPage as $value): if(get_field('ranking_navi', $value->ID)):?>
+							<li><a href="<?php the_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a></li>
+						<?php endif; endforeach; ?>
 					</ul>
 				</div>
 				<div class="gNaviSect">

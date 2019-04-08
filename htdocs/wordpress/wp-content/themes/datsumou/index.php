@@ -96,6 +96,49 @@ if(is_amp()){
 					</div>
 				</div>
 
+				<?php
+				$arg = array('post_type'=>'salon');
+				$allsalons = get_posts($arg);
+				// print_r($allsalons);
+
+				//診断結果のサロン情報部分
+				function result_SalonInfo($slug, $type){
+					global $allsalons;
+				  // $arg = array('post_type'=>'salon','name'=>$slug);
+				  // $salon = get_posts($arg);
+
+					$keyIndex = array_search($slug, array_column($allsalons, 'post_name'));
+					$result = $allsalons[$keyIndex];
+
+				  // $id = $salon[0]->ID;
+					$id = $result->ID;
+				  $title = $result->post_title;
+				  $result = get_field('salon_chartResult', $id);
+				  $logoObj = $result['salon_chartResult_logo'];
+				  $logo = ($logoObj)?$logoObj['sizes']['medium']:'/assets/images/logo.png';
+				  $comment = $result['salon_chartResult_comment'];
+				  $officialsite = get_field('salon_officialsite', $id);
+				  $detail = get_the_permalink($id);
+				  $link = '/ranking/'.$type. '/';
+
+				  $return = '<div class="salonInfo">';
+				  $return .= '<div class="resultSalonHeader">';
+				  $return .= '<div class="logo"><img src="'.$logo.'"></div>';
+				  $return .= '<div class="salonName"><span>'.$title.'</span>がおすすめ！</div>';
+				  $return .= '</div>';
+				  $return .= '<div class="comment">'.$comment.'</div>';
+				  $return .= '<div class="buttons">';
+				  $return .= '<ul>';
+				  $return .= '<li class="official"><a href="'.$officialsite.'" target="_blank"><img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る"></a></li>';
+				  $return .= '<li class="detail"><a href="'.$detail.'"><img src="/assets/images/btn_detail.png" alt="詳細を見る"></a></li>';
+				  $return .= '</ul>';
+				  $return .= '<div class="moreRanking"><a href="'.$link.'"><span>ランキングをみる</span></a></div>';
+				  $return .= '</div>';
+				  $return .= '</div>';
+
+				  return $return;
+				}
+				?>
 				<div class="resultContainer diagnosisContainer">
 					<div class="result resultA">
 						<div class="catch">自分に必要な脱毛を知っているあなたには</div>
@@ -136,7 +179,7 @@ if(is_amp()){
 					</div>
 					<div class="result resultJ">
 						<div class="catch">お得サロンに定期的に通いたいあなたに</div>
-						<?php echo result_SalonInfo('ginza-calla', 'j'); ?>
+						<?php echo result_SalonInfo('kireimo', 'j'); ?>
 					</div>
 					<div class="result resultK">
 						<div class="catch">できるだけお得にじっくり<br>人気サロンに通いたいこだわり女子に</div>
@@ -144,23 +187,23 @@ if(is_amp()){
 					</div>
 					<div class="result resultL">
 						<div class="catch">お得なのに確実なガッツリ脱毛を目指すあなたに</div>
-						<?php echo result_SalonInfo('sasala', 'l'); ?>
+						<?php echo result_SalonInfo('musee', 'l'); ?>
 					</div>
 					<div class="result resultM">
 						<div class="catch">みんなのクチコミに定評のある<br>有名サロンを望むあなたに</div>
-						<?php echo result_SalonInfo('ginza-calla', 'm'); ?>
+						<?php echo result_SalonInfo('kireimo', 'm'); ?>
 					</div>
 					<div class="result resultN">
 						<div class="catch">イベントや女子会、デートの日までに<br>間に合わせたいあなたに</div>
-						<?php echo result_SalonInfo('ginza-calla', 'n'); ?>
+						<?php echo result_SalonInfo('kireimo', 'n'); ?>
 					</div>
 					<div class="result resultO">
 						<div class="catch">みんな得して納得したサロンが気になるあなたに</div>
-						<?php echo result_SalonInfo('ginza-calla', 'o'); ?>
+						<?php echo result_SalonInfo('kireimo', 'o'); ?>
 					</div>
 					<div class="result resultP">
 						<div class="catch">他の子より毛の太さ、量が気になる<br>モフモフ女子のあなたに</div>
-						<?php echo result_SalonInfo('sasala', 'p'); ?>
+						<?php echo result_SalonInfo('musee', 'p'); ?>
 					</div>
 				</div>
 

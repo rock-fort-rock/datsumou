@@ -569,6 +569,7 @@ add_filter( 'embed_oembed_html', 'embed_amp', 10, 2 );
 //AMP用にコンテンツを変換する
 function convert_content_to_amp_sample($the_content){
   if( is_amp() ) {
+    // iframeをamp-iframeに置換する
     $pattern = '/<iframe/i';
     $append = '<amp-iframe layout="responsive" sandbox="allow-scripts allow-same-origin"';
     $the_content = preg_replace($pattern, $append, $the_content);
@@ -579,6 +580,20 @@ function convert_content_to_amp_sample($the_content){
     $pattern = '/<\/iframe>/i';
     $append = '</amp-iframe>';
     $the_content = preg_replace($pattern, $append, $the_content);
+
+    // Instagramをamp-instagramに置換する
+    // $pattern = '/<blockquote class="instagram-media".+?"https:\/\/www.instagram.com\/p\/(.+?)\/".+?<\/blockquote>/is';
+    // $append = '<p><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="592" ></amp-instagram></p>';
+    // $the_content = preg_replace($pattern, $append, $the_content);
+
+    $pattern = '/<blockquote class="instagram-media".+?"https:\/\/www.instagram.com\/p\/(.+?)\/.+?<\/blockquote>/is';
+    $append = '<p><amp-instagram layout="responsive" data-shortcode="$1" width="592" height="592"></amp-instagram></p>';
+    $the_content = preg_replace($pattern, $append, $the_content);
+
+    $pattern = '<script async src="//www.instagram.com/embed.js"></script>';
+    $the_content = str_replace($pattern, '', $the_content);
+
+
     return $the_content;
   }else{
     return $content;

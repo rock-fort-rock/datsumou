@@ -46,6 +46,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   });
 </script>
 <?php endif; ?>
+<?php if(is_home()): ?>
+<script>
+var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+(function() {
+    var atag = document.createElement('script'); atag.type = 'text/javascript'; atag.async = true;
+    atag.src = _protocol + 'app.skele-ton.com/lpo-heatmap.js';
+    var s = document.getElementsByTagName('script')[0];
+    window["lpo-heatmap"] = "LPO-9658149443-1";
+    s.parentNode.insertBefore(atag, s);
+})();
+</script>
+<?php endif; ?>
 </head>
 
 <body id="<?php echo $status['id']; ?>">

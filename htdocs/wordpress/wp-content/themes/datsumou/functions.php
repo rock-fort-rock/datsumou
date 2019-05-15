@@ -92,6 +92,40 @@ function my_scripts() {
   wp_enqueue_script('echo', home_url().'/assets/lib/echo.min.js', array(), '', true );
   wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '1.9', true );
 
+  if (is_singular( 'column' )){
+    global $post;
+    $description = htmlspecialchars(get_post_meta($post->ID, '_aioseop_description', true),ENT_QUOTES); //All in One SEO からdescriptionを取得
+    $eyecatchId = get_post_thumbnail_id($post->ID);
+    $eyecatch = wp_get_attachment_image_src( $eyecatchId, 'large' );
+    $eyecatchSrc = $eyecatch[0];
+    $eyecatchWidth = $eyecatch[1];
+    $eyecatchHeight = $eyecatch[2];
+
+    $script = '<script type="application/ld+json">'."\n";
+    $script .= '{'."\n";
+    $script .= '  "@context": "http://schema.org",'."\n";
+    $script .= '  "@type": "BlogPosting",'."\n";
+    $script .= '  "mainEntityOfPage": {'."\n";
+    $script .= '      "@type": "WebPage",'."\n";
+    $script .= '      "@id": "'.get_the_permalink().'"'."\n";
+    $script .= '  },'."\n";
+    $script .= '  "headline": "'.get_the_title().'",'."\n";
+    $script .= '  "description": "'.$description.'",'."\n";
+    $script .= '  "datePublished": "'.get_the_time('Y/m/d').'",'."\n";
+    $script .= '  "dateModified": "'.get_the_modified_date('Y/m/d').'",'."\n";
+    $script .= '  "image": {'."\n";
+    $script .= '      "@type": "ImageObject",'."\n";
+    $script .= '      "url": "'.$eyecatchSrc.'",'."\n";
+    $script .= '      "width": '.$eyecatchWidth.','."\n";
+    $script .= '      "height": '.$eyecatchWidth."\n";
+    $script .= '  }'."\n";
+
+    $script .= '}'."\n";
+    $script .= '</script>'."\n";
+
+    echo $script;
+  }
+
   //プラグインCSSをヘッダで読み込まない
   global $pluginCss;
   foreach($pluginCss as $value){
@@ -148,7 +182,7 @@ function remove_menus(){
     unset($menu[7]);//サロン情報
   }
 
-  if (!current_user_can('administrator')){
+  if (!current_user_can('adminaraki')){
     $restricted = array(__('投稿'),__('固定ページ'),__('コメント'),__('ツール'), __('設定'),  __('プロフィール'));
   }else{
     // $restricted = array();

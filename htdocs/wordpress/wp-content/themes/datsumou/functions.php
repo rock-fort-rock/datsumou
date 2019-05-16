@@ -92,6 +92,16 @@ function my_scripts() {
   wp_enqueue_script('echo', home_url().'/assets/lib/echo.min.js', array(), '', true );
   wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '1.9', true );
 
+  //プラグインCSSをヘッダで読み込まない
+  global $pluginCss;
+  foreach($pluginCss as $value){
+    wp_dequeue_style($value);
+  }
+
+}
+add_action( 'wp_enqueue_scripts', 'my_scripts', 9999 );
+
+function add_header(){
   if (is_singular( 'column' )){
     global $post;
     $description = htmlspecialchars(get_post_meta($post->ID, '_aioseop_description', true),ENT_QUOTES); //All in One SEO からdescriptionを取得
@@ -125,15 +135,8 @@ function my_scripts() {
 
     echo $script;
   }
-
-  //プラグインCSSをヘッダで読み込まない
-  global $pluginCss;
-  foreach($pluginCss as $value){
-    wp_dequeue_style($value);
-  }
-
 }
-add_action( 'wp_enqueue_scripts', 'my_scripts', 9999 );
+add_action('wp_head', 'add_header');
 
 
 

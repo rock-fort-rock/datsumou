@@ -185,7 +185,7 @@ function remove_menus(){
     unset($menu[7]);//サロン情報
   }
 
-  if (!current_user_can('adminaraki')){
+  if (!current_user_can('administrator')){
     $restricted = array(__('投稿'),__('固定ページ'),__('コメント'),__('ツール'), __('設定'),  __('プロフィール'));
   }else{
     // $restricted = array();

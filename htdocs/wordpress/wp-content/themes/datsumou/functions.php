@@ -335,6 +335,40 @@ function cpt_salon_init()
   register_post_type('salon', $args);
 }
 
+/**
+custom post type
+AMPストーリー
+**/
+add_action('init', 'cpt_ampstory_init');
+function cpt_ampstory_init()
+{
+  $labels = array(
+    'name' => _x('AMPストーリー', 'post type general name'),
+    'singular_name' => _x('AMPストーリー', 'post type singular name'),
+    'add_new' => _x('新規追加', 'ampstory'),
+    'add_new_item' => __('AMPストーリーを追加'),
+    'edit_item' => __('AMPストーリーを編集'),
+    'new_item' => __('新しいAMPストーリー'),
+    'view_item' => __('AMPストーリーを見る'),
+    'search_items' => __('AMPストーリーを探す'),
+    'not_found' =>  __('AMPストーリーはありません'),
+    'not_found_in_trash' => __('ゴミ箱にAMPストーリーはありません'),
+    'parent_item_colon' => ''
+  );
+  $args = array(
+    'labels' => $labels,
+    'public' => true,
+    'show_ui' => true,
+    'query_var' => true,
+    'capability_type' => 'post',
+    'has_archive' => true,
+    'rewrite' => array('slug' => 'ampstory', 'with_front' => false, 'pages' => true, 'feeds' => false),
+    'hierarchical' => false,
+    'menu_position' => 5,
+    'supports' => array('title','editor','thumbnail')
+  );
+  register_post_type('ampstory', $args);
+}
 
 function setOption(){
   if( function_exists('acf_add_options_page') ) {
@@ -344,7 +378,7 @@ function setOption(){
       'menu_slug'   => 'theme-options',
       'capability'  => 'edit_posts',
       'parent_slug' => '',
-      'position'  => 7,
+      'position'  => 8,
       'redirect'  => false,
     ));
 
@@ -354,7 +388,7 @@ function setOption(){
       'menu_slug'   => 'theme-options-ranking',
       'capability'  => 'edit_posts',
       'parent_slug' => '',
-      'position'  => 7,
+      'position'  => 8,
       'redirect'  => false,
     ));
     acf_add_options_sub_page(array( //サブページ

@@ -34,8 +34,13 @@ if($post_type == 'salon'){
 	get_template_part('single-salon');
 }elseif($post_type == 'column'){
 	get_template_part('single-column');
+}elseif($post_type == 'ampstory'){
+	get_template_part('single-ampstory');
 }
 ?>
 
-<?php $this->load_parts( array( 'footer' ) ); ?>
-
+<?php
+if($post_type !== 'ampstory'){
+	$this->load_parts( array( 'footer' ) );
+}
+?>

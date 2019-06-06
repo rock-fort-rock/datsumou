@@ -31,7 +31,7 @@ foreach($salonPosts as $value){
 	$info = get_field('salon_info', $id);
 	$salonTemp['info'] = $info['salon_info_item'];
 
-	$infoReview['salon_info_item_name'] = 'クチコミ';
+	$infoReview['salon_info_item_name'] = '口コミ';
 	$infoReview['salon_info_item_content'] = $info['salon_info_rating'];
 	array_unshift($salonTemp['info'], $infoReview);
 
@@ -48,7 +48,17 @@ foreach($salonPosts as $value){
 	$salonTemp['officialsite'] = get_field('salon_officialsite', $id);
 	$salonTemp['permalink'] = get_the_permalink($id);
 
+	$otherButtons = [];
+	while(the_repeater_field('salon_buttonsTop', $id)){
+		$buttonTemp['link'] = get_sub_field('salon_buttonsTop_link', $id);
+		$buttonTemp['text'] = get_sub_field('salon_buttonsTop_text', $id);
+		array_push($otherButtons, $buttonTemp);
+	}
+	$salonTemp['otherButtons'] = $otherButtons;
+
+
 	array_push($salonArray, $salonTemp);
+	// print_r($salonArray);
 }
 ?>
 
@@ -149,7 +159,7 @@ foreach($salonPosts as $value){
 							<li><?php echo $point; ?></li>
 							<?php endforeach; ?>
 						</ul>
-						
+
 					</div>
 				</div>
 				<div class="paragraph">
@@ -195,7 +205,7 @@ foreach($salonPosts as $value){
 									<?php endfor; ?>
 								<?php else: ?>
 									<?php echo $value['info'][$a]['salon_info_item_content']; ?>
-								<?php endif; ?>	
+								<?php endif; ?>
 								</td>
 								<?php endfor; ?>
 							</tr>
@@ -207,11 +217,11 @@ foreach($salonPosts as $value){
 		</div>
 
 		<div class="paragraph salonReview">
-			<div class="salonContentTitle">みんなのクチコミ</div>
+			<div class="salonContentTitle">みんなの口コミ</div>
 			<div class="contentInner">
 				<?php if(is_amp()): ?>
 					<ul class="review">
-						<?php 
+						<?php
 						$count = count($value['review']);
 						?>
 						<?php for($i=0; $i<$count; $i++): ?>
@@ -223,7 +233,7 @@ foreach($salonPosts as $value){
 					</ul>
 				<?php else: ?>
 					<ul class="review">
-						<?php 
+						<?php
 						$count = count($value['review']);
 						$init = 3;
 						?>
@@ -256,7 +266,7 @@ foreach($salonPosts as $value){
 			<div class="contentInner">
 				<div class="ctaBlock">
 					<div class="numberOfPeople">当サイトから<span class="num"><strong><?php echo $value['number']; ?></strong>名</span>がキレイになりました！</div>
-					<ul>
+					<ul class="imgBtn">
 						<li class="official">
 							<a href="<?php echo $value['officialsite']; ?>" target="_blank">
 								<?php if(is_amp()): ?>
@@ -276,6 +286,15 @@ foreach($salonPosts as $value){
 							</a>
 						</li>
 					</ul>
+					<?php if(!empty($value['otherButtons'])): ?>
+					<ul class="txtBtn">
+						<?php foreach($value['otherButtons'] as $button): ?>
+						<li>
+							<a href="<?php echo $button['link']; ?>"><?php echo $button['text']; ?></a>
+						</li>
+						<?php endforeach; ?>
+					</ul>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>

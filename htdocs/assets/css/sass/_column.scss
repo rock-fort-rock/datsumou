@@ -85,51 +85,6 @@
 }
 
 #column{
-	article.entry{
-		margin-bottom: 15px;
-		&:not(:last-child){
-			padding-bottom: 15px;
-			border-bottom: 1px solid #ccc;
-		}
-		a{
-			display: flex;
-			.imageBlock{
-				width: 120px;
-				img{
-					width: 100%;
-				}
-			}
-			.textBlock{
-				flex: 1;
-				padding-left: 10px;
-				.entryTitle{
-					margin: 5px 0;
-					font-size: 1.1rem;
-					font-weight: bold;
-				}
-			}
-		}
-		@media screen and (min-width: $breakpoint + 1){
-			margin-bottom: 30px;
-			&:not(:last-child){
-				padding-bottom: 30px;
-			}
-			a{
-				@include hover;
-				.imageBlock{
-					width: 240px;
-				}
-				.textBlock{
-					padding-left: 20px;
-					.entryTitle{
-						margin: 10px 0;
-						font-size: 1.3rem;
-					}
-				}
-			}
-		}
-	}
-
 	.paginationWrapper{
 		text-align: center;
 		margin-bottom: 30px;
@@ -169,6 +124,51 @@
 					a{
 						@include hover;
 					}
+				}
+			}
+		}
+	}
+}
+
+article.entry{
+	margin-bottom: 15px;
+	&:not(:last-child){
+		padding-bottom: 15px;
+		border-bottom: 1px solid #ccc;
+	}
+	a{
+		display: flex;
+		.imageBlock{
+			width: 120px;
+			img{
+				width: 100%;
+			}
+		}
+		.textBlock{
+			flex: 1;
+			padding-left: 10px;
+			.entryTitle{
+				margin: 5px 0;
+				font-size: 1.1rem;
+				font-weight: bold;
+			}
+		}
+	}
+	@media screen and (min-width: $breakpoint + 1){
+		margin-bottom: 30px;
+		&:not(:last-child){
+			padding-bottom: 30px;
+		}
+		a{
+			@include hover;
+			.imageBlock{
+				width: 240px;
+			}
+			.textBlock{
+				padding-left: 20px;
+				.entryTitle{
+					margin: 10px 0;
+					font-size: 1.3rem;
 				}
 			}
 		}

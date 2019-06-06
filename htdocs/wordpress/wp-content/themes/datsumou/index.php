@@ -75,7 +75,7 @@ if(is_amp()){
 						<div class="textTitle">
 							<img src="/assets/images/home/text_q4.png" alt="第4問">
 						</div>
-						<div class="headline"><span>キミにとって"みんなのクチコミ評価"はサロン選びでははずせない？</span></div>
+						<div class="headline"><span>キミにとって"みんなの口コミ評価"はサロン選びでははずせない？</span></div>
 						<div class="choices">
 							<div class="answer" data-answer="1">口コミ評価って大事！</div>
 							<div class="answer" data-answer="2">口コミよりも実績が大事！</div>
@@ -157,7 +157,7 @@ if(is_amp()){
 						<?php echo result_SalonInfo('musee', 'd'); ?>
 					</div>
 					<div class="result resultE">
-						<div class="catch">みんなのクチコミに定評のある<br>有名サロンを望むあなたに</div>
+						<div class="catch">みんなの口コミに定評のある<br>有名サロンを望むあなたに</div>
 						<?php echo result_SalonInfo('musee', 'e'); ?>
 					</div>
 					<div class="result resultF">
@@ -190,7 +190,7 @@ if(is_amp()){
 						<?php echo result_SalonInfo('musee', 'l'); ?>
 					</div>
 					<div class="result resultM">
-						<div class="catch">みんなのクチコミに定評のある<br>有名サロンを望むあなたに</div>
+						<div class="catch">みんなの口コミに定評のある<br>有名サロンを望むあなたに</div>
 						<?php echo result_SalonInfo('kireimo', 'm'); ?>
 					</div>
 					<div class="result resultN">

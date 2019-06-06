@@ -33,7 +33,7 @@ $campaign = get_field('salon_campaign');
 $infoGroup = get_field('salon_info');
 $info = $infoGroup['salon_info_item'];
 
-$infoReview['salon_info_item_name'] = 'クチコミ';
+$infoReview['salon_info_item_name'] = '口コミ';
 $infoReview['salon_info_item_content'] = $infoGroup['salon_info_rating'];
 array_unshift($info, $infoReview);
 // print_r($info);
@@ -51,6 +51,37 @@ $officialsite = get_field('salon_officialsite');
 $experience = get_field('salon_experience');
 // $salonTemp['permalink'] = get_the_permalink($id);
 
+$otherButtons = [];
+while(the_repeater_field('salon_buttons')){
+	$buttonTemp['link'] = get_sub_field('salon_buttons_link');
+	$buttonTemp['text'] = get_sub_field('salon_buttons_text');
+	array_push($otherButtons, $buttonTemp);
+}
+
+$recommend = [];
+while(the_repeater_field('salon_recommend')){
+	$column = get_sub_field('salon_recommend_column');
+	$recoTemp['link'] = get_the_permalink($column->ID);
+	$recoTemp['title'] = $column->post_title;
+	$recoTemp['date'] = get_the_time('Y年m月d日', $column->ID);
+	$raw_lede = strip_tags(get_field('column_lede', $column->ID));
+	$num = 60;
+	$lede = mb_substr($raw_lede, 0, $num);
+	if(mb_strlen($raw_lede) > $num){
+		$lede .= '…' ;
+	}
+	$recoTemp['lede'] = $lede;
+
+	$eyecatchId = get_post_thumbnail_id($column->ID);
+	$eyecatch = wp_get_attachment_image_src( $eyecatchId, 'medium_large' );
+	$recoTemp['eyecatchSrc'] = $eyecatch[0];
+	$recoTemp['eyecatchWidth'] = $eyecatch[1];
+	$recoTemp['eyecatchHeight'] = $eyecatch[2];
+
+	array_push($recommend, $recoTemp);
+}
+// print_r($recommend);
+
 ?>
 <div class="mainContents">
 	<section class="contentBlock">
@@ -63,7 +94,7 @@ $experience = get_field('salon_experience');
 					<div class="exceptSmall"><a href="#pricePc" class="scroll">料金</a></div>
 				</li>
 				<li><a href="#info" class="scroll">サロン情報</a></li>
-				<li><a href="#review" class="scroll">クチコミ</a></li>
+				<li><a href="#review" class="scroll">口コミ</a></li>
 			</ul>
 		</div>
 		<?php endif; ?>
@@ -171,7 +202,7 @@ $experience = get_field('salon_experience');
 							<li><a href="#point" class="scroll">ポイント</a></li>
 							<li><span>料金</span></li>
 							<li><a href="#info" class="scroll">サロン情報</a></li>
-							<li><a href="#review" class="scroll">クチコミ</a></li>
+							<li><a href="#review" class="scroll">口コミ</a></li>
 						</ul>
 					</div>
 					<?php endif; ?>
@@ -192,7 +223,7 @@ $experience = get_field('salon_experience');
 							<li><a href="#point" class="scroll">ポイント</a></li>
 							<li><a href="#price" class="scroll">料金</a></li>
 							<li><span>サロン情報</span></li>
-							<li><a href="#review" class="scroll">クチコミ</a></li>
+							<li><a href="#review" class="scroll">口コミ</a></li>
 						</ul>
 					</div>
 					<?php endif; ?>
@@ -237,13 +268,13 @@ $experience = get_field('salon_experience');
 					<li><a href="#point" class="scroll">ポイント</a></li>
 					<li><a href="#price" class="scroll">料金</a></li>
 					<li><a href="#info" class="scroll">サロン情報</a></li>
-					<li><span>クチコミ</span></li>
+					<li><span>口コミ</span></li>
 				</ul>
 			</div>
 			<?php endif; ?>
 
 			<div class="paragraph salonReview" id="review">
-				<div class="salonContentTitle">みんなのクチコミ</div>
+				<div class="salonContentTitle">みんなの口コミ</div>
 				<div class="contentInner">
 				<?php if(is_amp()): ?>
 					<ul class="review">
@@ -285,11 +316,43 @@ $experience = get_field('salon_experience');
 				</div>
 			</div>
 
+			<?php if(!empty($recommend)): ?>
+			<div class="paragraph">
+				<h3 class="salonContentTitle">おすすめコラム</h3>
+				<div class="contentInner">
+					<div class="recommend">
+						<?php foreach($recommend as $value): ?>
+						<article class="entry">
+								<a href="<?php echo $value['link']; ?>">
+									<div class="imageBlock">
+										<?php if(is_amp()): ?>
+										<amp-img src="<?php echo $value['eyecatchSrc']; ?>" width="<?php echo $value['eyecatchWidth']; ?>" height="<?php echo $value['eyecatchHeight']; ?>" layout="responsive"></amp-img>
+										<?php else: ?>
+										<img src="<?php echo $value['eyecatchSrc']; ?>">
+									<?php endif; ?>
+									</div>
+									<div class="textBlock">
+										<div class="entryAttribute">
+											<div class="date"><?php echo $value['date']; ?></div>
+										</div>
+										<h2 class="entryTitle"><?php echo $value['title']; ?></h2>
+										<div class="entryLede exceptSmall">
+											<?php echo $value['lede']; ?>
+										</div>
+									</div>
+								</a>
+						</article>
+						<?php endforeach; ?>
+					</div>
+				</div>
+			</div>
+			<?php endif; ?>
+
 			<div class="paragraph">
 				<div class="contentInner">
 					<div class="ctaBlock">
 						<div class="numberOfPeople">当サイトから<span class="num"><strong><?php echo $number; ?></strong>名</span>がキレイになりました！</div>
-						<ul>
+						<ul class="imgBtn">
 							<li class="official">
 								<a href="<?php echo $officialsite; ?>" target="_blank">
 									<?php if(is_amp()): ?>
@@ -311,6 +374,15 @@ $experience = get_field('salon_experience');
 								</li>
 							<?php endif; ?>
 						</ul>
+						<?php if(!empty($otherButtons)): ?>
+						<ul class="txtBtn">
+							<?php foreach($otherButtons as $value): ?>
+							<li>
+								<a href="<?php echo $value['link']; ?>"><?php echo $value['text']; ?></a>
+							</li>
+							<?php endforeach; ?>
+						</ul>
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>

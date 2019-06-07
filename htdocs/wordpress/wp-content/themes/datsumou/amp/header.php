@@ -25,7 +25,6 @@
 	<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
 	<script async custom-element="amp-instagram" src="https://cdn.ampproject.org/v0/amp-instagram-0.1.js"></script>
 	<?php if(is_singular('ampstory')): ?>
-	<script async src="https://cdn.ampproject.org/v0.js"></script>
 	<script async src="https://cdn.ampproject.org/v0/amp-story-1.0.js" custom-element="amp-story"></script>
 	<?php endif; ?>
 </head>

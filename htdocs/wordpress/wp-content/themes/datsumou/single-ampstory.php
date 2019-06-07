@@ -35,6 +35,9 @@ if(!is_amp()){
 		</amp-story-page>
 		<?php $counter++; ?>
 		<?php endwhile; ?>
+		<?php if(get_field('ampstory_column')): ?>
+		<amp-story-bookend src="/bookend/?id=<?php the_field('ampstory_column'); ?>" layout="nodisplay"></amp-story-bookend>
+		<?php endif; ?>
 	</amp-story>
 <?php endif; ?>
 </body>

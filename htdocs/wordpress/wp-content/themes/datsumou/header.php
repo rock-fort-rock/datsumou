@@ -125,7 +125,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<ul class="gNaviBanner">
 						<?php foreach($naviBanner as $value): ?>
 						<li><a href="<?php echo $value['link']; ?>" target="_blank">
-							<img data-echo="<?php echo $value['image']; ?>" src="/assets/images/dummy.gif" class="lazy">
+							<!-- <img data-echo="<?php echo $value['image']; ?>" src="/assets/images/dummy.gif" class="lazy"> -->
+							<img src="<?php echo $value['image']; ?>">
 						</a></li>
 						<?php endforeach; ?>
 					</ul>

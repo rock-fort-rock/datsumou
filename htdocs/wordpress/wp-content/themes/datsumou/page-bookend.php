@@ -2,13 +2,13 @@
 /*
 Template Name: AMPストーリー用bookend
 */
-if($_GET[id]){
-	$id = $_GET[id];
-	$title = get_the_title($id);
-	$eyecatchId = get_post_thumbnail_id($id);
+if(isset($_GET['postid'])){
+	$postid = $_GET['postid'];
+	$title = get_the_title($postid);
+	$eyecatchId = get_post_thumbnail_id($postid);
 	$eyecatch = wp_get_attachment_image_src( $eyecatchId, 'large' );
 	$eyecatchSrc = $eyecatch[0];
-	$url = get_the_permalink($id);
+	$url = get_the_permalink($postid);
 }else{
 	echo 'パラメーターが無効です';
 	exit();

@@ -51,6 +51,39 @@ $tocHide = $tocGroup['column_toc_hide'];
 				<?php endif; ?>
 				<div class="author"><?php the_author(); ?></div>
 			</div>
+			<?php /* シェアボタン
+			<?php if(is_amp()): ?>
+			<ul class="entryShare">
+				<li class="facebook">
+					<amp-social-share data-param-app_id="1267141240122059" type="facebook"></amp-social-share>
+				</li>
+				<li class="twitter">
+					<amp-social-share data-param-text="<?php the_title(); ?>" type="twitter"></amp-social-share>
+				</li>
+				<li class="hatena">
+					<amp-social-share	type="hatena_bookmark" layout="container"	data-share-endpoint="<?php the_permalink(); ?>"></amp-social-share>
+				</li>
+				<li class="line">
+					<amp-social-share type="line"></amp-social-share>
+				</li>
+			</ul>
+			<?php else: ?>
+			<ul class="entryShare">
+				<li class="facebook">
+					<a href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" target="_blank"><img src="/assets/images/icon_facebook.svg"></a>
+				</li>
+				<li class="twitter">
+					<a href="http://twitter.com/intent/tweet?text=<?php the_title(); ?>%0D%0A&amp;url=<?php the_permalink(); ?>" target="_blank"><img src="/assets/images/icon_twitter.svg"></a>
+				</li>
+				<li class="hatena">
+					<a href="http://b.hatena.ne.jp/add?url=<?php the_permalink(); ?>" target="_blank"><img src="/assets/images/icon_hatena.svg"></a>
+				</li>
+				<li class="line">
+					<a href="line://msg/text/<?php the_title(); ?>%0D%0A<?php the_permalink(); ?>" target="_blank"><img src="/assets/images/icon_line.svg"></a>
+				</li>
+			</ul>
+			<?php endif; ?>
+			*/ ?>
 		</header>
 
 		<div class="contentInner">

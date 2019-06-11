@@ -11,6 +11,7 @@ if(is_amp()){
 }
 ?>
 <?php //get_header(); ?>
+
 <div class="mainContents">
 	<?php if(!is_amp()): ?>
 	<section class="contentBlock">
@@ -29,7 +30,6 @@ if(is_amp()){
 						<img src="/assets/images/home/title_result_pc.png" class="title exceptSmall" alt="あなたにぴったりの脱毛サロンは…">
 					</div>
 				</div>
-
 
 				<div class="diagnosisStartContainer diagnosisContainer">
 					<div class="textTitle">
@@ -139,6 +139,8 @@ if(is_amp()){
 				  return $return;
 				}
 				?>
+
+
 				<div class="resultContainer diagnosisContainer">
 					<div class="result resultA">
 						<div class="catch">自分に必要な脱毛を知っているあなたには</div>
@@ -207,8 +209,6 @@ if(is_amp()){
 					</div>
 				</div>
 
-
-
 				<div class="moko">
 					<img src="/assets/images/home/moko1.png" class="startMoko">
 					<img src="/assets/images/home/moko2.png" class="resultMoko">
@@ -217,7 +217,6 @@ if(is_amp()){
 				<div class="illustCopyright"><img src="/assets/images/home/copyright.png"></div>
 			</div>
 		</div>
-
 	</section>
 	<?php endif; ?>
 

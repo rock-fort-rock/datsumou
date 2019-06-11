@@ -5,12 +5,11 @@ export default class Diagnosis{
 		// console.log('Diagnosis');
 		this.answerArray = [];
 	}
-	
+
 	init(){
 		imagesLoaded('.diagnosisChart', { background: true }, () => {
 			console.log('loaded');
 			this.start();
-
 		});
 	}
 
@@ -39,7 +38,7 @@ export default class Diagnosis{
 				}else{
 					$(q).next().addClass('active');
 				}
-				
+
 			}
 		})
 	}
@@ -133,7 +132,7 @@ export default class Diagnosis{
 			case '2,2,2,2':
 			$('.resultContainer .resultP').addClass('active');
 			break;
-		} 
+		}
 	}
 
 }

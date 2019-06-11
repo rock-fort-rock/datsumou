@@ -58,6 +58,9 @@ var _protocol = (("https:" == document.location.protocol) ? " https://" : " http
 })();
 </script>
 <?php endif; ?>
+<?php if(is_singular('column') && get_field('column_js')): ?>
+<?php the_field('column_js'); ?>
+<?php endif; ?>
 </head>
 
 <body id="<?php echo $status['id']; ?>">

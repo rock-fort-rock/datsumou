@@ -15,8 +15,9 @@
 		border-radius: 50%;
 		text-indent: -9999em;
 		animation: load4 1.3s infinite linear;
-		transform: translateZ(0);
+		// transform: translateZ(0);//あるとスマホナビゲーションの動きが鈍る
 		z-index: -100;
+		// display: none;
 	}
 	@keyframes load4 {
 		0%,

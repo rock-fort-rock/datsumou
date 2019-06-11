@@ -27,6 +27,7 @@
 	<?php if(is_singular('ampstory')): ?>
 	<script async src="https://cdn.ampproject.org/v0/amp-story-1.0.js" custom-element="amp-story"></script>
 	<?php endif; ?>
+	<script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
 </head>
 
 <body class="amp-mode <?php echo esc_attr( $this->get( 'body_class' ) ); ?>" id="<?php echo $status['id']; ?>">

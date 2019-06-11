@@ -71,7 +71,7 @@ $(() => {
 $(() => {
 	const ele = $('.diagnosisChart');
 	if(ele.length < 1)return;
-	
+
 	const diagnosis = new Diagnosis();
 	diagnosis.init();
 })
@@ -89,7 +89,7 @@ $(() => {
 		const service = ctx.data('service');
 		const reserve = ctx.data('reserve');
 		const care = ctx.data('care');
-		
+
 		const myChart = new Chart(ctx, {
 			type: 'radar',
 			data: {
@@ -107,7 +107,7 @@ $(() => {
 			options: {
 				animation:false,
 				showTooltips: false,
-				legend: { 
+				legend: {
 					display: false,
 				},
 				title: {
@@ -180,7 +180,3 @@ $(() => {
 		}
 	})
 })
-
-
-
-

@@ -165,7 +165,7 @@ $(() => {
 	const ele = $('.tableofcontents');
 	if(ele.length < 1)return;
 
-	let hide = true;//テキスト非表示
+	let hide = false;//テキスト非表示
 	$('.displayToggle').on({
 		'click': (e) => {
 			$(e.currentTarget).next('ul').slideToggle(400);

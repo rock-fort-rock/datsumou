@@ -115,7 +115,7 @@ $tocHide = $tocGroup['column_toc_hide'];
 <?php if($tocHide != 1 && !is_amp()): ?>
 <section class="entryBlock">
 <div class="tableofcontents">
-<div class="title">目次</div><span class="displayToggle">[非表示]</span>
+<div class="title">目次</div><span class="displayToggle">[表示]</span>
 <ul>
 <?php for($i=0; $i<count($block); $i++): ?>
 <?php if($block[$i]['headline']): ?>

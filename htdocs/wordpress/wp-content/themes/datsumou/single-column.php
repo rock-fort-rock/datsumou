@@ -10,6 +10,7 @@ if(!is_amp()){
 ?>
 
 <?php
+the_post();
 $terms = get_terms('column_category');
 // print_r($terms);
 
@@ -154,9 +155,44 @@ $tocHide = $tocGroup['column_toc_hide'];
 						<?php endif; ?>
 					</div>
 					<?php endfor; ?>
+
+
 				</section>
 				<?php endfor; ?>
 
+				<?php if(get_the_author_meta('user_description'))://プロフィール情報に記載があれば表示 ?>
+				<div class="userProfile">
+					<h3 class="userProfileTitle">この記事を書いた人</h3>
+					<div class="userProfileInner">
+						<?php
+							$author_img = get_avatar( get_the_author_meta('id'), 300 );
+							$imgtag= '/<img.*?src=(["\'])(.+?)\1.*?>/i';
+							if(preg_match($imgtag, $author_img, $imgurl)){
+								$authorimg = $imgurl[2];
+							}
+							// echo $authorimg;
+						?>
+						<div class="userProfileAvator">
+							<?php if(is_amp()): ?>
+								<amp-img src="<?php echo $authorimg; ?>" width="300" height="300" layout="responsive"></amp-img>
+							<?php else: ?>
+								<img src="<?php echo $authorimg; ?>">
+							<?php endif; ?>
+						</div>
+						<div class="userProfileInfo">
+							<h3 class="userProfileName"><?php the_author(); ?></h3>
+							<div class="userProfileDesc">
+								<?php the_author_meta('user_description'); ?>
+							</div>
+							<?php if(get_the_author_meta('user_url')): ?>
+							<div class="userProfileSite">
+								<a href="<?php the_author_meta('user_url'); ?>" target="_blank"><?php the_author_meta('user_url'); ?></a>
+							</div>
+							<?php endif; ?>
+						</div>
+					</div>
+				</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	</section>

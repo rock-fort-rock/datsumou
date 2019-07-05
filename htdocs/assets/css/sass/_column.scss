@@ -526,4 +526,64 @@ article.entry{
 			}
 		}
 	}
+
+	.userProfile{
+		margin-bottom: 50px;
+		.userProfileTitle{
+			font-size: 1.1rem;
+			margin-bottom: 5px;
+			color: #666;
+		}
+		.userProfileInner{
+			border: 3px solid #ededed;
+			padding: 10px;
+			display: flex;
+			justify-content: space-between;
+		}
+		.userProfileAvator{
+			width: 76px;
+		}
+		.userProfileInfo{
+			flex: 1;
+			padding-left: 10px;
+			.userProfileName{
+				font-size: 1.05rem;
+				font-weight: bold;
+				padding-bottom: 3px;
+				margin-bottom: 8px;
+				border-bottom: 1px dotted #999;
+			}
+			.userProfileDesc{
+				font-size: 0.9rem;
+			}
+			.userProfileSite{
+				font-size: 0.9rem;
+				margin-top: 5px;
+				a{
+					color: $linkColor;
+				}
+			}
+		}
+		@media screen and (min-width: $breakpoint + 1){
+			margin-bottom: 80px;
+			.userProfileInner{
+				border: 5px solid #ededed;
+				padding: 15px;
+			}
+			.userProfileAvator{
+				width: 100px;
+			}
+			.userProfileInfo{
+				padding-left: 30px;
+				.userProfileName{
+					padding-bottom: 5px;
+					margin-bottom: 10px;
+				}
+				.userProfileDesc,
+				.userProfileSite{
+					font-size: 1rem;
+				}
+			}
+		}
+	}
 }

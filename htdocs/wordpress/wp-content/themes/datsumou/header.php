@@ -75,12 +75,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="gHeaderBanner"><a href="<?php echo $headerBannerLink; ?>" target="_blank"><img src="<?php echo $headerBanner; ?>"></a></div>
 		<?php endif; ?>
 		<div class="hamburger"><img src="/assets/images/hamburger.svg"></div>
-		<!-- <ul class="snsLink">
+		<ul class="snsLink">
 			<li><a href="#"><img src="/assets/images/icon_line.png" alt="LINE"></a></li>
 			<li><a href="#"><img src="/assets/images/icon_facebook.png" alt="facebook"></a></li>
 			<li><a href="#"><img src="/assets/images/icon_twitter.png" alt="Twitter"></a></li>
 			<li><a href="#"><img src="/assets/images/icon_instagram.png" alt="Instagram"></a></li>
-		</ul> -->
+		</ul>
 	</header>
 	<div class="contents">
 		<div class="gNavi">

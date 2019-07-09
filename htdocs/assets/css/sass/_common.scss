@@ -110,7 +110,7 @@ HEADER
 			display: none;
 		}
 	}
-	
+
 	@media screen and (min-width: $breakpoint-m + 1){
 		position: relative;
 		height: $pc_headerHight;
@@ -312,7 +312,7 @@ ELEMENT
 			transform: translateX(0);
 		}
 	}
-	
+
 	@media screen and (min-width: $breakpoint-m + 1){
 		position: relative;
 		display: block;
@@ -619,7 +619,7 @@ ELEMENT
 			}
 		}
 	}
-	
+
 }
 
 .rankingDeco{
@@ -668,27 +668,6 @@ ELEMENT
 }
 
 
-/*---------------------------------
-その他ページ
----------------------------------*/
-ul.privacypolicy{
-	li{
-		&:not(:last-child){
-			margin-bottom: 10px;
-		}
-		padding-left: 25px;
-		position: relative;
-		&::before{
-			content: '';
-			position: absolute;
-			top: 3px;
-			left: 0;
-			width: 15px;
-			height: 15px;
-			background: url('/assets/images/icon_lock.gif') center center/10px auto no-repeat;
-		}
-	}
-}
 
 
 /*---------------------------------
@@ -712,7 +691,7 @@ FOOTER
 					padding-right: 10px;
 					border-right: 1px solid #ccc;
 				}
-				
+
 			}
 		}
 		.snsLink{
@@ -750,34 +729,6 @@ FOOTER
 					left: auto;
 					right: 15px;
 					transform: translateX(0);
-				}
-			}
-		}
-	}
-	@media screen and (min-width: $breakpoint-m + 1){
-		.gFooterinner{
-			.pageTopContainer{
-				display: block;
-				position: absolute;
-				right: 30px;
-				width: 180px;
-				visibility: hidden;
-				opacity: 0;
-				transition: all .4s;
-				&.active{
-					opacity: 1;
-					visibility: visible;
-					.pageTop{
-						transform: translateY(0);
-					}
-				}
-				.pageTop{
-					position: fixed;
-					bottom: 70px;
-					width: 180px;
-					transform: translateY(30px);
-					transition: all .4s;
-					// right: 30px;
 				}
 			}
 		}
@@ -839,5 +790,3 @@ FOOTER
     transform: rotate(360deg);
   }
 }
-
-

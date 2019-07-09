@@ -274,7 +274,7 @@ function cpt_column_init()
     'rewrite' => array('slug' => 'column', 'with_front' => false, 'pages' => true, 'feeds' => false),
     'hierarchical' => false,
     'menu_position' => 4,
-    'supports' => array('title','editor','thumbnail')
+    'supports' => array('title','editor','thumbnail','author')
   );
   register_post_type('column', $args);
 

@@ -97,61 +97,61 @@ article.entry{
 				margin-left: 15px;
 			}
 		}
-		.entryShare{
-			padding: 5px 15px 0;
-			display: flex;
-			li{
-				flex: 1;
-				// padding: 2px;
-				max-height: 30px;
-				overflow: hidden;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				border-radius: 3px;
-				&.facebook{
-					background-color: #32529f;
-				}
-				&.twitter{
-					background-color: #1da1f2;
-				}
-				&.hatena{
-					background-color: #2C6EBD;
-				}
-				&.line{
-					background-color: #52b448;
-				}
-				&:not(:last-child){
-					margin-right: 3px;
-				}
-				a{
-					display: block;
-					width: 100%;
-					height: 100%;
-					img{
-						width: 24px;
-						display: block;
-						margin: 0 auto;
-					}
-				}
-
-				amp-social-share[type=facebook],
-				amp-social-share[type=twitter],
-				amp-social-share[type=hatena_bookmark],
-				amp-social-share[type=line] {
-					//公式ボタンで反映しない
-					// width: 30px;
-					// height: 30px;
-					background-size: 30px 30px;
-				}
-				amp-social-share[type=hatena_bookmark]{
-					width: 60px;
-					height: 44px;
-					background-image: url('/assets/images/icon_hatena.svg');
-					background-size: 26px 26px;
-				}
-			}
-		}
+		// .entryShare{
+		// 	padding: 5px 15px 0;
+		// 	display: flex;
+		// 	li{
+		// 		flex: 1;
+		// 		// padding: 2px;
+		// 		max-height: 30px;
+		// 		overflow: hidden;
+		// 		display: flex;
+		// 		align-items: center;
+		// 		justify-content: center;
+		// 		border-radius: 3px;
+		// 		&.facebook{
+		// 			background-color: #32529f;
+		// 		}
+		// 		&.twitter{
+		// 			background-color: #1da1f2;
+		// 		}
+		// 		&.hatena{
+		// 			background-color: #2C6EBD;
+		// 		}
+		// 		&.line{
+		// 			background-color: #52b448;
+		// 		}
+		// 		&:not(:last-child){
+		// 			margin-right: 3px;
+		// 		}
+		// 		a{
+		// 			display: block;
+		// 			width: 100%;
+		// 			height: 100%;
+		// 			img{
+		// 				width: 24px;
+		// 				display: block;
+		// 				margin: 0 auto;
+		// 			}
+		// 		}
+		//
+		// 		amp-social-share[type=facebook],
+		// 		amp-social-share[type=twitter],
+		// 		amp-social-share[type=hatena_bookmark],
+		// 		amp-social-share[type=line] {
+		// 			//公式ボタンで反映しない
+		// 			// width: 30px;
+		// 			// height: 30px;
+		// 			background-size: 30px 30px;
+		// 		}
+		// 		amp-social-share[type=hatena_bookmark]{
+		// 			width: 60px;
+		// 			height: 44px;
+		// 			background-image: url('/assets/images/icon_hatena.svg');
+		// 			background-size: 26px 26px;
+		// 		}
+		// 	}
+		// }
 		@media screen and (min-width: $breakpoint + 1){
 			.entryTitle{
 				font-size: 22px;
@@ -159,21 +159,21 @@ article.entry{
 			.entryAttribute{
 				padding: 10px 15px;
 			}
-			.entryShare{
-				padding: 15px 25px 10px;
-				li{
-					&:not(:last-child){
-						margin-right: 5px;
-					}
-					a{
-						padding: 2px;
-						@include hover;
-						img{
-							width: 26px;
-						}
-					}
-				}
-			}
+			// .entryShare{
+			// 	padding: 15px 25px 10px;
+			// 	li{
+			// 		&:not(:last-child){
+			// 			margin-right: 5px;
+			// 		}
+			// 		a{
+			// 			padding: 2px;
+			// 			@include hover;
+			// 			img{
+			// 				width: 26px;
+			// 			}
+			// 		}
+			// 	}
+			// }
 		}
 	}
 

@@ -3,6 +3,7 @@ import imagesLoaded from 'imagesloaded';
 export default class Diagnosis{
 	constructor(){
 		// console.log('Diagnosis');
+		this.testMode = true;
 		this.answerArray = [];
 	}
 
@@ -34,7 +35,11 @@ export default class Diagnosis{
 				this.answerArray.push($(e.currentTarget).data('answer'));
 				console.log($(e.currentTarget).data('answer'));
 				if(current == totalQ){
-					this.loading();
+					if(this.testMode){
+						this.result();
+					}else{
+						this.loading();
+					}
 				}else{
 					$(q).next().addClass('active');
 				}
@@ -63,6 +68,7 @@ export default class Diagnosis{
 		setTimeout(()=>{
 			$('.diagnosisChart .header,.diagnosisChart .moko').addClass('statusResult');
 			$('.resultContainer').addClass('active');
+			$('.diagnosisChart').addClass('result');
 		}, 500)
 		const resultStr = this.answerArray.join(',');
 		switch(resultStr){

@@ -62,11 +62,21 @@
 			visibility: visible;
 		}
 	}
+	&.result{
+		.diagnosisChartInner{
+			padding-top: 60px;
+		}
+	}
 	@media screen and (max-width: $breakpoint){
 		&.started{
 			.diagnosisChartInner{
 				min-height: 500px;
 				transition: min-height .4s;
+			}
+		}
+		&.result{
+			.diagnosisChartInner{
+				padding-top: 50px;
 			}
 		}
 	}
@@ -108,11 +118,13 @@
 		.headerResult{
 			opacity: 0;
 			transform: translateY(10px);
+			padding: 10px 0;
+			text-align: center;
 			.title{
-				margin-top: 15px;
-				width: 210px;
-				margin-left: 155px;
-				max-width: calc(100% - 155px);
+				// margin-top: 15px;
+				width: 120px;
+				// margin-left: 155px;
+				// max-width: calc(100% - 155px);
 			}
 		}
 
@@ -147,11 +159,12 @@
 				}
 			}
 			.headerResult{
+				position: absolute;
+				width: 65%;
+				left: 35%;
+				// padding: 10px 0;
 				.title{
-					position: absolute;
-					left: 35%;
-					top: 10px;
-					width: 380px;
+					width: 160px;
 					margin: 0;
 					max-width: none;
 				}
@@ -514,7 +527,7 @@
 			.buttons{
 				max-width: 300px;
 				margin: 0 auto;
-				ul{
+				ul.links{
 					margin-top: 15px;
 					display: flex;
 					justify-content: space-between;
@@ -595,7 +608,7 @@
 					a{
 						@include hover;
 					}
-					ul{
+					ul.links{
 						margin-top: 10px;
 					}
 					.moreRanking{
@@ -627,10 +640,13 @@
 		.resultMoko{
 			opacity: 0;
 			position: absolute;
-			top: 5px;
-			left: -15px;
-			width: 170px;
+			// top: 5px;
+			// left: -15px;
+			// width: 170px;
 			transform: translateY(20px);
+			bottom: -20px;
+			left: -30px;
+			height: 100%;
 		}
 
 
@@ -652,13 +668,6 @@
 				height: 100%;
 				width: auto;
 			}
-			.resultMoko{
-				top: auto;
-				bottom: -20px;
-				left: -30px;
-				height: 100%;
-				width: auto;
-			}
 		}
 	}
 
@@ -668,6 +677,13 @@
 		right: 15px;
 		img{
 			width: 80px;
+		}
+	}
+
+	.snsShare{
+		padding: 20px 0 0;
+		@media screen and (min-width: $breakpoint + 1){
+			padding: 25px 0 5px;
 		}
 	}
 

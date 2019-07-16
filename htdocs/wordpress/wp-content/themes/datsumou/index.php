@@ -26,8 +26,7 @@ if(is_amp()){
 					</div>
 
 					<div class="headerResult">
-						<img src="/assets/images/home/title_result.png" class="title onlySmall" alt="あなたにぴったりの脱毛サロンは…">
-						<img src="/assets/images/home/title_result_pc.png" class="title exceptSmall" alt="あなたにぴったりの脱毛サロンは…">
+						<img src="/assets/images/home/title_result2.png" class="title" alt="診断結果">
 					</div>
 				</div>
 
@@ -102,7 +101,7 @@ if(is_amp()){
 				// print_r($allsalons);
 
 				//診断結果のサロン情報部分
-				function result_SalonInfo($slug, $type){
+				function result_SalonInfo($slug, $type, $desc=""){
 					global $allsalons;
 				  // $arg = array('post_type'=>'salon','name'=>$slug);
 				  // $salon = get_posts($arg);
@@ -120,22 +119,40 @@ if(is_amp()){
 				  $officialsite = get_field('salon_officialsite', $id);
 				  $detail = get_the_permalink($id);
 				  $link = '/ranking/'.$type. '/';
+					$description = $desc.'私には、'.$title.'がおすすめ！';
 
-				  $return = '<div class="salonInfo">';
-				  $return .= '<div class="resultSalonHeader">';
-				  $return .= '<div class="logo"><img src="'.$logo.'"></div>';
-				  $return .= '<div class="salonName"><span>'.$title.'</span>がおすすめ！</div>';
-				  $return .= '</div>';
-				  $return .= '<div class="comment">'.$comment.'</div>';
-				  $return .= '<div class="buttons">';
-				  $return .= '<ul>';
-				  $return .= '<li class="official"><a href="'.$officialsite.'" target="_blank"><img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る"></a></li>';
-				  $return .= '<li class="detail"><a href="'.$detail.'"><img src="/assets/images/btn_detail.png" alt="詳細を見る"></a></li>';
-				  $return .= '</ul>';
-				  $return .= '<div class="moreRanking"><a href="'.$link.'"><span>ランキングをみる</span></a></div>';
-				  $return .= '</div>';
-				  $return .= '</div>';
+$return = <<< EOM
+<div class="salonInfo">
+<div class="resultSalonHeader">
+<div class="logo"><img src="{$logo}"></div>
+<div class="salonName"><span>{$title}</span>がおすすめ！</div>
+</div>
+<div class="comment">{$comment}</div>
+<div class="buttons">
+<ul class="links">
+<li class="official"><a href="{$officialsite}" target="_blank"><img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る"></a></li>
+<li class="detail"><a href="{$detail}"><img src="/assets/images/btn_detail.png" alt="詳細を見る"></a></li>
+</ul>
 
+<ul class="snsShare">
+	<li class="facebook">
+		<a href="http://www.facebook.com/sharer.php?u={$detail}" target="_blank"><img src="/assets/images/icon_facebook.svg"></a>
+	</li>
+	<li class="twitter">
+		<a href="http://twitter.com/intent/tweet?text={$description}%0D%0A&amp;url={$detail}" target="_blank"><img src="/assets/images/icon_twitter.svg"></a>
+	</li>
+	<li class="hatena">
+		<a href="http://b.hatena.ne.jp/add?url="{$detail}" target="_blank"><img src="/assets/images/icon_hatena.svg"></a>
+	</li>
+	<li class="line">
+		<a href="line://msg/text/{$description}%0D%0A{$detail}" target="_blank"><img src="/assets/images/icon_line.svg"></a>
+	</li>
+</ul>
+
+<div class="moreRanking"><a href="{$link}"><span>ランキングをみる</span></a></div>
+</div>
+</div>
+EOM;
 				  return $return;
 				}
 				?>
@@ -144,74 +161,74 @@ if(is_amp()){
 				<div class="resultContainer diagnosisContainer">
 					<div class="result resultA">
 						<div class="catch">自分に必要な脱毛を知っているあなたには</div>
-						<?php echo result_SalonInfo('musee', 'a'); ?>
+						<?php echo result_SalonInfo('musee', 'a', '自分に必要な脱毛を知っている'); ?>
 					</div>
 					<div class="result resultB">
 						<div class="catch">脱毛サロンの本質を見抜くことの出来るあなたには</div>
-						<?php echo result_SalonInfo('musee', 'b'); ?>
+						<?php echo result_SalonInfo('musee', 'b', '脱毛サロンの本質を見抜くことの出来る'); ?>
 					</div>
 					<div class="result resultC">
 						<div class="catch">確実に脱毛したい！でもお得も大事なあなたには。</div>
-						<?php echo result_SalonInfo('musee', 'c'); ?>
+						<?php echo result_SalonInfo('musee', 'c', '確実に脱毛したい！でもお得も大事な'); ?>
 					</div>
 					<div class="result resultD">
 						<div class="catch">お得なのに確実なガッツリ脱毛を目指すあなたに</div>
-						<?php echo result_SalonInfo('musee', 'd'); ?>
+						<?php echo result_SalonInfo('musee', 'd', 'お得なのに確実なガッツリ脱毛を目指す'); ?>
 					</div>
 					<div class="result resultE">
 						<div class="catch">みんなの口コミに定評のある<br>有名サロンを望むあなたに</div>
-						<?php echo result_SalonInfo('musee', 'e'); ?>
+						<?php echo result_SalonInfo('musee', 'e', 'みんなの口コミに定評のある有名サロンを望む'); ?>
 					</div>
 					<div class="result resultF">
 						<div class="catch">イベントや女子会、デートの日までに<br>間に合わせたいあなたに</div>
-						<?php echo result_SalonInfo('musee', 'f'); ?>
+						<?php echo result_SalonInfo('musee', 'f', 'イベントや女子会、デートの日までに間に合わせたい'); ?>
 					</div>
 					<div class="result resultG">
 						<div class="catch">みんな得して納得したサロンが気になるあなたに</div>
-						<?php echo result_SalonInfo('musee', 'g'); ?>
+						<?php echo result_SalonInfo('musee', 'g', 'みんな得して納得したサロンが気になる'); ?>
 					</div>
 					<div class="result resultH">
 						<div class="catch">他の子より毛の太さ、量が気になる<br>モフモフ女子のあなたに</div>
-						<?php echo result_SalonInfo('musee', 'h'); ?>
+						<?php echo result_SalonInfo('musee', 'h', '他の子より毛の太さ、量が気になるモフモフ女子の'); ?>
 					</div>
 
 					<div class="result resultI">
 						<div class="catch">お得で人気なのに予約が取れちゃう<br>最強サロンを探すあなたに</div>
-						<?php echo result_SalonInfo('musee', 'i'); ?>
+						<?php echo result_SalonInfo('musee', 'i', 'お得で人気なのに予約が取れちゃう最強サロンを探す'); ?>
 					</div>
 					<div class="result resultJ">
 						<div class="catch">お得サロンに定期的に通いたいあなたに</div>
-						<?php echo result_SalonInfo('kireimo', 'j'); ?>
+						<?php echo result_SalonInfo('kireimo', 'j', 'お得サロンに定期的に通いたい'); ?>
 					</div>
 					<div class="result resultK">
 						<div class="catch">できるだけお得にじっくり<br>人気サロンに通いたいこだわり女子に</div>
-						<?php echo result_SalonInfo('musee', 'k'); ?>
+						<?php echo result_SalonInfo('musee', 'k', 'できるだけお得にじっくり人気サロンに通いたいこだわり女子の'); ?>
 					</div>
 					<div class="result resultL">
 						<div class="catch">お得なのに確実なガッツリ脱毛を目指すあなたに</div>
-						<?php echo result_SalonInfo('musee', 'l'); ?>
+						<?php echo result_SalonInfo('musee', 'l', 'お得なのに確実なガッツリ脱毛を目指す'); ?>
 					</div>
 					<div class="result resultM">
 						<div class="catch">みんなの口コミに定評のある<br>有名サロンを望むあなたに</div>
-						<?php echo result_SalonInfo('kireimo', 'm'); ?>
+						<?php echo result_SalonInfo('kireimo', 'm', 'みんなの口コミに定評のある有名サロンを望む'); ?>
 					</div>
 					<div class="result resultN">
 						<div class="catch">イベントや女子会、デートの日までに<br>間に合わせたいあなたに</div>
-						<?php echo result_SalonInfo('kireimo', 'n'); ?>
+						<?php echo result_SalonInfo('kireimo', 'n', 'イベントや女子会、デートの日までに間に合わせたい'); ?>
 					</div>
 					<div class="result resultO">
 						<div class="catch">みんな得して納得したサロンが気になるあなたに</div>
-						<?php echo result_SalonInfo('kireimo', 'o'); ?>
+						<?php echo result_SalonInfo('kireimo', 'o', 'みんな得して納得したサロンが気になる'); ?>
 					</div>
 					<div class="result resultP">
 						<div class="catch">他の子より毛の太さ、量が気になる<br>モフモフ女子のあなたに</div>
-						<?php echo result_SalonInfo('musee', 'p'); ?>
+						<?php echo result_SalonInfo('musee', 'p', '他の子より毛の太さ、量が気になるモフモフ女子の'); ?>
 					</div>
 				</div>
 
 				<div class="moko">
 					<img src="/assets/images/home/moko1.png" class="startMoko">
-					<img src="/assets/images/home/moko2.png" class="resultMoko">
+					<img src="/assets/images/home/moko2.png" class="resultMoko exceptSmall">
 				</div>
 
 				<div class="illustCopyright"><img src="/assets/images/home/copyright.png"></div>

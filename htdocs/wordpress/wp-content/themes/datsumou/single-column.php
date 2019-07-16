@@ -52,9 +52,11 @@ $tocHide = $tocGroup['column_toc_hide'];
 				<?php endif; ?>
 				<div class="author"><?php the_author(); ?></div>
 			</div>
-			<?php /* シェアボタン
+		</header>
+
+		<div class="contentInner">
 			<?php if(is_amp()): ?>
-			<ul class="entryShare">
+			<ul class="snsShare">
 				<li class="facebook">
 					<amp-social-share data-param-app_id="1267141240122059" type="facebook"></amp-social-share>
 				</li>
@@ -69,7 +71,7 @@ $tocHide = $tocGroup['column_toc_hide'];
 				</li>
 			</ul>
 			<?php else: ?>
-			<ul class="entryShare">
+			<ul class="snsShare">
 				<li class="facebook">
 					<a href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" target="_blank"><img src="/assets/images/icon_facebook.svg"></a>
 				</li>
@@ -84,10 +86,7 @@ $tocHide = $tocGroup['column_toc_hide'];
 				</li>
 			</ul>
 			<?php endif; ?>
-			*/ ?>
-		</header>
 
-		<div class="contentInner">
 			<div class="entryEyecatch">
 				<?php
 					$eyecatchId = get_post_thumbnail_id($post->ID);

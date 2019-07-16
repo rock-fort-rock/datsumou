@@ -3,7 +3,7 @@ import imagesLoaded from 'imagesloaded';
 export default class Diagnosis{
 	constructor(){
 		// console.log('Diagnosis');
-		this.testMode = true;
+		this.testMode = false;
 		this.answerArray = [];
 	}
 

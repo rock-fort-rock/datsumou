@@ -62,6 +62,12 @@ remove_action('wp_head','wp_oembed_add_discovery_links');
 remove_action('wp_head','wp_oembed_add_host_js');
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
 
+//wordpressのjqueryを読み込まない
+// function my_delete_local_jquery() {
+//   wp_deregister_script('jquery');
+// }
+// add_action( 'wp_enqueue_scripts', 'my_delete_local_jquery' );
+
 //全DNSプリフェッチ削除
 function remove_dns_prefetch( $hints, $relation_type ) {
     if ( 'dns-prefetch' === $relation_type ) {
@@ -302,6 +308,62 @@ function cpt_column_init()
 
 /**
 custom post type
+お知らせ
+**/
+add_action('init', 'cpt_news_init');
+function cpt_news_init()
+{
+  $labels = array(
+    'name' => _x('お知らせ', 'post type general name'),
+    'singular_name' => _x('お知らせ', 'post type singular name'),
+    'add_new' => _x('お知らせ追加', 'news'),
+    'add_new_item' => __('新規お知らせを追加'),
+    'edit_item' => __('お知らせを編集'),
+    'new_item' => __('新しいお知らせ'),
+    'view_item' => __('お知らせを見る'),
+    'search_items' => __('お知らせを探す'),
+    'not_found' =>  __('お知らせはありません'),
+    'not_found_in_trash' => __('ゴミ箱にお知らせはありません'),
+    'parent_item_colon' => ''
+  );
+  $args = array(
+    'labels' => $labels,
+    'public' => true,
+    'show_ui' => true,
+    'query_var' => true,
+    'capability_type' => 'post',
+    'has_archive' => true,
+    'rewrite' => array('slug' => 'news', 'with_front' => false, 'pages' => true, 'feeds' => false),
+    'hierarchical' => false,
+    'menu_position' => 4,
+    'supports' => array('title','editor','thumbnail','author')
+  );
+  register_post_type('news', $args);
+
+  $args = array(
+    'labels' => array(
+      'name' => 'カテゴリ',
+      'singular_name' => 'カテゴリ',
+      'search_items' => 'カテゴリを検索',
+      'popular_items' => 'よく使われているカテゴリ',
+      'all_items' => 'すべてのカテゴリ',
+      'parent_item' => '親カテゴリ',
+      'edit_item' => 'カテゴリの編集',
+      'update_item' => '更新',
+      'add_new_item' => 'カテゴリを追加',
+      'new_item_name' => '新しいカテゴリ'
+    ),
+    'public' => true,
+    'show_ui' => true,
+    'hierarchical' => true,
+    'query_var' => true,
+    'rewrite' => array('slug' => 'news/news_category', 'with_front' => false)
+  );
+  register_taxonomy('news_category', 'news', $args);
+}
+
+/**
+custom post type
 サロン情報
 **/
 add_action('init', 'cpt_salon_init');
@@ -333,6 +395,62 @@ function cpt_salon_init()
     'supports' => array('title','editor','thumbnail')
   );
   register_post_type('salon', $args);
+}
+
+/**
+custom post type
+用語集
+**/
+add_action('init', 'cpt_glossary_init');
+function cpt_glossary_init()
+{
+  $labels = array(
+    'name' => _x('用語集', 'post type general name'),
+    'singular_name' => _x('用語集', 'post type singular name'),
+    'add_new' => _x('新規追加', 'glossary'),
+    'add_new_item' => __('用語集を追加'),
+    'edit_item' => __('用語集を編集'),
+    'new_item' => __('新しい用語集'),
+    'view_item' => __('用語集を見る'),
+    'search_items' => __('用語集を探す'),
+    'not_found' =>  __('用語集はありません'),
+    'not_found_in_trash' => __('ゴミ箱に用語集はありません'),
+    'parent_item_colon' => ''
+  );
+  $args = array(
+    'labels' => $labels,
+    'public' => true,
+    'show_ui' => true,
+    'query_var' => true,
+    'capability_type' => 'post',
+    'has_archive' => true,
+    'rewrite' => array('slug' => 'glossary', 'with_front' => false, 'pages' => true, 'feeds' => false),
+    'hierarchical' => false,
+    'menu_position' => 5,
+    'supports' => array('title','editor','thumbnail')
+  );
+  register_post_type('glossary', $args);
+
+  $args = array(
+    'labels' => array(
+      'name' => '用語集カテゴリ',
+      'singular_name' => '用語集カテゴリ',
+      'search_items' => '用語集カテゴリを検索',
+      'popular_items' => 'よく使われている用語集カテゴリ',
+      'all_items' => 'すべての用語集カテゴリ',
+      'parent_item' => '親用語集カテゴリ',
+      'edit_item' => '用語集カテゴリの編集',
+      'update_item' => '更新',
+      'add_new_item' => '用語集カテゴリを追加',
+      'new_item_name' => '新しい用語集カテゴリ'
+    ),
+    'public' => true,
+    'show_ui' => true,
+    'hierarchical' => true,
+    'query_var' => true,
+    'rewrite' => array('slug' => 'glossarycat', 'with_front' => false)
+  );
+  register_taxonomy('glossarycat', 'glossary', $args);
 }
 
 /**

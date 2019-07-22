@@ -5,6 +5,7 @@
 import Chart from 'chart.js';
 // import echo from 'echo-js';//NG
 // import echo from '../../lib/echo.min';
+import cookie from '../../lib/jquery.cookie';
 
 const breakpoint = 780;
 const bodyWidth = document.body.clientWidth;
@@ -71,7 +72,6 @@ $(() => {
 $(() => {
 	const ele = $('.diagnosisChart');
 	if(ele.length < 1)return;
-
 	const diagnosis = new Diagnosis();
 	diagnosis.init();
 })
@@ -179,4 +179,50 @@ $(() => {
 			$(e.currentTarget).text(str);
 		}
 	})
+})
+
+
+//用語集
+$(() => {
+	const ele = $('.glossaryList');
+	if(ele.length < 1)return;
+
+	ele.find('.word').each(function(){
+		$(this).on({
+			'click': function(){
+				$(this).toggleClass('active');
+				$(this).next().toggleClass('active');
+			}
+		})
+	})
+})
+
+//コラム目次
+$(() => {
+	const ele = $('#columnDetail');
+	if(ele.length < 1)return;
+
+
+	// $.cookie("read", "", {expires: -1, path:'/'});
+
+	const postid = $('.mainContents').data('id');
+	let postidStr = '';
+	let postidArray = [];
+
+	//cookieあり
+	if($.cookie('read')){
+		postidStr = $.cookie('read');
+		postidArray = postidStr.split(',');
+		if (postidArray.indexOf(postid) == -1){
+		  postidStr += ',' + postid;
+			// console.log(postidStr);
+		}
+
+	//cookieなし
+	}else{
+		postidStr = postid;
+	}
+
+	$.cookie('read',postidStr,{expires:30, path:'/'});
+	console.log($.cookie('read'));
 })

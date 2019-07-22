@@ -142,7 +142,7 @@ $return = <<< EOM
 		<a href="http://twitter.com/intent/tweet?text={$description}%0D%0A&amp;url={$detail}" target="_blank"><img src="/assets/images/icon_twitter.svg"></a>
 	</li>
 	<li class="hatena">
-		<a href="http://b.hatena.ne.jp/add?url="{$detail}" target="_blank"><img src="/assets/images/icon_hatena.svg"></a>
+		<a href="http://b.hatena.ne.jp/add?url={$detail}" target="_blank"><img src="/assets/images/icon_hatena.svg"></a>
 	</li>
 	<li class="line">
 		<a href="line://msg/text/{$description}%0D%0A{$detail}" target="_blank"><img src="/assets/images/icon_line.svg"></a>

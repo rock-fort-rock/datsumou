@@ -28,7 +28,7 @@ $tocGroup = get_field('column_toc');
 $tocHide = $tocGroup['column_toc_hide'];
 // print_r($tocHide);
 ?>
-<div class="mainContents">
+<div class="mainContents" data-id="<?php echo $post->ID; ?>">
 	<section class="contentBlock">
 		<?php if(!is_amp()): ?>
 		<div class="categorySelectWrapper">

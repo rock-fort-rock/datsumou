@@ -24,6 +24,10 @@ if($post_type == 'salon'){
 	$status = [
 		'id' => 'columnDetail',
 	];
+}elseif($post_type == 'news'){
+	$status = [
+		'id' => 'newsDetail',
+	];
 }
 ?>
 
@@ -34,6 +38,8 @@ if($post_type == 'salon'){
 	get_template_part('single-salon');
 }elseif($post_type == 'column'){
 	get_template_part('single-column');
+}elseif($post_type == 'news'){
+	get_template_part('single-news');
 }elseif($post_type == 'ampstory'){
 	get_template_part('single-ampstory');
 }

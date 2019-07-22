@@ -172,7 +172,10 @@ add_action('wp_footer', 'my_enqueue_plugin_files');
 
 
 //アイキャッチ有効化
-add_theme_support('post-thumbnails');
+// add_theme_support('post-thumbnails');
+add_theme_support('post-thumbnails', array(
+  'column',
+));
 
 // 管理者以外wordpress updateを非表示
 if (!current_user_can('administrator')) {

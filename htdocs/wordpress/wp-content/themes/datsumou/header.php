@@ -13,6 +13,79 @@ while(the_repeater_field('option_naviBanner', 'option')){
 	array_push($naviBanner, $tempNaviBanner);
 }
 // print_r($naviBanner);
+
+//cookie
+$readidStr = '';//既読記事ID　文字列
+$readidArray = [];//既読記事ID　配列
+
+//お知らせ詳細
+if(is_singular('news')){
+	//削除
+	// setcookie("read","",time()-1, '/');
+	// echo $_COOKIE["read"];
+	// exit();
+
+	//cookieあり
+	if($_COOKIE["read"]){
+		$readidStr = $_COOKIE["read"];
+		$readidArray = explode(',', $readidStr);
+		if (array_search($post->ID, $readidArray) === false){//初見
+		  $readidStr .= ',' . $post->ID;
+		}
+	}
+	//cookieなし
+	else{
+		$readidStr = $post->ID;
+	}
+	array_push($readidArray, $post->ID);
+	setcookie("read", $readidStr, time()+60*60*24*7, '/');
+}else{
+	if($_COOKIE["read"]){
+		$readidStr = $_COOKIE["read"];
+		$readidArray = explode(',', $readidStr);
+	}
+}
+
+$argCamp = array(
+	'post_type' => 'news',
+	'posts_per_page' => '-1',
+	'news_category' => 'キャンペーン',
+);
+$newsCampPage = get_posts($argCamp);
+
+$num = 10 - count($newsCampPage);
+$arg = array(
+	'post_type' => 'news',
+	'posts_per_page' => $num,
+	'tax_query' => array(
+		 array(
+		 'taxonomy' => 'news_category',//タクソノミーcatの
+		 'field' => 'slug',
+		 'terms' => 'キャンペーン',
+		 'operator' => 'NOT IN',
+		 ),
+	 )
+);
+$newsPage = get_posts($arg);
+
+$newsidArray = [];//新着記事ID　配列
+foreach($newsCampPage as $value){
+	array_push($newsidArray, $value->ID);
+}
+foreach($newsPage as $value){
+	array_push($newsidArray, $value->ID);
+}
+// print_r($newsidArray);
+// print_r($readidArray);
+
+$unread = 0;
+//新着記事IDが既読記事IDになければカウント
+foreach($newsidArray as $value){
+	if(array_search($value, $readidArray) === false){
+		// echo "未読" . $value;
+		$unread++;
+	}
+}
 ?>
 <!DOCTYPE HTML>
 <html lang="ja">
@@ -74,7 +147,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<?php if($headerBanner): ?>
 		<div class="gHeaderBanner"><a href="<?php echo $headerBannerLink; ?>" target="_blank"><img src="<?php echo $headerBanner; ?>"></a></div>
 		<?php endif; ?>
-		<div class="hamburger"><img src="/assets/images/hamburger.svg"></div>
+		<div class="hamburger"><img src="/assets/images/hamburger.svg"><?php if($unread > 0)echo '<span class="newsIcon">' . $unread . '</span>'; ?></div>
 		<!-- <ul class="snsLink">
 			<li><a href="#"><img src="/assets/images/icon_line.png" alt="LINE"></a></li>
 			<li><a href="#"><img src="/assets/images/icon_facebook.png" alt="facebook"></a></li>
@@ -86,6 +159,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="gNavi">
 			<div class="gNaviClose">×</div>
 			<div class="gNaviContainer">
+				<div class="gNaviSect">
+					<div class="newsInfo">お知らせ<?php if($unread > 0)echo '<span class="newsIcon">' . $unread . '</span>'; ?></div>
+				</div>
 				<div class="gNaviSect">
 					<div class="gNaviHeadline">目的別検索</div>
 					<?php
@@ -173,4 +249,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 			</div>
 			<div class="gNaviBg"></div>
+		</div>
+
+		<div class="newsNavi">
+			<div class="newsNaviClose"></div>
+			<div class="newsNaviInner">
+				<ul class="newsNaviList">
+					<?php foreach($newsCampPage as $value): ?>
+					<li class="campaign<?php if(array_search($value->ID, $readidArray) !== false)echo ' read'; ?>">
+						<a href="<?php echo get_permalink($value->ID); ?>">
+							<div class="date"><?php echo get_the_time('Y年m月d日', $value->ID); ?></div>
+							<h2 class="entryTitle"><?php echo get_the_title($value->ID); ?></h2>
+						</a>
+					</li>
+					<?php endforeach; ?>
+					<?php foreach($newsPage as $value): ?>
+					<li<?php if(array_search($value->ID, $readidArray) !== false)echo ' class="read"'; ?>>
+						<a href="<?php echo get_permalink($value->ID); ?>">
+							<div class="date"><?php echo get_the_time('Y年m月d日', $value->ID); ?></div>
+							<h2 class="entryTitle"><?php echo get_the_title($value->ID); ?></h2>
+						</a>
+					</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
 		</div>

@@ -100,8 +100,15 @@ HEADER
 		right: 10px;
 		transform: translateY(-50%);
 		width: 30px;
+		&.hide{
+			display: none;
+		}
 		img{
 			width: 100%;
+		}
+		.newsIcon{
+			top: 3px;
+			right: -5px;
 		}
 	}
 	@media screen and (max-width: $breakpoint-m ){
@@ -201,6 +208,28 @@ ELEMENT
 		transform: translateX(100%);
 		transition: transform .4s;
 		z-index: 1;
+		.newsInfo{
+			padding: 8px 5px;
+			position: relative;
+			.newsIcon{
+				position: absolute;
+				top: 50%;
+				right: 5px;
+				transform: translateY(-50%);
+				z-index: 3;
+			}
+			&::after{
+				content: '';
+				position: absolute;
+				top: 50%;
+				right: 5px;
+				width: 12px;
+				height: 12px;
+				transform: translateY(-50%);
+				background: url('/assets/images/arrow.svg') center center/100% auto no-repeat;
+				z-index: 2;
+			}
+		}
 		.gNaviHeadline{
 			// font-family: "Midashi Go MB31", $baseFont;
 			font-weight: bold;
@@ -327,6 +356,21 @@ ELEMENT
 			height: auto;
 			transform: translateX(0);
 			margin-bottom: 50px;
+			.newsInfo{
+				padding: 8px 10px;
+				position: relative;
+				border: 1px solid #ccc;
+				margin-bottom: 25px;
+				border-radius: 4px;
+				cursor: pointer;
+				@include hover;
+				&::after{
+					// display: none;
+					transform: rotate(90deg);
+					margin-top: -5px;
+					margin-right: 5px;
+				}
+			}
 			.gNaviHeadline{
 				background-color: $keyColor;
 				color: #fff;
@@ -364,6 +408,24 @@ ELEMENT
 			}
 		}
 	}
+}
+
+.newsIcon{
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #ff3300;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	line-height: 1;
+	color: #fff;
+	font-weight: bold;
+	font-size: 13px;
 }
 .mainContents{
 	@media screen and (max-width: $breakpoint){
@@ -462,6 +524,7 @@ ELEMENT
 .snsShare{
 	padding: 10px 0;
 	display: flex;
+	margin-bottom: 10px;
 	li{
 		flex: 1;
 		// padding: 2px;

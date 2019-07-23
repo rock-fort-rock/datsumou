@@ -5,11 +5,17 @@ $status = [
 ?>
 <?php get_header(); ?>
 
+<?php
+$term = $wp_query->queried_object;
+// print_r($term);
+$termSlug = $term->slug;
+$title = (!empty($term))?$term->name:'お知らせ一覧';
+?>
+
 <div class="mainContents">
 	<section class="contentBlock">
-		<h1 class="archiveTitle">お知らせ一覧</h1>
+		<h1 class="archiveTitle"><?php echo $title; ?></h1>
 
-		<?php /*
 		<?php
 		$terms = get_terms('news_category');
 		// print_r($terms);
@@ -19,16 +25,15 @@ $status = [
 				<select onChange="location.href=value;">
 					<option selected>カテゴリ選択</option>
 					<?php foreach($terms as $value): ?>
-					<option value="/column/column_category/<?php echo $value->slug; ?>/"><?php echo $value->name; ?></option>
+					<option value="/news/news_category/<?php echo $value->slug; ?>/"><?php echo $value->name; ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
 		</div>
-		*/ ?>
 
 		<?php if(have_posts()): ?>
 		<?php while(have_posts()): the_post(); ?>
-		<article class="entry">
+		<article class="entry news">
 			<div class="contentInner">
 				<a href="<?php the_permalink(); ?>">
 					<div class="textBlock">

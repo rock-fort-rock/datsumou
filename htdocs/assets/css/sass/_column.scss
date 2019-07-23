@@ -57,6 +57,21 @@ article.entry{
 			}
 		}
 	}
+
+	//お知らせ
+	&.news{
+		margin-bottom: 10px;
+		&:not(:last-child){
+			padding-bottom: 10px;
+			border-bottom: 1px solid #ccc;
+		}
+		a{
+			.textBlock{
+				flex: 1;
+				padding-left: 0;
+			}
+		}
+	}
 	@media screen and (min-width: $breakpoint + 1){
 		margin-bottom: 30px;
 		&:not(:last-child){
@@ -75,6 +90,23 @@ article.entry{
 				}
 			}
 		}
+
+		//お知らせ
+		&.news{
+			margin-bottom: 20px;
+			&:not(:last-child){
+				padding-bottom: 20px;
+			}
+			a{
+				.textBlock{
+					.entryTitle{
+						margin: 10px 0 0;
+						font-size: 1.1rem;
+					}
+				}
+			}
+		}
+
 	}
 }
 

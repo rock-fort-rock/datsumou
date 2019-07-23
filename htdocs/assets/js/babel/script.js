@@ -5,7 +5,7 @@
 import Chart from 'chart.js';
 // import echo from 'echo-js';//NG
 // import echo from '../../lib/echo.min';
-import cookie from '../../lib/jquery.cookie';
+// import cookie from '../../lib/jquery.cookie';
 
 const breakpoint = 780;
 const bodyWidth = document.body.clientWidth;
@@ -18,12 +18,32 @@ $(() => {
 	$('.hamburger').on({
 		'click': () => {
 			$('.gNavi').addClass('active');
+
+			if($('.newsNavi').hasClass('active')){
+				$('.newsNavi').removeClass('active');
+			}
 		}
 	})
 
 	$('.gNaviClose, .gNaviBg').on({
 		'click': () => {
 			$('.gNavi').removeClass('active');
+		}
+	})
+
+	$('.newsInfo').on({
+		'click': () => {
+			$('.newsNavi').toggleClass('active');
+			$('.hamburger').addClass('hide');
+			if($('.gNavi').hasClass('active')){
+				$('.gNavi').removeClass('active');
+			}
+		}
+	})
+	$('.newsNaviClose').on({
+		'click': () => {
+			$('.newsNavi').removeClass('active');
+			$('.hamburger').removeClass('hide');
 		}
 	})
 
@@ -53,6 +73,22 @@ $(() => {
 			return false;
 		}
 	})
+
+	const url = $(location).attr('href');
+	if (url.indexOf("#") !== -1) {
+		$("html, body").stop().scrollTop(0);
+		const id = url.slice(url.indexOf("#"));
+		const pos = $(id).offset().top;
+		const headerPos = $('.gHeader').css('position');
+		let margin = 0;
+		if(headerPos == 'fixed'){
+			margin = $('.gHeader').height();
+		}
+		// console.log(pos);
+		$("html, body").animate({scrollTop: pos - margin}, 800);
+	}
+
+
 
 	if($('.footerBanner').length > 0 && $('.footerBanner').css('display') != 'none' ){
 		const h = $('.footerBanner').height();
@@ -183,46 +219,47 @@ $(() => {
 
 
 //用語集
-$(() => {
-	const ele = $('.glossaryList');
-	if(ele.length < 1)return;
-
-	ele.find('.word').each(function(){
-		$(this).on({
-			'click': function(){
-				$(this).toggleClass('active');
-				$(this).next().toggleClass('active');
-			}
-		})
-	})
-})
-
-//コラム目次
-$(() => {
-	const ele = $('#columnDetail');
-	if(ele.length < 1)return;
+// $(() => {
+// 	const ele = $('.glossaryList');
+// 	if(ele.length < 1)return;
+//
+// 	ele.find('.word').each(function(){
+// 		$(this).on({
+// 			'click': function(){
+// 				$(this).toggleClass('active');
+// 				$(this).next().toggleClass('active');
+// 			}
+// 		})
+// 	})
+// })
 
 
-	// $.cookie("read", "", {expires: -1, path:'/'});
-
-	const postid = $('.mainContents').data('id');
-	let postidStr = '';
-	let postidArray = [];
-
-	//cookieあり
-	if($.cookie('read')){
-		postidStr = $.cookie('read');
-		postidArray = postidStr.split(',');
-		if (postidArray.indexOf(postid) == -1){
-		  postidStr += ',' + postid;
-			// console.log(postidStr);
-		}
-
-	//cookieなし
-	}else{
-		postidStr = postid;
-	}
-
-	$.cookie('read',postidStr,{expires:30, path:'/'});
-	console.log($.cookie('read'));
-})
+//cookie
+// $(() => {
+// 	const ele = $('#columnDetail');
+// 	if(ele.length < 1)return;
+//
+//
+// 	// $.cookie("read", "", {expires: -1, path:'/'});
+//
+// 	const postid = $('.mainContents').data('id');
+// 	let postidStr = '';
+// 	let postidArray = [];
+//
+// 	//cookieあり
+// 	if($.cookie('read')){
+// 		postidStr = $.cookie('read');
+// 		postidArray = postidStr.split(',');
+// 		if (postidArray.indexOf(postid) == -1){
+// 		  postidStr += ',' + postid;
+// 			// console.log(postidStr);
+// 		}
+//
+// 	//cookieなし
+// 	}else{
+// 		postidStr = postid;
+// 	}
+//
+// 	$.cookie('read',postidStr,{expires:30, path:'/'});
+// 	console.log($.cookie('read'));
+// })

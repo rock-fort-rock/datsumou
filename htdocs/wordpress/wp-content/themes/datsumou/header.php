@@ -272,5 +272,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</li>
 					<?php endforeach; ?>
 				</ul>
+				<div class="newsNaviAll">
+					<a href="/news/">すべて見る</a>
+				</div>
 			</div>
 		</div>

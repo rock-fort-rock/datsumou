@@ -3,8 +3,13 @@ $status = [
 	'id' => 'glossaryDetail',
 ];
 ?>
-<?php get_header(); ?>
 <?php
+if(!is_amp()){
+	get_header();
+}
+?>
+<?php
+the_post();
 $allTerms = get_terms('glossarycat', array('hide_empty'=> 0));
 // print_r($allTerms);
 ?>
@@ -23,7 +28,11 @@ $allTerms = get_terms('glossarycat', array('hide_empty'=> 0));
 
       <h1 class="glossaryTitle"><?php the_title(); ?></h1>
       <div class="glossaryBody">
-        <?php the_post(); the_content(); ?>
+				<?php if(is_amp()): ?>
+					<?php echo convertImgToAmpImg(apply_filters('the_content',get_the_content())); ?>
+				<?php else: ?>
+					<?php the_content(); ?>
+				<?php endif; ?>
       </div>
       <div class="backButton">
         <a href="/glossary/">戻る</a>
@@ -32,4 +41,8 @@ $allTerms = get_terms('glossarycat', array('hide_empty'=> 0));
 	</section>
 </div>
 
-<?php	get_footer(); ?>
+<?php
+if(!is_amp()){
+	get_footer();
+}
+?>

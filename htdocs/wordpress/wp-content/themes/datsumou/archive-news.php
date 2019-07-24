@@ -24,6 +24,7 @@ $title = (!empty($term))?$term->name:'お知らせ一覧';
 			<div class="categorySelect">
 				<select onChange="location.href=value;">
 					<option selected>カテゴリ選択</option>
+					<option value="/news/">全て</option>
 					<?php foreach($terms as $value): ?>
 					<option value="/news/news_category/<?php echo $value->slug; ?>/"><?php echo $value->name; ?></option>
 					<?php endforeach; ?>

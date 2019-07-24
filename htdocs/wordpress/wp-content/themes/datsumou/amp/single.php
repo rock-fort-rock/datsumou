@@ -28,7 +28,11 @@ if($post_type == 'salon'){
 	$status = [
 		'id' => 'newsDetail',
 	];
-}
+}elseif($post_type == 'glossary'){
+		$status = [
+			'id' => 'glossaryDetail',
+		];
+	}
 ?>
 
 <?php $this->load_parts( array( 'header' ) ); ?>
@@ -40,6 +44,8 @@ if($post_type == 'salon'){
 	get_template_part('single-column');
 }elseif($post_type == 'news'){
 	get_template_part('single-news');
+}elseif($post_type == 'glossary'){
+	get_template_part('single-glossary');
 }elseif($post_type == 'ampstory'){
 	get_template_part('single-ampstory');
 }

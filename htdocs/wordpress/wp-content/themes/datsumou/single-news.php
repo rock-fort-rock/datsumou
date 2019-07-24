@@ -23,8 +23,9 @@ $the_terms = get_the_terms($post->ID, 'news_category' );
 			<div class="categorySelect">
 				<select onChange="location.href=value;">
 					<option selected>カテゴリ選択</option>
+					<option value="/news/">全て</option>
 					<?php foreach($terms as $value): ?>
-					<option value="/column/column_category/<?php echo $value->slug; ?>/"><?php echo $value->name; ?></option>
+					<option value="/news/news_category/<?php echo $value->slug; ?>/"><?php echo $value->name; ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
@@ -36,7 +37,7 @@ $the_terms = get_the_terms($post->ID, 'news_category' );
 			<div class="entryAttribute">
 				<div class="date"><?php the_time('Y年m月d日'); ?></div>
 				<?php if($the_terms): ?>
-				<ul class="category"><?php foreach($the_terms as $value): ?><li><a href="/column/column_category/<?php echo $value->slug; ?>/"><?php echo $value->name; ?></a></li><?php endforeach; ?></ul>
+				<ul class="category"><?php foreach($the_terms as $value): ?><li><a href="/news/news_category/<?php echo $value->slug; ?>/"><?php echo $value->name; ?></a></li><?php endforeach; ?></ul>
 				<?php endif; ?>
 			</div>
 		</header>

@@ -1,5 +1,130 @@
 //AMPには読み込まないやつ
 
+.glossaryList{
+  padding: 0 5px;
+  > li{
+    &:not(:last-child){
+      margin-bottom: 30px;
+    }
+    .catTitle{
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      border-bottom: 1px dotted #ccc;
+      font-weight: bold;
+      padding-bottom: 3px;
+    }
+    .wordList{
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .wordItem{
+      width: 50%;
+      &:not(:last-child){
+        margin-bottom: 7px;
+      }
+      &:nth-child(odd){
+        padding-right: 15px;
+      }
+      &:nth-child(even){
+        padding-left: 15px;
+      }
+      .word{
+        font-size: 1.1rem;
+        line-height: 1.3;
+        color: inherit;
+        position: relative;
+        padding-left: 12px;
+        display: inline-block;
+        margin-bottom: 5px;
+        &::before{
+          content: '';
+          position: absolute;
+          top: 6px;
+          left: 3px;
+          width: 0;
+          height: 0;
+          border: 3px solid transparent;
+          border-left: 5px solid $keyColor;
+          opacity: 0.7;
+          // transform: rotate(90deg);
+          // transition: transform .3s;
+        }
+        &.active{
+          &::before{
+            top: 4px;
+            transform: rotate(-90deg);
+          }
+        }
+      }
+      .description{
+        // display: none;
+        padding-left: 15px;
+        opacity: 0;
+        overflow: hidden;
+        line-height: 0;
+        transition: line-height .2s .2s, opacity .4s;
+        &.active{
+          line-height: 1.5;
+          opacity: 1;
+          transition: line-height .2s, opacity .4s .1s;
+        }
+      }
+    }
+    .buttonContainer{
+      text-align: center;
+      margin-top: 15px;
+      a{
+        background-color: $keyColor;
+        color: #fff;
+        border-radius: 4px;
+        padding: 5px 10px;
+        line-height: 1;
+      }
+    }
+  }
+
+  @media all and (min-width: $breakpoint + 1){
+    > li{
+      &:not(:last-child){
+        margin-bottom: 40px;
+      }
+      .wordList{
+        // display: flex;
+        // flex-wrap: wrap;
+      }
+
+      .wordItem{
+        // width: 50%;
+        &:not(:last-child){
+          margin-bottom: 15px;
+        }
+        a{
+          @include hover;
+        }
+        .word{
+          font-size: 1rem;
+          // &::before{
+          //   top: 10px;
+          // }
+          // &.active{
+          //   &::before{
+          //     top: 6px;
+          //   }
+          // }
+        }
+      }
+      .buttonContainer{
+        margin-top: 20px;
+        a{
+          padding: 7px 20px;
+          @include hover;
+        }
+      }
+    }
+  }
+}
+
 .newsNavi{
 	display: none;
 	&.active{
@@ -113,6 +238,13 @@
 			}
 		}
 	}
+
+	.newsNaviAll{
+		padding: 15px 0;
+		background-color: #fff;
+		text-align: center;
+		font-size: 12px;
+	}
 	@media screen and (min-width: $breakpoint-m + 1){
 		position: absolute;
 		width: 300px;
@@ -166,6 +298,8 @@
 		}
 	}
 }
+
+
 /*---------------------------------
 COLUMN
 ---------------------------------*/

@@ -31,9 +31,10 @@
 </head>
 
 <body class="amp-mode <?php echo esc_attr( $this->get( 'body_class' ) ); ?>" id="<?php echo $status['id']; ?>">
+	<?php if(!is_singular('ampstory')): ?>
+	<?php //amp storyの場合はamp-storyタグ内に記述（single-ampstory.php）?>
 	<!-- Google Tag Manager -->
 	<amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-MZ3ZZPM&gtm.url=SOURCE_URL" data-credentials="include"></amp-analytics>
-	<?php if(!is_singular('ampstory')): ?>
 	<header class="gHeader">
 		<?php $ele = (is_home())?'h1':'div'; ?><<?php echo $ele; ?> class="gHeaderLogo"><a href="/"><amp-img src="/assets/images/logo.png" width="175" height="47" alt="ツルツル！全身脱毛診断メーカー"></amp-img></a></<?php echo $ele; ?>>
 	</header>

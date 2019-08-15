@@ -15,6 +15,10 @@ if(!is_amp()){
 		poster-square-src="/assets/images/poster-square.jpg"
 		poster-landscape-src="/assets/images/poster-landscape.jpg"
 	>
+	
+	<!-- Google Tag Manager -->
+	<amp-analytics config="https://www.googletagmanager.com/amp.json?id=GTM-MZ3ZZPM&gtm.url=SOURCE_URL" data-credentials="include"></amp-analytics>
+
 		<?php	$counter = 0; ?>
 		<?php while (have_rows('ampstory_page')): the_row();?>
 		<?php

@@ -184,16 +184,56 @@ $(() => {
 
 	})
 
-	$('.salonReview .review').each(function(){
-		if($(this).next('.viewMore').length > 0){
-			$(this).next('.viewMore').on({
-				'click': function(){
-					$(this).hide();
-					$(this).next('.reviewMore').slideToggle(500);
-				}
-			})
+	// $('.salonReview .review').each(function(){
+	// 	if($(this).next('.viewMore').length > 0){
+	// 		$(this).next('.viewMore').on({
+	// 			'click': function(){
+	// 				$(this).hide();
+	// 				$(this).next('.reviewMore').slideToggle(500);
+	// 			}
+	// 		})
+	// 	}
+	// })
+
+
+	//口コミ
+	if($('.allReviewInner').length > 0){
+		$('.review').clone().appendTo('.allReviewInner');
+	}
+	$('.viewTrigger').on({
+		'click': (e) => {
+			$('.allReview').addClass('active');
 		}
-	})
+	});
+
+	$('.reviewAgeTab li').on({
+		'click': (e) => {
+			const target = $(e.currentTarget).data('age');
+			// console.log(target);
+			$('.allReviewInner .review').empty();
+			if(target == 'all'){
+				$('.review li').clone().appendTo('.allReviewInner .review');
+			}else{
+				$('.review li.age'+target).clone().appendTo('.allReviewInner .review');
+			}
+
+			$('.reviewAgeTab li').removeClass('active');
+			$(e.currentTarget).addClass('active');
+		}
+	});
+
+	$('.allReview .bg').on({
+		'click': (e) => {
+			$('.allReview').removeClass('active');
+		}
+	});
+
+	$('.comment-reply-title').on({
+		'click': (e) => {
+		$(e.currentTarget).next('form').slideToggle(400);
+		}
+	});
+
 });
 
 //コラム目次

@@ -276,6 +276,7 @@ while(the_repeater_field('salon_recommend')){
 			<div class="paragraph salonReview" id="review">
 				<div class="salonContentTitle">みんなの口コミ</div>
 				<div class="contentInner">
+					<?php /*
 				<?php if(is_amp()): ?>
 					<ul class="review">
 						<?php
@@ -313,6 +314,35 @@ while(the_repeater_field('salon_recommend')){
 					</ul>
 					<?php endif; ?>
 				<?php endif; ?>
+
+				*/ ?>
+
+				<?php
+				if ( comments_open() ) {
+					comments_template();
+				}
+				?>
+				</div>
+
+				<div class="allReview">
+					<div class="allReviewContainer">
+						<ul class="reviewAgeTab">
+							<li class="active" data-age="all">
+								すべて
+							</li>
+							<li data-age="20">
+								20代未満
+							</li>
+							<li data-age="30">
+								30代
+							</li>
+							<li data-age="40">
+								40代以上
+							</li>
+						</ul>
+						<div class="allReviewInner"></div>
+					</div>
+					<div class="bg"><span class="close">×</span></div>
 				</div>
 			</div>
 

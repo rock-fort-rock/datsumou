@@ -21,3 +21,11 @@ $shadow: 0 0 2px rgba(0,0,0,0.2);
 		opacity: 0.7;
 	}
 }
+@keyframes fadeIn {
+	0% {
+			opacity: 0;
+	}
+	100% {
+			opacity: 1;
+	}
+}

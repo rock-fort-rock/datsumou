@@ -5,6 +5,7 @@ foreach($salonPosts as $value){
 	$salonTemp = [];
 	$id = $value['salon']->ID;
 
+	$salonTemp['ID'] = $id;
 	$salonTemp['title'] = get_the_title($id);
 	$banner = get_field('salon_banner', $id);
 	$bannerObj = $banner['salon_banner_image'];
@@ -219,6 +220,81 @@ foreach($salonPosts as $value){
 		<div class="paragraph salonReview">
 			<div class="salonContentTitle">みんなの口コミ</div>
 			<div class="contentInner">
+				<?php
+				$allCommentsArray = [];
+				$args = array(
+					//「参考になった」がついているコメント
+					array(
+						'status' => 'approve',
+						'meta_key' => 'cld_like_count',
+						'orderby' => 'meta_value_num',
+						'order' => 'DESC',
+						'post_id' => $value['ID'],
+					),
+					//「参考になった」がついていないコメント
+					array(
+						'status' => 'approve',
+						'meta_key' => 'cld_like_count',
+						'meta_compare' => 'NOT EXISTS',
+						'post_id' => $value['ID'],
+					),
+				);
+				foreach($args as $arg){
+					foreach(get_comments($arg) as $comment){
+						// print_r($comment);
+						$temp['ID'] = $comment->comment_ID;
+						$temp['valuation'] = get_field('comment_valuation',$comment);
+						// $avatar = empty($_SERVER['HTTPS']) ? 'http://' : 'https://';
+						// $avatar .= $_SERVER['HTTP_HOST'];
+						$avatar = 'https://xn--lckwf7cb5558dg0hnt1bzdp.com/assets/images/';
+						switch (get_field('comment_valuation',$comment)) {
+							case 1:
+								$avatar .= 'comment_avatar1.jpg';
+								break;
+							case 2:
+								$avatar .= 'comment_avatar2.jpg';
+								break;
+							case 3:
+								$avatar .= 'comment_avatar3.jpg';
+								break;
+							case 4:
+								$avatar .= 'comment_avatar4.jpg';
+								break;
+							case 5:
+								$avatar .= 'comment_avatar5.jpg';
+								break;
+						}
+						$temp['avatar'] = get_avatar($comment->user_id, 100, $avatar);//($id, $size, $default, $alt)
+						$temp['author'] = $comment->comment_author;
+						$temp['comment'] = $comment->comment_content;
+						$temp['age'] = get_field('comment_age',$comment);
+						$ageClass = 'age';
+						switch (get_field('comment_age',$comment)) {
+							case '20代未満':
+								$ageClass .= 20;
+								break;
+							case '30代':
+								$ageClass .= 30;
+								break;
+							case '40代以上':
+								$ageClass .= 40;
+								break;
+						}
+						$temp['ageClass'] = $ageClass;
+						$temp['like'] = get_field('cld_like_count',$comment);
+						array_push($allCommentsArray, $temp);
+					}
+				}
+				print_r($allCommentsArray);
+				//3つだけでOK
+				
+				// if ( comments_open($value['ID']) ) {
+				// 	echo 'comment open!';
+				// 	comments_template();
+				// }
+				?>
+
+				<?php /*
 				<?php if(is_amp()): ?>
 					<ul class="review">
 						<?php
@@ -259,6 +335,7 @@ foreach($salonPosts as $value){
 					</ul>
 					<?php endif; ?>
 				<?php endif; ?>
+				*/ ?>
 			</div>
 		</div>
 

@@ -195,10 +195,10 @@ function remove_menus(){
   }
 
   if (!current_user_can('administrator')){
-    $restricted = array(__('投稿'),__('固定ページ'),__('コメント'),__('ツール'), __('設定'),  __('プロフィール'));
+    $restricted = array(__('投稿'),__('固定ページ'),__('ツール'), __('設定'),  __('プロフィール'));
   }else{
     // $restricted = array();
-    $restricted = array(__('投稿'),__('コメント'));
+    $restricted = array(__('投稿'));
   }
   end ($menu);
   while (prev($menu)){
@@ -395,7 +395,7 @@ function cpt_salon_init()
     'rewrite' => array('slug' => 'salon', 'with_front' => false, 'pages' => true, 'feeds' => false),
     'hierarchical' => false,
     'menu_position' => 5,
-    'supports' => array('title','editor','thumbnail')
+    'supports' => array('title','editor','thumbnail','comments')
   );
   register_post_type('salon', $args);
 }

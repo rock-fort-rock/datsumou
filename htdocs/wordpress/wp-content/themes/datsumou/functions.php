@@ -625,6 +625,124 @@ function setRanking($arg) {
 add_shortcode('ランキング装飾', 'setRanking');
 
 
+
+//口コミ
+function getComments($post_id = NULL){
+  $allCommentsArray = [];
+  $args = array(
+    //「参考になった」がついているコメント
+    array(
+      'status' => 'approve',
+      'meta_key' => 'cld_like_count',
+      'orderby' => 'meta_value_num',
+      'order' => 'DESC',
+      //'post_id' => $value['ID'],
+    ),
+    //「参考になった」がついていないコメント
+    array(
+      'status' => 'approve',
+      'meta_key' => 'cld_like_count',
+      'meta_compare' => 'NOT EXISTS',
+      //'post_id' => $value['ID'],
+    ),
+  );
+  if($post_id !== NULL){
+    for($i=0; $i<count($args); $i++){
+      $args[$i] += array('post_id' => $post_id);
+    }
+  }
+  // print_r($args);
+
+  foreach($args as $arg){
+    foreach(get_comments($arg) as $comment){
+      // print_r($comment);
+      $temp['ID'] = $comment->comment_ID;
+      $temp['valuation'] = get_field('comment_valuation',$comment);
+      // $avatar = empty($_SERVER['HTTPS']) ? 'http://' : 'https://';
+      // $avatar .= $_SERVER['HTTP_HOST'];
+      $avatar = 'https://xn--lckwf7cb5558dg0hnt1bzdp.com/assets/images/';
+      switch (get_field('comment_valuation',$comment)) {
+        case 1:
+          $avatar .= 'comment_avatar1.jpg';
+          break;
+        case 2:
+          $avatar .= 'comment_avatar2.jpg';
+          break;
+        case 3:
+          $avatar .= 'comment_avatar3.jpg';
+          break;
+        case 4:
+          $avatar .= 'comment_avatar4.jpg';
+          break;
+        case 5:
+          $avatar .= 'comment_avatar5.jpg';
+          break;
+      }
+      $temp['avatar'] = get_avatar($comment->user_id, 100, $avatar);//($id, $size, $default, $alt)
+      if(is_amp()){
+        $temp['avatar'] = preg_replace('/<img/i', '<amp-img layout="responsive"', $temp['avatar']);
+      }
+      $temp['author'] = $comment->comment_author;
+      $temp['comment'] = $comment->comment_content;
+      $temp['age'] = get_field('comment_age',$comment);
+      $ageClass = 'age';
+      switch (get_field('comment_age',$comment)) {
+        case '20代未満':
+          $ageClass .= 20;
+          break;
+        case '30代':
+          $ageClass .= 30;
+          break;
+        case '40代以上':
+          $ageClass .= 40;
+          break;
+      }
+      $temp['ageClass'] = $ageClass;
+      $temp['like'] = get_field('cld_like_count',$comment);
+      array_push($allCommentsArray, $temp);
+    }
+  }
+  return $allCommentsArray;
+}
+
+function outputComments($value){
+  echo '<li class="'.$value['ageClass']. '">';
+	echo '<div class="avatar">'.$value['avatar'].'</div>';
+	echo '<div class="comment">';
+	echo '<div class="valuation">';
+	for($i=0; $i<$value['valuation']; $i++){
+		echo '<span>★</span>';
+	}
+	echo '</div>';
+	echo '<div class="commentText">';
+  echo $value['comment'] . '（' .$value['author']. ':' . $value['age']. '）';
+	echo '</div>';
+
+	//do_action( 'cld_like_dislike_output', $comment_text, $comment );
+	//直接記述（管理画面の設定は反映されず）
+
+
+	echo '<div class="cld-like-dislike-wrap cld-template-2">';
+  echo '<div class="cld-like-wrap  cld-common-wrap">';
+  if(is_amp()){
+    echo '<div class="cld-like-trigger cld-like-dislike-trigger cld-prevent">';
+  	echo '<span class="button">参考になった</span>';
+    echo '</div>';
+  }else{
+    echo '<a href="javascript:void(0);" class="cld-like-trigger cld-like-dislike-trigger cld-prevent" title="" data-comment-id="'.$value['ID']. '" data-trigger-type="like" data-restriction="cookie" data-ip-check="1" data-user-check="1">';
+  	echo '<span class="button">参考になった</span>';
+    echo '</a>';
+  }
+
+	echo '<span class="cld-like-count-wrap cld-count-wrap">'. $value['like']. '</span>';
+	echo '</div>';
+	echo '</div>';
+  echo '</div>';
+	echo '</li>';
+}
+
+
+
 //マニュアルページ作成
 function original_page() {
   add_menu_page('マニュアル', 'マニュアル', 1, 'manual_page', 'manual_menu');

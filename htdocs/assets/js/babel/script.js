@@ -199,7 +199,19 @@ $(() => {
 	//口コミ
 	if($('.allReviewInner').length > 0){
 		$('.review').clone().appendTo('.allReviewInner');
+		if(location.hash == '#comment'){
+			// const target = $('#review').offset().top;
+			// const headerPos = $('.gHeader').css('position');
+			// let margin = 0;
+			// if(headerPos == 'fixed'){
+			// 	margin = $('.gHeader').height();
+			// }
+			// $('html, body').animate({ scrollTop: target - margin}, 400);
+
+			$('.allReview').addClass('active');
+		}
 	}
+
 	$('.viewTrigger').on({
 		'click': (e) => {
 			$('.allReview').addClass('active');

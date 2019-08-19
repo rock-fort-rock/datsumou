@@ -98,12 +98,15 @@ function my_scripts() {
   wp_enqueue_script('echo', home_url().'/assets/lib/echo.min.js', array(), '', true );
   wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '2.1', true );
 
-  //プラグインCSSをヘッダで読み込まない
+  //プラグインCSSを「ヘッダ」で読み込まない
   global $pluginCss;
   foreach($pluginCss as $value){
     wp_dequeue_style($value);
   }
 
+  //不要なプラグインCSSを読み込まない
+  wp_dequeue_style( 'cld-font-awesome' );
+  wp_dequeue_style( 'cld-frontend' );
 }
 add_action( 'wp_enqueue_scripts', 'my_scripts', 9999 );
 

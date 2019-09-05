@@ -39,11 +39,20 @@ array_unshift($info, $infoReview);
 // print_r($info);
 
 $review = [];
-while(the_repeater_field('salon_review')){
-	$reviewObj = get_sub_field('salon_review_avatar');
-	$reviewTemp['avatar'] = $reviewObj['sizes']['thumbnail'];
-	$reviewTemp['comment'] = get_sub_field('salon_review_comment');
-	array_push($review, $reviewTemp);
+if ( comments_open() ){
+	while(the_repeater_field('salon_review')){
+		$reviewObj = get_sub_field('salon_review_avatar');
+		$reviewTemp['avatar'] = $reviewObj['sizes']['thumbnail'];
+		$reviewTemp['comment'] = get_sub_field('salon_review_comment');
+		array_push($review, $reviewTemp);
+	}
+}else{
+	while(the_repeater_field('salon_review')){
+		$reviewObj = get_sub_field('salon_review_avatar');
+		$reviewTemp['avatar'] = $reviewObj['sizes']['thumbnail'];
+		$reviewTemp['comment'] = get_sub_field('salon_review_comment');
+		array_push($review, $reviewTemp);
+	}
 }
 
 $number = get_field('salon_number');
@@ -276,52 +285,47 @@ while(the_repeater_field('salon_recommend')){
 			<div class="paragraph salonReview" id="review">
 				<div class="salonContentTitle">みんなの口コミ</div>
 				<div class="contentInner">
-					<?php /*
-				<?php if(is_amp()): ?>
-					<ul class="review">
-						<?php
-						$count = count($review);
-						?>
-						<?php for($i=0; $i<$count; $i++): ?>
-						<li>
-							<div class="avatar"><amp-img src="<?php echo $review[$i]['avatar']; ?>" width="60" height="60"></amp-img></div>
-							<div class="comment"><?php echo $review[$i]['comment']; ?></div>
-						</li>
-						<?php endfor; ?>
-					</ul>
+				<?php	if ( comments_open() ) : ?>
+					<?php comments_template(); ?>
 				<?php else: ?>
-					<ul class="review">
-						<?php
-						$count = count($review);
-						$init = 3;
-						?>
-						<?php for($i=0; $i<min($count, $init); $i++): ?>
-						<li>
-							<div class="avatar"><img src="<?php echo $review[$i]['avatar']; ?>"></div>
-							<div class="comment"><?php echo $review[$i]['comment']; ?></div>
-						</li>
-						<?php endfor; ?>
-					</ul>
-					<?php if($count > $init): ?>
-					<div class="viewMore"><span>もっとみる</span></div>
-					<ul class="review reviewMore even">
-						<?php for($i=$init; $i<$count; $i++): ?>
-						<li>
-							<div class="avatar"><img src="<?php echo $review[$i]['avatar']; ?>"></div>
-							<div class="comment"><?php echo $review[$i]['comment']; ?></div>
-						</li>
-						<?php endfor; ?>
-					</ul>
+					<?php if(is_amp()): ?>
+						<ul class="review">
+							<?php
+							$count = count($review);
+							?>
+							<?php for($i=0; $i<$count; $i++): ?>
+							<li>
+								<div class="avatar"><amp-img src="<?php echo $review[$i]['avatar']; ?>" width="60" height="60"></amp-img></div>
+								<div class="comment"><?php echo $review[$i]['comment']; ?></div>
+							</li>
+							<?php endfor; ?>
+						</ul>
+					<?php else: ?>
+						<ul class="review">
+							<?php
+							$count = count($review);
+							$init = 3;
+							?>
+							<?php for($i=0; $i<min($count, $init); $i++): ?>
+							<li>
+								<div class="avatar"><img src="<?php echo $review[$i]['avatar']; ?>"></div>
+								<div class="comment"><?php echo $review[$i]['comment']; ?></div>
+							</li>
+							<?php endfor; ?>
+						</ul>
+						<?php if($count > $init): ?>
+						<div class="viewMore -managed"><span>もっとみる</span></div>
+						<ul class="review reviewMore even">
+							<?php for($i=$init; $i<$count; $i++): ?>
+							<li>
+								<div class="avatar"><img src="<?php echo $review[$i]['avatar']; ?>"></div>
+								<div class="comment"><?php echo $review[$i]['comment']; ?></div>
+							</li>
+							<?php endfor; ?>
+						</ul>
+						<?php endif; ?>
 					<?php endif; ?>
 				<?php endif; ?>
-
-				*/ ?>
-
-				<?php
-				if ( comments_open() ) {
-					comments_template();
-				}
-				?>
 				</div>
 
 				<div class="allReview">

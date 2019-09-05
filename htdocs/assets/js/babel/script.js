@@ -184,16 +184,17 @@ $(() => {
 
 	})
 
-	// $('.salonReview .review').each(function(){
-	// 	if($(this).next('.viewMore').length > 0){
-	// 		$(this).next('.viewMore').on({
-	// 			'click': function(){
-	// 				$(this).hide();
-	// 				$(this).next('.reviewMore').slideToggle(500);
-	// 			}
-	// 		})
-	// 	}
-	// })
+	//口コミ（管理者投稿の
+	$('.salonReview .review').each(function(){
+		if($(this).next('.viewMore.-managed').length > 0){
+			$(this).next('.viewMore.-managed').on({
+				'click': function(){
+					$(this).fadeOut(300);
+					$(this).next('.reviewMore').slideToggle(500);
+				}
+			})
+		}
+	})
 
 
 	//口コミ

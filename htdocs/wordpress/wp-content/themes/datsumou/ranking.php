@@ -37,11 +37,20 @@ foreach($salonPosts as $value){
 	array_unshift($salonTemp['info'], $infoReview);
 
 	$review = [];
-	while(the_repeater_field('salon_review', $id)){
-		$reviewObj = get_sub_field('salon_review_avatar');
-		$reviewTemp['avatar'] = $reviewObj['sizes']['thumbnail'];
-		$reviewTemp['comment'] = get_sub_field('salon_review_comment');
-		array_push($review, $reviewTemp);
+	if ( comments_open() ){
+		while(the_repeater_field('salon_review', $id)){
+			$reviewObj = get_sub_field('salon_review_avatar');
+			$reviewTemp['avatar'] = $reviewObj['sizes']['thumbnail'];
+			$reviewTemp['comment'] = get_sub_field('salon_review_comment');
+			array_push($review, $reviewTemp);
+		}
+	}else{
+		while(the_repeater_field('salon_review', $id)){
+			$reviewObj = get_sub_field('salon_review_avatar');
+			$reviewTemp['avatar'] = $reviewObj['sizes']['thumbnail'];
+			$reviewTemp['comment'] = get_sub_field('salon_review_comment');
+			array_push($review, $reviewTemp);
+		}
 	}
 	$salonTemp['review'] = $review;
 
@@ -220,9 +229,9 @@ foreach($salonPosts as $value){
 		<div class="paragraph salonReview">
 			<div class="salonContentTitle">みんなの口コミ</div>
 			<div class="contentInner">
+			<?php if ( comments_open($value['ID']) ): ?>
 				<?php
 				$allCommentsArray = getComments($value['ID']);
-
 				// if ( comments_open($value['ID']) ) {
 				// 	comments_template();
 				// }
@@ -235,9 +244,10 @@ foreach($salonPosts as $value){
 					<?php endfor; ?>
 				</ul>
 				<div class="viewMore"><a href="<?php echo $value['permalink']; ?>#comment"><span>もっとみる</span></a></div>
-			<?php endif; ?>
+				<?php endif; ?>
 
-				<?php /*
+			<?php else: ?>
+
 				<?php if(is_amp()): ?>
 					<ul class="review">
 						<?php
@@ -267,7 +277,7 @@ foreach($salonPosts as $value){
 						<?php endfor; ?>
 					</ul>
 					<?php if($count > $init): ?>
-					<div class="viewMore"><span>もっとみる</span></div>
+					<div class="viewMore -managed"><span>もっとみる</span></div>
 					<ul class="review reviewMore even">
 						<?php for($i=$init; $i<$count; $i++): ?>
 						<li>
@@ -278,7 +288,9 @@ foreach($salonPosts as $value){
 					</ul>
 					<?php endif; ?>
 				<?php endif; ?>
-				*/ ?>
+
+
+			<?php endif; ?>
 			</div>
 		</div>
 

@@ -312,6 +312,67 @@ function cpt_column_init()
   register_taxonomy('column_category', 'column', $args);
 }
 
+/*
+columnパーマリンク設定。難しいか。「投稿」にする？記事の移行が大変。
+・/column/は活かしたままにしたい！！
+・URL階層対応のため「カテゴリ」と「サブカテゴリ」2つタクソノミーを作成。（サブカテゴリの親は選択できないように）一覧ページが難しい。。。
+・親カテゴリと子カテゴリ。（サブカテゴリの親は選択できないように）パーマリンク設定に「/%column_category%/」で階層表示してくれる。
+・一覧ページ タクソノミー名なしの「/親/子/」でいける？？
+https://blog.maromaro.co.jp/archives/2500
+*/
+
+// function na_remove_slug( $post_link, $post, $leavename ) {
+//   // $terms = get_terms('column_category');
+//   // $termSlug = $terms[0]->slug;
+//     if ( 'column' != $post->post_type || 'publish' != $post->post_status ) {
+//         return $post_link;
+//     }
+//     $post_link = str_replace( '/' . $post->post_type . '/', '/', $post_link );
+//     return $post_link;
+// }
+// add_filter( 'post_type_link', 'na_remove_slug', 10, 3 );
+
+// function na_parse_request( $query ) {
+//   // print_r($query->query);
+//     if ( ! $query->is_main_query() || 2 != count( $query->query ) || ! isset( $query->query['page'] ) ) {
+//         return;
+//     }
+//     if ( ! empty( $query->query['name'] ) ) {
+//       // echo $query->query['name'];
+//         $query->set( 'post_type', array( 'post', 'column', 'page' ) );
+//     }
+// }
+// add_action( 'pre_get_posts', 'na_parse_request' );
+
+
+// お知らせスラッグ連番付番
+// function incliment_slug($slug) {
+//   global $post;
+//   //お知らせで新規作成の場合
+//   if ($post->post_type == 'news' && get_post_status() == 'auto-draft') {
+//     global $wpdb;
+//     $args = array(
+//       'post_type'      => 'news',
+//       'posts_per_page' => -1,
+//       'date_query' => array(
+//           array(
+//               'year'     => get_the_time('Y'),
+//               'monthnum' => get_the_time('n'),
+//               'day'      => get_the_time('j')
+//           )
+//       )
+//     );
+//     $day_news = new WP_Query( $args );
+//     $day_news_count = $day_news->found_posts+1;
+//     $slug = get_the_time('Ymd') . '_' . sprintf('%03d', $day_news_count);
+//     return $slug;
+//   }else{
+//     return $slug;
+//   }
+// }
+// add_filter('editable_slug', 'incliment_slug');
+
+
 /**
 custom post type
 お知らせ

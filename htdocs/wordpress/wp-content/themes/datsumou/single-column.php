@@ -168,6 +168,7 @@ $tocHide = $tocGroup['column_toc_hide'];
 							$imgtag= '/<img.*?src=(["\'])(.+?)\1.*?>/i';
 							if(preg_match($imgtag, $author_img, $imgurl)){
 								$authorimg = $imgurl[2];
+								// print_r($imgurl);
 							}
 							// echo $authorimg;
 						?>
@@ -175,7 +176,8 @@ $tocHide = $tocGroup['column_toc_hide'];
 							<?php if(is_amp()): ?>
 								<amp-img src="<?php echo $authorimg; ?>" width="300" height="300" layout="responsive"></amp-img>
 							<?php else: ?>
-								<img src="<?php echo $authorimg; ?>">
+								<?php echo $author_img; ?>
+								<?php /*<img src="<?php echo $authorimg; ?>">*/ ?>
 							<?php endif; ?>
 						</div>
 						<div class="userProfileInfo">

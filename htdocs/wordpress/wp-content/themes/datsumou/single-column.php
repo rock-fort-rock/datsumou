@@ -159,6 +159,8 @@ $tocHide = $tocGroup['column_toc_hide'];
 				</section>
 				<?php endfor; ?>
 
+				<?php //the_content();//Native Lazy：本文中の画像には対応 ?>
+
 				<?php if(get_the_author_meta('user_description'))://プロフィール情報に記載があれば表示 ?>
 				<div class="userProfile">
 					<h3 class="userProfileTitle">この記事を書いた人</h3>
@@ -176,8 +178,8 @@ $tocHide = $tocGroup['column_toc_hide'];
 							<?php if(is_amp()): ?>
 								<amp-img src="<?php echo $authorimg; ?>" width="300" height="300" layout="responsive"></amp-img>
 							<?php else: ?>
-								<?php echo $author_img; ?>
-								<?php /*<img src="<?php echo $authorimg; ?>">*/ ?>
+								<?php //echo $author_img; ?>
+								<img data-echo="<?php echo $authorimg; ?>" src="/assets/images/dummy.gif" class="lazy">
 							<?php endif; ?>
 						</div>
 						<div class="userProfileInfo">

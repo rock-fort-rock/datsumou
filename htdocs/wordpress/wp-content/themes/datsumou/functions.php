@@ -566,6 +566,14 @@ function setOption(){
       'position'  => 8,
       'redirect'  => false,
     ));
+    acf_add_options_sub_page(array( //サブページ
+      'page_title'  => 'コラム用定型文',
+      'menu_title'  => 'コラム用定型文',
+      'menu_slug'   => 'theme-options-template',
+      'capability'  => 'edit_posts',
+      'parent_slug' => 'theme-options', //親ページのスラッグ
+      'position'  => false,
+    ));
 
     acf_add_options_page(array(
       'page_title'  => 'サロンランキング',
@@ -998,5 +1006,68 @@ function is_amp(){
     return $is_amp;
 }
 
+
+
+
+//コンテンツのHTML文字列からimg要素をカスタム 遅延読み込み（echo.js）対応
+function customImg($the_content){
+    // PHPのパスを解決(相対パスだとライブラリを読み込めないため)
+    require_once(dirname(__FILE__) . "/libs/phpQuery-onefile.php");
+
+    // 仮想DOMを構築（phpQueryで走査するため）
+    $html = <<<HTML
+<html>
+<body>{$the_content}</body>
+</html>
+HTML;
+
+    // DOMを構築
+    $dom = phpQuery::newDocument($html);
+
+    // img要素を探し出して、繰り返す
+    foreach ($dom->find("img") as $img) {
+        // 参照を取る
+        $pqImg = pq($img);
+
+        // 属性値をコピーする
+        $obj["src"] = $pqImg->attr("src");
+        $obj["width"] = $pqImg->attr("width");
+        $obj["height"] = $pqImg->attr("height");
+        $obj["srcset"] = $pqImg->attr("srcset");
+        $obj["alt"] = $pqImg->attr("alt");
+        $obj["class"] = $pqImg->attr("class") . ' lazy';
+        // sizes属性は表示崩れの可能性があるのでコピーしない
+
+        // src 属性がなければ変換しない
+        if (empty($obj["src"])) {
+            continue;
+        }
+
+        ini_set('error_reporting', E_ALL);
+        //日本語ドメインNG
+        $obj["src"] = str_replace('https://脱毛診断メーカー.com', 'https://xn--lckwf7cb5558dg0hnt1bzdp.com', $obj["src"]);
+        // print_r($obj["src"]);
+
+        // 属性をコピーする
+        $attrStr = [];
+        $attrStr[] = 'data-echo="' . $obj["src"]. '"';
+        foreach ($obj as $key => $value) {
+            if (!empty($value)) {
+              if($key == 'src'){
+                $attrStr[] = "$key=\"/assets/images/dummy.gif\"";
+              }else{
+                $attrStr[] = "$key=\"$value\"";
+              }
+            }
+        }
+
+
+        // コピーした属性値をくっつける
+        $pqImg->replaceWith("<img " . join(" ", $attrStr) . " />");
+    }
+
+    // contentの内容を返す
+    return $dom->find("body")->html();
+}
 
 ?>

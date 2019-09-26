@@ -150,7 +150,7 @@ $tocHide = $tocGroup['column_toc_hide'];
 							echo convertImgToAmpImg($content);
 							?>
 						<?php else: ?>
-							<?php echo $block[$i]['contents'][$n]['column_contents']; ?>
+							<?php echo customImg($block[$i]['contents'][$n]['column_contents']); ?>
 						<?php endif; ?>
 					</div>
 					<?php endfor; ?>
@@ -159,7 +159,15 @@ $tocHide = $tocGroup['column_toc_hide'];
 				</section>
 				<?php endfor; ?>
 
-				<?php //the_content();//Native Lazy：本文中の画像には対応 ?>
+				<?php //the_content();//「Native Lazy」本文中の画像のみなら対応可 ?>
+
+				<?php
+				$exclusionID = explode(",", get_field('optionTemplate_exclusion', 'option'));
+				$exclusion = array_search($post->ID, $exclusionID);
+				if($exclusion === false){
+					the_field('optionTemplate_contents', 'option');
+				}
+				?>
 
 				<?php if(get_the_author_meta('user_description'))://プロフィール情報に記載があれば表示 ?>
 				<div class="userProfile">

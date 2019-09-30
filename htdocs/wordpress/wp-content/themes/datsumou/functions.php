@@ -110,20 +110,39 @@ function my_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'my_scripts', 9999 );
 
+
+//AMP用構造化データの追加
 function add_header(){
-  if (is_singular( 'column' )){
+  if (is_singular( 'column' ) || is_singular( 'salon' )){
     global $post;
+    $author = get_userdata($post->post_author)->data->display_name;
+    // the_post();
     $description = htmlspecialchars(get_post_meta($post->ID, '_aioseop_description', true),ENT_QUOTES); //All in One SEO からdescriptionを取得
-    $eyecatchId = get_post_thumbnail_id($post->ID);
-    $eyecatch = wp_get_attachment_image_src( $eyecatchId, 'large' );
-    $eyecatchSrc = $eyecatch[0];
-    $eyecatchWidth = $eyecatch[1];
-    $eyecatchHeight = $eyecatch[2];
+
+    if(is_singular('column')){
+      $eyecatchId = get_post_thumbnail_id($post->ID);
+      $eyecatch = wp_get_attachment_image_src( $eyecatchId, 'large' );
+      $eyecatchSrc = $eyecatch[0];
+      $eyecatchWidth = $eyecatch[1];
+      $eyecatchHeight = $eyecatch[2];
+    }else{
+      $banner = get_field('salon_banner');
+      $bannerObj = $banner['salon_banner_image'];
+      $eyecatchSrc = $bannerObj['sizes']['medium_large'];
+      $imagesize = getimagesize($eyecatchSrc);
+      $eyecatchWidth = $imagesize[0];
+      $eyecatchHeight = $imagesize[1];
+    }
+
+    $type = "BlogPosting";
+    if(get_field('review_name') && get_field('review_rating')){
+      $type = "Review";
+    }
 
     $script = '<script type="application/ld+json">'."\n";
     $script .= '{'."\n";
     $script .= '  "@context": "http://schema.org",'."\n";
-    $script .= '  "@type": "BlogPosting",'."\n";
+    $script .= '  "@type": "'.$type.'",'."\n";
     $script .= '  "mainEntityOfPage": {'."\n";
     $script .= '      "@type": "WebPage",'."\n";
     $script .= '      "@id": "'.get_the_permalink().'"'."\n";
@@ -136,8 +155,25 @@ function add_header(){
     $script .= '      "@type": "ImageObject",'."\n";
     $script .= '      "url": "'.$eyecatchSrc.'",'."\n";
     $script .= '      "width": '.$eyecatchWidth.','."\n";
-    $script .= '      "height": '.$eyecatchWidth."\n";
-    $script .= '  }'."\n";
+    $script .= '      "height": '.$eyecatchHeight."\n";
+    $script .= '  },'."\n";
+
+    $script .= '  "author": {'."\n";
+    $script .= '    "@type": "Person",'."\n";
+    $script .= '    "name": "'.$author.'"'."\n";
+    $script .= '  },'."\n";
+
+    if(get_field('review_name') && get_field('review_rating')){
+      $script .= '  "itemReviewed": {'."\n";
+      $script .= '      "@type": "Product",'."\n";
+      $script .= '      "name": "'.get_field('review_name').'"'."\n";
+      $script .= '  },'."\n";
+      $script .= '  "reviewRating": {'."\n";
+      $script .= '      "@type": "Rating",'."\n";
+      $script .= '      "ratingValue": "'.get_field('review_rating').'",'."\n";
+      $script .= '      "bestRating": "10"'."\n";
+      $script .= '  }'."\n";
+    }
 
     $script .= '}'."\n";
     $script .= '</script>'."\n";
@@ -147,6 +183,23 @@ function add_header(){
 }
 add_action('wp_head', 'add_header');
 
+
+//AMP用構造化データの追加
+function amp_modify_jsonld( $metadata, $post ) {
+  if (is_singular( 'column' ) || is_singular( 'salon' )){
+    if(get_field('review_name') && get_field('review_rating')){
+      $metadata['@type'] = 'Review';
+      $metadata['itemReviewed']['@type'] = 'Product';
+      $metadata['itemReviewed']['name'] = get_field('review_name');
+
+      $metadata['reviewRating']['@type'] = 'Rating';
+      $metadata['reviewRating']['ratingValue'] = get_field('review_rating');
+      $metadata['reviewRating']['bestRating'] = '10';
+    }
+  }
+  return $metadata;
+}
+add_filter( 'amp_post_template_metadata', 'amp_modify_jsonld', 10, 2 );
 
 
 function my_enqueue_plugin_files(){

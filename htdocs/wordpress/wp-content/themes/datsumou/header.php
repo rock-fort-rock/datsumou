@@ -93,7 +93,6 @@ foreach($newsidArray as $value){
 <meta charset="UTF-8">
 <meta name="format-detection" content="telephone=no">
 <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-<?php /*all in one seo packを2.9にアップデートするとトップページに反映されなくなるので注意*/ ?>
 <?php wp_head(); ?>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

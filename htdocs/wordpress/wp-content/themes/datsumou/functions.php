@@ -94,9 +94,9 @@ $pluginCss = [
 ];
 
 function my_scripts() {
-  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '2.1');
+  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '2.2');
   wp_enqueue_script('echo', home_url().'/assets/lib/echo.min.js', array(), '', true );
-  wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '2.1', true );
+  wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '2.2', true );
 
   //プラグインCSSを「ヘッダ」で読み込まない
   global $pluginCss;
@@ -803,32 +803,46 @@ function getComments($post_id = NULL){
           $avatar .= 'comment_avatar5.jpg';
           break;
       }
-      $temp['avatar'] = get_avatar($comment->user_id, 100, $avatar);//($id, $size, $default, $alt)
+      // $temp['avatar'] = get_avatar($comment->user_id, 100, $avatar);//($id, $size, $default, $alt)
+
+      $temp['avatar'] = '<img src="'.$avatar.'">';
       if(is_amp()){
         $temp['avatar'] = preg_replace('/<img/i', '<amp-img layout="responsive"', $temp['avatar']);
       }
-      $temp['author'] = $comment->comment_author;
+
+      //管理者の投稿は名前非表示
+      $temp['author'] = '';
+      if($comment->comment_author_email !== 'hashiguchi@rocksteady.in'){
+        $temp['author'] = $comment->comment_author . 'さん:';
+      }
       $temp['comment'] = $comment->comment_content;
       $temp['age'] = get_field('comment_age',$comment);
       $ageClass = 'age';
       switch (get_field('comment_age',$comment)) {
-        case '20代未満':
+        case '20':
           $ageClass .= 20;
+          $ageStr = '20代以下';
           break;
-        case '30代':
+        case '30':
           $ageClass .= 30;
+          $ageStr = '30代';
           break;
-        case '40代以上':
+        case '40':
           $ageClass .= 40;
+          $ageStr = '40代以上';
           break;
       }
       $temp['ageClass'] = $ageClass;
+      $temp['ageStr'] = $ageStr;
       $temp['like'] = get_field('cld_like_count',$comment);
       array_push($allCommentsArray, $temp);
     }
   }
   return $allCommentsArray;
 }
+
+
+
 
 function outputComments($value){
   echo '<li class="'.$value['ageClass']. '">';
@@ -840,7 +854,7 @@ function outputComments($value){
 	}
 	echo '</div>';
 	echo '<div class="commentText">';
-  echo $value['comment'] . '（' .$value['author']. ':' . $value['age']. '）';
+  echo $value['comment'] . '（' .$value['author'] . $value['ageStr']. '）';
 	echo '</div>';
 
 	//do_action( 'cld_like_dislike_output', $comment_text, $comment );

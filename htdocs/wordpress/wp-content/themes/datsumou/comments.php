@@ -32,7 +32,7 @@ if ( post_password_required() ) {
 		'label_submit' => '口コミを投稿する',
 		'title_reply' => '<span>口コミを投稿する</span>',
 		'comment_notes_before' =>
-			'<p class="comment-notes">メールアドレスが公開されることはありません。<br>アバターは「<a href="https://ja.gravatar.com/" target="_blank">Gravatar</a>」から取得されます。Gravatarを使用していない場合は自動で設定されます。<br>すべて必須項目です。</p>',
+			'<p class="comment-notes">メールアドレスが公開されることはありません。<!--<br>アバターは「<a href="https://ja.gravatar.com/" target="_blank">Gravatar</a>」から取得されます。Gravatarを使用していない場合は自動で設定されます。--><br>すべて必須項目です。</p>',
 	);
 
 	if ( have_comments() ) :

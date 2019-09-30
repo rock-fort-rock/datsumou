@@ -669,8 +669,25 @@ COLUMN
 		padding: 5px;
 		box-sizing: border-box;
 	}
+
+  .acf-input{
+    position: relative;
+    width: 200px;
+    &::after{
+      content: '';
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      width: 0;
+      height: 0;
+      border: 5px solid transparent;
+      border-top: 5px solid #333;
+      margin-top: -3px;
+    }
+  }
 	select{
-		// appearance: none;
+		appearance: none;//矢印も消える
+    // width: 100%;
 		background-color: #fff;
 		border: 1px solid #ccc;
 		border-radius: 5px;
@@ -678,6 +695,7 @@ COLUMN
 		width: 100%;
 		padding: 5px!important;
 		box-sizing: border-box;
+    min-height: 20px;
 	}
 	.acf-field .acf-label{
 		margin: 0;
@@ -711,11 +729,11 @@ COLUMN
 	@media screen and (min-width: $breakpoint + 1){
 		padding: 20px 20px 30px;
 		input{
-			max-width: 400px;
+			width: 400px;
 		}
-		select{
-			max-width: 200px;
-		}
+		// select{
+		// 	width: 200px;
+		// }
 		.form-submit{
 			margin-top: 30px;
 			input.submit{

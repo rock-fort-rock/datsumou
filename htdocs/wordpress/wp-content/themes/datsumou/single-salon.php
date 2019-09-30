@@ -40,12 +40,12 @@ array_unshift($info, $infoReview);
 
 $review = [];
 if ( comments_open() ){
-	while(the_repeater_field('salon_review')){
-		$reviewObj = get_sub_field('salon_review_avatar');
-		$reviewTemp['avatar'] = $reviewObj['sizes']['thumbnail'];
-		$reviewTemp['comment'] = get_sub_field('salon_review_comment');
-		array_push($review, $reviewTemp);
-	}
+	// while(the_repeater_field('salon_review')){
+	// 	$reviewObj = get_sub_field('salon_review_avatar');
+	// 	$reviewTemp['avatar'] = $reviewObj['sizes']['thumbnail'];
+	// 	$reviewTemp['comment'] = get_sub_field('salon_review_comment');
+	// 	array_push($review, $reviewTemp);
+	// }
 }else{
 	while(the_repeater_field('salon_review')){
 		$reviewObj = get_sub_field('salon_review_avatar');
@@ -335,7 +335,7 @@ while(the_repeater_field('salon_recommend')){
 								すべて
 							</li>
 							<li data-age="20">
-								20代未満
+								20代以下
 							</li>
 							<li data-age="30">
 								30代

@@ -164,10 +164,18 @@ $tocHide = $tocGroup['column_toc_hide'];
 				<?php
 				$exclusionID = explode(",", get_field('optionTemplate_exclusion', 'option'));
 				$exclusion = array_search($post->ID, $exclusionID);
-				if($exclusion === false){
-					the_field('optionTemplate_contents', 'option');
-				}
-				?>
+				if($exclusion === false): ?>
+				<div class="entryTemplate">
+					<?php if(is_amp()): ?>
+					<?php
+						$content = get_field('optionTemplate_contents', 'option');;
+						echo convertImgToAmpImg($content);
+					?>
+					<?php else: ?>
+						<?php the_field('optionTemplate_contents', 'option'); ?>
+					<?php endif; ?>
+				</div>
+				<?php endif; ?>
 
 				<?php if(get_the_author_meta('user_description'))://プロフィール情報に記載があれば表示 ?>
 				<div class="userProfile">

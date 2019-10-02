@@ -270,6 +270,20 @@ $(() => {
 	})
 })
 
+//施術箇所一覧
+$(() => {
+	const ele = $('.treatmentParts');
+	if(ele.length < 1)return;
+	$('.otherBtn li').on({
+		'click': (e) => {
+			// ele.find('input').prop("checked", false);
+			const $target = $("#"+$(e.currentTarget).data('target'));
+			console.log($target);
+			$target.prop("checked", true);
+		}
+	})
+})
+
 
 //用語集
 // $(() => {

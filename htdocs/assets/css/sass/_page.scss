@@ -1,3 +1,8 @@
+.pageHeader{
+  @media all and (max-width: $breakpoint){
+    padding: 0 15px;
+  }
+}
 .pageContentBlock{
   &:not(:last-child){
     margin-bottom: 30px;
@@ -29,28 +34,31 @@
 }
 .treatmentParts{
   border: 4px solid #FFE1FA;
-    input{
-      display: none;
+  margin: 0 15px;
+  @media all and (min-width: $breakpoint + 1px){
+    margin: 0;
+  }
+  input{
+    display: none;
+  }
+  .tabItem{
+    text-align: center;
+    padding: 5px;
+    font-size: 1.15rem;
+    width: 33.33%;
+    float:left;
+    border-bottom: 4px solid #FFE1FA;
+    cursor: pointer;
+    // @include hover;
+    box-sizing: border-box;
+    &:nth-of-type(2){
+      border-right: 4px solid #FFE1FA;
+      border-left: 4px solid #FFE1FA;
     }
-    .tabItem{
-      text-align: center;
-      padding: 5px;
-      font-size: 1.15rem;
-      width: 33.33%;
-      float:left;
-      border-bottom: 4px solid #FFE1FA;
-      cursor: pointer;
-      // @include hover;
-      box-sizing: border-box;
-      &:nth-of-type(2){
-        border-right: 4px solid #FFE1FA;
-        border-left: 4px solid #FFE1FA;
-      }
-    }
-    input:checked + .tabItem {
-      background-color: #FFE1FA;
-    }
-
+  }
+  input:checked + .tabItem {
+    background-color: #FFE1FA;
+  }
   .tabContent{
     display: none;
     padding: 15px;
@@ -110,6 +118,7 @@
     }
   }
   @media all and (max-width: $breakpoint){
+    margin: 0 15px;
     li{
       &:not(:last-child){
         margin-bottom: 20px;

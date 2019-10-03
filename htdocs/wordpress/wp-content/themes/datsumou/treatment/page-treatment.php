@@ -11,8 +11,9 @@ if(!is_amp()){
 ?>
 <div class="mainContents">
 	<section class="contentBlock">
-		<div class="contentInner">
+		<div class="pageHeader">
 			<div class="pageTitle">施術箇所一覧</div>
+		</div>
 
 			<!-- <h2 class="pageHeadline1">当サイトについて</h2> -->
 
@@ -80,9 +81,11 @@ if(!is_amp()){
 			<!-- <div class="pageContent"> -->
 			<?php while(have_rows('treatmentList_block')): the_row(); ?>
 			<section class="pageContentBlock">
-				<h1 class="pageContentTitle"><?php the_sub_field('treatmentList_headline'); ?></h1>
-				<div class="pageContentBody">
-					<?php the_sub_field('treatmentList_content'); ?>
+				<div class="contentInner">
+					<h1 class="pageContentTitle"><?php the_sub_field('treatmentList_headline'); ?></h1>
+					<div class="pageContentBody">
+						<?php the_sub_field('treatmentList_content'); ?>
+					</div>
 				</div>
 			</section>
 			<?php endwhile; ?>
@@ -90,7 +93,9 @@ if(!is_amp()){
 			<?php endif; ?>
 
 			<section class="pageContentBlock">
-				<h1 class="pageContentTitle">みんなに人気のオススメサロン5選</h1>
+				<div class="contentInner">
+					<h1 class="pageContentTitle">みんなに人気のオススメサロン5選</h1>
+				</div>
 			<?php
 			global $salonPosts;
 			$salonPosts = get_field('treeatment_ranking'); ?>
@@ -98,10 +103,11 @@ if(!is_amp()){
 			</section>
 
 			<section class="pageContentBlock">
-				<?php the_field('treatmentList_footerText'); ?>
+				<div class="contentInner">
+					<?php the_field('treatmentList_footerText'); ?>
+				</div>
 			</section>
 
-		</div>
 	</section>
 </div>
 

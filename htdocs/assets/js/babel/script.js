@@ -75,17 +75,19 @@ $(() => {
 	})
 
 	const url = $(location).attr('href');
-	if (url.indexOf("#") !== -1) {
+	if (url.indexOf("#") !== -1 && url.slice(url.indexOf("#")) !== '#') {
 		$("html, body").stop().scrollTop(0);
 		const id = url.slice(url.indexOf("#"));
-		const pos = $(id).offset().top;
-		const headerPos = $('.gHeader').css('position');
-		let margin = 0;
-		if(headerPos == 'fixed'){
-			margin = $('.gHeader').height();
+		if($(id).length > 0){
+			const pos = $(id).offset().top;
+			const headerPos = $('.gHeader').css('position');
+			let margin = 0;
+			if(headerPos == 'fixed'){
+				margin = $('.gHeader').height();
+			}
+			// console.log(pos);
+			$("html, body").animate({scrollTop: pos - margin}, 800);
 		}
-		// console.log(pos);
-		$("html, body").animate({scrollTop: pos - margin}, 800);
 	}
 
 

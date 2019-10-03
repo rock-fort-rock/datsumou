@@ -611,8 +611,8 @@ function cpt_ampstory_init()
 function setOption(){
   if( function_exists('acf_add_options_page') ) {
     acf_add_options_page(array(
-      'page_title'  => 'バナー設定',
-      'menu_title'  => 'バナー設定',
+      'page_title'  => 'サイト設定',
+      'menu_title'  => 'サイト設定',
       'menu_slug'   => 'theme-options',
       'capability'  => 'edit_posts',
       'parent_slug' => '',
@@ -623,6 +623,14 @@ function setOption(){
       'page_title'  => 'コラム用定型文',
       'menu_title'  => 'コラム用定型文',
       'menu_slug'   => 'theme-options-template',
+      'capability'  => 'edit_posts',
+      'parent_slug' => 'theme-options', //親ページのスラッグ
+      'position'  => false,
+    ));
+    acf_add_options_sub_page(array( //サブページ
+      'page_title'  => '施術箇所一覧',
+      'menu_title'  => '施術箇所一覧',
+      'menu_slug'   => 'theme-options-parts',
       'capability'  => 'edit_posts',
       'parent_slug' => 'theme-options', //親ページのスラッグ
       'position'  => false,

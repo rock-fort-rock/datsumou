@@ -231,6 +231,7 @@ add_action('wp_footer', 'my_enqueue_plugin_files');
 // add_theme_support('post-thumbnails');
 add_theme_support('post-thumbnails', array(
   'column',
+  'page',
 ));
 
 // 管理者以外wordpress updateを非表示

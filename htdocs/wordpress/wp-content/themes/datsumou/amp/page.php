@@ -21,6 +21,7 @@ if($slug == 'ranking' || $page_template == 'page-ranking.php'){
 		'id' => 'ranking',
 	];
 }
+// print_r('page_template:'.$page_template);
 ?>
 
 <?php $this->load_parts( array( 'header' ) ); ?>
@@ -34,6 +35,8 @@ if($slug == 'privacy'){
 	get_template_part('page-research');
 }elseif($slug == 'ranking' || $page_template == 'page-ranking.php'){
 	get_template_part('page-ranking');
+}elseif($page_template == 'treatment/page-treatmentDetail.php'){
+	get_template_part('treatment/page-treatmentDetail');
 }
 ?>
 

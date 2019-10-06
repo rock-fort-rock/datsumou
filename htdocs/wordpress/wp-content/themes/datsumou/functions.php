@@ -816,7 +816,7 @@ function getComments($post_id = NULL){
 
       $temp['avatar'] = '<img src="'.$avatar.'">';
       if(is_amp()){
-        $temp['avatar'] = preg_replace('/<img/i', '<amp-img layout="responsive"', $temp['avatar']);
+        $temp['avatar'] = preg_replace('/<img/i', '<amp-img layout="responsive" width="60" height="60"', $temp['avatar']);
       }
 
       //管理者の投稿は名前非表示

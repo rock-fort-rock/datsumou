@@ -38,7 +38,26 @@ if(!is_amp()){
 				</div>
 			</section>
 
+			<?php if(!is_amp()): ?>
 			<section class="pageContentBlock">
+				<div class="tableofcontents">
+					<div class="title">目次</div><!--<span class="displayToggle">[表示]</span>-->
+					<ul>
+						<li class="main"><a href="#aftercare" class="scroll"><?php the_title(); ?>を施術した後のアフターケア</a></li>
+						<li class="main"><a href="#attention" class="scroll"><?php the_title(); ?>を施術する前の注意点</a></li>
+						<li class="main"><a href="#beautymedical" class="scroll"><?php the_title(); ?>は美容脱毛と医療脱毛どちらがおすすめ？</a></li>
+						<li class="main"><a href="#solution" class="scroll"><?php the_title(); ?>に関するお悩み解決</a></li>
+						<li class="main"><a href="#comment" class="scroll"><?php the_title(); ?>を経験した人のコメント</a></li>
+						<li class="main"><a href="#recommendsalon" class="scroll"><?php the_title(); ?>にオススメのサロン5選</a></li>
+						<li class="main"><a href="#relatedentry" class="scroll"><?php the_title(); ?>の関連記事</a></li>
+						<li class="main"><a href="#otherparts" class="scroll">その他の施術箇所</a></li>
+					</ul>
+				</div>
+			</section>
+			<?php endif; ?>
+
+
+			<section class="pageContentBlock" id="aftercare">
 				<div class="contentInner">
 					<h1 class="pageContentTitle"><?php the_title(); ?>を施術した後のアフターケア</h1>
 					<div class="pageContentBody">
@@ -48,7 +67,7 @@ if(!is_amp()){
 							</div>
 							<div class="imageBlock">
 								<?php if(is_amp()): ?>
-									<amp- src="/assets/images/treatment/aftercare.png" width="360" height="360" layout="responsive"></amp-img>
+									<amp-img src="/assets/images/treatment/aftercare.png" width="360" height="360" layout="responsive"></amp-img>
 								<?php else: ?>
 									<img src="/assets/images/treatment/aftercare.png">
 								<?php endif; ?>
@@ -58,7 +77,7 @@ if(!is_amp()){
 				</div>
 			</section>
 
-			<section class="pageContentBlock">
+			<section class="pageContentBlock" id="attention">
 				<div class="contentInner">
 					<h1 class="pageContentTitle"><?php the_title(); ?>を施術する前の注意点</h1>
 					<div class="pageContentBody">
@@ -68,7 +87,7 @@ if(!is_amp()){
 							</div>
 							<div class="imageBlock">
 								<?php if(is_amp()): ?>
-									<amp- src="/assets/images/treatment/attention.png" width="360" height="360" layout="responsive"></amp-img>
+									<amp-img src="/assets/images/treatment/attention.png" width="360" height="360" layout="responsive"></amp-img>
 								<?php else: ?>
 									<img src="/assets/images/treatment/attention.png">
 								<?php endif; ?>
@@ -78,7 +97,7 @@ if(!is_amp()){
 				</div>
 			</section>
 
-			<section class="pageContentBlock">
+			<section class="pageContentBlock" id="beautymedical">
 				<div class="contentInner">
 					<h1 class="pageContentTitle"><?php the_title(); ?>は美容脱毛と医療脱毛どちらがおすすめ？</h1>
 					<div class="pageContentBody">
@@ -88,7 +107,7 @@ if(!is_amp()){
 							</div>
 							<div class="imageBlock">
 								<?php if(is_amp()): ?>
-									<amp- src="/assets/images/treatment/beautymedical.png" width="360" height="360" layout="responsive"></amp-img>
+									<amp-img src="/assets/images/treatment/beautymedical.png" width="360" height="360" layout="responsive"></amp-img>
 								<?php else: ?>
 									<img src="/assets/images/treatment/beautymedical.png">
 								<?php endif; ?>
@@ -98,15 +117,23 @@ if(!is_amp()){
 				</div>
 			</section>
 
-			<section class="pageContentBlock">
+			<section class="pageContentBlock" id="solution">
 				<div class="contentInner">
 					<h1 class="pageContentTitle"><?php the_title(); ?>に関するお悩み解決</h1>
 					<div class="pageContentBody">
+						<?php if(is_amp()): ?>
+							<?php
+							$content = convert_content_to_amp_sample(get_field('treatmentDetail_solution'));
+							echo convertImgToAmpImg($content);
+							?>
+						<?php else: ?>
+							<?php the_field('treatmentDetail_solution'); ?>
+						<?php endif; ?>
 					</div>
 				</div>
 			</section>
 
-			<section class="pageContentBlock">
+			<section class="pageContentBlock" id="comment">
 				<div class="contentInner">
 					<h1 class="pageContentTitle"><?php the_title(); ?>を経験した人のコメント</h1>
 					<div class="pageContentBody">
@@ -128,53 +155,12 @@ if(!is_amp()){
 							</li>
 						<?php endwhile; ?>
 						</ul>
-
-						<?php if(is_amp()): ?>
-							<ul class="review">
-								<?php
-								$count = count($review);
-								?>
-								<?php for($i=0; $i<$count; $i++): ?>
-								<li>
-									<div class="avatar"><amp-img src="<?php echo $review[$i]['avatar']; ?>" width="60" height="60"></amp-img></div>
-									<div class="comment"><?php echo $review[$i]['comment']; ?></div>
-								</li>
-								<?php endfor; ?>
-							</ul>
-						<?php else: ?>
-							<ul class="review">
-								<?php
-								$count = count($review);
-								$init = 3;
-								?>
-								<?php for($i=0; $i<min($count, $init); $i++): ?>
-								<li>
-									<div class="avatar"><img src="<?php echo $review[$i]['avatar']; ?>"></div>
-									<div class="comment"><?php echo $review[$i]['comment']; ?></div>
-								</li>
-								<?php endfor; ?>
-							</ul>
-						<?php endif; ?>
 					</div>
 				</div>
 			</section>
 
-			<?php if(have_rows('treatmentList_block')): ?>
-			<!-- <div class="pageContent"> -->
-			<?php while(have_rows('treatmentList_block')): the_row(); ?>
-			<section class="pageContentBlock">
-				<div class="contentInner">
-					<h1 class="pageContentTitle"><?php the_sub_field('treatmentList_headline'); ?></h1>
-					<div class="pageContentBody">
-						<?php the_sub_field('treatmentList_content'); ?>
-					</div>
-				</div>
-			</section>
-			<?php endwhile; ?>
-			<!-- </div> -->
-			<?php endif; ?>
 
-			<section class="pageContentBlock">
+			<section class="pageContentBlock" id="recommendsalon">
 				<div class="contentInner">
 					<h1 class="pageContentTitle"><?php the_title(); ?>にオススメのサロン5選</h1>
 				</div>
@@ -184,7 +170,107 @@ if(!is_amp()){
 			<?php get_template_part('ranking'); ?>
 			</section>
 
-			<section class="pageContentBlock">
+			<section class="pageContentBlock" id="relatedentry">
+				<div class="contentInner">
+					<h1 class="pageContentTitle"><?php the_title(); ?>の関連記事</h1>
+					<div class="pageContentBody">
+						<div class="recommend">
+							<?php
+							$cat_id = implode(",", get_field('treatmentDetail_category'));
+							$args = array(
+								'post_type' => 'column', // 投稿タイプpostに変更!!!!!!!!!!!!!!!!!!!!!!!!!※もっとみるも
+								// 'category' => $cat_id,
+
+								'tax_query' => array(
+						        array(
+						            'taxonomy' => 'column_category',
+						            'field' => 'id',
+						            'terms' => $cat_id,
+						            'operator' => 'IN'
+						        ),
+						    ),
+								'posts_per_page' => 5,
+							);
+							$related_posts = get_posts($args);
+							$related_postsID = [];
+							foreach ($related_posts as $value) {
+								array_push($related_postsID, $value->ID);
+							}
+							// print_r($related_postsID);
+							// echo '<br>';
+							if(get_field('treatmentdetail_categoryfixgroup')['post']){
+								$fix_postObj = get_field('treatmentdetail_categoryfixgroup')['post'];
+								$pos = array_search($fix_postObj->ID, $related_postsID);
+								if($pos !== false){//指定記事が最新５件に含まれてれば削除
+									array_splice($related_postsID, $pos, 1);
+								}elseif(count($related_postsID)==5){//なければ最後のを削除 最新が5件に見たなければそのまま
+									array_pop($related_postsID);
+								}
+								$order = get_field('treatmentdetail_categoryfixgroup')['order'] - 1;
+								array_splice($related_postsID, $order, 0, $fix_postObj->ID);
+								// print_r($related_postsID);
+							}
+
+							$recommend = [];
+							foreach($related_postsID as $postID){
+								$recoTemp['link'] = get_the_permalink($postID);
+								$recoTemp['title'] = get_the_title($postID);
+								$recoTemp['date'] = get_the_time('Y年m月d日', $postID);
+								$raw_lede = strip_tags(get_field('column_lede', $postID));
+								$num = 60;
+								$lede = mb_substr($raw_lede, 0, $num);
+								if(mb_strlen($raw_lede) > $num){
+									$lede .= '…' ;
+								}
+								$recoTemp['lede'] = $lede;
+
+								$eyecatchId = get_post_thumbnail_id($postID);
+								$eyecatch = wp_get_attachment_image_src( $eyecatchId, 'medium_large' );
+								$recoTemp['eyecatchSrc'] = $eyecatch[0];
+								$recoTemp['eyecatchWidth'] = $eyecatch[1];
+								$recoTemp['eyecatchHeight'] = $eyecatch[2];
+
+								array_push($recommend, $recoTemp);
+							}
+
+							// print_r($recommend);
+							?>
+
+							<?php foreach($recommend as $value): ?>
+							<article class="entry">
+									<a href="<?php echo $value['link']; ?>">
+										<div class="imageBlock">
+											<?php if(is_amp()): ?>
+											<amp-img src="<?php echo $value['eyecatchSrc']; ?>" width="<?php echo $value['eyecatchWidth']; ?>" height="<?php echo $value['eyecatchHeight']; ?>" layout="responsive"></amp-img>
+											<?php else: ?>
+											<img src="<?php echo $value['eyecatchSrc']; ?>">
+										<?php endif; ?>
+										</div>
+										<div class="textBlock">
+											<div class="entryAttribute">
+												<div class="date"><?php echo $value['date']; ?></div>
+											</div>
+											<h2 class="entryTitle"><?php echo $value['title']; ?></h2>
+											<div class="entryLede exceptSmall">
+												<?php echo $value['lede']; ?>
+											</div>
+										</div>
+									</a>
+							</article>
+							<?php endforeach; ?>
+							<div class="viewMore">
+								<?php
+									$term_link = get_term_link((int)$cat_id[0], 'column_category');
+									// $term_link = get_category_link( $cat_id[0] );
+								?>
+								<a href="<?php echo esc_url( $term_link ); ?>">もっとみる</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="pageContentBlock" id="otherparts">
 				<div class="contentInner">
 					<h1 class="pageContentTitle">その他の施術箇所</h1>
 					<ul class="partsList">
@@ -194,12 +280,17 @@ if(!is_amp()){
 								if(mb_substr($url, -1) == '/'){
 									$url = substr($url, 0, -1);//最後の「/」削除
 								}
-								$folder = end(explode("/", $url));
+								$folderArray = explode("/", $url);
+								$folder = end($folderArray);//最下層のフォルダ名
 							 ?>
 							 <?php if($post->post_name !== $folder): ?>
 							<li>
 								<a href="<?php the_sub_field('optionParts_list_link'); ?>" class="inner">
-									<img src="<?php echo $partsImgObj['sizes']['medium']; ?>" class="thumb">
+									<?php if(is_amp()): ?>
+										<amp-img src="<?php echo $partsImgObj['sizes']['medium']; ?>" width="360" height="360" layout="responsive" class="thumb"></amp-img>
+									<?php else: ?>
+										<img src="<?php echo $partsImgObj['sizes']['medium']; ?>" class="thumb">
+									<?php endif; ?>
 									<p>
 										<?php the_sub_field('optionParts_list_text'); ?>
 									</p>

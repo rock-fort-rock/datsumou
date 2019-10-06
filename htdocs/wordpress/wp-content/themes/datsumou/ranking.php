@@ -196,14 +196,21 @@ foreach($salonPosts as $value){
 
 							<?php
 							$col = 4;
+							// print_r((floor(count($value['info'])/$col)+1)*$col);
 							$n = (count($value['info'])%$col != 0)?(floor(count($value['info'])/$col)+1)*$col:count($value['info']);
 							?>
 
 							<?php for($i=0; $i<$n/$col; $i++): ?>
 							<tr>
 								<?php for($a=$i*$col; $a<($i+1)*$col; $a++): ?>
-									<?php //print_r($value['info']); ?>
-								<th><?php echo $value['info'][$a]['salon_info_item_name']; ?></th>
+									<?php //print_r(count($value['info'])); ?>
+								<th>
+									<?php
+									if($a < count($value['info'])){
+										echo $value['info'][$a]['salon_info_item_name'];
+									}
+									?>
+								</th>
 								<?php endfor; ?>
 							</tr>
 							<tr>
@@ -214,7 +221,11 @@ foreach($salonPosts as $value){
 									<span class="rating">★</span>
 									<?php endfor; ?>
 								<?php else: ?>
-									<?php echo $value['info'][$a]['salon_info_item_content']; ?>
+									<?php
+									if($a < count($value['info'])){
+										echo $value['info'][$a]['salon_info_item_content'];
+									}
+									?>
 								<?php endif; ?>
 								</td>
 								<?php endfor; ?>

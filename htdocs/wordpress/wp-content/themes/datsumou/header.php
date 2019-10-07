@@ -158,9 +158,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="gNavi">
 			<div class="gNaviClose">×</div>
 			<div class="gNaviContainer">
+				<?php if(wp_count_posts('news')->publish > 0): ?>
 				<div class="gNaviSect">
 					<div class="newsInfo">お知らせ<?php if($unread > 0)echo '<span class="newsIcon">' . $unread . '</span>'; ?></div>
 				</div>
+				<?php endif; ?>
+
 				<div class="gNaviSect">
 					<div class="gNaviHeadline">目的別検索</div>
 					<?php

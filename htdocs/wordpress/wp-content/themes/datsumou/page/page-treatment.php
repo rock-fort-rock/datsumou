@@ -26,36 +26,61 @@ if(!is_amp()){
 				  <input id="vioTab" type="radio" name="tabItem">
 				  <label class="tabItem" for="vioTab">VIO</label>
 
+					<?php
+						if(is_amp()){
+							$btnFront = '<amp-img src="/assets/images/treatment/btn_front.png" alt="正面" width="100" height="100" layout="responsive"></amp-img>';
+							$btnBack = '<amp-img src="/assets/images/treatment/btn_back.png" alt="背面" width="100" height="100" layout="responsive"></amp-img>';
+							$btnVIO = '<amp-img src="/assets/images/treatment/btn_vio.png" alt="VIO" width="100" height="100" layout="responsive"></amp-img>';
+						}else{
+							$btnFront = '<img src="/assets/images/treatment/btn_front.png" alt="正面">';
+							$btnBack = '<img src="/assets/images/treatment/btn_back.png" alt="背面">';
+							$btnVIO = '<img src="/assets/images/treatment/btn_vio.png" alt="VIO">';
+						}
+
+					?>
 					<div class="tabContent frontContent">
+						<?php if(is_amp()): ?>
+						<amp-img src="/assets/images/treatment/front.jpg" alt="正面" width="780" height="912" layout="responsive" class="illust"></amp-img>
+						<?php else: ?>
 					  <img src="/assets/images/treatment/front.jpg" alt="正面" class="illust">
+						<?php endif; ?>
 						<ul class="otherBtn">
 							<li data-target="backTab">
-								<img src="/assets/images/treatment/btn_back.png" alt="背面">
+								<?php echo $btnBack; ?>
 							</li>
 							<li data-target="vioTab">
-								<img src="/assets/images/treatment/btn_vio.png" alt="VIO">
+								<?php echo $btnVIO; ?>
 							</li>
 						</ul>
 					</div>
 					<div class="tabContent backContent">
+						<?php if(is_amp()): ?>
+						<amp-img src="/assets/images/treatment/back.jpg" alt="背面" width="780" height="912" layout="responsive" class="illust"></amp-img>
+						<?php else: ?>
 					  <img src="/assets/images/treatment/back.jpg" alt="背面" class="illust">
+						<?php endif; ?>
+
 						<ul class="otherBtn">
 							<li data-target="frontTab">
-								<img src="/assets/images/treatment/btn_front.png" alt="正面">
+								<?php echo $btnFront; ?>
 							</li>
 							<li data-target="vioTab">
-								<img src="/assets/images/treatment/btn_vio.png" alt="VIO">
+								<?php echo $btnVIO; ?>
 							</li>
 						</ul>
 					</div>
 					<div class="tabContent vioContent">
+						<?php if(is_amp()): ?>
+						<amp-img src="/assets/images/treatment/vio.jpg" alt="VIO" width="780" height="912" layout="responsive" class="illust"></amp-img>
+						<?php else: ?>
 					  <img src="/assets/images/treatment/vio.jpg" alt="VIO" class="illust">
+						<?php endif; ?>
 						<ul class="otherBtn">
 							<li data-target="frontTab">
-								<img src="/assets/images/treatment/btn_front.png" alt="正面">
+								<?php echo $btnFront; ?>
 							</li>
 							<li data-target="backTab">
-								<img src="/assets/images/treatment/btn_back.png" alt="背面">
+								<?php echo $btnBack; ?>
 							</li>
 						</ul>
 					</div>
@@ -67,7 +92,11 @@ if(!is_amp()){
 					<?php while(have_rows('optionParts_list', 'option')): the_row(); $partsImgObj = get_sub_field('optionParts_list_image'); ?>
 						<li>
 							<a href="<?php the_sub_field('optionParts_list_link'); ?>" class="inner">
-								<img src="<?php echo $partsImgObj['sizes']['medium']; ?>" class="thumb">
+								<?php if(is_amp()): ?>
+								<amp-img src="<?php echo $partsImgObj['sizes']['medium']; ?>" width="100" height="100" layout="responsive" class="thumb"></amp-img>
+								<?php else: ?>
+							  <img src="<?php echo $partsImgObj['sizes']['medium']; ?>" class="thumb">
+								<?php endif; ?>
 								<p>
 									<?php the_sub_field('optionParts_list_text'); ?>
 								</p>

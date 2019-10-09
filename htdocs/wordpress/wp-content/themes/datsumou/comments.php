@@ -39,7 +39,7 @@ if ( post_password_required() ) {
 		?>
 
 		<?php
-		$allCommentsArray = getComments();
+		$allCommentsArray = getComments(get_the_ID());
 		?>
 
 		<ul class="review">

@@ -290,21 +290,21 @@ article.entry{
 				}
 			}
 
-			/* 画像配置 */
-			img.alignleft,
-			amp-img.alignleft {
-			        text-align: left;
-			}
-			img.aligncenter,
-			amp-img.aligncenter {
-			        display: block;
-			        margin: 0 auto;
-			}
-			img.alignright,
-			amp-img.alignright {
-			        display: block;
-			        margin: 0 0 0 auto;
-			}
+			// /* 画像配置 */
+			// img.alignleft,
+			// amp-img.alignleft {
+			//         text-align: left;
+			// }
+			// img.aligncenter,
+			// amp-img.aligncenter {
+			//         display: block;
+			//         margin: 0 auto;
+			// }
+			// img.alignright,
+			// amp-img.alignright {
+			//         display: block;
+			//         margin: 0 0 0 auto;
+			// }
 			p{
 				a{
 					&:not(.ctaButto){

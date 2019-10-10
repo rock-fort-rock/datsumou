@@ -113,7 +113,14 @@ if(!is_amp()){
 				<div class="contentInner">
 					<h1 class="pageContentTitle"><?php the_sub_field('treatmentList_headline'); ?></h1>
 					<div class="pageContentBody">
-						<?php the_sub_field('treatmentList_content'); ?>
+						<?php if(is_amp()): ?>
+							<?php
+							$content = convert_content_to_amp_sample(get_sub_field('treatmentList_content'));
+							echo convertImgToAmpImg($content);
+							?>
+						<?php else: ?>
+							<?php the_sub_field('treatmentList_content'); ?>
+						<?php endif; ?>
 					</div>
 				</div>
 			</section>

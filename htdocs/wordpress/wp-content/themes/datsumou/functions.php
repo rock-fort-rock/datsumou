@@ -94,9 +94,9 @@ $pluginCss = [
 ];
 
 function my_scripts() {
-  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '2.2');
+  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '2.3');
   wp_enqueue_script('echo', home_url().'/assets/lib/echo.min.js', array(), '', true );
-  wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '2.2', true );
+  wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '2.3', true );
 
   //プラグインCSSを「ヘッダ」で読み込まない
   global $pluginCss;
@@ -728,7 +728,7 @@ function setList($arg) {
     'text' => '',
   ), $arg ) );
 
-  $code .= '<div class="pointList">';
+  $code = '<div class="pointList">';
   if($title){
     $code .= '<div class="pointTitle">'.$title.'</div>';
   }

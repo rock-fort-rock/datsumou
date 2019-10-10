@@ -39,6 +39,8 @@ if($slug == 'privacy'){
 	get_template_part('page/page-treatment');
 }elseif($page_template == 'page/page-treatmentDetail.php'){
 	get_template_part('page/page-treatmentDetail');
+}elseif($page_template == 'page/page-salon.php'){
+	get_template_part('page/page-salon');
 }
 ?>
 

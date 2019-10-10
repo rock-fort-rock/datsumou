@@ -175,10 +175,14 @@ if(!is_amp()){
 			<section class="pageContentBlock" id="relatedentry">
 				<div class="contentInner">
 					<h1 class="pageContentTitle"><?php the_title(); ?>の関連記事</h1>
+					<?php
+					$cat_id = get_field('treatmentDetail_category');//単一選択
+					if($cat_id):
+					?>
 					<div class="pageContentBody">
 						<div class="recommend">
 							<?php
-							$cat_id = implode(",", get_field('treatmentDetail_category'));
+
 							$args = array(
 								'post_type' => 'column', // 投稿タイプpostに変更!!!!!!!!!!!!!!!!!!!!!!!!!※もっとみるも
 								// 'category' => $cat_id,
@@ -262,13 +266,14 @@ if(!is_amp()){
 							<?php endforeach; ?>
 							<div class="viewMore">
 								<?php
-									$term_link = get_term_link((int)$cat_id[0], 'column_category');
+									$term_link = get_term_link($cat_id, 'column_category');
 									// $term_link = get_category_link( $cat_id[0] );
 								?>
 								<a href="<?php echo esc_url( $term_link ); ?>">もっとみる</a>
 							</div>
 						</div>
 					</div>
+					<?php endif; ?>
 				</div>
 			</section>
 

@@ -21,6 +21,12 @@
       content: '〇';
     }
   }
+  .pageContentBody{
+    img,
+    amp-img{
+      height: auto;
+    }
+  }
   .contentBlock{
     margin-top: 15px;
   }

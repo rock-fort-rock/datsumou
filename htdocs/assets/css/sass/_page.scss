@@ -4,6 +4,9 @@
   }
   margin: 20px 0;
 }
+.pageContentEyecatch{
+  margin-bottom: 30px;
+}
 .pageContentBlock{
   &:not(:last-child){
     margin-bottom: 30px;
@@ -214,5 +217,58 @@
 .tableofcontents{
   ul{
     display: block;
+  }
+}
+
+/*脱毛サロン一覧*/
+.datsumosalonList{
+  .datsumosalonName{
+    font-weight: bold;
+    font-size: 1.05rem;
+    margin-bottom: 5px;
+  }
+  @media all and (max-width: $breakpoint){
+    li{
+      &:first-child{
+        padding-top: 10px;
+        border-top: 1px solid #ededed;
+      }
+      &:not(:last-child){
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ededed;
+      }
+      a{
+        display: block;
+      }
+      .datsumosalonContainer{
+        display: flex;
+      }
+      .datsumosalonLogo{
+        width: 130px;
+      }
+      .datsumosalonDescription{
+        flex: 1;
+        padding-left: 15px;
+      }
+    }
+  }
+  @media all and (min-width: $breakpoint + 1px){
+    display: flex;
+    flex-wrap: wrap;
+    // justify-content: space-between;
+    li{
+      width: calc(25% - 20px);
+      margin-right: 20px;
+      margin-bottom: 30px;
+      a{
+        @include hover;
+      }
+      .datsumosalonDescription{
+        margin-top: 10px;
+        font-size: 13px;
+      }
+    }
+
   }
 }

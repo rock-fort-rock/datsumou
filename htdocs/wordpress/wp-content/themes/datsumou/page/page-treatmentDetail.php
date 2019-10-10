@@ -40,18 +40,20 @@ if(!is_amp()){
 
 			<?php if(!is_amp()): ?>
 			<section class="pageContentBlock">
-				<div class="tableofcontents">
-					<div class="title">目次</div><!--<span class="displayToggle">[表示]</span>-->
-					<ul>
-						<li class="main"><a href="#aftercare" class="scroll"><?php the_title(); ?>を施術した後のアフターケア</a></li>
-						<li class="main"><a href="#attention" class="scroll"><?php the_title(); ?>を施術する前の注意点</a></li>
-						<li class="main"><a href="#beautymedical" class="scroll"><?php the_title(); ?>は美容脱毛と医療脱毛どちらがおすすめ？</a></li>
-						<li class="main"><a href="#solution" class="scroll"><?php the_title(); ?>に関するお悩み解決</a></li>
-						<li class="main"><a href="#comment" class="scroll"><?php the_title(); ?>を経験した人のコメント</a></li>
-						<li class="main"><a href="#recommendsalon" class="scroll"><?php the_title(); ?>にオススメのサロン5選</a></li>
-						<li class="main"><a href="#relatedentry" class="scroll"><?php the_title(); ?>の関連記事</a></li>
-						<li class="main"><a href="#otherparts" class="scroll">その他の施術箇所</a></li>
-					</ul>
+				<div class="contentInner">
+					<div class="tableofcontents">
+						<div class="title">目次</div><!--<span class="displayToggle">[表示]</span>-->
+						<ul>
+							<li class="main"><a href="#aftercare" class="scroll"><?php the_title(); ?>を施術した後のアフターケア</a></li>
+							<li class="main"><a href="#attention" class="scroll"><?php the_title(); ?>を施術する前の注意点</a></li>
+							<li class="main"><a href="#beautymedical" class="scroll"><?php the_title(); ?>は美容脱毛と医療脱毛どちらがおすすめ？</a></li>
+							<li class="main"><a href="#solution" class="scroll"><?php the_title(); ?>に関するお悩み解決</a></li>
+							<li class="main"><a href="#comment" class="scroll"><?php the_title(); ?>を経験した人のコメント</a></li>
+							<li class="main"><a href="#recommendsalon" class="scroll"><?php the_title(); ?>にオススメのサロン5選</a></li>
+							<li class="main"><a href="#relatedentry" class="scroll"><?php the_title(); ?>の関連記事</a></li>
+							<li class="main"><a href="#otherparts" class="scroll">その他の施術箇所</a></li>
+						</ul>
+					</div>
 				</div>
 			</section>
 			<?php endif; ?>

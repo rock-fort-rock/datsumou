@@ -163,6 +163,17 @@ function add_header(){
     $script .= '    "name": "'.$author.'"'."\n";
     $script .= '  },'."\n";
 
+    $script .= '  "publisher": {'."\n";
+    $script .= '    "@type": "Organization",'."\n";
+    $script .= '    "name": "デジタルレクリム株式会社",'."\n";
+    $script .= '    "logo": {'."\n";
+    $script .= '      "@type": "ImageObject",'."\n";
+    $script .= '      "url": "https://脱毛診断メーカー.com/assets/images/digitalreclame.png",'."\n";
+    $script .= '      "height": 68,'."\n";
+    $script .= '      "width": 300'."\n";
+    $script .= '    }'."\n";
+    $script .= '  }'."\n";
+
     if(get_field('review_name') && get_field('review_rating')){
       $script .= '  "itemReviewed": {'."\n";
       $script .= '      "@type": "Product",'."\n";

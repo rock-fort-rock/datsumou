@@ -1,4 +1,15 @@
 <?php
+/*2019.10.16*/
+/*-----------------------------------------------------
+コラムスラッグ連番（20191016001,20191016002）は
+カテゴリが違っても同一のものは利用不可。
+
+postに移行するため「おすすめ記事」など選択したものは
+手動で再設定が必要か？？
+-----------------------------------------------------*/
+
+
+
 $breakpoint = '780px';
 
 /*-------------------------------------------------------------
@@ -113,13 +124,13 @@ add_action( 'wp_enqueue_scripts', 'my_scripts', 9999 );
 
 //AMP用構造化データの追加
 function add_header(){
-  if (is_singular( 'column' ) || is_singular( 'salon' )){
+  if (is_single() || is_singular( 'column' ) || is_singular( 'salon' )){
     global $post;
     $author = get_userdata($post->post_author)->data->display_name;
     // the_post();
     $description = htmlspecialchars(get_post_meta($post->ID, '_aioseop_description', true),ENT_QUOTES); //All in One SEO からdescriptionを取得
 
-    if(is_singular('column')){
+    if(is_single() || is_singular('column')){
       $eyecatchId = get_post_thumbnail_id($post->ID);
       $eyecatch = wp_get_attachment_image_src( $eyecatchId, 'large' );
       $eyecatchSrc = $eyecatch[0];
@@ -197,7 +208,7 @@ add_action('wp_head', 'add_header');
 
 //AMP用構造化データの追加
 function amp_modify_jsonld( $metadata, $post ) {
-  if (is_singular( 'column' ) || is_singular( 'salon' )){
+  if (is_single() || is_singular( 'column' ) || is_singular( 'salon' )){
     if(get_field('review_name') && get_field('review_rating')){
       $metadata['@type'] = 'Review';
       $metadata['itemReviewed']['@type'] = 'Product';
@@ -241,6 +252,7 @@ add_action('wp_footer', 'my_enqueue_plugin_files');
 //アイキャッチ有効化
 // add_theme_support('post-thumbnails');
 add_theme_support('post-thumbnails', array(
+  'post',
   'column',
   'page',
 ));
@@ -263,10 +275,10 @@ function remove_menus(){
   }
 
   if (!current_user_can('administrator')){
-    $restricted = array(__('投稿'),__('固定ページ'),__('ツール'), __('設定'),  __('プロフィール'));
+    $restricted = array(__('固定ページ'),__('ツール'), __('設定'),  __('プロフィール'));
   }else{
-    // $restricted = array();
-    $restricted = array(__('投稿'));
+    $restricted = array();
+    // $restricted = array(__('投稿'));
   }
   end ($menu);
   while (prev($menu)){
@@ -321,6 +333,104 @@ function imagesizeSet() {
 }
 
 
+
+
+//「投稿」を「コラム」へ
+function Change_menulabel() {
+	global $menu;
+	global $submenu;
+	$name = 'コラム（NEW）';
+	$menu[5][0] = $name;
+	$submenu['edit.php'][5][0] = $name.'一覧';
+	$submenu['edit.php'][10][0] = '新しい'.$name;
+}
+function Change_objectlabel() {
+	global $wp_post_types;
+	$name = 'コラム（NEW）';
+	$labels = &$wp_post_types['post']->labels;
+	$labels->name = $name;
+	$labels->singular_name = $name;
+	$labels->add_new = _x('追加', $name);
+	$labels->add_new_item = $name.'の新規追加';
+	$labels->edit_item = $name.'の編集';
+	$labels->new_item = '新規'.$name;
+	$labels->view_item = $name.'を表示';
+	$labels->search_items = $name.'を検索';
+	$labels->not_found = $name.'が見つかりませんでした';
+	$labels->not_found_in_trash = 'ゴミ箱に'.$name.'は見つかりませんでした';
+
+  // タグの非表示
+  global $wp_taxonomies;
+  // print_r($wp_taxonomies['post_tag']->object_type);
+  if ( !empty( $wp_taxonomies['post_tag']->object_type ) ) {
+    foreach ( $wp_taxonomies['post_tag']->object_type as $i => $object_type ) {
+      if ( $object_type == 'post' ) {
+        unset( $wp_taxonomies['post_tag']->object_type[$i] );
+      }
+    }
+  }
+}
+add_action( 'init', 'Change_objectlabel' );
+add_action( 'admin_menu', 'Change_menulabel' );
+
+
+// コラムスラッグ連番付番
+//カテゴリが違っても同じ日の投稿は連番がふられるので、001から始まらない場合もあり
+function incliment_slug($slug) {
+  global $post;
+  //新規作成の場合
+  if ($post->post_type == 'post' && get_post_status() == 'auto-draft') {
+    global $wpdb;
+    $args = array(
+      'post_type'      => 'post',
+      'posts_per_page' => -1,
+      'date_query' => array(
+          array(
+              'year'     => get_the_time('Y'),
+              'monthnum' => get_the_time('n'),
+              'day'      => get_the_time('j')
+          )
+      )
+    );
+    $day_news = new WP_Query( $args );
+    $day_news_count = $day_news->found_posts+1;
+    $slug = get_the_time('Ymd') . sprintf('%03d', $day_news_count);
+    return $slug;
+  }else{
+    return $slug;
+  }
+}
+add_filter('editable_slug', 'incliment_slug');
+
+
+/* カテゴリーURLから「category」を削除　サブカテゴリがうまくいかないのでプラグインで対応
+---------------------------------------------------------- */
+// add_filter('user_trailingslashit', 'remcat_function');
+// function remcat_function($link) {
+// 	return str_replace("/category/", "/", $link);
+// }
+// add_action('init', 'remcat_flush_rules');
+// function remcat_flush_rules() {
+// 	global $wp_rewrite;
+// 	$wp_rewrite->flush_rules();
+// }
+// add_filter('generate_rewrite_rules', 'remcat_rewrite');
+// function remcat_rewrite($wp_rewrite) {
+// 	$new_rules = array('(.+)/page/(.+)/?' => 'index.php?category_name='.$wp_rewrite->preg_index(1).'&paged='.$wp_rewrite->preg_index(2));
+// 	$wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
+// }
+
+/* コラムアーカイブページの作成 */
+function post_has_archive( $args, $post_type ) {
+	if ( 'post' == $post_type ) {
+		$args['rewrite'] = true;
+		$args['has_archive'] = 'archive';//columnはカテゴリで使用するのでNG
+	}
+	return $args;
+}
+add_filter( 'register_post_type_args', 'post_has_archive', 10, 2 );
+
+
 /**
 custom post type
 コラム
@@ -329,7 +439,7 @@ add_action('init', 'cpt_column_init');
 function cpt_column_init()
 {
   $labels = array(
-    'name' => _x('コラム', 'post type general name'),
+    'name' => _x('コラム（OLD）', 'post type general name'),
     'singular_name' => _x('コラム', 'post type singular name'),
     'add_new' => _x('コラム追加', 'column'),
     'add_new_item' => __('新規コラムを追加'),
@@ -409,33 +519,6 @@ https://blog.maromaro.co.jp/archives/2500
 // }
 // add_action( 'pre_get_posts', 'na_parse_request' );
 
-
-// お知らせスラッグ連番付番
-// function incliment_slug($slug) {
-//   global $post;
-//   //お知らせで新規作成の場合
-//   if ($post->post_type == 'news' && get_post_status() == 'auto-draft') {
-//     global $wpdb;
-//     $args = array(
-//       'post_type'      => 'news',
-//       'posts_per_page' => -1,
-//       'date_query' => array(
-//           array(
-//               'year'     => get_the_time('Y'),
-//               'monthnum' => get_the_time('n'),
-//               'day'      => get_the_time('j')
-//           )
-//       )
-//     );
-//     $day_news = new WP_Query( $args );
-//     $day_news_count = $day_news->found_posts+1;
-//     $slug = get_the_time('Ymd') . '_' . sprintf('%03d', $day_news_count);
-//     return $slug;
-//   }else{
-//     return $slug;
-//   }
-// }
-// add_filter('editable_slug', 'incliment_slug');
 
 
 /**

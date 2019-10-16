@@ -18,13 +18,17 @@
 	}
 	.category{
 		display: inline-block;
-		&::after{
-				content: '｜';
-			}
+		padding-left: 15px;
+		// &::after{
+		// 		content: '｜';
+		// 	}
 		li{
 			display: inline;
-			&::before{
-				content: '｜';
+			&:not(:last-child){
+				&::after{
+					content: '\03e';
+					margin: 0 5px;
+				}
 			}
 		}
 	}

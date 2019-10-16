@@ -20,6 +20,10 @@ if($post_type == 'salon'){
 	$status = [
 		'id' => 'salonDetail',
 	];
+}elseif($post_type == 'post'){
+	$status = [
+		'id' => 'columnDetail',
+	];
 }elseif($post_type == 'column'){
 	$status = [
 		'id' => 'columnDetail',
@@ -40,6 +44,8 @@ if($post_type == 'salon'){
 <?php
 if($post_type == 'salon'){
 	get_template_part('single-salon');
+}elseif($post_type == 'post'){
+	get_template_part('single');
 }elseif($post_type == 'column'){
 	get_template_part('single-column');
 }elseif($post_type == 'news'){

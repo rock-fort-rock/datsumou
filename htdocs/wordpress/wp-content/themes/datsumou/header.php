@@ -217,7 +217,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="gNaviHeadline">脱毛診断メーカー最新の記事</div>
 					<?php
 					$columnArg = array(
-						'post_type' => 'column',
+						'post_type' => 'post',
 						'posts_per_page'   => 5,
 					);
 					$columnPosts = get_posts($columnArg);
@@ -228,7 +228,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<li><a href="<?php echo get_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a></li>
 						<?php endforeach; ?>
 					</ul>
-					<div class="readMore"><a href="/column/">もっと記事を読む</a></div>
+					<div class="readMore"><a href="/archive/">もっと記事を読む</a></div>
 				</div>
 				<div class="gNaviSect">
 					<div class="gNaviHeadline">当サイトについて</div>

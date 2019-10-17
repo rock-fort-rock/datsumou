@@ -6,6 +6,7 @@ $pos = array_search('column', $uriArray);
 if($pos !== false){
 	$id = $uriArray[$pos + 1];
 	$redirect = get_permalink($id);
+	header( "HTTP/1.1 301 Moved Permanently" );
 	header('Location:' . $redirect);
 	exit;
 }

@@ -1,0 +1,22 @@
+ID,Title,Content,Excerpt,Date,"Post Type",Permalink,"Image URL","Image Title","Image Caption","Image Description","Image Alt Text","Image Featured","Attachment URL",カテゴリー,Status,"Author ID","Author Username","Author Email","Author First Name","Author Last Name",Slug,Format,Template,Parent,"Parent Slug",Order,"Comment Status","Ping Status","Post Modified Date",リード文,アフターケア,注意点,美容脱毛と医療脱毛どちらがおすすめ？,お悩み解決,関連記事,固定関連記事,フッターテキスト,レビュー対象,評価,内容,除外記事,評価,年齢,リンク先コラム記事,url,Notice,リード文,目次,埋め込みjavascript,ヘッダ画像SP,ヘッダ画像PC,ナビゲーションに表示,バナー,評価,紹介文,料金,キャンペーン,サロン情報,人数,公式サイト,体験談ページ,診断チャート結果用,ヘッダバナー画像,ヘッダバナーリンク,フッターバナー,フッタバナーリンク,コンテンツ_column_headline,コンテンツ_column_paragraph_column_headline2,コンテンツ_column_paragraph_column_contents
+1,"Hello world!","<img src=""http://localhost:8013/wordpress/wp-content/uploads/2018/10/avatar01.png"" alt="""" class=""alignnone size-full wp-image-44"" width=""180"" height=""180"" />
+
+WordPress へようこそ。これは最初の投稿です。編集もしくは削除してブログを始めてください !",,2018-09-28,post,http://localhost:8013/beauty/food/hello-world/,,,,,,,,美容>食事,publish,1,administrator,hashiguchi@rocksteady.in,名,姓,hello-world,,,0,0,0,open,open,2018-10-14,,,,,,,,,,,,,,,,,総合ランキングの設定は「固定ページ」->「ランキング」から行ってください。,,,,,,,,,,,,,,,,,,,,,,,
+120,吹き出しテスト,記事の内容が入ります。,,2018-11-14,post,http://localhost:8013/beauty/food/%e3%83%86%e3%82%b9%e3%83%88%e8%a8%98%e4%ba%8b-5/,http://localhost:8013/wordpress/wp-content/uploads/2018/10/result_header_wide.jpg,result_header_wide,,,,http://localhost:8013/wordpress/wp-content/uploads/2018/10/result_header_wide.jpg,,美容>食事,publish,1,administrator,hashiguchi@rocksteady.in,名,姓,%e3%83%86%e3%82%b9%e3%83%88%e8%a8%98%e4%ba%8b-5,,,0,0,0,closed,closed,2019-10-16,,,,,,,,,コロリー,10,,,,,,,総合ランキングの設定は「固定ページ」->「ランキング」から行ってください。,"吹き出しテストのリード文が入ります。リード文が入ります。リード文が入ります。
+リード文が入ります。リード文が入ります。リード文が入ります。リード文が入ります。リード文が入ります。リード文が入ります。リード文が入ります。
+リード文が入ります。リード文が入ります。リード文が入ります。リード文が入ります。","a:1:{s:15:""column_toc_hide"";b:1;}",,,,,,,,,,,,,,,,,,,,,"[speech_bubble type=""fb-flat"" subtype=""L1"" icon=""1.jpg"" name=""Aさん""] コメントが入ります[/speech_bubble]
+
+[speech_bubble type=""fb-flat"" subtype=""R1"" icon=""2.jpg"" name=""Bさん""] コメントが入ります[/speech_bubble]
+
+
+[speech_bubble type=""fb-flat"" subtype=""L1"" icon=""1.jpg"" name=""Aさん""] fb-flatタイプの吹き出しです[/speech_bubble]
+
+[speech_bubble type=""fb-flat"" subtype=""R1"" icon=""2.jpg"" name=""ユーザーB""] fb-flatタイプの吹き出しです。fb-flatタイプの吹き出しです。[/speech_bubble]
+
+[speech_bubble type=""fb-flat"" subtype=""L1"" icon=""avatar01.png"" name=""Aさん""] アバターを変更したい場合は/wordpress/wp-content/plugins/speech-bubble/img/へFTPでアップロードしたファイルを指定します。[/speech_bubble]
+
+[speech_bubble type=""ln-flat"" subtype=""R1"" icon=""avatar02.png"" name=""ユーザーB""] ln-flatタイプ（Line風）の吹き出しです。[/speech_bubble]
+
+[speech_bubble type=""std"" subtype=""L1"" icon=""avatar03.png"" name=""Aさん""] stdタイプシンプルな吹き出しです。[/speech_bubble]"
+395,投稿テスト,あああ,,2019-10-16,post,http://localhost:8013/beauty/food/20191016_001/,,,,,,,,美容>食事,publish,1,administrator,hashiguchi@rocksteady.in,名,姓,20191016_001,,,0,0,0,open,closed,2019-10-16,,,,,,,,,,,,,,,,,総合ランキングの設定は「固定ページ」->「ランキング」から行ってください。,,,,,,,,,,,,,,,,,,,,,,,
+397,スラッシュテスト,,,2019-10-16,post,http://localhost:8013/beauty/cosme/20191016-002/,,,,,,,,美容>コスメ,publish,1,administrator,hashiguchi@rocksteady.in,名,姓,20191016-002,,,0,0,0,open,closed,2019-10-16,,,,,,,,,,,,,,,,,総合ランキングの設定は「固定ページ」->「ランキング」から行ってください。,,,,,,,,,,,,,,,,,,,,,,,

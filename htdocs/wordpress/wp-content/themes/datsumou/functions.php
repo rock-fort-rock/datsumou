@@ -333,8 +333,6 @@ function imagesizeSet() {
 }
 
 
-
-
 //「投稿」を「コラム」へ
 function Change_menulabel() {
 	global $menu;
@@ -387,8 +385,8 @@ function incliment_slug($slug) {
       'date_query' => array(
           array(
               'year'     => get_the_time('Y'),
-              'monthnum' => get_the_time('n'),
-              'day'      => get_the_time('j')
+              'monthnum' => get_the_time('m'),
+              'day'      => get_the_time('d')
           )
       )
     );
@@ -403,7 +401,7 @@ function incliment_slug($slug) {
 add_filter('editable_slug', 'incliment_slug');
 
 
-/* カテゴリーURLから「category」を削除　サブカテゴリがうまくいかないのでプラグインで対応
+/* カテゴリーURLから「category」を削除　サブカテゴリがうまくいかないのでプラグイン（No Category Base）で対応
 ---------------------------------------------------------- */
 // add_filter('user_trailingslashit', 'remcat_function');
 // function remcat_function($link) {

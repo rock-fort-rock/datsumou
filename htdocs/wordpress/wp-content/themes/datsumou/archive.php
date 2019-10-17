@@ -18,6 +18,7 @@ $title = (!empty($term))?$term->name:'コラム一覧';
 
 		<?php
 		$terms = get_terms('category');
+
 		// print_r($terms);
 		?>
 
@@ -27,9 +28,9 @@ $title = (!empty($term))?$term->name:'コラム一覧';
 					<option selected>カテゴリ選択</option>
 					<?php foreach($terms as $value): ?>
 					<?php
-						$category_link = get_category_link( $value->term_id );
+						$category_url = ($value->description)?$value->description:esc_url( get_category_link( $value->term_id ) );
 					?>
-					<option value="<?php echo esc_url( $category_link ); ?>"><?php if($value->parent != 0)echo ' - '; ?><?php echo $value->name; ?></option>
+					<option value="<?php echo $category_url; ?>"><?php if($value->parent != 0)echo ' - '; ?><?php echo $value->name; ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>

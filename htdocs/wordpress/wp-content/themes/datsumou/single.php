@@ -37,9 +37,10 @@ $tocHide = $tocGroup['column_toc_hide'];
 					<option selected>カテゴリ選択</option>
 					<?php foreach($terms as $value): ?>
 					<?php
-						$category_link = get_category_link( $value->term_id );
+						$category_url = ($value->description)?$value->description:esc_url( get_category_link( $value->term_id ) );
+						// $category_link = get_category_link( $value->term_id );
 					?>
-					<option value="<?php echo esc_url( $category_link ); ?>"><?php if($value->parent != 0)echo ' - '; ?><?php echo $value->name; ?></option>
+					<option value="<?php echo $category_url; ?>"><?php if($value->parent != 0)echo ' - '; ?><?php echo $value->name; ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
@@ -53,12 +54,13 @@ $tocHide = $tocGroup['column_toc_hide'];
 				<?php if($the_terms): ?>
 				<ul class="category">
 					<?php
-					$category_link = get_category_link( $the_terms[0]->term_id );
+					$category_url = ($the_terms[0]->description)?$the_terms[0]->description:esc_url( get_category_link( $the_terms[0]->term_id ) );
 					$category_name = $the_terms[0]->name;
-					$parent_link = get_category_link( $the_terms[0]->parent );
+					// $parent_link = get_category_link( $the_terms[0]->parent );
+					$parent_url = (get_category( $the_terms[0]->parent )->description)?get_category( $the_terms[0]->parent )->description:esc_url(get_category_link( $the_terms[0]->parent ));
 					$parent_name = get_category( $the_terms[0]->parent )->name;
 					?>
-					<li><a href="/">TOP</a></li><li><a href="<?php echo esc_url( $parent_link ); ?>"><?php echo $parent_name; ?></a></li><li><a href="<?php echo esc_url( $category_link ); ?>"><?php echo $category_name; ?></a></li>
+					<li><a href="/">TOP</a></li><li><a href="<?php echo $parent_url; ?>"><?php echo $parent_name; ?></a></li><li><a href="<?php echo $category_url; ?>"><?php echo $category_name; ?></a></li>
 				</ul>
 				<?php endif; ?>
 				<?php /*<div class="author"><?php the_author(); ?></div>*/ ?>

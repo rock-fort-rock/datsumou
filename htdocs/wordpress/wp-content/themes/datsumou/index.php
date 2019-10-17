@@ -13,9 +13,8 @@ if(is_amp()){
 <?php //get_header(); ?>
 
 <div class="mainContents">
-	<?php if(!is_amp()): ?>
 	<section class="contentBlock">
-		<!-- <div style="background-color: #ededed; height: 0; padding-top: 60%"></div> -->
+		<?php if(!is_amp()): ?>
 		<div class="diagnosisChart">
 			<div class="diagnosisChartInner">
 				<div class="header">
@@ -234,8 +233,23 @@ EOM;
 				<div class="illustCopyright"><img src="/assets/images/home/copyright.png"></div>
 			</div>
 		</div>
+		<?php endif; ?>
+
+		<ul class="categoryNavi">
+			<li>
+				<a href="/datsumocolumn/">脱毛コラム</a>
+			</li>
+			<li>
+				<a href="/datsumosalon/">脱毛サロン</a>
+			</li>
+			<li>
+				<a href="/treatment/">施術箇所</a>
+			</li>
+			<li>
+				<a href="/body_care/">ボディケア</a>
+			</li>
+		</ul>
 	</section>
-	<?php endif; ?>
 
 	<?php $salonPosts = get_field('ranking_top', 'option'); ?>
 	<?php get_template_part('ranking'); ?>

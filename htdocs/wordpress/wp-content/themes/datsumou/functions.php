@@ -176,12 +176,12 @@ function add_header(){
 
     $script .= '  "publisher": {'."\n";
     $script .= '    "@type": "Organization",'."\n";
-    $script .= '    "name": "デジタルレクリム株式会社",'."\n";
+    $script .= '    "name": "脱毛診断メーカー運用委員会",'."\n";
     $script .= '    "logo": {'."\n";
     $script .= '      "@type": "ImageObject",'."\n";
-    $script .= '      "url": "https://脱毛診断メーカー.com/assets/images/digitalreclame.png",'."\n";
-    $script .= '      "height": 68,'."\n";
-    $script .= '      "width": 300'."\n";
+    $script .= '      "url": "https://脱毛診断メーカー.com/assets/images/logo.png",'."\n";
+    $script .= '      "height": 127,'."\n";
+    $script .= '      "width": 469'."\n";
     $script .= '    }'."\n";
     $script .= '  }'."\n";
 

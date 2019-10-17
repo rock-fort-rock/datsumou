@@ -24,14 +24,14 @@ if(!is_amp()){
 					<th>URL</th><td>全身脱毛診断メーカー.com</td>
 				</tr>
 				<tr>
-					<th>会社名</th><td>デジタルレクリム株式会社</td>
+					<th>運用者</th><td>脱毛診断メーカー運用委員会</td>
 				</tr>
 				<tr>
 					<th>電話</th><td>03-6869-0653</td>
 				</tr>
-				<tr>
+				<!-- <tr>
 					<th>所在地</th><td>〒173-0004　板橋区板橋1－48－9　建材ビル6F</td>
-				</tr>
+				</tr> -->
 				<tr>
 					<th>個人情報の保護</th><td><a href="/privacy/" class="textLink">プライバシーポリシー</a>のページをご覧下さい。</td>
 				</tr>

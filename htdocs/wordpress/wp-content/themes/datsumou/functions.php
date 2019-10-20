@@ -105,9 +105,9 @@ $pluginCss = [
 ];
 
 function my_scripts() {
-  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '2.3');
+  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '2.4');
   wp_enqueue_script('echo', home_url().'/assets/lib/echo.min.js', array(), '', true );
-  wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '2.3', true );
+  wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '2.4', true );
 
   //プラグインCSSを「ヘッダ」で読み込まない
   global $pluginCss;
@@ -392,7 +392,7 @@ function incliment_slug($slug) {
     );
     $day_news = new WP_Query( $args );
     $day_news_count = $day_news->found_posts+1;
-    $slug = get_the_time('Ymd') . sprintf('%03d', $day_news_count);
+    $slug = get_the_time('ymd') . sprintf('%03d', $day_news_count);
     return $slug;
   }else{
     return $slug;
@@ -756,7 +756,7 @@ add_filter('pre_get_posts', 'custom_posts_query');
 function custom_posts_query() {
   global $wp_query;
   if(!is_admin()){
-    if(is_post_type_archive('column') || is_tax('column_category')){
+    if(is_archive() || is_category() || is_post_type_archive('column') || is_tax('column_category')){
       $wp_query -> query_vars['posts_per_page'] = 6;
     }elseif(is_post_type_archive('news') || is_tax('news_category')){
       $wp_query -> query_vars['posts_per_page'] = 10;
@@ -981,7 +981,24 @@ function outputComments($value){
 	echo '</li>';
 }
 
-
+function outputCategorySelect(){
+  echo '<select onChange="location.href=value;">';
+  echo '<option selected>カテゴリ選択</option>';
+  $parent_terms = get_terms('category', array('parent' => 0) );
+  foreach($parent_terms as $parent_value){
+    echo '<optgroup label="'.$parent_value->name. '">';
+    $parent_url = ($parent_value->description)?$parent_value->description:esc_url( get_category_link( $parent_value->term_id ) );
+    echo '<option value="'.$parent_url.'">'.$parent_value->name.'一覧</option>';
+    $parent_id = $parent_value->term_id;
+    $child_terms = get_terms( 'category', array('parent' => $parent_id) );
+    foreach($child_terms as $child_value){
+      $child_url = ($child_value->description)?$child_value->description:esc_url( get_category_link( $child_value->term_id ) );
+      echo '<option value="'.$child_url.'">'.$child_value->name.'</option>';
+    }
+    echo '</optgroup>';
+  }
+  echo '</select>';
+}
 
 //マニュアルページ作成
 function original_page() {

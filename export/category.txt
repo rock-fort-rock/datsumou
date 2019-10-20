@@ -17,15 +17,15 @@
 ライフスタイル$life_style->恋愛$love
 
 脱毛コラム$datsumocolumn
-脱毛$datsumocolumn->脱毛$epilation
-脱毛$datsumocolumn->埋没毛$bury
-脱毛$datsumocolumn->永久脱毛$eternal
-脱毛$datsumocolumn->医療脱毛$medical
-脱毛$datsumocolumn->レーザー脱毛$light
+脱毛コラム$datsumocolumn->脱毛$epilation
+脱毛コラム$datsumocolumn->埋没毛$bury
+脱毛コラム$datsumocolumn->永久脱毛$eternal
+脱毛コラム$datsumocolumn->医療脱毛$medical
+脱毛コラム$datsumocolumn->レーザー脱毛$light
 
 脱毛サロン$hairremovalsalon$/datsumosalon/
 脱毛サロン$hairremovalsalon$/datsumosalon/->全般$allsalon
-脱毛サロン$hairremovalsalon$/datsumosalon/->ミュゼプラチナム$musse
+脱毛サロン$hairremovalsalon$/datsumosalon/->ミュゼプラチナム$musee
 脱毛サロン$hairremovalsalon$/datsumosalon/->キレイモ$kireimo
 脱毛サロン$hairremovalsalon$/datsumosalon/->シースリー$c3
 脱毛サロン$hairremovalsalon$/datsumosalon/->脱毛ラボ$datsumo-labo

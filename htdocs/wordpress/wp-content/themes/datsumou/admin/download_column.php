@@ -2,7 +2,7 @@
 //インポート用CSV
 // wordpress読みこみ
 require_once('../../../../wp-load.php');
-$post_type = 'post';
+$post_type = 'column';
 $query = array(
 			'numberposts' => -1,
 			'post_status' => array( 'publish', 'draft', 'future', 'private' ),
@@ -37,7 +37,8 @@ function displayList($posts){
 		$postArray = array();
 		$postArray['post_id'] = $post->ID;
 		$postArray['post_name'] = $date.sprintf('%03d', $count);
-		$postArray['post_type'] = $post_type;
+		// $postArray['post_type'] = $post_type;
+		$postArray['post_type'] = 'post';
 		$postArray['post_title'] = '"'.$post->post_title.'"';
 		$postArray['post_category'] = '';
 

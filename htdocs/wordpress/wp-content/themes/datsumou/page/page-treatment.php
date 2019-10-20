@@ -11,9 +11,15 @@ if(!is_amp()){
 ?>
 <div class="mainContents">
 	<section class="contentBlock">
-		<section class="pageHeader">
+		<div class="archiveTitle"><?php the_title(); ?></div>
+		<div class="categorySelectWrapper">
+			<div class="categorySelect">
+				<?php outputCategorySelect(); ?>
+			</div>
+		</div>
+		<!-- <section class="pageHeader">
 			<div class="pageTitle">施術箇所一覧</div>
-		</section>
+		</section> -->
 
 			<!-- <h2 class="pageHeadline1">当サイトについて</h2> -->
 

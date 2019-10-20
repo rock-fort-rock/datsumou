@@ -30,6 +30,11 @@
   .contentBlock{
     margin-top: 15px;
   }
+  .tableofcontents{
+    ul{
+      display: block;
+    }
+  }
   @media all and (min-width: $breakpoint + 1px){
     &:not(:last-child){
       margin-bottom: 80px;
@@ -218,11 +223,6 @@
       padding-left: 30px;
       margin-bottom: 0;
     }
-  }
-}
-.tableofcontents{
-  ul{
-    display: block;
   }
 }
 

@@ -11,8 +11,13 @@ if(!is_amp()){
 ?>
 <div class="mainContents">
 	<section class="contentBlock">
-		<section class="pageHeader">
-			<div class="pageTitle">脱毛サロン一覧</div>
+		<div class="archiveTitle"><?php the_title(); ?></div>
+		<div class="categorySelectWrapper">
+			<div class="categorySelect">
+				<?php outputCategorySelect(); ?>
+			</div>
+		</div>
+		<!-- <section class="pageHeader"> -->
 			<?php if(get_post_thumbnail_id($post->ID)): ?>
 			<section class="pageContentEyecatch">
 			<?php if(is_amp()): ?>
@@ -29,7 +34,7 @@ if(!is_amp()){
 			<?php endif; ?>
 			</section>
 			<?php endif; ?>
-		</section>
+		<!-- </section> -->
 
 
 

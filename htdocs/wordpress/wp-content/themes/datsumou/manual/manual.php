@@ -14,8 +14,8 @@
 
 	<div class="card">
 		<h2>CSVダウンロード</h2>
-		<input style="margin-right:15px;" type="button" value="新コラム" onclick="location.href='<?php bloginfo('template_directory'); ?>/admin/download_post.php'">
+		<input style="margin-right:15px;" type="button" value="新コラム" onclick="location.href='<?php bloginfo('template_directory'); ?>/manual/download_post.php'">
 
-		<input style="margin-right:15px;" type="button" value="旧コラム" onclick="location.href='<?php bloginfo('template_directory'); ?>/admin/download_column.php'">
+		<input style="margin-right:15px;" type="button" value="旧コラム" onclick="location.href='<?php bloginfo('template_directory'); ?>/manual/download_column.php'">
 	</div>
 </div>

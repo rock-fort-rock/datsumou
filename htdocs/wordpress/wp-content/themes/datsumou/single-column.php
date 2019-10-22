@@ -29,6 +29,7 @@ $tocHide = $tocGroup['column_toc_hide'];
 // print_r($tocHide);
 ?>
 <div class="mainContents" data-id="<?php echo $post->ID; ?>">
+	<?php get_template_part('categoryNavi'); ?>
 	<section class="contentBlock">
 		<?php if(!is_amp()): ?>
 		<div class="categorySelectWrapper">

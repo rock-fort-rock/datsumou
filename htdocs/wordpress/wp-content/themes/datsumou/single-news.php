@@ -17,6 +17,7 @@ $terms = get_terms('news_category');
 $the_terms = get_the_terms($post->ID, 'news_category' );
 ?>
 <div class="mainContents" data-id="<?php echo $post->ID; ?>">
+	<?php get_template_part('categoryNavi'); ?>
 	<section class="contentBlock">
 		<?php if(!is_amp()): ?>
 		<div class="categorySelectWrapper">

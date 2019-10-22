@@ -10,11 +10,16 @@ if(!is_amp()){
 }
 ?>
 <div class="mainContents">
+	<?php get_template_part('categoryNavi'); ?>
 	<section class="contentBlock">
-		<div class="archiveTitle"><?php the_title(); ?></div>
+		<!-- <div class="archiveTitle"><?php the_title(); ?></div> -->
 		<div class="categorySelectWrapper">
 			<div class="categorySelect">
-				<?php outputCategorySelect(); ?>
+				<?php
+					$current_url =  get_pagenum_link(get_query_var('page'));
+				// print_r($current_url);
+					outputCategorySelect($current_url);
+				?>
 			</div>
 		</div>
 		<!-- <div class="pageHeader">

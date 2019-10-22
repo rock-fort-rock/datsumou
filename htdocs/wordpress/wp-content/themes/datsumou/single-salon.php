@@ -93,6 +93,7 @@ while(the_repeater_field('salon_recommend')){
 
 ?>
 <div class="mainContents">
+	<?php get_template_part('categoryNavi'); ?>
 	<section class="contentBlock">
 		<?php if(!is_amp()): ?>
 		<div class="salonNavi">

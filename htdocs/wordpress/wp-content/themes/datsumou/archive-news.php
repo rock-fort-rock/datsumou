@@ -13,6 +13,7 @@ $title = (!empty($term))?$term->name:'お知らせ一覧';
 ?>
 
 <div class="mainContents">
+	<?php get_template_part('categoryNavi'); ?>
 	<section class="contentBlock">
 		<h1 class="archiveTitle"><?php echo $title; ?></h1>
 

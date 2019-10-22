@@ -22,6 +22,7 @@ $headerImagePc = $headerObjPc['sizes']['large'];
 ?>
 
 <div class="mainContents">
+	<?php get_template_part('categoryNavi'); ?>
 	<section class="resultHeader">
 		<?php if($headerImage): ?>
 			<?php if(is_amp()): ?>
@@ -35,7 +36,7 @@ $headerImagePc = $headerObjPc['sizes']['large'];
 		<?php endif; ?>
 	</section>
 
-	<?php 
+	<?php
 	global $salonPosts;
 	$salonPosts = get_field('ranking'); ?>
 	<?php get_template_part('ranking'); ?>

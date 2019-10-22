@@ -13,8 +13,9 @@ $title = (!empty($term))?$term->name:'コラム一覧';
 ?>
 
 <div class="mainContents">
+	<?php get_template_part('categoryNavi'); ?>
 	<section class="contentBlock">
-		<h1 class="archiveTitle"><?php echo $title; ?></h1>
+		<!-- <h1 class="archiveTitle"><?php echo $title; ?></h1> -->
 
 		<?php
 		$terms = get_terms('category');
@@ -24,26 +25,12 @@ $title = (!empty($term))?$term->name:'コラム一覧';
 
 		<div class="categorySelectWrapper">
 			<div class="categorySelect">
-				<select onChange="location.href=value;">
-					<option selected>カテゴリ選択</option>
-					<?php
-						$parent_terms = get_terms('category', array('parent' => 0) );
-						foreach($parent_terms as $parent_value):
-					?>
-					<optgroup label="<?php echo $parent_value->name; ?>">
-						<?php $parent_url = ($parent_value->description)?$parent_value->description:esc_url( get_category_link( $parent_value->term_id ) ); ?>
-						<option value="<?php echo $parent_url; ?>"><?php echo $parent_value->name; ?>一覧</option>
-						<?php
-							$parent_id = $parent_value->term_id;
-							$child_terms = get_terms( 'category', array('parent' => $parent_id) );
-							foreach($child_terms as $child_value):
-							$child_url = ($child_value->description)?$child_value->description:esc_url( get_category_link( $child_value->term_id ) );
-						?>
-						<option value="<?php echo $child_url; ?>"><?php echo $child_value->name; ?></option>
-						<?php endforeach; ?>
-					</optgroup>
-					<?php endforeach; ?>
-				</select>
+
+				<?php
+					$current_url =  get_pagenum_link(get_query_var('paged'));
+					// print_r($current_url);
+					outputCategorySelect($current_url);
+				?>
 			</div>
 		</div>
 

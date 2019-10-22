@@ -10,11 +10,16 @@ if(!is_amp()){
 }
 ?>
 <div class="mainContents">
+	<?php get_template_part('categoryNavi'); ?>
 	<section class="contentBlock">
-		<div class="archiveTitle"><?php the_title(); ?></div>
+		<!-- <div class="archiveTitle"><?php the_title(); ?></div> -->
 		<div class="categorySelectWrapper">
 			<div class="categorySelect">
-				<?php outputCategorySelect(); ?>
+				<?php
+					$current_url =  get_pagenum_link(get_query_var('page'));
+				// print_r($current_url);
+					outputCategorySelect($current_url);
+				?>
 			</div>
 		</div>
 		<!-- <section class="pageHeader"> -->
@@ -106,9 +111,9 @@ if(!is_amp()){
 									<?php if($link): ?>
 									<a href="<?php echo $link; ?>">
 									<?php endif; ?>
-										<h3 class="datsumosalonName">
+										<!-- <h3 class="datsumosalonName">
 											<?php the_sub_field('datsumosalon_beauty_name'); ?>
-										</h3>
+										</h3> -->
 										<div class="datsumosalonContainer">
 											<div class="datsumosalonLogo">
 											<?php if(is_amp()): ?>
@@ -148,9 +153,9 @@ if(!is_amp()){
 									<?php if($link): ?>
 									<a href="<?php echo $link; ?>">
 									<?php endif; ?>
-										<h3 class="datsumosalonName">
+										<!-- <h3 class="datsumosalonName">
 											<?php the_sub_field('datsumosalon_medical_name'); ?>
-										</h3>
+										</h3> -->
 										<div class="datsumosalonContainer">
 											<div class="datsumosalonLogo">
 											<?php if(is_amp()): ?>

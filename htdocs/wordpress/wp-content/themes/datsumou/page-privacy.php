@@ -11,6 +11,7 @@ if(!is_amp()){
 }
 ?>
 <div class="mainContents">
+	<?php get_template_part('categoryNavi'); ?>
 	<section class="contentBlock">
 		<div class="contentInner">
 			<h1 class="pageTitle">プライバシーポリシー</h1>

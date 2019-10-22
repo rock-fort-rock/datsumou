@@ -912,7 +912,7 @@ ul.review{
 .categoryNavi{
 	display: flex;
 	justify-content: space-between;
-	margin-top: 10px;
+	margin-bottom: 15px;
 	padding: 0 5px;
 	li{
 		width: calc(25% - 1px);
@@ -922,25 +922,25 @@ ul.review{
 			justify-content: center;
 			align-items: center;
 			text-align: center;
-			border: 1px solid #008ad5;
+			border: 1px solid $keyColor;
 			// box-shadow: 1px 1px 0 2px rgba(0,0,0,.2);
-			padding: 10px 0;
+			padding: 8px 0;
 			line-height: 1.2;
-			text-shadow: 0 1px 3px rgba(0,87,135,.7);
+			text-shadow: 0 1px 3px rgba(191,67,127,.7);
 			height: 100%;
 			// border-radius: 5px;
-			background: linear-gradient(#4CBDFB 45%,#2ca9ed 55%);
+			background: linear-gradient(#f87fb9 45%,#f95793 55%);
 			color: #fff;
 			font-weight: bold;
 		}
 	}
 	@media (min-width: $breakpoint + 1px){
-		margin-top: 30px;
+		margin-bottom: 30px;
 		padding: 0;
 		li{
 			a{
-				padding: 15px 5px;
-				font-size: 1.15rem;
+				padding: 12px 5px;
+				font-size: 1.1rem;
 				@include hover;
 			}
 		}

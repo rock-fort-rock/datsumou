@@ -981,19 +981,22 @@ function outputComments($value){
 	echo '</li>';
 }
 
-function outputCategorySelect(){
+function outputCategorySelect($self = NULL){
   echo '<select onChange="location.href=value;">';
-  echo '<option selected>カテゴリ選択</option>';
+  echo '<option>カテゴリ選択</option>';
   $parent_terms = get_terms('category', array('parent' => 0) );
   foreach($parent_terms as $parent_value){
     echo '<optgroup label="'.$parent_value->name. '">';
-    $parent_url = ($parent_value->description)?$parent_value->description:esc_url( get_category_link( $parent_value->term_id ) );
-    echo '<option value="'.$parent_url.'">'.$parent_value->name.'一覧</option>';
+    $parent_url = ($parent_value->description)?get_home_url().$parent_value->description:esc_url( get_category_link( $parent_value->term_id ) );
+    // print_r($parent_url);
+    $parent_selected = ($self == $parent_url)?' selected':'';
+    echo '<option value="'.$parent_url.'"' .$parent_selected. '>'.$parent_value->name.'一覧</option>';
     $parent_id = $parent_value->term_id;
     $child_terms = get_terms( 'category', array('parent' => $parent_id) );
     foreach($child_terms as $child_value){
-      $child_url = ($child_value->description)?$child_value->description:esc_url( get_category_link( $child_value->term_id ) );
-      echo '<option value="'.$child_url.'">'.$child_value->name.'</option>';
+      $child_url = ($child_value->description)?get_home_url().$child_value->description:esc_url( get_category_link( $child_value->term_id ) );
+      $child_selected = ($self == $child_url)?' selected':'';
+      echo '<option value="'.$child_url.'"'.$child_selected.'>'.$child_value->name.'</option>';
     }
     echo '</optgroup>';
   }
@@ -1005,18 +1008,18 @@ function original_page() {
   add_menu_page('マニュアル', 'マニュアル', 1, 'manual_page', 'manual_menu');
 }
 add_action('admin_menu', 'original_page');
-function manual_menu() {include 'manual.php';}
+function manual_menu() {include 'manual/manual.php';}
 
 function add_sub_menu() {
-    add_submenu_page('manual_page', 'コラム', 'コラム', 1, 'manual_column', 'manual_submenu_column' );
-    add_submenu_page('manual_page', 'サロン', 'サロン', 1, 'manual_salon', 'manual_submenu_salon' );
-    add_submenu_page('manual_page', 'リダイレクト', 'リダイレクト', 1, 'manual_redirect', 'manual_submenu_redirect' );
+    add_submenu_page('manual/manual_page', 'コラム', 'コラム', 1, 'manual_column', 'manual_submenu_column' );
+    add_submenu_page('manual/manual_page', 'サロン', 'サロン', 1, 'manual_salon', 'manual_submenu_salon' );
+    add_submenu_page('manual/manual_page', 'リダイレクト', 'リダイレクト', 1, 'manual_redirect', 'manual_submenu_redirect' );
 }
 add_action( 'admin_menu', 'add_sub_menu' );
 
-function manual_submenu_column() {include 'manual_column.php';}
-function manual_submenu_redirect() {include 'manual_redirect.php';}
-function manual_submenu_salon() {include 'manual_salon.php';}
+function manual_submenu_column() {include 'manual/manual_column.php';}
+function manual_submenu_redirect() {include 'manual/manual_redirect.php';}
+function manual_submenu_salon() {include 'manual/manual_salon.php';}
 
 
 /*---------------------------------------------------------------------

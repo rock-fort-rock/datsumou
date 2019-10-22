@@ -573,14 +573,18 @@
 				display: block;
 				padding: 5px 5px;
 				text-align: center;
-				background-color: $keyColor;
-				color: #fff;
+				// background-color: $keyColor;
+				// color: #fff;
 				font-size: 0.9rem;
 				font-weight: bold;
 				line-height: 1.2;
+				color: $keyColor;
+				border: 1px solid $keyColor;
 			}
 			span{
-				opacity: 0.6;
+				background-color: #ffecf3;
+				// color: #fff;
+				// opacity: 0.6;
 			}
 		}
 	}

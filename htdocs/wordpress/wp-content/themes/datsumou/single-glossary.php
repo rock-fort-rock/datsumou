@@ -14,6 +14,7 @@ $allTerms = get_terms('glossarycat', array('hide_empty'=> 0));
 // print_r($allTerms);
 ?>
 <div class="mainContents">
+	<?php get_template_part('categoryNavi'); ?>
 	<section class="contentBlock">
 		<div class="contentInner">
       <h1 class="pageTitle">用語集</h1>

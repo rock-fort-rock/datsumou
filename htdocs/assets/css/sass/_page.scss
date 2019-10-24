@@ -73,6 +73,12 @@
       border-right: 4px solid #FFE1FA;
       border-left: 4px solid #FFE1FA;
     }
+    @media all and (min-width: $breakpoint + 1px){
+      padding: 10px 5px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #666;
+    }
   }
   input:checked + .tabItem {
     background-color: #FFE1FA;
@@ -83,7 +89,7 @@
     clear: both;
     position: relative;
     .illust{
-      max-width: 500px;
+      max-width: 620px;
       width: 100%;
       display: block;
       margin: 0 auto;

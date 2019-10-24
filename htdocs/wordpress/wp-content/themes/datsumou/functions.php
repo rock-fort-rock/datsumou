@@ -105,7 +105,7 @@ $pluginCss = [
 ];
 
 function my_scripts() {
-  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '2.4');
+  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '2.5');
   wp_enqueue_script('echo', home_url().'/assets/lib/echo.min.js', array(), '', true );
   wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '2.4', true );
 

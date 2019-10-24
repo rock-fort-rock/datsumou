@@ -53,7 +53,7 @@ if(!is_amp()){
 						<?php if(is_amp()): ?>
 						<amp-img src="/assets/images/treatment/front.jpg" alt="正面" width="780" height="912" layout="responsive" class="illust"></amp-img>
 						<?php else: ?>
-					  <img src="/assets/images/treatment/front.jpg" alt="正面" class="illust">
+					  <img src="/assets/images/treatment/front.jpg?1" alt="正面" class="illust">
 						<?php endif; ?>
 						<ul class="otherBtn">
 							<li data-target="backTab">
@@ -66,9 +66,9 @@ if(!is_amp()){
 					</div>
 					<div class="tabContent backContent">
 						<?php if(is_amp()): ?>
-						<amp-img src="/assets/images/treatment/back.jpg" alt="背面" width="780" height="912" layout="responsive" class="illust"></amp-img>
+						<amp-img src="/assets/images/treatment/back.jpg?1" alt="背面" width="780" height="912" layout="responsive" class="illust"></amp-img>
 						<?php else: ?>
-					  <img src="/assets/images/treatment/back.jpg" alt="背面" class="illust">
+					  <img src="/assets/images/treatment/back.jpg?1" alt="背面" class="illust">
 						<?php endif; ?>
 
 						<ul class="otherBtn">

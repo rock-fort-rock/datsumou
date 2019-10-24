@@ -1,12 +1,12 @@
 /* [Pz-LkC][2.1.9.1] CSS */
 .linkcard {
 	margin-top: 4px;
-	margin-bottom: 4px;
+	margin-bottom: 16px;
 	margin-left: 4px;
-	margin-right: 4px;
+	margin-right: 16px;
 }
 .linkcard:hover{
-	opacity: 0.8;
+	/*OPACITY*/
 }
 .linkcard img {
 	margin: 0 !important; padding: 0; border: none;
@@ -17,7 +17,7 @@
 .lkc-internal-wrap {
 	position:	relative;
 	margin: 0;
-	border: 1px solid #cccccc;
+	border: 1px solid #888888;
 	padding: 0;
 	
 	/*SHADOW*/
@@ -36,7 +36,7 @@
 .lkc-external-wrap {
 	position:	relative;
 	margin: 0;
-	border: 1px solid #cccccc;
+	border: 1px solid #888888;
 	padding: 0;
 	
 	/*SHADOW*/
@@ -55,7 +55,7 @@
 .lkc-this-wrap {
 	position:	relative;
 	margin: 0;
-	border: 1px solid #cccccc;
+	border: 1px solid #888888;
 	padding: 0;
 	
 	/*SHADOW*/
@@ -72,10 +72,10 @@
 	/*WRAP-BEFORE*/
 }
 .lkc-card {
-	margin-top: 8px;
-	margin-right: 8px;
-	margin-bottom: 8px;
-	margin-left: 8px;
+	margin-top: 7px;
+	margin-right: 7px;
+	margin-bottom: 7px;
+	margin-left: 7px;
 }
 .lkc-content {
 	/*CONTENT-PADDING*/
@@ -89,7 +89,7 @@
 	/*SEPARATOR*/
 }
 .lkc-title-text {
-	color: #33bad2;
+	color: #111111;
 	/*OUTCOLOR-TITLE*/
 	font-size: 16px;
 	line-height: 24px;
@@ -101,7 +101,7 @@
 	text-decoration: underline;
 }
 .lkc-url {
-	color: #999999;
+	color: #4466ff;
 	/*OUTCOLOR-URL*/
 	font-size: 10px;
 	line-height: 10px;
@@ -113,7 +113,7 @@
 	display: block;
 }
 .lkc-url-info {
-	color: #999999;
+	color: #4466ff;
 	/*OUTCOLOR-URL*/
 	font-size: 10px;
 	line-height: 10px;
@@ -125,14 +125,14 @@
 	display: inline;
 }
 .lkc-added {
-	color: #666666;
+	color: #222222;
 	/*OUTCOLOR-ADDED*/
 	font-size: 12px;
 	line-height: 12px;
 	/*HEADING*/
 }
 .lkc-excerpt {
-	color: #666666;
+	color: #333333;
 	/*OUTCOLOR-EXCERPT*/
 	font-size: 11px;
 	line-height: 17px;
@@ -164,7 +164,7 @@
 }
 .lkc-info {
 	padding: 0;
-	color: #666666;
+	color: #222222;
 	/*OUTCOLOR-INFO*/
 	font-size: 12px;
 	line-height: 12px;
@@ -177,7 +177,7 @@
 	/*INFO-TEXT*/
 }
 .lkc-domain {
-	color: #666666;
+	color: #222222;
 	/*OUTCOLOR-INFO*/
 	font-size: 12px;
 	line-height: 12px;
@@ -185,7 +185,7 @@
 	display: inline !important;
 }
 .lkc-domain:hover {
-	color: #666666;
+	color: #222222;
 	/*OUTCOLOR-INFO*/
 	font-size: 12px;
 	line-height: 12px;
@@ -204,10 +204,10 @@
 	margin: 0;
 	padding: 0;
 	float: right;
-	color: ;
+	color: #888888;
 	/*OUTCOLOR-PLUGIN*/
-	font-size: ;
-	line-height: ;
+	font-size: 10px;
+	line-height: 10px;
 	opacity: 0.5;
 	text-decoration: none;
 	display: none;

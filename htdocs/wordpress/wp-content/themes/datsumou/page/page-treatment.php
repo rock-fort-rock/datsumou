@@ -53,8 +53,42 @@ if(!is_amp()){
 						<?php if(is_amp()): ?>
 						<amp-img src="/assets/images/treatment/front.jpg" alt="正面" width="780" height="912" layout="responsive" class="illust"></amp-img>
 						<?php else: ?>
-					  <img src="/assets/images/treatment/front.jpg?1" alt="正面" class="illust">
+					  <img src="/assets/images/treatment/front.jpg?2" alt="正面" class="illust">
 						<?php endif; ?>
+
+						<ul class="leftBtn">
+							<li class="partsItem">
+								<a href="/treatment/face/">顔脱毛</a>
+							</li>
+							<li class="partsItem">
+								<a href="/treatment/breast/">胸脱毛</a>
+							</li>
+							<li class="partsItem">
+								<a href="/treatment/arm/">腕脱毛</a>
+							</li>
+							<li class="partsItem">
+								<a href="/treatment/thigh/">太もも脱毛</a>
+							</li>
+						</ul>
+						<ul class="rightBtn">
+							<li class="partsItem">
+								<a href="/treatment/neck/">首脱毛</a>
+							</li>
+							<li class="partsItem">
+								<a href="/treatment/underarm/">脇脱毛</a>
+							</li>
+							<li class="partsItem">
+								<a href="/treatment/belly/">お腹脱毛</a>
+							</li>
+							<li class="partsItem">
+								<a href="/treatment/leg/">脚脱毛</a>
+							</li>
+						</ul>
+						<ul class="bottomBtn">
+							<li class="partsItem">
+								<a href="/treatment/all/">全身脱毛</a>
+							</li>
+						</ul>
 						<ul class="otherBtn">
 							<li data-target="backTab">
 								<?php echo $btnBack; ?>
@@ -66,11 +100,25 @@ if(!is_amp()){
 					</div>
 					<div class="tabContent backContent">
 						<?php if(is_amp()): ?>
-						<amp-img src="/assets/images/treatment/back.jpg?1" alt="背面" width="780" height="912" layout="responsive" class="illust"></amp-img>
+						<amp-img src="/assets/images/treatment/back.jpg" alt="背面" width="780" height="912" layout="responsive" class="illust"></amp-img>
 						<?php else: ?>
-					  <img src="/assets/images/treatment/back.jpg?1" alt="背面" class="illust">
+					  <img src="/assets/images/treatment/back.jpg?2" alt="背面" class="illust">
 						<?php endif; ?>
-
+						<ul class="leftBtn -back">
+							<li class="partsItem">
+								<a href="/treatment/back/">背中脱毛</a>
+							</li>
+						</ul>
+						<ul class="rightBtn -back">
+							<li class="partsItem">
+								<a href="/treatment/ass/">お尻脱毛</a>
+							</li>
+						</ul>
+						<ul class="bottomBtn">
+							<li class="partsItem">
+								<a href="/treatment/all/">全身脱毛</a>
+							</li>
+						</ul>
 						<ul class="otherBtn">
 							<li data-target="frontTab">
 								<?php echo $btnFront; ?>
@@ -84,8 +132,25 @@ if(!is_amp()){
 						<?php if(is_amp()): ?>
 						<amp-img src="/assets/images/treatment/vio.jpg" alt="VIO" width="780" height="912" layout="responsive" class="illust"></amp-img>
 						<?php else: ?>
-					  <img src="/assets/images/treatment/vio.jpg" alt="VIO" class="illust">
+					  <img src="/assets/images/treatment/vio.jpg?3" alt="VIO" class="illust">
 						<?php endif; ?>
+
+						<ul class="vioBtn">
+							<li class="partsItem">
+								<a href="/treatment/vio/">Vライン</a>
+							</li>
+							<li class="partsItem">
+								<a href="/treatment/vio/">Iライン</a>
+							</li>
+							<li class="partsItem">
+								<a href="/treatment/vio/">Oライン</a>
+							</li>
+						</ul>
+						<ul class="bottomBtn">
+							<li class="partsItem">
+								<a href="/treatment/all/">全身脱毛</a>
+							</li>
+						</ul>
 						<ul class="otherBtn">
 							<li data-target="frontTab">
 								<?php echo $btnFront; ?>

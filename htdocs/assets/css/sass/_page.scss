@@ -63,7 +63,7 @@
     text-align: center;
     padding: 5px;
     font-size: 1.15rem;
-    width: 33.33%;
+    width: calc(100% /3);
     float:left;
     border-bottom: 4px solid #FFE1FA;
     cursor: pointer;
@@ -85,7 +85,7 @@
   }
   .tabContent{
     display: none;
-    padding: 15px;
+    padding: 15px 15px 30px;
     clear: both;
     position: relative;
     .illust{
@@ -93,6 +93,62 @@
       width: 100%;
       display: block;
       margin: 0 auto;
+    }
+    .leftBtn{
+      position: absolute;
+      top: 30px;
+      left: 15px;
+    }
+    .rightBtn{
+      position: absolute;
+      top: 30px;
+      right: 15px;
+    }
+    .leftBtn,
+    .rightBtn{
+        &.-back{
+          top: calc(50% - 100px);
+        }
+    }
+    .vioBtn{
+      position: absolute;
+      width: calc(100% - 30px);
+      max-width: 620px;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 43%;
+      display: flex;
+      justify-content: space-between;
+      .partsItem{
+        &:not(:last-child){
+          margin-bottom: 0;
+        }
+        width: 33.33%;
+        text-align: center;
+      }
+
+    }
+    .bottomBtn{
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+    .partsItem{
+      &:not(:last-child){
+        margin-bottom: 20px;
+      }
+      a{
+        display: inline-block;
+        padding: 12px 0;
+        background-color: #ffe1fa;
+        border-radius: 5px;
+        width: 80px;
+        text-align: center;
+        letter-spacing: -0.1em;
+        color: #666;
+      }
     }
     .otherBtn{
       position: absolute;
@@ -103,6 +159,7 @@
       max-width: 580px;
       display: flex;
       justify-content: space-between;
+      z-index: 1;
       li{
         width: 28%;
         cursor: pointer;
@@ -110,7 +167,37 @@
       }
     }
     @media all and (min-width: $breakpoint + 1px){
-      padding: 40px 15px;
+      padding: 40px 15px 80px;
+      .leftBtn{
+        top: 60px;
+        left: 10%;
+      }
+      .rightBtn{
+        top: 60px;
+        right: 10%;
+      }
+      .leftBtn,
+      .rightBtn{
+          &.-back{
+            top: calc(50% - 150px);
+          }
+      }
+      .bottomBtn{
+        bottom: 50px;
+      }
+      .partsItem{
+        &:not(:last-child){
+          margin-bottom: 40px;
+        }
+        a{
+          padding: 30px 0;
+          width: 140px;
+          font-size: 1.15rem;
+          letter-spacing: 0;
+          font-weight: bold;
+          @include hover;
+        }
+      }
       .otherBtn{
         bottom: 30px;
       }

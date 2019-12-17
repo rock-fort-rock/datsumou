@@ -179,7 +179,7 @@ function add_header(){
     $script .= '    "name": "脱毛診断メーカー運用委員会",'."\n";
     $script .= '    "logo": {'."\n";
     $script .= '      "@type": "ImageObject",'."\n";
-    $script .= '      "url": "https://脱毛診断メーカー.com/assets/images/logo.png",'."\n";
+    $script .= '      "url": "https://datumow.com/assets/images/logo.png",'."\n";
     $script .= '      "height": 127,'."\n";
     $script .= '      "width": 469'."\n";
     $script .= '    }'."\n";
@@ -886,7 +886,7 @@ function getComments($post_id = NULL){
       $temp['valuation'] = get_field('comment_valuation',$comment);
       // $avatar = empty($_SERVER['HTTPS']) ? 'http://' : 'https://';
       // $avatar .= $_SERVER['HTTP_HOST'];
-      $avatar = 'https://xn--lckwf7cb5558dg0hnt1bzdp.com/assets/images/';
+      $avatar = 'https://datumow.com/assets/images/';
       switch (get_field('comment_valuation',$comment)) {
         case 1:
           $avatar .= 'comment_avatar1.jpg';
@@ -1083,7 +1083,7 @@ HTML;
 
         ini_set('error_reporting', E_ALL);
         //日本語ドメインNG
-        $obj["src"] = str_replace('https://脱毛診断メーカー.com', 'https://xn--lckwf7cb5558dg0hnt1bzdp.com', $obj["src"]);
+        // $obj["src"] = str_replace('https://脱毛診断メーカー.com', 'https://xn--lckwf7cb5558dg0hnt1bzdp.com', $obj["src"]);
         // print_r($obj["src"]);
         $imagesize = getimagesize($obj["src"]);
         // print_r($imagesize);
@@ -1177,7 +1177,7 @@ add_filter( 'amp_post_template_metadata', 'amp_set_site_logo', 10, 2);
 function amp_set_site_logo( $metadata, $post ) {
     $metadata['publisher']['logo'] = array(
         '@type' => 'ImageObject',
-        'url' => 'https://脱毛診断メーカー.com/assets/images/logo.png',
+        'url' => 'https://datumow.com/assets/images/logo.png',
         'height' => 60,
         'width' => 222
         );
@@ -1233,7 +1233,7 @@ HTML;
 
         ini_set('error_reporting', E_ALL);
         //日本語ドメインNG
-        $obj["src"] = str_replace('https://脱毛診断メーカー.com', 'https://xn--lckwf7cb5558dg0hnt1bzdp.com', $obj["src"]);
+        // $obj["src"] = str_replace('https://脱毛診断メーカー.com', 'https://xn--lckwf7cb5558dg0hnt1bzdp.com', $obj["src"]);
         // print_r($obj["src"]);
 
         // 属性をコピーする

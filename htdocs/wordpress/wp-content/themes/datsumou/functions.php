@@ -337,14 +337,14 @@ function imagesizeSet() {
 function Change_menulabel() {
 	global $menu;
 	global $submenu;
-	$name = 'コラム（NEW）';
+	$name = 'コラム';
 	$menu[5][0] = $name;
 	$submenu['edit.php'][5][0] = $name.'一覧';
 	$submenu['edit.php'][10][0] = '新しい'.$name;
 }
 function Change_objectlabel() {
 	global $wp_post_types;
-	$name = 'コラム（NEW）';
+	$name = 'コラム';
 	$labels = &$wp_post_types['post']->labels;
 	$labels->name = $name;
 	$labels->singular_name = $name;
@@ -433,57 +433,57 @@ add_filter( 'register_post_type_args', 'post_has_archive', 10, 2 );
 custom post type
 コラム
 **/
-add_action('init', 'cpt_column_init');
-function cpt_column_init()
-{
-  $labels = array(
-    'name' => _x('コラム（OLD）', 'post type general name'),
-    'singular_name' => _x('コラム', 'post type singular name'),
-    'add_new' => _x('コラム追加', 'column'),
-    'add_new_item' => __('新規コラムを追加'),
-    'edit_item' => __('コラムを編集'),
-    'new_item' => __('新しいコラム'),
-    'view_item' => __('コラムを見る'),
-    'search_items' => __('コラムを探す'),
-    'not_found' =>  __('コラムはありません'),
-    'not_found_in_trash' => __('ゴミ箱にコラムはありません'),
-    'parent_item_colon' => ''
-  );
-  $args = array(
-    'labels' => $labels,
-    'public' => true,
-    'show_ui' => true,
-    'query_var' => true,
-    'capability_type' => 'post',
-    'has_archive' => true,
-    'rewrite' => array('slug' => 'column', 'with_front' => false, 'pages' => true, 'feeds' => false),
-    'hierarchical' => false,
-    'menu_position' => 4,
-    'supports' => array('title','editor','thumbnail','author')
-  );
-  register_post_type('column', $args);
-
-  $args = array(
-    'labels' => array(
-      'name' => 'カテゴリ',
-      'singular_name' => 'カテゴリ',
-      'search_items' => 'カテゴリを検索',
-      'popular_items' => 'よく使われているカテゴリ',
-      'all_items' => 'すべてのカテゴリ',
-      'parent_item' => '親カテゴリ',
-      'edit_item' => 'カテゴリの編集',
-      'update_item' => '更新',
-      'add_new_item' => 'カテゴリを追加',
-      'new_item_name' => '新しいカテゴリ'
-    ),
-    'public' => true,
-    'show_ui' => true,
-    'hierarchical' => true,
-    'query_var' => true,
-    'rewrite' => array('slug' => 'column/column_category', 'with_front' => false)
-  );
-  register_taxonomy('column_category', 'column', $args);
-}
+// add_action('init', 'cpt_column_init');
+// function cpt_column_init()
+// {
+//   $labels = array(
+//     'name' => _x('コラム（OLD）', 'post type general name'),
+//     'singular_name' => _x('コラム', 'post type singular name'),
+//     'add_new' => _x('コラム追加', 'column'),
+//     'add_new_item' => __('新規コラムを追加'),
+//     'edit_item' => __('コラムを編集'),
+//     'new_item' => __('新しいコラム'),
+//     'view_item' => __('コラムを見る'),
+//     'search_items' => __('コラムを探す'),
+//     'not_found' =>  __('コラムはありません'),
+//     'not_found_in_trash' => __('ゴミ箱にコラムはありません'),
+//     'parent_item_colon' => ''
+//   );
+//   $args = array(
+//     'labels' => $labels,
+//     'public' => true,
+//     'show_ui' => true,
+//     'query_var' => true,
+//     'capability_type' => 'post',
+//     'has_archive' => true,
+//     'rewrite' => array('slug' => 'column', 'with_front' => false, 'pages' => true, 'feeds' => false),
+//     'hierarchical' => false,
+//     'menu_position' => 4,
+//     'supports' => array('title','editor','thumbnail','author')
+//   );
+//   register_post_type('column', $args);
+//
+//   $args = array(
+//     'labels' => array(
+//       'name' => 'カテゴリ',
+//       'singular_name' => 'カテゴリ',
+//       'search_items' => 'カテゴリを検索',
+//       'popular_items' => 'よく使われているカテゴリ',
+//       'all_items' => 'すべてのカテゴリ',
+//       'parent_item' => '親カテゴリ',
+//       'edit_item' => 'カテゴリの編集',
+//       'update_item' => '更新',
+//       'add_new_item' => 'カテゴリを追加',
+//       'new_item_name' => '新しいカテゴリ'
+//     ),
+//     'public' => true,
+//     'show_ui' => true,
+//     'hierarchical' => true,
+//     'query_var' => true,
+//     'rewrite' => array('slug' => 'column/column_category', 'with_front' => false)
+//   );
+//   register_taxonomy('column_category', 'column', $args);
+// }
 
 /*
 columnパーマリンク設定。難しいか。「投稿」にする？記事の移行が大変。

@@ -195,19 +195,11 @@ if(!is_amp()){
 							<?php
 
 							$args = array(
-								'post_type' => 'column', // 投稿タイプpostに変更!!!!!!!!!!!!!!!!!!!!!!!!!※もっとみるも
-								// 'category' => $cat_id,
-
-								'tax_query' => array(
-						        array(
-						            'taxonomy' => 'column_category',
-						            'field' => 'id',
-						            'terms' => $cat_id,
-						            'operator' => 'IN'
-						        ),
-						    ),
+								'post_type' => 'post',
+								'category' => $cat_id,
 								'posts_per_page' => 5,
 							);
+
 							$related_posts = get_posts($args);
 							$related_postsID = [];
 							foreach ($related_posts as $value) {
@@ -277,8 +269,8 @@ if(!is_amp()){
 							<?php endforeach; ?>
 							<div class="viewMore">
 								<?php
-									$term_link = get_term_link($cat_id, 'column_category');
-									// $term_link = get_category_link( $cat_id[0] );
+									// $term_link = get_term_link($cat_id, 'column_category');
+									$term_link = get_category_link( $cat_id[0] );
 								?>
 								<a href="<?php echo esc_url( $term_link ); ?>">もっとみる</a>
 							</div>

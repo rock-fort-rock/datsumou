@@ -67,7 +67,7 @@ if(!is_amp()){
 			<section class="pageContentBlock">
 				<div class="contentInner">
 					<div class="tableofcontents">
-						<div class="title">目次</div><!--<span class="displayToggle">[表示]</span>-->
+						<div class="title">目次</div><span class="displayToggle">[表示]</span>
 						<ul>
 							<?php for($i=0; $i<count($headlineArray); $i++): ?>
 								<li class="main"><a href="#<?php echo $headlineArray[$i]; ?>" class="scroll"><?php echo $headlineArray[$i]; ?></a></li>

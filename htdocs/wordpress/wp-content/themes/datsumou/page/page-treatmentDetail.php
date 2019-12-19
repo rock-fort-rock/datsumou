@@ -53,7 +53,7 @@ if(!is_amp()){
 			<section class="pageContentBlock">
 				<div class="contentInner">
 					<div class="tableofcontents">
-						<div class="title">目次</div><!--<span class="displayToggle">[表示]</span>-->
+						<div class="title">目次</div><span class="displayToggle">[表示]</span>
 						<ul>
 							<li class="main"><a href="#aftercare" class="scroll"><?php the_title(); ?>を施術した後のアフターケア</a></li>
 							<li class="main"><a href="#attention" class="scroll"><?php the_title(); ?>を施術する前の注意点</a></li>
@@ -75,15 +75,15 @@ if(!is_amp()){
 					<h1 class="pageContentTitle"><?php the_title(); ?>を施術した後のアフターケア</h1>
 					<div class="pageContentBody">
 						<div class="partsImageSet">
-							<div class="textBlock">
-								<?php the_field('treatmentDetail_aftercare'); ?>
-							</div>
 							<div class="imageBlock">
 								<?php if(is_amp()): ?>
 									<amp-img src="/assets/images/treatment/aftercare.png" width="360" height="360" layout="responsive"></amp-img>
 								<?php else: ?>
 									<img src="/assets/images/treatment/aftercare.png">
 								<?php endif; ?>
+							</div>
+							<div class="textBlock">
+								<?php the_field('treatmentDetail_aftercare'); ?>
 							</div>
 						</div>
 					</div>
@@ -95,15 +95,15 @@ if(!is_amp()){
 					<h1 class="pageContentTitle"><?php the_title(); ?>を施術する前の注意点</h1>
 					<div class="pageContentBody">
 						<div class="partsImageSet">
-							<div class="textBlock">
-								<?php the_field('treatmentDetail_attention'); ?>
-							</div>
 							<div class="imageBlock">
 								<?php if(is_amp()): ?>
 									<amp-img src="/assets/images/treatment/attention.png" width="360" height="360" layout="responsive"></amp-img>
 								<?php else: ?>
 									<img src="/assets/images/treatment/attention.png">
 								<?php endif; ?>
+							</div>
+							<div class="textBlock">
+								<?php the_field('treatmentDetail_attention'); ?>
 							</div>
 						</div>
 					</div>
@@ -115,15 +115,15 @@ if(!is_amp()){
 					<h1 class="pageContentTitle"><?php the_title(); ?>は美容脱毛と医療脱毛どちらがおすすめ？</h1>
 					<div class="pageContentBody">
 						<div class="partsImageSet">
-							<div class="textBlock">
-								<?php the_field('treatmentDetail_beautymedical'); ?>
-							</div>
 							<div class="imageBlock">
 								<?php if(is_amp()): ?>
 									<amp-img src="/assets/images/treatment/beautymedical.png" width="360" height="360" layout="responsive"></amp-img>
 								<?php else: ?>
 									<img src="/assets/images/treatment/beautymedical.png">
 								<?php endif; ?>
+							</div>
+							<div class="textBlock">
+								<?php the_field('treatmentDetail_beautymedical'); ?>
 							</div>
 						</div>
 					</div>

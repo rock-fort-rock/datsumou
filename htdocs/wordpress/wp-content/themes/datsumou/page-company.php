@@ -22,10 +22,10 @@ if(!is_amp()){
 					<th>サイト名</th><td>ツルツル！全身脱毛診断メーカー</td>
 				</tr>
 				<tr>
-					<th>URL</th><td>全身脱毛診断メーカー.com</td>
+					<th>URL</th><td>https://datumow.com</td>
 				</tr>
 				<tr>
-					<th>運用者</th><td>脱毛診断メーカー運用委員会</td>
+					<th>運用者</th><td><a href="https://digital-reclame.com/" target="_blank" class="textLink">デジタルレクリム株式会社</a></td>
 				</tr>
 				<tr>
 					<th>電話</th><td>03-6869-0653</td>

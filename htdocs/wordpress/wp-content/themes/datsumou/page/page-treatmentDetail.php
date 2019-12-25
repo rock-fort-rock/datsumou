@@ -146,43 +146,6 @@ if(!is_amp()){
 				</div>
 			</section>
 
-			<section class="pageContentBlock" id="comment">
-				<div class="contentInner">
-					<h1 class="pageContentTitle"><?php the_title(); ?>を経験した人のコメント</h1>
-					<div class="pageContentBody">
-						<ul class="review">
-						<?php while(have_rows('treatmentDetail_review')): the_row(); ?>
-							<li>
-								<?php
-									$imgObj = get_sub_field('treatmentDetail_review_avatar');
-									$avatar = $imgObj['sizes']['thumbnail'];
-								?>
-								<div class="avatar">
-								<?php if(is_amp()): ?>
-									<amp-img src="<?php echo $avatar; ?>" width="60" height="60"></amp-img>
-								<?php else: ?>
-									<img src="<?php echo $avatar; ?>">
-								<?php endif; ?>
-								</div>
-								<div class="comment"><?php the_sub_field('treatmentDetail_review_comment'); ?></div>
-							</li>
-						<?php endwhile; ?>
-						</ul>
-					</div>
-				</div>
-			</section>
-
-
-			<section class="pageContentBlock" id="recommendsalon">
-				<div class="contentInner">
-					<h1 class="pageContentTitle"><?php the_title(); ?>にオススメのサロン5選</h1>
-				</div>
-			<?php
-			global $salonPosts;
-			$salonPosts = get_field('treeatment_ranking'); ?>
-			<?php get_template_part('ranking'); ?>
-			</section>
-
 			<section class="pageContentBlock" id="relatedentry">
 				<div class="contentInner">
 					<h1 class="pageContentTitle"><?php the_title(); ?>の関連記事</h1>
@@ -270,7 +233,7 @@ if(!is_amp()){
 							<div class="viewMore">
 								<?php
 									// $term_link = get_term_link($cat_id, 'column_category');
-									$term_link = get_category_link( $cat_id[0] );
+									$term_link = get_category_link( $cat_id );
 								?>
 								<a href="<?php echo esc_url( $term_link ); ?>">もっとみる</a>
 							</div>
@@ -278,6 +241,43 @@ if(!is_amp()){
 					</div>
 					<?php endif; ?>
 				</div>
+			</section>
+
+			<section class="pageContentBlock" id="comment">
+				<div class="contentInner">
+					<h1 class="pageContentTitle"><?php the_title(); ?>を経験した人のコメント</h1>
+					<div class="pageContentBody">
+						<ul class="review">
+						<?php while(have_rows('treatmentDetail_review')): the_row(); ?>
+							<li>
+								<?php
+									$imgObj = get_sub_field('treatmentDetail_review_avatar');
+									$avatar = $imgObj['sizes']['thumbnail'];
+								?>
+								<div class="avatar">
+								<?php if(is_amp()): ?>
+									<amp-img src="<?php echo $avatar; ?>" width="60" height="60"></amp-img>
+								<?php else: ?>
+									<img src="<?php echo $avatar; ?>">
+								<?php endif; ?>
+								</div>
+								<div class="comment"><?php the_sub_field('treatmentDetail_review_comment'); ?></div>
+							</li>
+						<?php endwhile; ?>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+
+			<section class="pageContentBlock" id="recommendsalon">
+				<div class="contentInner">
+					<h1 class="pageContentTitle"><?php the_title(); ?>にオススメのサロン5選</h1>
+				</div>
+			<?php
+			global $salonPosts;
+			$salonPosts = get_field('treeatment_ranking'); ?>
+			<?php get_template_part('ranking'); ?>
 			</section>
 
 			<section class="pageContentBlock" id="otherparts">

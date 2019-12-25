@@ -1,6 +1,6 @@
 <ul class="categoryNavi">
 	<li>
-		<a href="/datsumosalon/">脱毛サロン</a>
+		<a href="/datsumou_salon/">脱毛サロン</a>
 	</li>
 	<li>
 		<a href="/treatment/">施術箇所</a>

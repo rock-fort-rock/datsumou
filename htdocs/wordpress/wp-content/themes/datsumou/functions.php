@@ -728,6 +728,14 @@ function setOption(){
       'parent_slug' => 'theme-options', //親ページのスラッグ
       'position'  => false,
     ));
+    acf_add_options_sub_page(array( //サブページ
+      'page_title'  => 'サロン一覧',
+      'menu_title'  => 'サロン一覧',
+      'menu_slug'   => 'theme-options-salon',
+      'capability'  => 'edit_posts',
+      'parent_slug' => 'theme-options', //親ページのスラッグ
+      'position'  => false,
+    ));
 
     acf_add_options_page(array(
       'page_title'  => 'サロンランキング',

@@ -423,6 +423,91 @@ while(the_repeater_field('salon_recommend')){
 			</div>
 		</div>
 	</section>
+
+	<section class="pageContentBlock">
+			<div class="contentInner">
+				<h1 class="pageContentTitle">美容脱毛を施術できる有名サロン一覧</h1>
+				<div class="pageContentBody">
+					<?php if(have_rows('datsumosalon_beauty', 'option')): ?>
+						<ul class="datsumosalonList">
+							<?php while(have_rows('datsumosalon_beauty', 'option')): the_row(); ?>
+							<li>
+								<?php
+									$logoObj = get_sub_field('datsumosalon_beauty_logo');
+									$logo = $logoObj['sizes']['medium_large'];
+									$link = get_sub_field('datsumosalon_beauty_link');
+								?>
+								<?php if($link): ?>
+								<a href="<?php echo $link; ?>">
+								<?php endif; ?>
+									<!-- <h3 class="datsumosalonName">
+										<?php the_sub_field('datsumosalon_beauty_name'); ?>
+									</h3> -->
+									<div class="datsumosalonContainer">
+										<div class="datsumosalonLogo">
+										<?php if(is_amp()): ?>
+											<amp-img src="<?php echo $logo; ?>" width="500" height="300" layout="responsive"></amp-img>
+										<?php else: ?>
+											<img src="<?php echo $logo; ?>">
+										<?php endif; ?>
+										</div>
+										<div class="datsumosalonDescription">
+											<?php the_sub_field('datsumosalon_beauty_description'); ?>
+										</div>
+									</div>
+								<?php if($link): ?>
+								</a>
+								<?php endif; ?>
+							</li>
+							<?php endwhile; ?>
+						</ul>
+					<?php endif; ?>
+				</div>
+			</div>
+		</section>
+
+	<section class="pageContentBlock">
+			<div class="contentInner">
+				<h1 class="pageContentTitle">医療脱毛を施術できる有名サロン一覧</h1>
+				<div class="pageContentBody">
+					<?php if(have_rows('datsumosalon_medical', 'option')): ?>
+						<ul class="datsumosalonList">
+							<?php while(have_rows('datsumosalon_medical', 'option')): the_row(); ?>
+							<li>
+								<?php
+									$logoObj = get_sub_field('datsumosalon_medical_logo');
+									$logo = $logoObj['sizes']['medium_large'];
+									$link = get_sub_field('datsumosalon_medical_link');
+								?>
+								<?php if($link): ?>
+								<a href="<?php echo $link; ?>">
+								<?php endif; ?>
+									<!-- <h3 class="datsumosalonName">
+										<?php the_sub_field('datsumosalon_medical_name'); ?>
+									</h3> -->
+									<div class="datsumosalonContainer">
+										<div class="datsumosalonLogo">
+										<?php if(is_amp()): ?>
+											<amp-img src="<?php echo $logo; ?>" width="500" height="300" layout="responsive"></amp-img>
+										<?php else: ?>
+											<img src="<?php echo $logo; ?>">
+										<?php endif; ?>
+										</div>
+										<div class="datsumosalonDescription">
+											<?php the_sub_field('datsumosalon_medical_description'); ?>
+										</div>
+									</div>
+								<?php if($link): ?>
+								</a>
+								<?php endif; ?>
+							</li>
+							<?php endwhile; ?>
+						</ul>
+					<?php endif; ?>
+				</div>
+			</div>
+		</section>
+
 </div>
 
 <?php

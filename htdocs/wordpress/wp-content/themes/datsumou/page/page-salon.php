@@ -99,9 +99,9 @@ if(!is_amp()){
 				<div class="contentInner">
 					<h1 class="pageContentTitle">美容脱毛を施術できる有名サロン一覧</h1>
 					<div class="pageContentBody">
-						<?php if(have_rows('datsumosalon_beauty')): ?>
+						<?php if(have_rows('datsumosalon_beauty', 'option')): ?>
 							<ul class="datsumosalonList">
-								<?php while(have_rows('datsumosalon_beauty')): the_row(); ?>
+								<?php while(have_rows('datsumosalon_beauty', 'option')): the_row(); ?>
 								<li>
 									<?php
 										$logoObj = get_sub_field('datsumosalon_beauty_logo');
@@ -141,9 +141,9 @@ if(!is_amp()){
 				<div class="contentInner">
 					<h1 class="pageContentTitle">医療脱毛を施術できる有名サロン一覧</h1>
 					<div class="pageContentBody">
-						<?php if(have_rows('datsumosalon_medical')): ?>
+						<?php if(have_rows('datsumosalon_medical', 'option')): ?>
 							<ul class="datsumosalonList">
-								<?php while(have_rows('datsumosalon_medical')): the_row(); ?>
+								<?php while(have_rows('datsumosalon_medical', 'option')): the_row(); ?>
 								<li>
 									<?php
 										$logoObj = get_sub_field('datsumosalon_medical_logo');

@@ -27,7 +27,7 @@ if(!is_amp()){
 		</div> -->
 			<section class="pageHeader">
 				<div class="treatmentDetailHeader">
-					<h1 class="title"><?php the_title(); ?>とは</h1>
+					<h2 class="title"><?php the_title(); ?>とは</h2>
 					<div class="body">
 						<?php if(is_amp()): ?>
 							<?php
@@ -72,7 +72,7 @@ if(!is_amp()){
 
 			<section class="pageContentBlock" id="aftercare">
 				<div class="contentInner">
-					<h1 class="pageContentTitle"><?php the_title(); ?>を施術した後のアフターケア</h1>
+					<h2 class="pageContentTitle"><?php the_title(); ?>を施術した後のアフターケア</h2>
 					<div class="pageContentBody">
 						<div class="partsImageSet">
 							<div class="imageBlock">
@@ -92,7 +92,7 @@ if(!is_amp()){
 
 			<section class="pageContentBlock" id="attention">
 				<div class="contentInner">
-					<h1 class="pageContentTitle"><?php the_title(); ?>を施術する前の注意点</h1>
+					<h2 class="pageContentTitle"><?php the_title(); ?>を施術する前の注意点</h2>
 					<div class="pageContentBody">
 						<div class="partsImageSet">
 							<div class="imageBlock">
@@ -112,7 +112,7 @@ if(!is_amp()){
 
 			<section class="pageContentBlock" id="beautymedical">
 				<div class="contentInner">
-					<h1 class="pageContentTitle"><?php the_title(); ?>は美容脱毛と医療脱毛どちらがおすすめ？</h1>
+					<h2 class="pageContentTitle"><?php the_title(); ?>は美容脱毛と医療脱毛どちらがおすすめ？</h2>
 					<div class="pageContentBody">
 						<div class="partsImageSet">
 							<div class="imageBlock">
@@ -132,7 +132,7 @@ if(!is_amp()){
 
 			<section class="pageContentBlock" id="solution">
 				<div class="contentInner">
-					<h1 class="pageContentTitle"><?php the_title(); ?>に関するお悩み解決</h1>
+					<h2 class="pageContentTitle"><?php the_title(); ?>に関するお悩み解決</h2>
 					<div class="pageContentBody">
 						<?php if(is_amp()): ?>
 							<?php
@@ -148,7 +148,7 @@ if(!is_amp()){
 
 			<section class="pageContentBlock" id="relatedentry">
 				<div class="contentInner">
-					<h1 class="pageContentTitle"><?php the_title(); ?>の関連記事</h1>
+					<h2 class="pageContentTitle"><?php the_title(); ?>の関連記事</h2>
 					<?php
 					$cat_id = get_field('treatmentDetail_category');//単一選択
 					if($cat_id):
@@ -245,7 +245,7 @@ if(!is_amp()){
 
 			<section class="pageContentBlock" id="comment">
 				<div class="contentInner">
-					<h1 class="pageContentTitle"><?php the_title(); ?>を経験した人のコメント</h1>
+					<h2 class="pageContentTitle"><?php the_title(); ?>を経験した人のコメント</h2>
 					<div class="pageContentBody">
 						<ul class="review">
 						<?php while(have_rows('treatmentDetail_review')): the_row(); ?>
@@ -272,7 +272,7 @@ if(!is_amp()){
 
 			<section class="pageContentBlock" id="recommendsalon">
 				<div class="contentInner">
-					<h1 class="pageContentTitle"><?php the_title(); ?>にオススメのサロン5選</h1>
+					<h2 class="pageContentTitle"><?php the_title(); ?>にオススメのサロン5選</h2>
 				</div>
 			<?php
 			global $salonPosts;
@@ -282,7 +282,7 @@ if(!is_amp()){
 
 			<section class="pageContentBlock" id="otherparts">
 				<div class="contentInner">
-					<h1 class="pageContentTitle">その他の施術箇所</h1>
+					<h2 class="pageContentTitle">その他の施術箇所</h2>
 					<ul class="partsList">
 						<?php while(have_rows('optionParts_list', 'option')): the_row(); $partsImgObj = get_sub_field('optionParts_list_image'); ?>
 							<?php

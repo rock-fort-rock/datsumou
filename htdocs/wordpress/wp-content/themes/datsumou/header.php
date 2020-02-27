@@ -3,6 +3,7 @@ global $status;
 $headerImgObj = get_field('option_headerBanner', 'option');
 $headerBanner = $headerImgObj['sizes']['medium_large'];
 $headerBannerLink = get_field('option_headerBannerLink', 'option');
+$headerBannerJs = get_field('option_headerBannerJs', 'option');
 
 // $headerImgObj = get_field('option_naviBanner_image', 'option');
 $naviBanner = [];
@@ -143,7 +144,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<header class="gHeader">
 		<?php $ele = (is_home())?'h1':'div'; ?><<?php echo $ele; ?> class="gHeaderLogo"><a href="/"><img src="/assets/images/logo.png" alt="全身脱毛サロンの比較サイト「ツルツル！全身脱毛診断メーカー」"></a></<?php echo $ele; ?>>
 
-		<?php if($headerBanner): ?>
+		<?php if($headerBannerJs): ?>
+		<div class="gHeaderBanner"><?php echo $headerBannerJs; ?></div>
+		<?php elseif($headerBanner): ?>
 		<div class="gHeaderBanner"><a href="<?php echo $headerBannerLink; ?>" target="_blank"><img src="<?php echo $headerBanner; ?>"></a></div>
 		<?php endif; ?>
 		<div class="hamburger"><img src="/assets/images/hamburger.svg"><?php if($unread > 0)echo '<span class="newsIcon">' . $unread . '</span>'; ?></div>

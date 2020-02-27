@@ -35,11 +35,21 @@ $headerImagePc = $headerObjPc['sizes']['large'];
 			<?php endif; ?>
 		<?php endif; ?>
 	</section>
-
+	<?php if(get_field('ranking_textTop')): ?>
+		<div class="rankingText">
+			<?php the_field('ranking_textTop'); ?>
+		</div>
+	<?php endif; ?>
 	<?php
 	global $salonPosts;
 	$salonPosts = get_field('ranking'); ?>
 	<?php get_template_part('ranking'); ?>
+
+	<?php if(get_field('ranking_textBottom')): ?>
+		<div class="rankingText">
+			<?php the_field('ranking_textBottom'); ?>
+		</div>
+	<?php endif; ?>
 </div>
 
 <?php

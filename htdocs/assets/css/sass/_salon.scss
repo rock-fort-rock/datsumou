@@ -4,6 +4,26 @@
 		margin-bottom: 30px;
 	}
 }
+//ランキング上下に入るテキスト 2020.03
+.rankingText{
+	margin-bottom: 25px;
+	padding: 0 15px;
+
+	&.homeTop{
+		margin-top: -20px;
+	}
+	img{
+		max-width: 100%;
+		height: auto;
+	}
+	@media screen and (min-width: $breakpoint + 1){
+		margin-bottom: 50px;
+		padding: 0 30px;
+		&.homeTop{
+			margin-top: -70px;
+		}
+	}
+}
 
 /*---------------------------------
 サロン情報

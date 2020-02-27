@@ -238,8 +238,20 @@ EOM;
 		<?php endif; ?>
 	</section>
 
+	<?php if(get_field('ranking_topTextTop', 'option')): ?>
+		<div class="rankingText homeTop">
+			<?php the_field('ranking_topTextTop', 'option'); ?>
+		</div>
+	<?php endif; ?>
+
 	<?php $salonPosts = get_field('ranking_top', 'option'); ?>
 	<?php get_template_part('ranking'); ?>
+
+	<?php if(get_field('ranking_topTextBottom', 'option')): ?>
+		<div class="rankingText">
+			<?php the_field('ranking_topTextBottom', 'option'); ?>
+		</div>
+	<?php endif; ?>
 </div>
 
 <?php get_footer(); ?>

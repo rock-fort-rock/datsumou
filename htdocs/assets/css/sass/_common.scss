@@ -105,9 +105,11 @@ HEADER
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		width: 175px;
+		// width: 175px;
+		height: 47px;
 		img{
-			width: 100%;
+			// width: 100%;
+			height: 100%;
 		}
 	}
 	.hamburger{
@@ -144,7 +146,8 @@ HEADER
 			top: 50%;
 			left: 15px;
 			transform: translateY(-50%);
-			width: 240px;
+			// width: 240px;
+			height: 64px;
 		}
 		.gHeaderBanner{
 			margin-right: $naviWidth + 40px + 15px;
@@ -306,6 +309,38 @@ HEADER
 					margin-right: 3px;
 					margin-top: 3px;
 					background: url('/assets/images/arrow_w.svg') center center/100% auto no-repeat;
+				}
+			}
+		}
+
+		.keywordSearch{
+			margin-bottom: 10px;
+			padding: 5px;
+			form{
+				display: flex;
+				justify-content: space-between;
+				input{
+					flex: 1;
+					border-top-left-radius: 5px;
+					border-bottom-left-radius: 5px;
+					border: 1px solid #999;
+					border-right: none;
+					padding: 5px;
+				}
+				button{
+					width: 40px;
+					text-align: center;
+					border-top-right-radius: 5px;
+					border-bottom-right-radius: 5px;
+					border: 1px solid #999;
+					background: #f1f1f1;
+					outline: none;
+					padding: 0;
+					appearance: none;
+					cursor: pointer;
+					img{
+						width: 60%;
+					}
 				}
 			}
 		}

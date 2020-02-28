@@ -142,7 +142,7 @@ var _protocol = (("https:" == document.location.protocol) ? " https://" : " http
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 	<header class="gHeader">
-		<?php $ele = (is_home())?'h1':'div'; ?><<?php echo $ele; ?> class="gHeaderLogo"><a href="/"><img src="/assets/images/logo.png" alt="全身脱毛サロンの比較サイト「ツルツル！全身脱毛診断メーカー」"></a></<?php echo $ele; ?>>
+		<?php $ele = (is_home())?'h1':'div'; ?><<?php echo $ele; ?> class="gHeaderLogo"><a href="/"><img src="/assets/images/logo.png" alt="全身脱毛サロンの比較サイト「脱毛診断メーカー だつもう」"></a></<?php echo $ele; ?>>
 
 		<?php if($headerBannerJs): ?>
 		<div class="gHeaderBanner"><?php echo $headerBannerJs; ?></div>
@@ -232,6 +232,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<?php endforeach; ?>
 					</ul>
 					<div class="readMore"><a href="/archive/">もっと記事を読む</a></div>
+
+					<div class="keywordSearch">
+						<form action="<?php echo esc_url( home_url('/') ); ?>" method="get" autocomplete="off">
+							<input type="text" name="s" value="" placeholder="キーワード検索">
+							<!-- <span class="keywordSearchIcon"><img src="/assets/images/icon_facebook.svg"></span> -->
+							<button><img src="/assets/images/icon_search.svg"></button>
+						</form>
+					</div>
 				</div>
 				<div class="gNaviSect">
 					<div class="gNaviHeadline">当サイトについて</div>

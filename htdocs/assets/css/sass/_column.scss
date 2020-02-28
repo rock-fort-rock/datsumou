@@ -62,20 +62,25 @@ article.entry{
 		}
 	}
 
-	//お知らせ
-	&.news{
+	//お知らせ・検索結果
+	&.news,
+	&.search{
 		margin-bottom: 10px;
 		&:not(:last-child){
 			padding-bottom: 10px;
 			border-bottom: 1px solid #ccc;
 		}
 		a{
+			display: block;
 			.textBlock{
-				flex: 1;
 				padding-left: 0;
+				.entryLede{
+					font-size: 11px;
+				}
 			}
 		}
 	}
+
 	@media screen and (min-width: $breakpoint + 1){
 		margin-bottom: 30px;
 		&:not(:last-child){
@@ -95,8 +100,9 @@ article.entry{
 			}
 		}
 
-		//お知らせ
-		&.news{
+		//お知らせ・検索結果
+		&.news,
+		&.search{
 			margin-bottom: 20px;
 			&:not(:last-child){
 				padding-bottom: 20px;
@@ -104,8 +110,11 @@ article.entry{
 			a{
 				.textBlock{
 					.entryTitle{
-						margin: 10px 0 0;
+						margin: 10px 0 5px;
 						font-size: 1.1rem;
+					}
+					.entryLede{
+						font-size: 0.9rem;
 					}
 				}
 			}

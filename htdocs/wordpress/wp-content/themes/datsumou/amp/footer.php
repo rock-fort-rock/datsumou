@@ -54,7 +54,7 @@ while(the_repeater_field('option_naviBanner', 'option')){
 							<div class="gNaviHeadline">脱毛診断メーカー最新の記事</div>
 							<?php
 							$columnArg = array(
-								'post_type' => 'column',
+								'post_type' => 'post',
 								'posts_per_page'   => 5,
 							);
 							$columnPosts = get_posts($columnArg);

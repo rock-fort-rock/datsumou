@@ -767,7 +767,7 @@ function custom_posts_query() {
     if(is_post_type_archive('news') || is_tax('news_category')){
       $wp_query -> query_vars['posts_per_page'] = 10;
     }elseif(is_search()){
-      $wp_query -> query_vars['posts_per_page'] = 2;
+      $wp_query -> query_vars['posts_per_page'] = 10;
     }elseif(is_archive() || is_category() || is_post_type_archive('column') || is_tax('column_category')){
         $wp_query -> query_vars['posts_per_page'] = 6;
     }else{

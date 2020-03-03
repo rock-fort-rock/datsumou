@@ -321,6 +321,7 @@ HEADER
 				justify-content: space-between;
 				input{
 					// flex: 1;
+					border-radius: 0;
 					border-top-left-radius: 5px;
 					border-bottom-left-radius: 5px;
 					border: 1px solid #999;
@@ -328,6 +329,7 @@ HEADER
 					padding: 5px;
 					width: calc(100% - 40px);
 					box-sizing: border-box;
+					appearance: none;
 				}
 				button{
 					width: 40px;

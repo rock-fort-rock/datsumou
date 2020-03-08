@@ -19,6 +19,9 @@ while(the_repeater_field('option_naviBanner', 'option')){
 $readidStr = '';//既読記事ID　文字列
 $readidArray = [];//既読記事ID　配列
 
+
+/*お知らせ昨日停止中 2020.0
+---------------------------------------------
 //お知らせ詳細
 if(is_singular('news')){
 	//削除
@@ -87,6 +90,7 @@ foreach($newsidArray as $value){
 		$unread++;
 	}
 }
+---------------------------------------------*/
 ?>
 <!DOCTYPE HTML>
 <html lang="ja">
@@ -161,11 +165,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="gNavi">
 			<div class="gNaviClose">×</div>
 			<div class="gNaviContainer">
+				<div class="keywordSearch">
+					<form action="<?php echo esc_url( home_url('/') ); ?>" method="get" autocomplete="off">
+						<input type="text" name="s" value="" placeholder="キーワード検索">
+						<!-- <span class="keywordSearchIcon"><img src="/assets/images/icon_facebook.svg"></span> -->
+						<button><img src="/assets/images/icon_search.svg"></button>
+					</form>
+				</div>
+				<?php /*
 				<?php if(wp_count_posts('news')->publish > 0): ?>
 				<div class="gNaviSect">
 					<div class="newsInfo">お知らせ<?php if($unread > 0)echo '<span class="newsIcon">' . $unread . '</span>'; ?></div>
 				</div>
 				<?php endif; ?>
+				*/ ?>
 
 				<div class="gNaviSect">
 					<div class="gNaviHeadline">目的別検索</div>
@@ -232,14 +245,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<?php endforeach; ?>
 					</ul>
 					<div class="readMore"><a href="/archive/">もっと記事を読む</a></div>
-
-					<div class="keywordSearch">
-						<form action="<?php echo esc_url( home_url('/') ); ?>" method="get" autocomplete="off">
-							<input type="text" name="s" value="" placeholder="キーワード検索">
-							<!-- <span class="keywordSearchIcon"><img src="/assets/images/icon_facebook.svg"></span> -->
-							<button><img src="/assets/images/icon_search.svg"></button>
-						</form>
-					</div>
 				</div>
 				<div class="gNaviSect">
 					<div class="gNaviHeadline">当サイトについて</div>

@@ -97,7 +97,10 @@ if(is_amp()){
 				</div>
 
 				<?php
-				$arg = array('post_type'=>'salon');
+				$arg = array(
+					'post_type'=>'salon',
+					'posts_per_page'   => -1,
+				);
 				$allsalons = get_posts($arg);
 				// print_r($allsalons);
 

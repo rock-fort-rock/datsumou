@@ -20,7 +20,7 @@ $readidStr = '';//既読記事ID　文字列
 $readidArray = [];//既読記事ID　配列
 
 
-/*お知らせ昨日停止中 2020.0
+/*お知らせ機能停止中 2020.0
 ---------------------------------------------
 //お知らせ詳細
 if(is_singular('news')){
@@ -123,18 +123,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   });
 </script>
 <?php endif; ?>
-<?php if(is_home()): ?>
-<script>
-var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-(function() {
-    var atag = document.createElement('script'); atag.type = 'text/javascript'; atag.async = true;
-    atag.src = _protocol + 'app.skele-ton.com/lpo-heatmap.js';
-    var s = document.getElementsByTagName('script')[0];
-    window["lpo-heatmap"] = "LPO-9658149443-1";
-    s.parentNode.insertBefore(atag, s);
-})();
-</script>
-<?php endif; ?>
 <?php if(is_single() && get_field('column_js')): ?>
 <?php the_field('column_js'); ?>
 <?php endif; ?>
@@ -205,6 +193,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<?php
 					$salonArg = array(
 						'post_type' => 'salon',
+						'meta_key' => 'salon_hideindex',
+						'meta_value' => 'show',
 						'posts_per_page'   => -1,
 					);
 					$salonPosts = get_posts($salonArg);
@@ -222,7 +212,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<ul class="gNaviBanner">
 						<?php foreach($naviBanner as $value): ?>
 						<li><a href="<?php echo $value['link']; ?>" target="_blank">
-							<!-- <img data-echo="<?php echo $value['image']; ?>" src="/assets/images/dummy.gif" class="lazy"> -->
+							<!-- <img src="/assets/images/dummy.gif" data-normal="<?php echo $value['image']; ?>" class="lazy"> -->
 							<img src="<?php echo $value['image']; ?>">
 						</a></li>
 						<?php endforeach; ?>
@@ -244,14 +234,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<li><a href="<?php echo get_permalink($value->ID); ?>"><?php echo $value->post_title; ?></a></li>
 						<?php endforeach; ?>
 					</ul>
-					<div class="readMore"><a href="/archive/">もっと記事を読む</a></div>
+					<!-- <div class="readMore"><a href="/archive/">もっと記事を読む</a></div> -->
 				</div>
-				<div class="gNaviSect">
-					<div class="gNaviHeadline">当サイトについて</div>
+					<div class="gNaviSect">
+					<div class="gNaviHeadline">エリア別で脱毛サロンを探す！</div>
 					<ul class="gNaviMenu borderBottom">
-						<li><a href="/company/">運営者情報</a></li>
-						<li><a href="/research/">調査概要</a></li>
-						<li><a href="/privacy/">プライバシーポリシー</a></li>
+						<li><a href="https://datumow.com/area/tokyo/">東京都</a></li>
+						<li><a href="https://datumow.com/area/hokkaido/">北海道</a></li>
+						<li><a href="https://datumow.com/area/miyagi/">宮城県</a></li>
+						<li><a href="https://datumow.com/area/kanagawa/">神奈川県</a></li>
+						<li><a href="https://datumow.com/area/aichi/">愛知県</a></li>
+						<li><a href="https://datumow.com/area/osaka/">大阪府</a></li>
+						<li><a href="https://datumow.com/area/fukuoka/">福岡県</a></li>
 					</ul>
 				</div>
 				<div class="gNaviSect">
@@ -262,13 +256,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<li><a href="#"><img src="/assets/images/icon_twitter.png" alt="Twitter"></a></li>
 							<li><a href="#"><img src="/assets/images/icon_instagram.png" alt="Instagram"></a></li>
 						</ul> -->
-						<div class="copyright">©ツルツル全身脱毛診断メーカー</div>
+						<div class="copyright">© 2020 全身脱毛診断メーカー：だつもぅ</div>
 					</div>
 				</div>
 			</div>
 			<div class="gNaviBg"></div>
 		</div>
 
+		<?php /*
 		<div class="newsNavi">
 			<div class="newsNaviClose"></div>
 			<div class="newsNaviInner">
@@ -295,3 +290,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 			</div>
 		</div>
+*/ ?>

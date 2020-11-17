@@ -16,6 +16,7 @@ if(is_amp()){
 	<section class="contentBlock">
 		<?php get_template_part('categoryNavi'); ?>
 
+<!-- 診断結果で非表示にしたい部分 20200727
 		<?php if(!is_amp()): ?>
 		<div class="diagnosisChart">
 			<div class="diagnosisChartInner">
@@ -198,7 +199,7 @@ EOM;
 
 					<div class="result resultI">
 						<div class="catch">お得で人気なのに予約が取れちゃう<br>最強サロンを探すあなたに</div>
-						<?php echo result_SalonInfo('musee', 'i', 'お得で人気なのに予約が取れちゃう最強サロンを探す'); ?>
+						<?php echo result_SalonInfo('koihada', 'i', 'お得で人気なのに予約が取れちゃう最強サロンを探す'); ?>
 					</div>
 					<div class="result resultJ">
 						<div class="catch">お得サロンに定期的に通いたいあなたに</div>
@@ -239,6 +240,7 @@ EOM;
 			</div>
 		</div>
 		<?php endif; ?>
+ -->
 	</section>
 
 	<?php if(get_field('ranking_topTextTop', 'option')): ?>

@@ -371,6 +371,15 @@ COLUMN
 	}
 }
 
+.categoryDescription{
+	padding: 0 10px;
+	margin-bottom: 20px;
+	@media screen and (min-width: $breakpoint + 1){
+		padding: 0 25px;
+		margin-bottom: 30px;
+	}
+}
+
 /*目次*/
 .tableofcontents{
   border-top: 1px dotted #666;
@@ -399,7 +408,7 @@ COLUMN
     cursor: pointer;
   }
   ul{
-    display: none;
+    // display: none;
     list-style-type: disc;
     // list-style-position: inside;
     padding-left: 20px;
@@ -408,16 +417,16 @@ COLUMN
         margin-top: 10px;
       }
       &:not(:last-child){
-        margin-bottom: 5px;
+        // margin-bottom: 5px;
       }
       a{
         color: $linkColor;
         text-decoration: none;
       }
       &.main{
-        font-size: 1.15rem;
+        font-size: 1.1rem;
         &:not(:first-child){
-          margin-top: 20px;
+          margin-top: 10px;
         }
         a{
           font-weight: bold;
@@ -449,7 +458,7 @@ COLUMN
           margin-top: 15px;
         }
         &:not(:last-child){
-          margin-bottom: 10px;
+          // margin-bottom: 10px;
         }
         a{
           &:hover{
@@ -459,7 +468,7 @@ COLUMN
         }
         &.main{
           &:not(:first-child){
-            margin-top: 30px;
+            margin-top: 15px;
           }
         }
         &.sub{
@@ -526,6 +535,76 @@ COLUMN
 		}
 	}
 // }
+
+//エリア一覧
+.areaIndex{
+	.areaTitle{
+		font-size: 16px;
+		font-weight: bold;
+		margin-bottom: 10px;
+		@media (min-width: $breakpoint + 1px){
+			font-size: 20px;
+			margin-bottom: 20px;
+		}
+	}
+
+	.region{
+		padding: 15px 0;
+		border-top: 1px dotted #ccc;
+		&:first-child{
+			margin-top: 15px;
+			@media (min-width: $breakpoint + 1px){
+				margin-top: 30px;
+			}
+		}
+		@media (min-width: $breakpoint + 1px){
+			padding: 25px 0;
+		}
+	}
+	.regionName{
+		color: #76beff;
+		// color: $keyColor;
+		font-size: 1.15rem;
+		font-weight: bold;
+		margin-bottom: 5px;
+		@media (min-width: $breakpoint + 1px){
+			// margin-bottom: 10px;
+		}
+	}
+
+	.prefectures{
+		font-size: 0;
+		// padding-left: 10px;
+		li{
+			display: inline-block;
+			font-size: 1.05rem;
+			color: #999;
+			padding: 5px 0;
+			&:not(:last-child){
+				margin-right: 1.5em;
+			}
+			a{
+				color: #3f3f3f;
+				position: relative;
+				padding-left: 9px;
+				@include hover;
+				&::before{
+					content: '';
+					position: absolute;
+					width: 0;
+					height: 0;
+					border: 4px solid transparent;
+					border-left: 5px solid #666;
+					top: 50%;
+					left: 0;
+					transform: translateY(-50%);
+				}
+			}
+
+		}
+	}
+}
+
 
 /*---------------------------------
 口コミ
@@ -687,6 +766,10 @@ COLUMN
 		width: 100%;
 		padding: 5px;
 		box-sizing: border-box;
+	}
+
+	[data-name="comment_fixed"]{
+		display: none;
 	}
 
   .acf-input{

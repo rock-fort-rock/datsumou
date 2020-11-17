@@ -9,7 +9,6 @@ postに移行するため「おすすめ記事」など選択したものは
 -----------------------------------------------------*/
 
 
-
 $breakpoint = '780px';
 
 /*-------------------------------------------------------------
@@ -104,10 +103,22 @@ $pluginCss = [
   'sb-no-br',
 ];
 
+/**
+ * JavaScriptやCSSに付加されるWordPressのバージョン番号(?ver=4.4.2など)を削除します。
+ */
+function remove_src_wp_ver( $dep ) {
+	$dep->default_version = '';
+}
+add_action( 'wp_default_scripts', 'remove_src_wp_ver' );
+add_action( 'wp_default_styles', 'remove_src_wp_ver' );
+
+
 function my_scripts() {
-  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '2.9');
-  wp_enqueue_script('echo', home_url().'/assets/lib/echo.min.js', array(), '', true );
-  wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '2.4', true );
+  wp_enqueue_style( 'googlefonts', 'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swaps', array(), false);
+  wp_enqueue_style( 'style', home_url().'/assets/css/style.css', array(), '3.4');
+  // wp_enqueue_script('echo', home_url().'/assets/lib/echo.min.js', array(), false, true );
+  wp_enqueue_script('layzr', 'https://cdnjs.cloudflare.com/ajax/libs/layzr.js/2.0.2/layzr.min.js', array(), false, true );
+  wp_enqueue_script('script', home_url().'/assets/js/bundle.js', array(), '2.7', true );
 
   //プラグインCSSを「ヘッダ」で読み込まない
   global $pluginCss;
@@ -122,21 +133,35 @@ function my_scripts() {
 add_action( 'wp_enqueue_scripts', 'my_scripts', 9999 );
 
 
+function my_noindex() {
+  if(is_category()){
+    //チェックがない場合（デフォルト）はNoindex
+    //All in one seo packの「カテゴリーをnoindexにする」はチェックしない
+    $cat_id = get_query_var('cat');
+    if(!get_field('category_index','category_'.$cat_id)){
+      echo "<meta name='robots' content='noindex,follow' />\n";
+    }
+  }
+}
+add_action( 'wp_head', 'my_noindex', 1 );
+
+
 //AMP用構造化データの追加
 function add_header(){
-  if (is_single() || is_singular( 'column' ) || is_singular( 'salon' )){
+  if (is_single() || is_singular( 'salon' )){
     global $post;
     $author = get_userdata($post->post_author)->data->display_name;
     // the_post();
     $description = htmlspecialchars(get_post_meta($post->ID, '_aioseop_description', true),ENT_QUOTES); //All in One SEO からdescriptionを取得
 
-    if(is_single() || is_singular('column')){
+    if(is_single()){
       $eyecatchId = get_post_thumbnail_id($post->ID);
       $eyecatch = wp_get_attachment_image_src( $eyecatchId, 'large' );
       $eyecatchSrc = $eyecatch[0];
       $eyecatchWidth = $eyecatch[1];
       $eyecatchHeight = $eyecatch[2];
-    }else{
+    }
+    if(is_singular('salon')){
       $banner = get_field('salon_banner');
       $bannerObj = $banner['salon_banner_image'];
       $eyecatchSrc = $bannerObj['sizes']['medium_large'];
@@ -392,13 +417,27 @@ function incliment_slug($slug) {
     );
     $day_news = new WP_Query( $args );
     $day_news_count = $day_news->found_posts+1;
-    $slug = get_the_time('ymd') . sprintf('%03d', $day_news_count);
+    // $slug = get_the_time('ymd') . sprintf('%03d', $day_news_count);
+    $slug = get_the_time('Ymd') . sprintf('%03d', $day_news_count);
     return $slug;
   }else{
     return $slug;
   }
 }
 add_filter('editable_slug', 'incliment_slug');
+
+//https://nakagaw.hateblo.jp/entry/2017/10/26/111345
+// 数字 + スラッシュ で終わるページの 404 なくす
+function custom_rewrite_basic() {
+  // add_rewrite_rule('hairremovalsalon/([^/]+)(?:/([0-9]+))?/?$', 'index.php?category_name=hairremovalsalon/$matches[1]&name=$matches[2]', 'top');
+  add_rewrite_rule('([^/]+)/([^/]+)/(([0-9]+))+/?$', 'index.php?category_name=$matches[1]/$matches[2]&name=$matches[3]', 'top');
+  // if (preg_match('#([^/]+)/([^/]+)(?:/([0-9]+))+/?$#', "hairremovalsalon/musee/191016001/", $matches)) {
+  //     echo $matches[0] .' : ' . $matches[1].':' . $matches[2].':' . $matches[3];
+  // } else {
+  //     echo "マッチしませんでした。";
+  // }
+}
+add_action('init', 'custom_rewrite_basic');
 
 
 /* カテゴリーURLから「category」を削除　サブカテゴリがうまくいかないのでプラグイン（No Category Base）で対応
@@ -419,14 +458,14 @@ add_filter('editable_slug', 'incliment_slug');
 // }
 
 /* コラムアーカイブページの作成 */
-function post_has_archive( $args, $post_type ) {
-	if ( 'post' == $post_type ) {
-		$args['rewrite'] = true;
-		$args['has_archive'] = 'archive';//columnはカテゴリで使用するのでNG
-	}
-	return $args;
-}
-add_filter( 'register_post_type_args', 'post_has_archive', 10, 2 );
+// function post_has_archive( $args, $post_type ) {
+// 	if ( 'post' == $post_type ) {
+// 		$args['rewrite'] = true;
+// 		$args['has_archive'] = 'archive';//columnはカテゴリで使用するのでNG
+// 	}
+// 	return $args;
+// }
+// add_filter( 'register_post_type_args', 'post_has_archive', 10, 2 );
 
 
 /**
@@ -769,7 +808,7 @@ function custom_posts_query() {
     }elseif(is_search()){
       $wp_query -> query_vars['posts_per_page'] = 10;
     }elseif(is_archive() || is_category() || is_post_type_archive('column') || is_tax('column_category')){
-        $wp_query -> query_vars['posts_per_page'] = 6;
+        $wp_query -> query_vars['posts_per_page'] = 15;
     }else{
       $wp_query -> query_vars['posts_per_page'] = -1;
     }
@@ -882,6 +921,16 @@ add_shortcode('ランキング装飾', 'setRanking');
 
 //口コミ
 function getComments($post_id = NULL){
+//   $myArray = array(
+//     'two'   => 'Blah Blah Blah 2',
+//     'three' => 'Blah Blah Blah 3',
+//     'one'   => 'Blah Blah Blah 1',
+//     'four'  => 'Blah Blah Blah 4',
+//     'five'  => 'Blah Blah Blah 5',
+// );
+// $myArray = array('one' => $myArray['one']) + $myArray;
+// print_r($myArray);
+
   $allCommentsArray = [];
   $args = array(
     //「参考になった」がついているコメント
@@ -906,9 +955,10 @@ function getComments($post_id = NULL){
     }
   }
   // print_r($args);
-
+  $counter = 0;
   foreach($args as $arg){
     foreach(get_comments($arg) as $comment){
+
       // print_r($comment);
       $temp['ID'] = $comment->comment_ID;
       $temp['valuation'] = get_field('comment_valuation',$comment);
@@ -934,7 +984,9 @@ function getComments($post_id = NULL){
       }
       // $temp['avatar'] = get_avatar($comment->user_id, 100, $avatar);//($id, $size, $default, $alt)
 
-      $temp['avatar'] = '<img src="'.$avatar.'">';
+      // $temp['avatar'] = '<img src="'.$avatar.'">';
+      $temp['avatar'] = '<img src="/assets/images/dummy.gif" data-normal="'.$avatar.'" class="lazy">';
+
       if(is_amp()){
         $temp['avatar'] = preg_replace('/<img/i', '<amp-img layout="responsive" width="60" height="60"', $temp['avatar']);
       }
@@ -964,9 +1016,20 @@ function getComments($post_id = NULL){
       $temp['ageClass'] = $ageClass;
       $temp['ageStr'] = $ageStr;
       $temp['like'] = get_field('cld_like_count',$comment);
+      $temp['fixed'] = get_field('comment_fixed',$comment);
       array_push($allCommentsArray, $temp);
     }
   }
+
+  //固定表示を先頭にソート
+  foreach($allCommentsArray as $key => $value){
+    if($value['fixed'] == 1){
+      unset($allCommentsArray[$key]);
+      array_unshift($allCommentsArray, $value);
+    }
+  }
+
+
   return $allCommentsArray;
 }
 
@@ -1014,15 +1077,27 @@ function outputCategorySelect($self = NULL){
   echo '<option>カテゴリ選択</option>';
   $parent_terms = get_terms('category', array('parent' => 0) );
   foreach($parent_terms as $parent_value){
+    $parentOther_url = '';
     echo '<optgroup label="'.$parent_value->name. '">';
-    $parent_url = ($parent_value->description)?get_home_url().$parent_value->description:esc_url( get_category_link( $parent_value->term_id ) );
+    $parent_id = $parent_value->term_id;
+    if(get_field('category_url','category_'.$parent_id)){
+      $parentOther_url = get_field('category_url','category_'.$parent_id);
+    }
+    $parent_url = ($parentOther_url)?get_home_url().$parentOther_url:esc_url( get_category_link( $parent_value->term_id ) );
     // print_r($parent_url);
     $parent_selected = ($self == $parent_url)?' selected':'';
     echo '<option value="'.$parent_url.'"' .$parent_selected. '>'.$parent_value->name.'一覧</option>';
     $parent_id = $parent_value->term_id;
     $child_terms = get_terms( 'category', array('parent' => $parent_id) );
     foreach($child_terms as $child_value){
-      $child_url = ($child_value->description)?get_home_url().$child_value->description:esc_url( get_category_link( $child_value->term_id ) );
+      $childOther_url = '';
+      // print_r($child_value);
+      // $child_id = get_query_var('cat');
+      $child_id = $child_value->term_id;
+      if(get_field('category_url','category_'.$child_id)){
+        $childOther_url = get_field('category_url','category_'.$child_id);
+      }
+      $child_url = ($childOther_url)?get_home_url().$childOther_url:esc_url( get_category_link( $child_value->term_id ) );
       $child_selected = ($self == $child_url)?' selected':'';
       echo '<option value="'.$child_url.'"'.$child_selected.'>'.$child_value->name.'</option>';
     }
@@ -1266,10 +1341,16 @@ HTML;
 
         // 属性をコピーする
         $attrStr = [];
-        $attrStr[] = 'data-echo="' . $obj["src"]. '"';
+        // $attrStr[] = 'data-echo="' . $obj["src"]. '"';
+        $attrStr[] = 'data-normal="' . $obj["src"]. '"';
+        if($obj["srcset"]){
+          $attrStr[] = 'data-srcset="' . $obj["srcset"]. '"';
+        }
         foreach ($obj as $key => $value) {
             if (!empty($value)) {
               if($key == 'src'){
+                $attrStr[] = "$key=\"/assets/images/dummy.gif\"";
+              }elseif($key == 'srcset'){
                 $attrStr[] = "$key=\"/assets/images/dummy.gif\"";
               }else{
                 $attrStr[] = "$key=\"$value\"";

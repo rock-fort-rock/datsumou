@@ -119,7 +119,7 @@ if(!is_amp()){
 											<?php if(is_amp()): ?>
 												<amp-img src="<?php echo $logo; ?>" width="500" height="300" layout="responsive"></amp-img>
 											<?php else: ?>
-												<img src="<?php echo $logo; ?>">
+												<img src="/assets/images/dummy.gif" data-normal="<?php echo $logo; ?>" class="lazy">
 											<?php endif; ?>
 											</div>
 											<div class="datsumosalonDescription">
@@ -161,7 +161,7 @@ if(!is_amp()){
 											<?php if(is_amp()): ?>
 												<amp-img src="<?php echo $logo; ?>" width="500" height="300" layout="responsive"></amp-img>
 											<?php else: ?>
-												<img src="<?php echo $logo; ?>">
+												<img src="/assets/images/dummy.gif" data-normal="<?php echo $logo; ?>" class="lazy">
 											<?php endif; ?>
 											</div>
 											<div class="datsumosalonDescription">

@@ -11,7 +11,7 @@ const breakpoint = 780;
 const bodyWidth = document.body.clientWidth;
 const ua = window.navigator.userAgent.toLowerCase();
 
-import Diagnosis from './diagnosis';//診断チャートクラス
+// import Diagnosis from './diagnosis';//診断チャートクラス（使用停止2020.09.17）
 
 //共通
 $(() => {
@@ -97,22 +97,40 @@ $(() => {
 		$('.gFooter').css('marginBottom', h);
 	}
 
-	echo.init({
-		offset: 400,
-		debounce: false,
-		callback: function (element, op) {
-	      element.classList.add('loaded');
-	    }
+	// echo.init({
+	// 	offset: 400,
+	// 	debounce: false,
+	// 	callback: function (element, op) {
+	//       element.classList.add('loaded');
+	//     }
+	// });
+
+	var layzr = Layzr({
+    // オプション設定
+    normal: 'data-normal', // 通常画像パスの設定
+    retina: 'data-retina', // retina画像パスの設定
+    srcset: 'data-srcset', // レスポンシブ画像パスの設定
+    threshold: 0 // 読み込み位置の調整数値
 	});
+
+	layzr.on('src:after', function (element) {
+	    // 画像の書き換えをした後
+	    element.classList.add('loaded'); // 今回はクラス名を追加してみました。
+	});
+
+    // update() : 対象要素の更新
+    // check() : 表示範囲内にはるか確認し実行
+    // handlers() : スクロール・リサイズイベント時の発火 true
+    layzr.update().check().handlers(true);
 })
 
 //診断チャート
-$(() => {
-	const ele = $('.diagnosisChart');
-	if(ele.length < 1)return;
-	const diagnosis = new Diagnosis();
-	diagnosis.init();
-})
+// $(() => {
+// 	const ele = $('.diagnosisChart');
+// 	if(ele.length < 1)return;
+// 	const diagnosis = new Diagnosis();
+// 	diagnosis.init();
+// })
 
 
 //サロン情報
@@ -256,7 +274,7 @@ $(() => {
 	const ele = $('.tableofcontents');
 	if(ele.length < 1)return;
 
-	let hide = false;//テキスト非表示
+	let hide = true;//テキスト非表示
 	$('.displayToggle').on({
 		'click': (e) => {
 			$(e.currentTarget).next('ul').slideToggle(400);
@@ -285,6 +303,7 @@ $(() => {
 		}
 	})
 })
+
 
 
 //用語集

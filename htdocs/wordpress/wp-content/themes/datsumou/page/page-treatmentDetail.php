@@ -39,7 +39,7 @@ if(!is_amp()){
 							?>
 							<amp-img src="<?php echo $eyecatchSrc; ?>" width="<?php echo $eyecatchWidth; ?>" height="<?php echo $eyecatchHeight; ?>" layout="responsive"></amp-img>
 						<?php else: ?>
-							<img src="<?php the_post_thumbnail_url('medium'); ?>">
+							<img src="/assets/images/dummy.gif" data-normal="<?php the_post_thumbnail_url('medium'); ?>" class="lazy">
 						<?php endif; ?>
 
 						<div class="description">
@@ -79,7 +79,7 @@ if(!is_amp()){
 								<?php if(is_amp()): ?>
 									<amp-img src="/assets/images/treatment/aftercare.png" width="360" height="360" layout="responsive"></amp-img>
 								<?php else: ?>
-									<img src="/assets/images/treatment/aftercare.png">
+									<img src="/assets/images/dummy.gif" data-normal="/assets/images/treatment/aftercare.png" class="lazy">
 								<?php endif; ?>
 							</div>
 							<div class="textBlock">
@@ -99,7 +99,7 @@ if(!is_amp()){
 								<?php if(is_amp()): ?>
 									<amp-img src="/assets/images/treatment/attention.png" width="360" height="360" layout="responsive"></amp-img>
 								<?php else: ?>
-									<img src="/assets/images/treatment/attention.png">
+									<img src="/assets/images/dummy.gif" data-normal="/assets/images/treatment/attention.png" class="lazy">
 								<?php endif; ?>
 							</div>
 							<div class="textBlock">
@@ -119,7 +119,7 @@ if(!is_amp()){
 								<?php if(is_amp()): ?>
 									<amp-img src="/assets/images/treatment/beautymedical.png" width="360" height="360" layout="responsive"></amp-img>
 								<?php else: ?>
-									<img src="/assets/images/treatment/beautymedical.png">
+									<img src="/assets/images/dummy.gif" data-normal="/assets/images/treatment/beautymedical.png" class="lazy">
 								<?php endif; ?>
 							</div>
 							<div class="textBlock">
@@ -215,7 +215,7 @@ if(!is_amp()){
 											<?php if(is_amp()): ?>
 											<amp-img src="<?php echo $value['eyecatchSrc']; ?>" width="<?php echo $value['eyecatchWidth']; ?>" height="<?php echo $value['eyecatchHeight']; ?>" layout="responsive"></amp-img>
 											<?php else: ?>
-											<img src="<?php echo $value['eyecatchSrc']; ?>">
+											<img src="/assets/images/dummy.gif" data-normal="<?php echo $value['eyecatchSrc']; ?>" class="lazy">
 										<?php endif; ?>
 										</div>
 										<div class="textBlock">
@@ -258,7 +258,7 @@ if(!is_amp()){
 								<?php if(is_amp()): ?>
 									<amp-img src="<?php echo $avatar; ?>" width="60" height="60"></amp-img>
 								<?php else: ?>
-									<img src="<?php echo $avatar; ?>">
+									<img src="/assets/images/dummy.gif" data-normal="<?php echo $avatar; ?>" class="lazy">
 								<?php endif; ?>
 								</div>
 								<div class="comment"><?php the_sub_field('treatmentDetail_review_comment'); ?></div>
@@ -299,7 +299,7 @@ if(!is_amp()){
 									<?php if(is_amp()): ?>
 										<amp-img src="<?php echo $partsImgObj['sizes']['medium']; ?>" width="360" height="360" layout="responsive" class="thumb"></amp-img>
 									<?php else: ?>
-										<img src="<?php echo $partsImgObj['sizes']['medium']; ?>" class="thumb">
+										<img src="/assets/images/dummy.gif" data-normal="<?php echo $partsImgObj['sizes']['medium']; ?>" class="thumb lazy">
 									<?php endif; ?>
 									<p>
 										<?php the_sub_field('optionParts_list_text'); ?>

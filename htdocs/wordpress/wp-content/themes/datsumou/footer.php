@@ -7,6 +7,7 @@
 				<ul class="gFooterNavi">
 					<li><a href="/">TOP</a></li>
 					<li><a href="/ranking/">ランキング</a></li>
+					<li><a href="/sitemap/">サイトマップ</a></li>
 				</ul>
 				<!-- <ul class="snsLink">
 					<li><a href="#"><img src="/assets/images/icon_line.png" alt="LINE"></a></li>
@@ -14,7 +15,7 @@
 					<li><a href="#"><img src="/assets/images/icon_twitter.png" alt="Twitter"></a></li>
 					<li><a href="#"><img src="/assets/images/icon_instagram.png" alt="Instagram"></a></li>
 				</ul> -->
-				<div class="copyright">&copy;ツルツル全身脱毛診断メーカー</div>
+				<div class="copyright">&copy;全身脱毛診断メーカー：だつもぅ</div>
 			</div>
 		</footer>
 

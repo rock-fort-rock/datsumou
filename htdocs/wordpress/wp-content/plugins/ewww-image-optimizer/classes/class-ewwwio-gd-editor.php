@@ -26,7 +26,7 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 		 * @return WP_Error| array The full path, base filename, width, height, and mimetype.
 		 */
 		protected function _save( $image, $filename = null, $mime_type = null ) {
-			ewwwio_debug_message( '<b>wp_image_editor_gd(agr)::' . __FUNCTION__ . '()</b>' );
+			ewwwio_debug_message( '<b>(agr)' . __METHOD__ . '()</b>' );
 			global $ewww_defer;
 			global $ewww_preempt_editor;
 			if ( ! empty( $ewww_preempt_editor ) ) {
@@ -36,10 +36,10 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 			if ( ! $filename ) {
 				$filename = $this->generate_filename( null, null, $extension );
 			}
-			if ( ( ! defined( 'EWWWIO_EDITOR_OVERWRITE' ) || ! EWWWIO_EDITOR_OVERWRITE ) && is_file( $filename ) ) {
+			if ( ( ! defined( 'EWWWIO_EDITOR_OVERWRITE' ) || ! EWWWIO_EDITOR_OVERWRITE ) && ewwwio_is_file( $filename ) ) {
 				ewwwio_debug_message( "detected existing file: $filename" );
 				$current_size = getimagesize( $filename );
-				if ( $current_size && $this->size['width'] == $current_size[0] && $this->size['height'] == $current_size[1] ) {
+				if ( $current_size && (int) $this->size['width'] === (int) $current_size[0] && (int) $this->size['height'] === (int) $current_size[1] ) {
 					ewwwio_debug_message( "existing file has same dimensions, not saving $filename" );
 					return array(
 						'path'      => $filename,
@@ -59,31 +59,13 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 					$filename = $saved['path'];
 				}
 				if ( file_exists( $filename ) ) {
-					/* if ( ! ewww_image_optimizer_test_background_opt() ) { */
-						ewww_image_optimizer( $filename );
-						ewwwio_debug_message( "image editor (AGR gd) saved: $filename" );
-						$image_size = ewww_image_optimizer_filesize( $filename );
-						ewwwio_debug_message( "image editor size: $image_size" );
-
-					/*
-					} else {
-						add_filter( 'http_headers_useragent', 'ewww_image_optimizer_cloud_useragent', PHP_INT_MAX );
-						global $ewwwio_image_background;
-						if ( ! class_exists( 'WP_Background_Process' ) ) {
-							require_once( EWWW_IMAGE_OPTIMIZER_PLUGIN_PATH . 'background.php' );
-						}
-						if ( ! is_object( $ewwwio_image_background ) ) {
-							$ewwwio_image_background = new EWWWIO_Image_Background_Process();
-						}
-						$ewwwio_image_background->push_to_queue( $filename );
-						$ewwwio_image_background->save()->dispatch();
-						ewwwio_debug_message( "image editor (AGR gd) queued: $filename" );
-					}
-					*/
+					ewww_image_optimizer( $filename );
+					ewwwio_debug_message( "image editor (AGR gd) saved: $filename" );
+					$image_size = ewww_image_optimizer_filesize( $filename );
+					ewwwio_debug_message( "image editor size: $image_size" );
 				}
-				ewww_image_optimizer_debug_log();
 			}
-			ewwwio_memory( __FUNCTION__ );
+			ewwwio_memory( __METHOD__ );
 			return $saved;
 		}
 		/**
@@ -105,32 +87,14 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 				foreach ( $metadata as $size ) {
 					$filename = trailingslashit( $dir ) . $size['file'];
 					if ( file_exists( $filename ) ) {
-						/* if ( ! ewww_image_optimizer_test_background_opt() ) {*/
-							ewww_image_optimizer( $filename );
-							ewwwio_debug_message( "image editor (AGR gd) saved: $filename" );
-							$image_size = ewww_image_optimizer_filesize( $filename );
-							ewwwio_debug_message( "image editor size: $image_size" );
-
-						/*
-						} else {
-							add_filter( 'http_headers_useragent', 'ewww_image_optimizer_cloud_useragent', PHP_INT_MAX );
-							global $ewwwio_image_background;
-							if ( ! class_exists( 'WP_Background_Process' ) ) {
-								require_once( EWWW_IMAGE_OPTIMIZER_PLUGIN_PATH . 'background.php' );
-							}
-							if ( ! is_object( $ewwwio_image_background ) ) {
-								$ewwwio_image_background = new EWWWIO_Image_Background_Process();
-							}
-							$ewwwio_image_background->push_to_queue( $filename );
-							$ewwwio_image_background->save()->dispatch();
-							ewwwio_debug_message( "image editor (AGR gd) queued: $filename" );
-						}
-						*/
+						ewww_image_optimizer( $filename );
+						ewwwio_debug_message( "image editor (AGR gd) saved: $filename" );
+						$image_size = ewww_image_optimizer_filesize( $filename );
+						ewwwio_debug_message( "image editor size: $image_size" );
 					}
 				}
 			}
-			ewww_image_optimizer_debug_log();
-			ewwwio_memory( __FUNCTION__ );
+			ewwwio_memory( __METHOD__ );
 			return $metadata;
 		}
 	}
@@ -150,7 +114,7 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 		 * @return WP_Error| array The full path, base filename, width, height, and mimetype.
 		 */
 		protected function _save( $image, $filename = null, $mime_type = null ) {
-			ewwwio_debug_message( '<b>wp_image_editor_gd(wpthumb)::' . __FUNCTION__ . '()</b>' );
+			ewwwio_debug_message( '<b>(wpthumb)' . __METHOD__ . '()</b>' );
 			global $ewww_defer;
 			global $ewww_preempt_editor;
 			if ( ! empty( $ewww_preempt_editor ) ) {
@@ -160,10 +124,10 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 			if ( ! $filename ) {
 				$filename = $this->generate_filename( null, null, $extension );
 			}
-			if ( ( ! defined( 'EWWWIO_EDITOR_OVERWRITE' ) || ! EWWWIO_EDITOR_OVERWRITE ) && is_file( $filename ) ) {
+			if ( ( ! defined( 'EWWWIO_EDITOR_OVERWRITE' ) || ! EWWWIO_EDITOR_OVERWRITE ) && ewwwio_is_file( $filename ) ) {
 				ewwwio_debug_message( "detected existing file: $filename" );
 				$current_size = getimagesize( $filename );
-				if ( $current_size && $this->size['width'] == $current_size[0] && $this->size['height'] == $current_size[1] ) {
+				if ( $current_size && (int) $this->size['width'] === (int) $current_size[0] && (int) $this->size['height'] === (int) $current_size[1] ) {
 					ewwwio_debug_message( "existing file has same dimensions, not saving $filename" );
 					return array(
 						'path'      => $filename,
@@ -183,31 +147,13 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 					$filename = $saved['path'];
 				}
 				if ( file_exists( $filename ) ) {
-					/* if ( ! ewww_image_optimizer_test_background_opt() ) { */
-						ewww_image_optimizer( $filename );
-						ewwwio_debug_message( "image editor (wpthumb GD) saved: $filename" );
-						$image_size = ewww_image_optimizer_filesize( $filename );
-						ewwwio_debug_message( "image editor size: $image_size" );
-
-					/*
-					} else {
-						add_filter( 'http_headers_useragent', 'ewww_image_optimizer_cloud_useragent', PHP_INT_MAX );
-						global $ewwwio_image_background;
-						if ( ! class_exists( 'WP_Background_Process' ) ) {
-							require_once( EWWW_IMAGE_OPTIMIZER_PLUGIN_PATH . 'background.php' );
-						}
-						if ( ! is_object( $ewwwio_image_background ) ) {
-							$ewwwio_image_background = new EWWWIO_Image_Background_Process();
-						}
-						$ewwwio_image_background->push_to_queue( $filename );
-						$ewwwio_image_background->save()->dispatch();
-						ewwwio_debug_message( "image editor (wpthumb GD) queued: $filename" );
-					}
-					*/
+					ewww_image_optimizer( $filename );
+					ewwwio_debug_message( "image editor (wpthumb GD) saved: $filename" );
+					$image_size = ewww_image_optimizer_filesize( $filename );
+					ewwwio_debug_message( "image editor size: $image_size" );
 				}
-				ewww_image_optimizer_debug_log();
 			}
-			ewwwio_memory( __FUNCTION__ );
+			ewwwio_memory( __METHOD__ );
 			return $saved;
 		}
 	}
@@ -227,7 +173,7 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 		 * @return WP_Error| array The full path, base filename, width, height, and mimetype.
 		 */
 		protected function _save( $image, $filename = null, $mime_type = null ) {
-			ewwwio_debug_message( '<b>wp_image_editor_gd(bfi)::' . __FUNCTION__ . '()</b>' );
+			ewwwio_debug_message( '<b>(bfi)::' . __METHOD__ . '()</b>' );
 			global $ewww_defer;
 			global $ewww_preempt_editor;
 			if ( ! empty( $ewww_preempt_editor ) ) {
@@ -237,10 +183,10 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 			if ( ! $filename ) {
 				$filename = $this->generate_filename( null, null, $extension );
 			}
-			if ( ( ! defined( 'EWWWIO_EDITOR_OVERWRITE' ) || ! EWWWIO_EDITOR_OVERWRITE ) && is_file( $filename ) ) {
+			if ( ( ! defined( 'EWWWIO_EDITOR_OVERWRITE' ) || ! EWWWIO_EDITOR_OVERWRITE ) && ewwwio_is_file( $filename ) ) {
 				ewwwio_debug_message( "detected existing file: $filename" );
 				$current_size = getimagesize( $filename );
-				if ( $current_size && $this->size['width'] == $current_size[0] && $this->size['height'] == $current_size[1] ) {
+				if ( $current_size && (int) $this->size['width'] === (int) $current_size[0] && (int) $this->size['height'] === (int) $current_size[1] ) {
 					ewwwio_debug_message( "existing file has same dimensions, not saving $filename" );
 					return array(
 						'path'      => $filename,
@@ -260,31 +206,13 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 					$filename = $saved['path'];
 				}
 				if ( file_exists( $filename ) ) {
-					/* if ( ! ewww_image_optimizer_test_background_opt() ) { */
 						ewww_image_optimizer( $filename );
 						ewwwio_debug_message( "image editor (BFI GD) saved: $filename" );
 						$image_size = ewww_image_optimizer_filesize( $filename );
 						ewwwio_debug_message( "image editor size: $image_size" );
-
-					/*
-					} else {
-						add_filter( 'http_headers_useragent', 'ewww_image_optimizer_cloud_useragent', PHP_INT_MAX );
-						global $ewwwio_image_background;
-						if ( ! class_exists( 'WP_Background_Process' ) ) {
-							require_once( EWWW_IMAGE_OPTIMIZER_PLUGIN_PATH . 'background.php' );
-						}
-						if ( ! is_object( $ewwwio_image_background ) ) {
-							$ewwwio_image_background = new EWWWIO_Image_Background_Process();
-						}
-						$ewwwio_image_background->push_to_queue( $filename );
-						$ewwwio_image_background->save()->dispatch();
-						ewwwio_debug_message( "image editor (BFI GD) queued: $filename" );
-					}
-					*/
 				}
-				ewww_image_optimizer_debug_log();
 			}
-			ewwwio_memory( __FUNCTION__ );
+			ewwwio_memory( __METHOD__ );
 			return $saved;
 		}
 	}
@@ -309,11 +237,15 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 		 * @param bool     $crop Optional. Scale by default, crop if true.
 		 * @return bool|WP_Error
 		 */
-		public function _resize( $max_w, $max_h, $crop = false ) {
-			if ( ( ! $max_w || $max_w >= $this->size['width'] ) && ( ! $max_h || $max_h >= $this->size['height'] ) ) {
-				return new WP_Error( 'image_resize_error', __( 'Image resize failed.' ) );
+		protected function _resize( $max_w, $max_h, $crop = false ) {
+			ewwwio_debug_message( '<b>' . __METHOD__ . '()</b>' );
+			$dims = image_resize_dimensions( $this->size['width'], $this->size['height'], $max_w, $max_h, $crop );
+			if ( ! $dims ) {
+				return new WP_Error( 'error_getting_dimensions', __( 'Could not calculate resized image dimensions' ), $this->file );
 			}
-			ewwwio_debug_message( '<b>wp_image_editor_gd::' . __FUNCTION__ . '()</b>' );
+			list( $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h ) = $dims;
+			ewwwio_debug_message( "dst_x $dst_x, dst_y $dst_y, src_x $src_x, src_y $src_y, dst_w $dst_w, dst_h $dst_h, src_w $src_w, src_h $src_h" );
+
 			if ( defined( 'EWWWIO_EDITOR_AGR' ) && ! EWWWIO_EDITOR_AGR ) {
 				ewwwio_debug_message( 'AGR disabled' );
 				return parent::_resize( $max_w, $max_h, $crop );
@@ -326,7 +258,7 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 				ewww_image_optimizer_cloud_init();
 			}
 			$ewww_status = get_transient( 'ewww_image_optimizer_cloud_status' );
-			if ( 'image/gif' === $this->mime_type && function_exists( 'ewww_image_optimizer_path_check' ) ) {
+			if ( 'image/gif' === $this->mime_type && function_exists( 'ewww_image_optimizer_path_check' ) && ! ewww_image_optimizer_get_option( 'ewww_image_optimizer_cloud_key' ) ) {
 				ewww_image_optimizer_path_check( false, false, true, false, false, false );
 			}
 			if ( 'image/gif' === $this->mime_type && ( ! defined( 'EWWW_IMAGE_OPTIMIZER_GIFSICLE' ) || ! EWWW_IMAGE_OPTIMIZER_GIFSICLE ) ) {
@@ -349,14 +281,14 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 			}
 			// TODO: Possibly handle crop, rotate, and flip down the road.
 			if ( ! empty( $this->modified ) ) {
-				ewwwio_debug_message( 'GIF already altered, leave it alone' );
+				ewwwio_debug_message( 'GIF already altered! Too late, so leave it alone...' );
 				return parent::_resize( $max_w, $max_h, $crop );
 			}
-			if ( ! $this->file || 0 === strpos( $this->file, 's3' ) || 0 === strpos( $this->file, 'http' ) || 0 === strpos( $this->file, 'ftp' ) || ! is_file( $this->file ) ) {
+			if ( ! $this->file || ewww_image_optimizer_stream_wrapped( $this->file ) || 0 === strpos( $this->file, 'http' ) || 0 === strpos( $this->file, 'ftp' ) || ! ewwwio_is_file( $this->file ) ) {
 				ewwwio_debug_message( 'could not load original file, or remote path detected' );
 				return parent::_resize( $max_w, $max_h, $crop );
 			}
-			$resize_result = ewww_image_optimizer_better_resize( $this->file, $max_w, $max_h, $crop );
+			$resize_result = ewww_image_optimizer_better_resize( $this->file, $dst_x, $dst_y, $src_x, $src_y, $dst_w, $dst_h, $src_w, $src_h );
 			if ( is_wp_error( $resize_result ) ) {
 				return $resize_result;
 			}
@@ -366,7 +298,7 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 				return new WP_Error( 'image_resize_error', __( 'Image resize failed.' ) );
 			}
 			$this->update_size( $new_size[0], $new_size[1] );
-			ewwwio_memory( __FUNCTION__ );
+			ewwwio_memory( __METHOD__ );
 			return $resize_result;
 		}
 
@@ -386,7 +318,8 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 		 * @return true|WP_Error
 		 */
 		public function resize( $max_w, $max_h, $crop = false ) {
-			if ( ( $this->size['width'] == $max_w ) && ( $this->size['height'] == $max_h ) ) {
+			ewwwio_debug_message( '<b>' . __METHOD__ . '()</b>' );
+			if ( (int) $this->size['width'] === (int) $max_w && (int) $this->size['height'] === (int) $max_h ) {
 				return true;
 			}
 
@@ -405,6 +338,61 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 				return $resized;
 			}
 			return new WP_Error( 'image_resize_error', __( 'Image resize failed.' ), $this->file );
+		}
+
+		/**
+		 * Create an image sub-size and return the image meta data value for it.
+		 *
+		 * @since 5.3.0
+		 *
+		 * @param array $size_data {
+		 *     Array of size data.
+		 *
+		 *     @type int  $width  The maximum width in pixels.
+		 *     @type int  $height The maximum height in pixels.
+		 *     @type bool $crop   Whether to crop the image to exact dimensions.
+		 * }
+		 * @return array|WP_Error The image data array for inclusion in the `sizes` array in the image meta,
+		 *                        WP_Error object on error.
+		 */
+		public function make_subsize( $size_data ) {
+			ewwwio_debug_message( '<b>' . __METHOD__ . '()</b>' );
+			if ( ! isset( $size_data['width'] ) && ! isset( $size_data['height'] ) ) {
+				return new WP_Error( 'image_subsize_create_error', __( 'Cannot resize the image. Both width and height are not set.' ) );
+			}
+
+			$orig_size = $this->size;
+
+			if ( ! isset( $size_data['width'] ) ) {
+				$size_data['width'] = null;
+			}
+
+			if ( ! isset( $size_data['height'] ) ) {
+				$size_data['height'] = null;
+			}
+
+			if ( ! isset( $size_data['crop'] ) ) {
+				$size_data['crop'] = false;
+			}
+
+			$resized = $this->_resize( $size_data['width'], $size_data['height'], $size_data['crop'] );
+
+			if ( is_string( $resized ) ) {
+				$this->ewww_image = $resized;
+			}
+			if ( is_wp_error( $resized ) ) {
+				$saved = $resized;
+			} else {
+				$saved = $this->_save( $resized );
+			}
+
+			$this->size = $orig_size;
+
+			if ( ! is_wp_error( $saved ) ) {
+				unset( $saved['path'] );
+			}
+
+			return $saved;
 		}
 
 		/**
@@ -431,6 +419,11 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 		 * @return array An array of resized images' metadata by size.
 		 */
 		public function multi_resize( $sizes ) {
+			ewwwio_debug_message( '<b>' . __METHOD__ . '()</b>' );
+			global $wp_version;
+			if ( version_compare( $wp_version, '5.3' ) >= 0 ) {
+				return parent::multi_resize( $sizes );
+			}
 			$metadata  = array();
 			$orig_size = $this->size;
 			foreach ( $sizes as $size => $size_data ) {
@@ -448,7 +441,7 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 				}
 
 				$image     = $this->_resize( $size_data['width'], $size_data['height'], $size_data['crop'] );
-				$duplicate = ( ( $orig_size['width'] == $size_data['width'] ) && ( $orig_size['height'] == $size_data['height'] ) );
+				$duplicate = ( (int) $orig_size['width'] === (int) $size_data['width'] && (int) $orig_size['height'] === (int) $size_data['height'] );
 
 				if ( ! is_wp_error( $image ) && ! $duplicate ) {
 					if ( is_resource( $image ) ) {
@@ -532,7 +525,7 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 		 * @return WP_Error|array The full path, base filename, and mimetype.
 		 */
 		protected function _save_ewwwio_file( $image, $filename = null, $mime_type = null ) {
-			ewwwio_debug_message( '<b>wp_image_editor_gd::' . __FUNCTION__ . '()</b>' );
+			ewwwio_debug_message( '<b>' . __METHOD__ . '()</b>' );
 			list( $filename, $extension, $mime_type ) = $this->get_output_format( $filename, $mime_type );
 			if ( ! $filename ) {
 				$filename = $this->generate_filename( null, null, $extension );
@@ -546,10 +539,11 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 				unset( $this->ewww_image );
 				return parent::_save( $image, $filename, $mime_type );
 			}
-			if ( ( ! defined( 'EWWWIO_EDITOR_OVERWRITE' ) || ! EWWWIO_EDITOR_OVERWRITE ) && is_file( $filename ) && empty( $ewww_preempt_editor ) ) {
+			global $ewww_preempt_editor;
+			if ( ( ! defined( 'EWWWIO_EDITOR_OVERWRITE' ) || ! EWWWIO_EDITOR_OVERWRITE ) && ewwwio_is_file( $filename ) && empty( $ewww_preempt_editor ) ) {
 				ewwwio_debug_message( "detected existing file: $filename" );
 				$current_size = getimagesize( $filename );
-				if ( $current_size && $this->size['width'] == $current_size[0] && $this->size['height'] == $current_size[1] ) {
+				if ( $current_size && (int) $this->size['width'] === (int) $current_size[0] && (int) $this->size['height'] === (int) $current_size[1] ) {
 					ewwwio_debug_message( "existing file has same dimensions, not saving $filename" );
 					return array(
 						'path'      => $filename,
@@ -568,9 +562,9 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 				if ( is_writable( $filename ) ) {
 					$stat  = stat( dirname( $filename ) );
 					$perms = $stat['mode'] & 0000666; // Same permissions as parent folder with executable bits stripped.
-					chmod( $filename, $perms );
+					ewwwio_chmod( $filename, $perms );
 				}
-				ewwwio_memory( __FUNCTION__ );
+				ewwwio_memory( __METHOD__ );
 				return array(
 					'path'      => $filename,
 					'file'      => wp_basename( apply_filters( 'image_make_intermediate_size', $filename ) ),
@@ -579,7 +573,7 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 					'mime-type' => $mime_type,
 				);
 			}
-			ewwwio_memory( __FUNCTION__ );
+			ewwwio_memory( __METHOD__ );
 			return new WP_Error( 'image_save_error', __( 'Image Editor Save Failed' ) );
 		}
 
@@ -594,6 +588,7 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 		 * @return WP_Error|array The full path, base filename, and mimetype.
 		 */
 		protected function _save( $image, $filename = null, $mime_type = null ) {
+			ewwwio_debug_message( '<b>' . __METHOD__ . '()</b>' );
 			global $ewww_defer;
 			global $ewww_preempt_editor;
 			if ( ! empty( $this->ewww_image ) && empty( $this->modified ) ) {
@@ -606,10 +601,10 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 			if ( ! $filename ) {
 				$filename = $this->generate_filename( null, null, $extension );
 			}
-			if ( ( ! defined( 'EWWWIO_EDITOR_OVERWRITE' ) || ! EWWWIO_EDITOR_OVERWRITE ) && is_file( $filename ) ) {
+			if ( ( ! defined( 'EWWWIO_EDITOR_OVERWRITE' ) || ! EWWWIO_EDITOR_OVERWRITE ) && ewwwio_is_file( $filename ) ) {
 				ewwwio_debug_message( "detected existing file: $filename" );
 				$current_size = getimagesize( $filename );
-				if ( $current_size && $this->size['width'] == $current_size[0] && $this->size['height'] == $current_size[1] ) {
+				if ( $current_size && (int) $this->size['width'] === (int) $current_size[0] && (int) $this->size['height'] === (int) $current_size[1] ) {
 					ewwwio_debug_message( "existing file has same dimensions, not saving $filename" );
 					return array(
 						'path'      => $filename,
@@ -629,31 +624,13 @@ if ( class_exists( 'Bbpp_Animated_Gif' ) ) {
 					$filename = $saved['path'];
 				}
 				if ( file_exists( $filename ) ) {
-					/* if ( ! ewww_image_optimizer_test_background_opt() ) { */
-						ewww_image_optimizer( $filename );
-						ewwwio_debug_message( "image editor (gd) saved: $filename" );
-						$image_size = ewww_image_optimizer_filesize( $filename );
-						ewwwio_debug_message( "image editor size: $image_size" );
-
-					/*
-					} else {
-						add_filter( 'http_headers_useragent', 'ewww_image_optimizer_cloud_useragent', PHP_INT_MAX );
-						global $ewwwio_image_background;
-						if ( ! class_exists( 'WP_Background_Process' ) ) {
-							require_once( EWWW_IMAGE_OPTIMIZER_PLUGIN_PATH . 'background.php' );
-						}
-						if ( ! is_object( $ewwwio_image_background ) ) {
-							$ewwwio_image_background = new EWWWIO_Image_Background_Process();
-						}
-						$ewwwio_image_background->push_to_queue( $filename );
-						$ewwwio_image_background->save()->dispatch();
-						ewwwio_debug_message( "image editor (gd) queued: $filename" );
-					}
-					*/
+					ewww_image_optimizer( $filename );
+					ewwwio_debug_message( "image editor (gd) saved: $filename" );
+					$image_size = ewww_image_optimizer_filesize( $filename );
+					ewwwio_debug_message( "image editor size: $image_size" );
 				}
-				ewww_image_optimizer_debug_log();
 			}
-			ewwwio_memory( __FUNCTION__ );
+			ewwwio_memory( __METHOD__ );
 			return $saved;
 		}
 	}

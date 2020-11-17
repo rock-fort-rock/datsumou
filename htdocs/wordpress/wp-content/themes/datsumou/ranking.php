@@ -78,7 +78,7 @@ foreach($salonPosts as $value){
 		<?php if(is_amp()): ?>
 			<amp-img src="/assets/images/icon_ranking<?php echo $salonNum; ?>.png" alt="人気サロン第<?php echo $salonNum; ?>位" class="rankIcon" width="112" height="90"></amp-img>
 		<?php else: ?>
-			<img data-echo="/assets/images/icon_ranking<?php echo $salonNum; ?>.png" class="rankIcon lazy" src="/assets/images/dummy.gif" alt="人気サロン第<?php echo $salonNum; ?>位">
+			<img data-normal="/assets/images/icon_ranking<?php echo $salonNum; ?>.png" class="rankIcon lazy" src="/assets/images/dummy.gif" alt="人気サロン第<?php echo $salonNum; ?>位">
 			<!-- <img src="/assets/images/icon_ranking<?php echo $salonNum; ?>.png" alt="人気サロン第<?php echo $salonNum; ?>位" class="rankIcon"> -->
 		<?php endif; ?>
 		<h2 class="salonName"><?php echo $value['title']; ?></h2>
@@ -92,7 +92,7 @@ foreach($salonPosts as $value){
 						<?php if(is_amp()): ?>
 						<amp-img src="<?php echo $value['bannerImage']; ?>" width="800" height="667" layout="responsive"></amp-img>
 						<?php else: ?>
-						<img data-echo="<?php echo $value['bannerImage']; ?>" class="lazy" src="/assets/images/dummy.gif">
+						<img data-normal="<?php echo $value['bannerImage']; ?>" class="lazy" src="/assets/images/dummy.gif">
 						<?php endif; ?>
 					</a>
 				</div>
@@ -280,7 +280,7 @@ foreach($salonPosts as $value){
 						<?php for($i=0; $i<min($count, $init); $i++): ?>
 						<li>
 							<div class="avatar">
-								<img data-echo="<?php echo $value['review'][$i]['avatar']; ?>" src="/assets/images/dummy.gif" class="lazy">
+								<img data-normal="<?php echo $value['review'][$i]['avatar']; ?>" src="/assets/images/dummy.gif" class="lazy">
 								<img src="<?php echo $value['review'][$i]['avatar']; ?>">
 							</div>
 							<div class="comment"><?php echo $value['review'][$i]['comment']; ?></div>
@@ -292,7 +292,7 @@ foreach($salonPosts as $value){
 					<ul class="review reviewMore even">
 						<?php for($i=$init; $i<$count; $i++): ?>
 						<li>
-							<div class="avatar"><img data-echo="<?php echo $value['review'][$i]['avatar']; ?>" src="/assets/images/dummy.gif" class="lazy"></div>
+							<div class="avatar"><img data-normal="<?php echo $value['review'][$i]['avatar']; ?>" src="/assets/images/dummy.gif" class="lazy"></div>
 							<div class="comment"><?php echo $value['review'][$i]['comment']; ?></div>
 						</li>
 						<?php endfor; ?>
@@ -315,7 +315,7 @@ foreach($salonPosts as $value){
 								<?php if(is_amp()): ?>
 								<amp-img src="/assets/images/btn_officialsite.png" alt="公式サイトを見る" width="214" height="47"></amp-img>
 								<?php else: ?>
-								<img data-echo="/assets/images/btn_officialsite.png" alt="公式サイトを見る" src="/assets/images/dummy.gif" class="lazy">
+								<img data-normal="/assets/images/btn_officialsite.png" alt="公式サイトを見る" src="/assets/images/dummy.gif" class="lazy">
 								<?php endif; ?>
 							</a>
 						</li>
@@ -324,7 +324,7 @@ foreach($salonPosts as $value){
 								<?php if(is_amp()): ?>
 								<amp-img src="/assets/images/btn_detail.png" alt="詳細を見る" width="114" height="47"></amp-img>
 								<?php else: ?>
-								<img data-echo="/assets/images/btn_detail.png" alt="詳細を見る" src="/assets/images/dummy.gif" class="lazy">
+								<img data-normal="/assets/images/btn_detail.png" alt="詳細を見る" src="/assets/images/dummy.gif" class="lazy">
 								<?php endif; ?>
 							</a>
 						</li>

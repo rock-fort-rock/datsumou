@@ -109,7 +109,7 @@ while(the_repeater_field('salon_recommend')){
 		</div>
 		<?php endif; ?>
 		<header class="salonHeader">
-			<h2 class="salonName"><?php the_title(); ?></h2>
+			<h1 class="salonName"><?php the_title(); ?></h1>
 		</header>
 		<div class="salonBody">
 			<div class="salonInfo">
@@ -120,7 +120,7 @@ while(the_repeater_field('salon_recommend')){
 							<?php if(is_amp()): ?>
 							<amp-img src="<?php echo $bannerImage; ?>" width="800" height="680" layout="responsive"></amp-img>
 							<?php else: ?>
-							<img src="<?php echo $bannerImage; ?>">
+							<img src="/assets/images/dummy.gif" data-normal="<?php echo $bannerImage; ?>" class="lazy">
 							<?php endif; ?>
 						</a>
 					</div>
@@ -284,7 +284,7 @@ while(the_repeater_field('salon_recommend')){
 			<?php endif; ?>
 
 			<div class="paragraph salonReview" id="review">
-				<div class="salonContentTitle">みんなの口コミ</div>
+				<h2 class="salonContentTitle">みんなの口コミ</h2>
 				<div class="contentInner">
 				<?php	if ( comments_open() ) : ?>
 					<?php comments_template(); ?>
@@ -363,7 +363,7 @@ while(the_repeater_field('salon_recommend')){
 										<?php if(is_amp()): ?>
 										<amp-img src="<?php echo $value['eyecatchSrc']; ?>" width="<?php echo $value['eyecatchWidth']; ?>" height="<?php echo $value['eyecatchHeight']; ?>" layout="responsive"></amp-img>
 										<?php else: ?>
-										<img src="<?php echo $value['eyecatchSrc']; ?>">
+										<img src="/assets/images/dummy.gif" data-normal="<?php echo $value['eyecatchSrc']; ?>" class="lazy">
 									<?php endif; ?>
 									</div>
 									<div class="textBlock">
@@ -448,7 +448,7 @@ while(the_repeater_field('salon_recommend')){
 										<?php if(is_amp()): ?>
 											<amp-img src="<?php echo $logo; ?>" width="500" height="300" layout="responsive"></amp-img>
 										<?php else: ?>
-											<img src="<?php echo $logo; ?>">
+											<img src="/assets/images/dummy.gif" data-normal="<?php echo $logo; ?>" class="lazy">
 										<?php endif; ?>
 										</div>
 										<div class="datsumosalonDescription">
@@ -490,7 +490,7 @@ while(the_repeater_field('salon_recommend')){
 										<?php if(is_amp()): ?>
 											<amp-img src="<?php echo $logo; ?>" width="500" height="300" layout="responsive"></amp-img>
 										<?php else: ?>
-											<img src="<?php echo $logo; ?>">
+											<img src="/assets/images/dummy.gif" data-normal="<?php echo $logo; ?>" class="lazy">
 										<?php endif; ?>
 										</div>
 										<div class="datsumosalonDescription">

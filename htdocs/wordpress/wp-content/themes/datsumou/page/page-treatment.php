@@ -46,6 +46,7 @@ if(!is_amp()){
 							$btnFront = '<img src="/assets/images/treatment/btn_front.png" alt="正面">';
 							$btnBack = '<img src="/assets/images/treatment/btn_back.png" alt="背面">';
 							$btnVIO = '<img src="/assets/images/treatment/btn_vio.png" alt="VIO">';
+
 						}
 
 					?>
@@ -171,7 +172,8 @@ if(!is_amp()){
 								<?php if(is_amp()): ?>
 								<amp-img src="<?php echo $partsImgObj['sizes']['medium']; ?>" width="100" height="100" layout="responsive" class="thumb"></amp-img>
 								<?php else: ?>
-							  <img src="<?php echo $partsImgObj['sizes']['medium']; ?>" class="thumb">
+							  
+								<img src="/assets/images/dummy.gif" data-normal="<?php echo $partsImgObj['sizes']['medium']; ?>" class="thumb lazy">
 								<?php endif; ?>
 								<p>
 									<?php the_sub_field('optionParts_list_text'); ?>

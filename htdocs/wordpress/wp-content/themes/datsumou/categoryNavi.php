@@ -9,6 +9,6 @@
 		<a href="/datsumou_column/">脱毛コラム</a>
 	</li>
 	<li>
-		<a href="/body_care/">ボディケア</a>
+		<a href="/area/">エリア</a>
 	</li>
 </ul>

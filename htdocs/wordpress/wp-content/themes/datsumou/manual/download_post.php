@@ -24,6 +24,7 @@ function displayList($posts){
 	$dateArray = array();
 
 	foreach($posts as $post) :
+		// print_r($post);
 		//2019の20はパーマリンク設定でつける。でないとアーカイブページとみなされリライトされて404に。。
 		$date = mysql2date('ymd', $post->post_date);
 		array_push($dateArray, $date);
@@ -36,8 +37,9 @@ function displayList($posts){
 		// echo sprintf('%03d', $count);
 		$postArray = array();
 		$postArray['post_id'] = $post->ID;
-		$postArray['post_name'] = $date.sprintf('%03d', $count);
 		$postArray['post_type'] = $post_type;
+		// $postArray['post_name'] = $date.sprintf('%03d', $count);
+		$postArray['post_name'] = $post->post_name;
 		$postArray['post_title'] = '"'.$post->post_title.'"';
 		$postArray['post_category'] = '';
 
@@ -49,8 +51,8 @@ function displayList($posts){
 
 	$hArray = array(
 		"post_id",
-		"post_name",
 		"post_type",
+		"post_name",
 		"post_title",
 		"post_category",
 		);

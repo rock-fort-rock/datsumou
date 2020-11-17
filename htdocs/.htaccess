@@ -5,6 +5,10 @@
 #RewriteCond %{QUERY_STRING} !=""
 #RewriteRule ^(.*) %{ENV:REDIRECT}$1? [L,R=301]
 
+#AMP無効
+#RewriteEngine On
+#RewriteBase /
+#RewriteRule ^(.*)/amp/?$ $1 [R=301,L]
 
 # BEGIN WordPress
 <IfModule mod_rewrite.c>

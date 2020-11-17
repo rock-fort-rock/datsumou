@@ -35,7 +35,9 @@ $tocHide = $tocGroup['column_toc_hide'];
 		<div class="categorySelectWrapper">
 			<div class="categorySelect">
 				<?php
-					$category_url = ($the_terms[0]->description)?$the_terms[0]->description:esc_url( get_category_link( $the_terms[0]->term_id ) );
+					$category_id = $the_terms[0]->term_id;
+					// $category_url = ($the_terms[0]->description)?$the_terms[0]->description:esc_url( get_category_link( $the_terms[0]->term_id ) );
+					$category_url = (get_field('category_url','category_'.$category_id))?get_field('category_url','category_'.$category_id):esc_url( get_category_link( $the_terms[0]->term_id ) );
 					// print_r($category_url);
 					outputCategorySelect($category_url);
 				?>
@@ -51,8 +53,9 @@ $tocHide = $tocGroup['column_toc_hide'];
 				<ul class="category">
 					<?php
 					$category_name = $the_terms[0]->name;
-					// $parent_link = get_category_link( $the_terms[0]->parent );
-					$parent_url = (get_category( $the_terms[0]->parent )->description)?get_category( $the_terms[0]->parent )->description:esc_url(get_category_link( $the_terms[0]->parent ));
+					// $parent_url = (get_category( $the_terms[0]->parent )->description)?get_category( $the_terms[0]->parent )->description:esc_url(get_category_link( $the_terms[0]->parent ));
+					$parent_id = $the_terms[0]->parent;
+					$parent_url = (get_field('category_url','category_'.$parent_id))?get_field('category_url','category_'.$parent_id):esc_url(get_category_link( $the_terms[0]->parent ));
 					$parent_name = get_category( $the_terms[0]->parent )->name;
 					?>
 					<li><a href="/">TOP</a></li><li><a href="<?php echo $parent_url; ?>"><?php echo $parent_name; ?></a></li><li><a href="<?php echo $category_url; ?>"><?php echo $category_name; ?></a></li>
@@ -123,17 +126,19 @@ $tocHide = $tocGroup['column_toc_hide'];
 <?php if($tocHide != 1 && !is_amp()): ?>
 <section class="entryBlock">
 <div class="tableofcontents">
-<div class="title">目次</div><span class="displayToggle">[表示]</span>
+<div class="title">目次</div><span class="displayToggle">[非表示]</span>
 <ul>
 <?php for($i=0; $i<count($block); $i++): ?>
 <?php if($block[$i]['headline']): ?>
 <li class="main"><a href="#<?php echo 'index'.($i+1); ?>" class="scroll"><?php echo $block[$i]['headline']; ?></a></li>
 <?php endif; ?>
+<?php /*
 <?php for($n=0; $n<count($block[$i]['contents']); $n++): ?>
 <?php if($block[$i]['contents'][$n]['column_headline2']): ?>
 <li class="sub"><a href="#<?php echo 'index'.($i+1).'-'.($n+1); ?>" class="scroll"><?php echo $block[$i]['contents'][$n]['column_headline2']; ?></a></li>
 <?php endif; ?>
 <?php endfor; ?>
+*/ ?>
 <?php endfor; ?>
 </ul>
 </div>
@@ -159,6 +164,7 @@ $tocHide = $tocGroup['column_toc_hide'];
 							?>
 						<?php else: ?>
 							<?php echo customImg($block[$i]['contents'][$n]['column_contents']); ?>
+							<?php //echo $block[$i]['contents'][$n]['column_contents']; ?>
 						<?php endif; ?>
 					</div>
 					<?php endfor; ?>
@@ -203,7 +209,7 @@ $tocHide = $tocGroup['column_toc_hide'];
 								<amp-img src="<?php echo $authorimg; ?>" width="300" height="300" layout="responsive"></amp-img>
 							<?php else: ?>
 								<?php //echo $author_img; ?>
-								<img data-echo="<?php echo $authorimg; ?>" src="/assets/images/dummy.gif" class="lazy">
+								<img data-normal="<?php echo $authorimg; ?>" src="/assets/images/dummy.gif" class="lazy">
 							<?php endif; ?>
 						</div>
 						<div class="userProfileInfo">
@@ -224,7 +230,6 @@ $tocHide = $tocGroup['column_toc_hide'];
 		</div>
 	</section>
 </div>
-
 <?php
 if(!is_amp()){
 	get_footer();
